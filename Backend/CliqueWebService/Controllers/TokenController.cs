@@ -85,7 +85,7 @@ namespace CliqueWebService.Controllers
                 Byte[] inputBytes = Encoding.UTF8.GetBytes(password);
                 Byte[] hashedBytes = new SHA256CryptoServiceProvider().ComputeHash(inputBytes);
                 List<User> user = new List<User>();
-                string query = $"SELECT user_id, name, surname, email, gender, hash_password FROM Users WHERE email = {email} AND hash_password = {hashedBytes} ";
+                string query = $"SELECT user_id, name, surname, email, gender, hash_password FROM Users WHERE email = '{email}' AND hash_password = '{hashedBytes}' ";
                 bool idExists = true;
                 var reader = _db.ExecuteQuery(query);
                 if (!reader.HasRows)
