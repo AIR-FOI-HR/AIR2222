@@ -30,7 +30,46 @@ namespace CliqueWebService.Controllers
         {
             if(email != null && password != null)
             {
-                var user = GetUser(email, password);
+                //var user = GetUser(email, password);
+                User user = new User();
+                user = null;
+                try
+                {
+                    _db.Connect();
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest("Connection unsuccesful 1");
+                }
+                try
+                {
+                    /*Bazično sha256 kriptiranje */
+                    //Byte[] inputBytes = Encoding.UTF8.GetBytes(password);
+                    //Byte[] hashedBytes = new SHA256CryptoServiceProvider().ComputeHash(inputBytes);
+                    List<User> userList = new List<User>();
+                    string query = $"SELECT user_id, name, surname, email, gender, hash_password FROM Users WHERE email = '{email}' AND CONVERT(VARCHAR, hash_password) = '{password}' ";
+                    bool idExists = true;
+                    var reader = _db.ExecuteQuery(query);
+                    if (!reader.HasRows)
+                    {
+                        return BadRequest("No rows");
+                    }
+
+                    while (reader.Read())
+                    {
+                        if (reader.GetValue(0) != DBNull.Value)
+                        {
+                            userList.Add(_businessLogic.GetUsers(reader));
+                        }
+                    }
+                    reader.Close();
+                    _db.Disconnect();
+                    user = userList[0];
+                    } 
+                catch (Exception e)
+                {
+                    return BadRequest(e);
+                }
                 if (user != null)
                 {
                     //create claims details based on the user information
@@ -66,7 +105,7 @@ namespace CliqueWebService.Controllers
             }
         }
 
-        [HttpGet("{email}, {password}")]
+        /*[HttpGet("{email}, {password}")]
         public User GetUser(string email, string password)
         {
             User userr = new User();
@@ -81,7 +120,7 @@ namespace CliqueWebService.Controllers
             }
             try
             {
-                /*Bazično sha256 kriptiranje */
+                /*Bazično sha256 kriptiranje 
                 Byte[] inputBytes = Encoding.UTF8.GetBytes(password);
                 Byte[] hashedBytes = new SHA256CryptoServiceProvider().ComputeHash(inputBytes);
                 List<User> user = new List<User>();
@@ -110,6 +149,6 @@ namespace CliqueWebService.Controllers
 
             }
             return userr;
-        }
+        }*/
     }
 }
