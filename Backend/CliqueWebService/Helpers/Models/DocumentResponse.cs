@@ -10,6 +10,8 @@ namespace CliqueWebService.Helpers
         public string Method { get; set; }
         public List<Event>?  Events { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public List<User>? Users { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Error { get; set; }
     }
 }

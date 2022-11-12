@@ -5,6 +5,21 @@ namespace CliqueWebService.Helpers
 {
     public class BusinessLogic
     {
+        public User GetUsers(SqlDataReader reader)
+        {
+            User user = new User
+            {
+                user_id = reader.GetInt32(0),
+                name = reader.GetString(1),
+                surname = reader.GetString(2),
+                email = reader.GetString(3),
+                gender = reader.GetString(4),
+                password = reader.GetString(5)
+            };
+
+            return user;
+        }
+
         public Event FillEvents(SqlDataReader reader)
         {
             Event ev = new Event
