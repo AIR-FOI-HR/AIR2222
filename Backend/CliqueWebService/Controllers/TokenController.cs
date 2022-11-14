@@ -26,9 +26,11 @@ namespace CliqueWebService.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UserAuthenticate(string email, string password)
+        public async Task<IActionResult> UserAuthenticate([FromBody] User user1)
         {
-            if(email != null && password != null)
+            string email = user1.email;
+            string password = user1.password;
+            if(email != null && password != password)
             {
                 //var user = GetUser(email, password);
                 User user = new User();
