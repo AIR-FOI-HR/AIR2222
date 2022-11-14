@@ -1,5 +1,7 @@
 ﻿using CliqueWebService.Helpers.Models;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace CliqueWebService.Helpers
 {
@@ -42,6 +44,19 @@ namespace CliqueWebService.Helpers
                 category = reader.GetString(14)
             };
             return ev;
+        }
+        public string ConvertToSHA256(string pass)
+        {
+            StringBuilder builder = new StringBuilder();
+            using(var hash = SHA256.Create())
+            {
+                byte[] stringHash = hash.ComputeHash(Encoding.UTF8.GetBytes(pass));
+                foreach(byte b in stringHash)
+                {
+                    builder.Append(b.ToString("X2"));
+                }
+            }
+            return builder.ToString();
         }
     }
 }

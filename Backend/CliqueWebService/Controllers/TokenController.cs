@@ -47,7 +47,8 @@ namespace CliqueWebService.Controllers
                     //Byte[] inputBytes = Encoding.UTF8.GetBytes(password);
                     //Byte[] hashedBytes = new SHA256CryptoServiceProvider().ComputeHash(inputBytes);
                     List<User> userList = new List<User>();
-                    string query = $"SELECT user_id, name, surname, email, gender, hash_password FROM Users WHERE email = '{email}' AND CONVERT(VARCHAR, hash_password) = '{password}' ";
+                    var hash = _businessLogic.ConvertToSHA256(password);
+                    string query = $"SELECT user_id, name, surname, email, gender, hash_password FROM Users WHERE email LIKE '{email}' AND hash_password LIKE '{hash.ToLower()}' ";
                     bool idExists = true;
                     var reader = _db.ExecuteQuery(query);
                     if (!reader.HasRows)
