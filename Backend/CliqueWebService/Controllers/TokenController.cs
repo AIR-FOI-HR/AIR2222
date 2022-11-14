@@ -30,7 +30,7 @@ namespace CliqueWebService.Controllers
         {
             string email = user1.email;
             string password = user1.password;
-            if(email != null && password != password)
+            if(email != null && password != null)
             {
                 //var user = GetUser(email, password);
                 User user = new User();
