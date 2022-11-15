@@ -63,7 +63,7 @@ namespace CliqueWebService.Controllers
                         }
                     }
                     reader.Close();
-                    _db.Disconnect();
+                    
                     user = userList[0];
                 } 
                 catch (Exception e)
@@ -89,10 +89,14 @@ namespace CliqueWebService.Controllers
                         expires: DateTime.UtcNow.AddMinutes(15),
                         signingCredentials: signIn);
 
+                    string insert = $"INSERT INTO Tokens (token, user_id, token_expires) VALUES ('{new JwtSecurityTokenHandler().WriteToken(token)}', {user.user_id}, '{token.ValidTo}')";
+                    _db.ExecuteNonQuery(insert);
+                    _db.Disconnect();
                     return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo });
                 }
                 else
                 {
+                    _db.Disconnect();
                     return BadRequest("Invalid credentials");
                 }
             }
