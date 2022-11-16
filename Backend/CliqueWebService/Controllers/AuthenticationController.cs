@@ -12,13 +12,13 @@ namespace CliqueWebService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TokenController : ControllerBase
+    public class AuthenticationController : ControllerBase
     {
         Database _db;
         BusinessLogic _businessLogic;
         private readonly IConfiguration _configuration;
 
-        public TokenController(IConfiguration configuration)
+        public AuthenticationController(IConfiguration configuration)
         {
             _configuration = configuration ?? throw new ArgumentNullException();
             _db = new Database(configuration.GetConnectionString("AzureDatabase"));
@@ -26,11 +26,11 @@ namespace CliqueWebService.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UserAuthenticate([FromBody] User userRequested)
+        public async Task<IActionResult> UserAuthenticate([FromBody] LoginRequest userRequested)
         {
-            string email = userRequested.email;
-            string password = userRequested.password;
-            if(email != null && password != null)
+            string email = userRequested.Email;
+            string password = userRequested.Password;
+            if (email != null && password != null)
             {
                 try
                 {
@@ -63,9 +63,9 @@ namespace CliqueWebService.Controllers
                         }
                     }
                     reader.Close();
-                    
+
                     user = userList[0];
-                } 
+                }
                 catch (Exception e)
                 {
                     return BadRequest("Could not connect to database");
@@ -86,10 +86,10 @@ namespace CliqueWebService.Controllers
                         _configuration["Jwt:Issuer"],
                         _configuration["Jwt:Audience"],
                         claims,
-                        expires: DateTime.UtcNow.AddMinutes(15),
+                        expires: DateTime.Now.AddMinutes(15),
                         signingCredentials: signIn);
 
-                    string insert = $"INSERT INTO Tokens (token, user_id, token_expires) VALUES ('{new JwtSecurityTokenHandler().WriteToken(token)}', {user.user_id}, '{token.ValidTo}')";
+                    string insert = $"INSERT INTO Tokens (token, user_id, token_expires) VALUES ('{new JwtSecurityTokenHandler().WriteToken(token)}', {user.user_id}, '{token.ValidTo.ToString("yyyy-MM-dd HH:mm:ss")}')";
                     _db.ExecuteNonQuery(insert);
                     _db.Disconnect();
                     return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo });
@@ -105,5 +105,55 @@ namespace CliqueWebService.Controllers
                 return BadRequest();
             }
         }
+
+        /*[HttpPost]
+        public ActionResult RegisterUser([FromBody] RegisterRequest userForRegistration)
+        {
+            DocumentResponse docResponse = new DocumentResponse();
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _db.Connect();
+                }
+                catch (Exception ex)
+                {
+                    docResponse.Error = ex.Message;
+                    docResponse.Status = "500 - Internal Server Error";
+                    docResponse.Method = "POST";
+                    return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
+                }
+                string query = $"INSERT INTO Users(name, surname, email, hash_password, contact_no, birth_data, gender) VALUES ('{userForRegistration.Name}', '{userForRegistration.Surname}', " +
+                    $"'{userForRegistration.Email}', '{_businessLogic.ConvertToSHA256(userForRegistration.Password)}', '{userForRegistration.ContactNum}', '{userForRegistration.BirthData}', {userForRegistration.Gender})";
+                _db.BeginTransaction();
+                try
+                {
+                    _db.ExecuteNonQuery(query);
+                    _db.CommitTransaction();
+                    docResponse.Message = "User successfully registered";
+                    docResponse.Status = "200 - OK";
+                    docResponse.Method = "POST";
+                    return Ok(docResponse);
+                }
+                catch
+                {
+                    _db.RollbackTransaction();
+                    _db.CommitTransaction();
+                    docResponse.Error = "Incorrectly formated JSON request";
+                    docResponse.Status = "500 - Internal Server Error";
+                    docResponse.Method = "POST";
+                    return BadRequest(docResponse);
+                }
+            }
+            else
+            {
+                docResponse.Error = "Incorrectly formated JSON request";
+                docResponse.Status = "500 - Internal Server Error";
+                docResponse.Method = "POST";
+                return BadRequest(docResponse);
+            }
+
+        }*/
     }
 }

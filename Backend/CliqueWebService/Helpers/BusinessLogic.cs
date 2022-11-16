@@ -15,8 +15,7 @@ namespace CliqueWebService.Helpers
                 name = reader.GetString(1),
                 surname = reader.GetString(2),
                 email = reader.GetString(3),
-                gender = reader.GetString(4),
-                password = reader.GetString(5)
+                gender = reader.GetInt32(4)
             };
 
             return user;
@@ -39,7 +38,7 @@ namespace CliqueWebService.Helpers
                     name = reader.GetString(11),
                     surname = reader.GetString(12),
                     email = reader.GetString(13),
-                    gender = reader.GetString(15)
+                    gender = reader.GetInt32(15)
                 },
                 category = reader.GetString(14)
             };
@@ -57,6 +56,24 @@ namespace CliqueWebService.Helpers
                 }
             }
             return builder.ToString();
+        }
+        public bool IsValidEmail(string email)
+        {
+            var trimmedEmail = email.Trim();
+
+            if (trimmedEmail.EndsWith("."))
+            {
+                return false; // suggested by @TK-421
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
