@@ -13,6 +13,7 @@
 		420CDAA4290E543A0074ACFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420CDAA2290E543A0074ACFA /* LaunchScreen.storyboard */; };
 		420CDAB3290E56BD0074ACFA /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420CDAB2290E56BD0074ACFA /* Initial.storyboard */; };
 		420CDAB5290E56EB0074ACFA /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CDAB4290E56EB0074ACFA /* InitialViewController.swift */; };
+		42740C3F2926468900CD1DFC /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42740C3E2926468900CD1DFC /* Register.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		420CDAA5290E543A0074ACFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		420CDAB2290E56BD0074ACFA /* Initial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Initial.storyboard; sourceTree = "<group>"; };
 		420CDAB4290E56EB0074ACFA /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		42740C3E2926468900CD1DFC /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		420CDAAD290E55C00074ACFA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				42740C3D2926467500CD1DFC /* Register */,
 				420CDAB1290E56240074ACFA /* Initial */,
 			);
 			path = Modules;
@@ -113,6 +116,14 @@
 				420CDAB4290E56EB0074ACFA /* InitialViewController.swift */,
 			);
 			path = Initial;
+			sourceTree = "<group>";
+		};
+		42740C3D2926467500CD1DFC /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				42740C3E2926468900CD1DFC /* Register.storyboard */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +187,7 @@
 				420CDAA4290E543A0074ACFA /* LaunchScreen.storyboard in Resources */,
 				420CDAA1290E543A0074ACFA /* Assets.xcassets in Resources */,
 				420CDAB3290E56BD0074ACFA /* Initial.storyboard in Resources */,
+				42740C3F2926468900CD1DFC /* Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
