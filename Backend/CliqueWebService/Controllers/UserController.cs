@@ -39,7 +39,7 @@ namespace CliqueWebService.Controllers
             try
             {
                 List<User> user = new List<User>();
-                string query = $"SELECT user_id, name, surname, email, gender, hash_password FROM Users WHERE user_id = {id} ";
+                string query = $"SELECT user_id, name, surname, email, gender_name, hash_password FROM Users, Gender WHERE user_id = {id} AND gender_id = gender";
                 bool idExists = true;
                 var reader = _db.ExecuteQuery(query);
                 if (!reader.HasRows)

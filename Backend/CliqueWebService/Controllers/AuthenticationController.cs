@@ -26,11 +26,12 @@ namespace CliqueWebService.Controllers
         }
 
         [HttpPost]
+        [Route("LoginUser")]
         public async Task<IActionResult> UserAuthenticate([FromBody] LoginRequest userRequested)
         {
             string email = userRequested.Email;
             string password = userRequested.Password;
-            if (email != null && password != null)
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -48,7 +49,7 @@ namespace CliqueWebService.Controllers
                 {
                     List<User> userList = new List<User>();
                     var hash = _businessLogic.ConvertToSHA256(password);
-                    string query = $"SELECT user_id, name, surname, email, gender, hash_password FROM Users WHERE email LIKE '{email}' AND hash_password LIKE '{hash.ToLower()}' ";
+                    string query = $"SELECT user_id, name, surname, email, gender_name, hash_password FROM Users, Gender WHERE email LIKE '{email}' AND hash_password LIKE '{hash.ToLower()}' ";
                     var reader = _db.ExecuteQuery(query);
                     if (!reader.HasRows)
                     {
@@ -106,7 +107,8 @@ namespace CliqueWebService.Controllers
             }
         }
 
-        /*[HttpPost]
+        [HttpPost]
+        [Route("RegisterUser")]
         public ActionResult RegisterUser([FromBody] RegisterRequest userForRegistration)
         {
             DocumentResponse docResponse = new DocumentResponse();
@@ -125,7 +127,7 @@ namespace CliqueWebService.Controllers
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
                 string query = $"INSERT INTO Users(name, surname, email, hash_password, contact_no, birth_data, gender) VALUES ('{userForRegistration.Name}', '{userForRegistration.Surname}', " +
-                    $"'{userForRegistration.Email}', '{_businessLogic.ConvertToSHA256(userForRegistration.Password)}', '{userForRegistration.ContactNum}', '{userForRegistration.BirthData}', {userForRegistration.Gender})";
+                    $"'{userForRegistration.Email}', '{_businessLogic.ConvertToSHA256(userForRegistration.Password)}', '{userForRegistration.ContactNum}', '{userForRegistration.BirthData.ToString("yyyy-MM-dd")}', {userForRegistration.Gender})";
                 _db.BeginTransaction();
                 try
                 {
@@ -140,20 +142,20 @@ namespace CliqueWebService.Controllers
                 {
                     _db.RollbackTransaction();
                     _db.CommitTransaction();
-                    docResponse.Error = "Incorrectly formated JSON request";
+                    docResponse.Error = "Couldn't register user";
                     docResponse.Status = "500 - Internal Server Error";
                     docResponse.Method = "POST";
-                    return BadRequest(docResponse);
+                    return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
             }
             else
             {
                 docResponse.Error = "Incorrectly formated JSON request";
-                docResponse.Status = "500 - Internal Server Error";
+                docResponse.Status = "400 - Bad Request";
                 docResponse.Method = "POST";
                 return BadRequest(docResponse);
             }
 
-        }*/
+        }
     }
 }

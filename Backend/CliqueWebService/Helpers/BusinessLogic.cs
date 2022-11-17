@@ -15,7 +15,7 @@ namespace CliqueWebService.Helpers
                 name = reader.GetString(1),
                 surname = reader.GetString(2),
                 email = reader.GetString(3),
-                gender = reader.GetInt32(4)
+                gender = reader.GetString(4).Trim()
             };
 
             return user;
@@ -38,7 +38,7 @@ namespace CliqueWebService.Helpers
                     name = reader.GetString(11),
                     surname = reader.GetString(12),
                     email = reader.GetString(13),
-                    gender = reader.GetInt32(15)
+                    gender = reader.GetString(15).Trim()
                 },
                 category = reader.GetString(14)
             };

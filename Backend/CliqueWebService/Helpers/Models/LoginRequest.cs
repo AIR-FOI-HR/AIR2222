@@ -5,6 +5,7 @@ namespace CliqueWebService.Helpers.Models
     public class LoginRequest
     {
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
         [MinLength(8)]
