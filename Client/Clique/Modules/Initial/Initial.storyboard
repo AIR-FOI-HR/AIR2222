@@ -16,17 +16,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GE7-lX-abb">
-                                <rect key="frame" x="174" y="411" width="33" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="YyY-aL-L4i">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uAw-se-ome">
+                                <rect key="frame" x="32" y="367" width="326" height="110"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uav-do-MEJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="326" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="5Uy-dc-wnS"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="dWM-zo-0bz"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Register">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="0.45034736390000002" green="0.36931830640000002" blue="0.32155981659999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yf-Fr-BzI">
+                                        <rect key="frame" x="0.0" y="65" width="326" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="EP3-xq-34k"/>
+                                            <constraint firstAttribute="height" constant="45" id="svM-7t-jMb"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Log in">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="1" green="0.60002936197612144" blue="0.34990315097645475" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="loginButtonPressed:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="ltU-N2-dxA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uAw-se-ome" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="320" id="2Pc-vf-FRf"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="uAw-se-ome" secondAttribute="trailing" constant="32" id="8D2-2s-jc1"/>
+                            <constraint firstItem="YyY-aL-L4i" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Hd7-LQ-JEl"/>
+                            <constraint firstAttribute="bottom" secondItem="YyY-aL-L4i" secondAttribute="bottom" id="POl-vr-BNy"/>
+                            <constraint firstItem="YyY-aL-L4i" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="VK8-Lq-9JR"/>
+                            <constraint firstItem="uAw-se-ome" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="akA-Vw-qKd"/>
+                            <constraint firstItem="YyY-aL-L4i" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="vbJ-Wv-hGo"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="3yf-Fr-BzI" id="Jb5-J5-MVJ"/>
+                        <outlet property="registerButton" destination="uav-do-MEJ" id="6qK-WQ-NK7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -34,6 +75,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="background" width="736" height="1472"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

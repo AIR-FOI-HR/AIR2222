@@ -14,6 +14,7 @@
 		420CDAB3290E56BD0074ACFA /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420CDAB2290E56BD0074ACFA /* Initial.storyboard */; };
 		420CDAB5290E56EB0074ACFA /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CDAB4290E56EB0074ACFA /* InitialViewController.swift */; };
 		4213719129262F1B0082F1C7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4213719029262F1B0082F1C7 /* Login.storyboard */; };
+		428ADAA529264FF100417940 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ADAA429264FF100417940 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		420CDAB2290E56BD0074ACFA /* Initial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Initial.storyboard; sourceTree = "<group>"; };
 		420CDAB4290E56EB0074ACFA /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		4213719029262F1B0082F1C7 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		428ADAA429264FF100417940 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				4213719029262F1B0082F1C7 /* Login.storyboard */,
+				428ADAA429264FF100417940 /* LoginViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				428ADAA529264FF100417940 /* LoginViewController.swift in Sources */,
 				420CDA98290E54380074ACFA /* AppDelegate.swift in Sources */,
 				420CDA9A290E54380074ACFA /* SceneDelegate.swift in Sources */,
 				420CDAB5290E56EB0074ACFA /* InitialViewController.swift in Sources */,
