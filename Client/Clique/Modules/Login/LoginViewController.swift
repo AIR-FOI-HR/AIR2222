@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
             switch result{
             case .success(let token):
                 self.showAlert(with: "Token: \(token.token)")
-                
+                UserDefaults.standard.set(email, forKey: "email")
                 
             case .failure:
                 self.showPopUp()
