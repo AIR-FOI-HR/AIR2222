@@ -1,19 +1,20 @@
 //
-//  LoginViewController.swift
+//  LoginViewContoller.swift
 //  Clique
 //
-//  Created by Infinum on 17.11.2022..
+//  Created by Infinum on 15.11.2022..
 //
 
 import Foundation
 import UIKit
+import Alamofire
 
 class LoginViewController: UIViewController {
     
     @IBOutlet private weak var txtEmail: UITextField!
     @IBOutlet private weak var txtPassword: UITextField!
     @IBOutlet private weak var loginButton: UIButton!
-    
+    private let loginService = LoginService()
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         
@@ -26,6 +27,23 @@ class LoginViewController: UIViewController {
             return
         }
         
+        let credentials = LoginCredentials(email: email,password: password)
+        loginService.login(with: credentials) { result in
+            switch result{
+            case .success(let token):
+                self.showAlert(with: "Token: \(token.token)")
+                
+                
+            case .failure:
+                self.showPopUp()
+                self.clearFields()
+                
+            }
+                
+            
+        
+            
+        }
     }
     
     override func viewDidLoad() {
@@ -34,4 +52,33 @@ class LoginViewController: UIViewController {
         
     }
     
+    
+    
+    func showAlert(with message: String){
+        let alertController = UIAlertController()
+        alertController.message = message
+        
+        present(alertController,animated:true)
+    }
+    
+    @IBAction func showPopUp(){
+        let alert = UIAlertController(title: "Wrong credentials", message: "Incorrect email or password.", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default){
+            (action) in
+            print(action)
+        }
+        
+        alert.addAction(okAction)
+        
+        present(alert, animated: true, completion:nil)
+    }
+    
+    func clearFields(){
+        txtPassword.text = ""
+        
+    }
 }
+
+
+
