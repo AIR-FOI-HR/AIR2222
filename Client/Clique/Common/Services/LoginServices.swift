@@ -33,8 +33,7 @@ final class LoginService {
                 dataResponse in
                 switch dataResponse.result{
                 case .success(let token):
-                    completion(.success(token))
-                    
+                    completion(.success(token))   
                 case .failure(let error):
                     completion(.failure(error))
                 }
