@@ -45,6 +45,9 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" red="1" green="0.60002936197612144" blue="0.34990315097645475" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="loginButtonPressed:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="ltU-N2-dxA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
