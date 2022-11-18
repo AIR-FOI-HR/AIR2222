@@ -15,6 +15,8 @@
 		420CDAB5290E56EB0074ACFA /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CDAB4290E56EB0074ACFA /* InitialViewController.swift */; };
 		4213719129262F1B0082F1C7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4213719029262F1B0082F1C7 /* Login.storyboard */; };
 		428ADAA529264FF100417940 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ADAA429264FF100417940 /* LoginViewController.swift */; };
+		429B678329283F00004228E8 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 429B678229283F00004228E8 /* NVActivityIndicatorView */; };
+		429B678529283F00004228E8 /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 429B678429283F00004228E8 /* NVActivityIndicatorViewExtended */; };
 		42DB272C292656ED0027A00C /* LoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DB272B292656ED0027A00C /* LoginServices.swift */; };
 		42DB272F292657540027A00C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 42DB272E292657540027A00C /* Alamofire */; };
 		42DB2734292672970027A00C /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DB2733292672970027A00C /* UserStorage.swift */; };
@@ -40,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				429B678529283F00004228E8 /* NVActivityIndicatorViewExtended in Frameworks */,
+				429B678329283F00004228E8 /* NVActivityIndicatorView in Frameworks */,
 				42DB272F292657540027A00C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,6 +175,8 @@
 			name = Clique;
 			packageProductDependencies = (
 				42DB272E292657540027A00C /* Alamofire */,
+				429B678229283F00004228E8 /* NVActivityIndicatorView */,
+				429B678429283F00004228E8 /* NVActivityIndicatorViewExtended */,
 			);
 			productName = Clique;
 			productReference = 420CDA94290E54380074ACFA /* Clique.app */;
@@ -202,6 +208,7 @@
 			mainGroup = 420CDA8B290E54380074ACFA;
 			packageReferences = (
 				42DB272D292657540027A00C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				429B678129283F00004228E8 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 			);
 			productRefGroup = 420CDA95290E54380074ACFA /* Products */;
 			projectDirPath = "";
@@ -444,6 +451,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		429B678129283F00004228E8 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		42DB272D292657540027A00C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -455,6 +470,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		429B678229283F00004228E8 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 429B678129283F00004228E8 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		429B678429283F00004228E8 /* NVActivityIndicatorViewExtended */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 429B678129283F00004228E8 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorViewExtended;
+		};
 		42DB272E292657540027A00C /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 42DB272D292657540027A00C /* XCRemoteSwiftPackageReference "Alamofire" */;
