@@ -56,31 +56,7 @@ class LoginViewController: UIViewController {
     }
     
     
-    
-    func showAlert(with message: String){
-        let alertController = UIAlertController()
-        alertController.message = message
-        
-        present(alertController,animated:true)
-    }
-    
-    @IBAction func showPopUp(){
-        let alert = UIAlertController(title: "Wrong credentials", message: "Incorrect email or password.", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .default){
-            (action) in
-            print(action)
-        }
-        
-        alert.addAction(okAction)
-        
-        present(alert, animated: true, completion:nil)
-    }
-    
-    func clearFields(){
-        txtPassword.text = ""
-        
-    }
+       
 }
 
 
