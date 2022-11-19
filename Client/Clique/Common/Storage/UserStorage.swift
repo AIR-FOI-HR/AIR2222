@@ -1,5 +1,4 @@
 import UIKit
-import Foundation
 
 private enum DefaultValues: String {
     
@@ -11,7 +10,7 @@ private enum DefaultValues: String {
 final class UserStorage {
 
 static var email: String {
-    set{
+    set {
         _set(value: newValue, key: .email)
     } get {
         return _get(valueForKay: .email) as? String ?? ""
@@ -19,7 +18,7 @@ static var email: String {
 }
     
     static var token: String{
-        set{
+        set {
             _set(value: newValue, key: .token)
         } get {
             return _get(valueForKay: .token) as? String ?? ""
@@ -31,7 +30,7 @@ private static func _set(value: String, key: DefaultValues) {
     UserDefaults.standard.set(value, forKey: key.rawValue)
 }
 
-private static func _get(valueForKay key: DefaultValues)-> Any? {
+private static func _get(valueForKay key: DefaultValues) -> Any? {
     return UserDefaults.standard.value(forKey: key.rawValue)
 }
 

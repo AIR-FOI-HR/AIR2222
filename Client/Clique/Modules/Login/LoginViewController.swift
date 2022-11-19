@@ -5,13 +5,12 @@
 //  Created by Infinum on 15.11.2022..
 //
 
-import Foundation
 import UIKit
 import Alamofire
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet private weak var txtEmail: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var txtPassword: UITextField!
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var errorMessage: UILabel!
@@ -21,7 +20,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         
         guard
-            let email = txtEmail.text,
+            let email = emailTextField.text,
             let password = txtPassword.text,
             !email.isEmpty && !password.isEmpty
         else {
@@ -30,22 +29,18 @@ class LoginViewController: UIViewController {
             return
         }
         
-        let credentials = LoginCredentials(email: email,password: password)
+        let credentials = LoginCredentials(email: email, password: password)
         loginService.login(with: credentials) { result in
-            switch result{
+            switch result {
             case .success(let token):
                 UserStorage.token = token.token
                 UserStorage.email = email
-                
+                self.errorMessage.isHidden = true
             case .failure:
                 self.errorMessage.isHidden = false
                 self.errorMessage.text = "Your credentials are invalid."
                 
             }
-                
-            
-        
-            
         }
     }
     
@@ -54,9 +49,6 @@ class LoginViewController: UIViewController {
         
         errorMessage.isHidden = true
     }
-    
-    
-       
 }
 
 
