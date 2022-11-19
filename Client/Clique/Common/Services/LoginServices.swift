@@ -9,11 +9,7 @@ import Alamofire
 import UIKit
 
 struct LoginCredentials : Codable {
-//    let user_id : Int
-//    let name : String
-//    let surname : String
     let email: String
-//    let gender : String
     let password: String
     
 }
