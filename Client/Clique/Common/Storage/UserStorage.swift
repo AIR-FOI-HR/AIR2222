@@ -2,6 +2,7 @@ import UIKit
 import Foundation
 
 private enum DefaultValues: String {
+    
    case email = "email"
     case token = "token"
     

@@ -37,8 +37,6 @@ class LoginViewController: UIViewController {
                 UserStorage.token = token.token
                 UserStorage.email = email
                 
-                let tokencic = UserStorage.token
-                print(tokencic)
             case .failure:
                 self.errorMessage.isHidden = false
                 self.errorMessage.text = "Your credentials are invalid."
