@@ -23,6 +23,11 @@ class LoginViewController: UIViewController {
             let password = txtPassword.text,
             !email.isEmpty && !password.isEmpty
         else {
+            let alert = UIAlertController(title: "Insufficient information",
+                                          message: "Please enter email and password",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true, completion: nil)
             return
         }
         
