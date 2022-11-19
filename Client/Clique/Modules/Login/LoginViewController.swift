@@ -13,7 +13,6 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var txtPassword: UITextField!
     @IBOutlet private weak var loginButton: UIButton!
-    @IBOutlet private weak var errorMessage: UILabel!
     
     private let loginService = LoginService()
     
@@ -24,8 +23,6 @@ class LoginViewController: UIViewController {
             let password = txtPassword.text,
             !email.isEmpty && !password.isEmpty
         else {
-            self.errorMessage.isHidden = false
-            self.errorMessage.text = "All fields must be filled!"
             return
         }
         
@@ -35,11 +32,12 @@ class LoginViewController: UIViewController {
             case .success(let token):
                 UserStorage.token = token.token
                 UserStorage.email = email
-                self.errorMessage.isHidden = true
             case .failure:
-                self.errorMessage.isHidden = false
-                self.errorMessage.text = "Your credentials are invalid."
-                
+                let alert = UIAlertController(title: "Wrong Credentials",
+                                              message: "Please enter your login info.",
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
@@ -47,7 +45,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        errorMessage.isHidden = true
     }
 }
 
