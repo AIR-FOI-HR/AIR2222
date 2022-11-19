@@ -28,7 +28,7 @@ final class LoginService {
     func login(
         with credentials: LoginCredentials,
         completion : @escaping(Result<LoginResponse, Error>) -> Void) {
-            AF.request(K.loginURL,
+            AF.request(Constants.loginURL,
                        method: .post,
                        parameters : credentials,
                        encoder: JSONParameterEncoder.default ).responseDecodable(of:LoginResponse.self) {

@@ -11,7 +11,7 @@ import Alamofire
 class LoginViewController: UIViewController {
     
     @IBOutlet private weak var emailTextField: UITextField!
-    @IBOutlet private weak var txtPassword: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var loginButton: UIButton!
     
     private let loginService = LoginService()
@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
         
         guard
             let email = emailTextField.text,
-            let password = txtPassword.text,
+            let password = passwordTextField.text,
             !email.isEmpty && !password.isEmpty
         else {
             let alert = UIAlertController(title: "Insufficient information",
