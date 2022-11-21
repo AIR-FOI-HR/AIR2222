@@ -1,7 +1,5 @@
-
 //
 //  Clique
-//
 //  Created by Infinum on 15.11.2022..
 //
 
@@ -24,51 +22,41 @@ class RegisterViewController: UIViewController {
 
     let genders = ["Male", "Female", "Non-binary"]
     var pickerView = UIPickerView()
-    private var selectedGender = ""
+    private var selectedGender : String?
     private let registerService = RegisterService()
     
-    
     @IBAction func registerButtonPressed(_ sender: UIButton) {
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let birthData = dateFormatter.string(from: dPdateOfBirth.date)
-
-        guard
-            let name = txtName.text,
-            let surname = txtSurname.text,
-            let email = txtEmail.text,
-            let password = txtPassword.text,
-            let rePassword = txtRePassword.text,
-            let contactNum = txtPhoneNumber.text,
-
-        !name.isEmpty && !surname.isEmpty && !email.isEmpty && !password.isEmpty && !rePassword.isEmpty && !contactNum.isEmpty
-        else {
+        
+        guard let registerEntries = getRegisterEntries() else {
             emptyFieldsLabel.text = "All fields must be filled."
             emptyFieldsLabel.isHidden = false
             return
         }
-
-        let entries = RegisterEntries(email: email,password: password, name: name, surname: surname, contactNum: contactNum, gender: genderCheck(), birthData: birthData )
-
-            if(checkPasswords() == true){
-
-                registerService.register(with: entries){
-                    (isSuccess) in
-                    if isSuccess{
-                        let alertController = UIAlertController(title: "", message: "Successfully registrated!", preferredStyle: .alert)
-                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                        alertController.addAction(defaultAction)
-                        self.present(alertController, animated: true, completion: nil)
-                    }else{
-                        return
-                    }
-                }
-            }
-            else{
-                return
-            }
+        
+        guard checkPasswords() else{
+            alert(fwdMessage: "Passwords don't match.")
+            return
+        }
+        register(with: registerEntries)
+        
     }
+        
+        func register(with registerEntries: RegisterEntries) {
+            registerService.register(with: registerEntries) { (isSuccess) in
+                    if isSuccess{
+                        self.alert(fwdMessage: "Successfully registrated!")
+                    }else{
+                        self.alert(fwdMessage: "Nez")
+                    }
+            }
+        }
+    
+        func alert(fwdMessage: String){
+            let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
 
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -90,6 +78,29 @@ class RegisterViewController: UIViewController {
 
             txtPassword.addTarget(self, action: #selector(checkAndDisplayError(textfield:)), for: .editingChanged)
             txtRePassword.addTarget(self, action: #selector(compareAndDisplay(textfield:)), for: .editingChanged)
+
+        }
+    
+        func getRegisterEntries() -> RegisterEntries? {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let birthData = dateFormatter.string(from: dPdateOfBirth.date)
+        
+            guard
+                let name = txtName.text,
+                let surname = txtSurname.text,
+                let email = txtEmail.text,
+                let password = txtPassword.text,
+                let rePassword = txtRePassword.text,
+                let contactNum = txtPhoneNumber.text,
+
+            !name.isEmpty && !surname.isEmpty && !email.isEmpty && !password.isEmpty && !rePassword.isEmpty && !contactNum.isEmpty
+                    
+            else {
+                return nil
+            }
+            let entries = RegisterEntries(email: email,password: password, name: name, surname: surname, contactNum: contactNum, gender: genderCheck(), birthData: birthData )
+            return entries
 
         }
 
@@ -152,7 +163,6 @@ extension RegisterViewController : UIPickerViewDelegate, UIPickerViewDataSource 
         return 30
     }
 
-
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -166,7 +176,7 @@ extension RegisterViewController : UIPickerViewDelegate, UIPickerViewDataSource 
         return genders[row]
     }
 
-    private func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) -> String {
+    private func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) -> String? {
         selectedGender = genders[row] as String
         return selectedGender
     }

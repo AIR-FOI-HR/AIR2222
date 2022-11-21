@@ -1,5 +1,4 @@
 
-import Foundation
 import Alamofire
 import UIKit
 
@@ -16,36 +15,30 @@ struct RegisterEntries : Codable {
 }
 
 struct RegisterResponse : Codable {
-    let statusCode : String
+    let status : String
     
 }
-
-
 
 final class RegisterService {
     
     func register(
-        with entries: RegisterEntries, completionHandler: @escaping (Bool) -> ()){
-            
-            AF.request(Constants.Service.registerURL, method: .post, parameters : entries, encoder: JSONParameterEncoder.default ).response{
-                response in
-                switch response.result{
-                case .success(let status):
-                    do{
-                        let json = try JSONSerialization.jsonObject(with: status!,options: [])
-                        if response.response?.statusCode == 200{
-                            completionHandler(true)
-                        }else{
-                            completionHandler(false)
-                        }
-                        
-                    }catch{
+            with entries: RegisterEntries,
+            completionHandler: @escaping(Bool)->()){
+    
+                AF.request(Constants.Service.registerURL,
+                           method: .post,
+                           parameters : entries,
+                           encoder: JSONParameterEncoder.default
+                                ).responseDecodable(of: RegisterResponse.self){
+                    response in
+                    switch response.result {
+                    case .success(let statusCode):
+                        completionHandler(statusCode.status == "200 - OK")
+                    case .failure(_):
                         completionHandler(false)
+                        
                     }
-                case .failure(let error):
-                    completionHandler(false)
                 }
             }
-        }
-    }
+}
 
