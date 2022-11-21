@@ -8,8 +8,14 @@
 import UIKit
 
 
-enum Constants{
+enum Constants {
     
-        static let loginURL: String = "https://cliquewebservice20221115180920.azurewebsites.net/api/Authentication/LoginUser"
+    enum Service {
+
+            private static let baseURL = "https://cliquewebservice20221115180920.azurewebsites.net/api/"
+
+            static let loginURL = baseURL.appending("Authentication/LoginUser")
+
+        }
 
 }
