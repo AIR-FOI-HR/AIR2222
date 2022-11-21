@@ -8,23 +8,12 @@
 import Alamofire
 import UIKit
 
-struct LoginCredentials : Codable {
-    let email: String
-    let password: String
-    
-}
-
-struct LoginResponse : Codable {
-    let token: String
-    
-}
-
 final class LoginService {
     
     func login(
         with credentials: LoginCredentials,
         completion : @escaping(Result<LoginResponse, Error>) -> Void) {
-            AF.request(Constants.loginURL,
+            AF.request(Constants.Service.loginURL,
                        method: .post,
                        parameters : credentials,
                        encoder: JSONParameterEncoder.default ).responseDecodable(of:LoginResponse.self) {
