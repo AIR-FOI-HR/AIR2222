@@ -20,14 +20,15 @@ struct RegisterResponse : Codable {
     
 }
 
+
+
 final class RegisterService {
     
     func register(
         with entries: RegisterEntries, completionHandler: @escaping (Bool) -> ()){
             
-            AF.request("https://cliquewebservice20221115180920.azurewebsites.net/api/Authentication/RegisterUser", method: .post, parameters : entries, encoder: JSONParameterEncoder.default ).response{
+            AF.request(Constants.Service.registerURL, method: .post, parameters : entries, encoder: JSONParameterEncoder.default ).response{
                 response in
-                debugPrint(response)
                 switch response.result{
                 case .success(let status):
                     do{
@@ -39,16 +40,12 @@ final class RegisterService {
                         }
                         
                     }catch{
-                        print(error.localizedDescription)
                         completionHandler(false)
                     }
                 case .failure(let error):
-                    print(error.localizedDescription)
                     completionHandler(false)
                 }
             }
-                    
         }
-        
     }
 

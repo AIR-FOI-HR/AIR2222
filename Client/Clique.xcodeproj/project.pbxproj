@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		420C5D8A292C224B001E650D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420C5D89292C224B001E650D /* Constants.swift */; };
 		420CDA98290E54380074ACFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CDA97290E54380074ACFA /* AppDelegate.swift */; };
 		420CDA9A290E54380074ACFA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CDA99290E54380074ACFA /* SceneDelegate.swift */; };
 		420CDAA1290E543A0074ACFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 420CDAA0290E543A0074ACFA /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		420C5D89292C224B001E650D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		420CDA94290E54380074ACFA /* Clique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clique.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		420CDA97290E54380074ACFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		420CDA99290E54380074ACFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		420C5D88292C222F001E650D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				420C5D89292C224B001E650D /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		420CDA8B290E54380074ACFA = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +103,7 @@
 		420CDAAE290E55C90074ACFA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				420C5D88292C222F001E650D /* Constants */,
 				42D99DE1292835AE00516EF9 /* Services */,
 				429AC25E29266B4D0029498B /* Views */,
 			);
@@ -225,6 +236,7 @@
 				420CDA9A290E54380074ACFA /* SceneDelegate.swift in Sources */,
 				429AC26229266BA90029498B /* TextInput.swift in Sources */,
 				42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */,
+				420C5D8A292C224B001E650D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,15 +1,11 @@
 
 //
-//  LoginViewContoller.swift
 //  Clique
 //
 //  Created by Infinum on 15.11.2022..
 //
 
-import Foundation
 import UIKit
-import SwiftUI
-
 
 class RegisterViewController: UIViewController {
 
@@ -26,21 +22,17 @@ class RegisterViewController: UIViewController {
     @IBOutlet private weak var emptyFieldsLabel: UILabel!
     @IBOutlet private weak var genderPickerView: UIPickerView!
 
-
     let genders = ["Male", "Female", "Non-binary"]
     var pickerView = UIPickerView()
     private var selectedGender = ""
-
     private let registerService = RegisterService()
     
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
-        
-        
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let birthData = dateFormatter.string(from: dPdateOfBirth.date)
-
 
         guard
             let name = txtName.text,
@@ -50,55 +42,40 @@ class RegisterViewController: UIViewController {
             let rePassword = txtRePassword.text,
             let contactNum = txtPhoneNumber.text,
 
-
-
         !name.isEmpty && !surname.isEmpty && !email.isEmpty && !password.isEmpty && !rePassword.isEmpty && !contactNum.isEmpty
-
         else {
-
             emptyFieldsLabel.text = "All fields must be filled."
             emptyFieldsLabel.isHidden = false
-
             return
         }
 
-
         let entries = RegisterEntries(email: email,password: password, name: name, surname: surname, contactNum: contactNum, gender: genderCheck(), birthData: birthData )
-
 
             if(checkPasswords() == true){
 
                 registerService.register(with: entries){
                     (isSuccess) in
                     if isSuccess{
-                        
                         let alertController = UIAlertController(title: "", message: "Successfully registrated!", preferredStyle: .alert)
                         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                         alertController.addAction(defaultAction)
                         self.present(alertController, animated: true, completion: nil)
-                        
                     }else{
                         return
-                        
                     }
-                    
                 }
-
             }
             else{
                 return
-
             }
-
     }
-
 
         override func viewDidLoad() {
             super.viewDidLoad()
 
             genderPickerView.delegate = self
             genderPickerView.dataSource = self
-
+            
             passwordCheckLabel.isHidden = true
             matchingPasswordsLabel.isHidden = true
             emptyFieldsLabel.isHidden = true
@@ -113,7 +90,6 @@ class RegisterViewController: UIViewController {
 
             txtPassword.addTarget(self, action: #selector(checkAndDisplayError(textfield:)), for: .editingChanged)
             txtRePassword.addTarget(self, action: #selector(compareAndDisplay(textfield:)), for: .editingChanged)
-
 
         }
 
@@ -130,32 +106,26 @@ class RegisterViewController: UIViewController {
             else if(selectedGender == "Non-binary"){
                 chosenGender = 3
             }
-
             return chosenGender
         }
 
+    
         func checkPasswords() -> Bool {
             var check = false
 
-            if(txtPassword.text?.count ?? 0>=8){
-                if(txtPassword.text == txtRePassword.text){
+            if(txtPassword.text?.count ?? 0>=8 && txtPassword.text == txtRePassword.text){
                     check = true
-                }
-            }
-            else{
+            }else{
                 check = false
             }
             return check
         }
-    
-
 
         @objc func checkAndDisplayError (textfield: UITextField) {
 
             if (textfield.text?.count ?? 0>=8){
                 passwordCheckLabel.text = ""
                 passwordCheckLabel.isHidden = true
-
             }
             else{
                 passwordCheckLabel.isHidden = false
@@ -163,12 +133,10 @@ class RegisterViewController: UIViewController {
             }
         }
 
-
         @objc func compareAndDisplay (textfield: UITextField) {
 
             if (textfield.text == txtPassword.text ){
                 matchingPasswordsLabel.isHidden = true
-
             }
             else{
                 matchingPasswordsLabel.text = "Passwords don't match."
@@ -176,57 +144,31 @@ class RegisterViewController: UIViewController {
             }
         }
 
-
 }
-
-
 
 extension RegisterViewController : UIPickerViewDelegate, UIPickerViewDataSource {
 
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//
-//        let label = (view as? UILabel) ?? UILabel ()
-//
-//        label.font = UIFont(name: "System", size: 14)
-//        label.textAlignment = .center
-//        label.text = genders[row]
-//
-//        return label
-//    }
-    
-
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-
         return 30
     }
 
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-
         return 1
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-
         return genders.count
-
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-
         selectedGender = genders[row]
         return genders[row]
-
     }
 
-    
-     
     private func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) -> String {
-    
         selectedGender = genders[row] as String
         return selectedGender
-        
-    
     }
 
 
