@@ -20,6 +20,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet private weak var matchingPasswordsLabel: UILabel!
     @IBOutlet private weak var emptyFieldsLabel: UILabel!
     @IBOutlet private weak var genderPickerView: UIPickerView!
+    
 
     let genders = ["Male", "Female", "Non-binary"]
     var pickerView = UIPickerView()
@@ -162,7 +163,7 @@ class RegisterViewController: UIViewController {
         }
     
     let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
-    fileprivate func startAnimation() {
+    private func startAnimation() {
             loading.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(loading)
             NSLayoutConstraint.activate([
@@ -173,22 +174,16 @@ class RegisterViewController: UIViewController {
             ])
             loading.startAnimating()
         }
-    fileprivate func stopAnimation() {
-            loading.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(loading)
-            NSLayoutConstraint.activate([
-                loading.widthAnchor.constraint(equalToConstant: 40),
-                loading.heightAnchor.constraint(equalToConstant: 40),
-                loading.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 350),
-                loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ])
+    private func stopAnimation() {
             loading.stopAnimating()
         }
-
+    
+    @IBAction func closeRegisterViewController(_ sender: UIButton){
+            dismiss(animated: true, completion: nil)
+    }
 }
 
 extension RegisterViewController : UIPickerViewDelegate, UIPickerViewDataSource {
-
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 30
     }
@@ -210,11 +205,11 @@ extension RegisterViewController : UIPickerViewDelegate, UIPickerViewDataSource 
         selectedGender = genders[row] as String
         return selectedGender
     }
-
+    
+    
 }
 
 extension RegisterViewController : UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == txtName {
             txtSurname.becomeFirstResponder()
