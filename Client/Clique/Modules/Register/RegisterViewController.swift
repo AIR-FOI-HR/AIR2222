@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class RegisterViewController: UIViewController {
 
@@ -37,18 +38,20 @@ class RegisterViewController: UIViewController {
             alert(fwdMessage: "Passwords don't match.")
             return
         }
+        startAnimation()
         register(with: registerEntries)
-        
     }
-        
         func register(with registerEntries: RegisterEntries) {
             registerService.register(with: registerEntries) { (isSuccess) in
                     if isSuccess{
                         self.alert(fwdMessage: "Successfully registrated!")
+                        self.stopAnimation()
                     }else{
-                        self.alert(fwdMessage: "Nez")
+                        self.alert(fwdMessage: "Wrong input.")
+                        self.stopAnimation()
                     }
             }
+            
         }
     
         func alert(fwdMessage: String){
@@ -110,7 +113,6 @@ class RegisterViewController: UIViewController {
         }
 
         func genderCheck() -> Int{
-
             var chosenGender = 0
 
             if(selectedGender == "Male"){
@@ -124,7 +126,6 @@ class RegisterViewController: UIViewController {
             }
             return chosenGender
         }
-
     
         func checkPasswords() -> Bool {
             var check = false
@@ -159,6 +160,30 @@ class RegisterViewController: UIViewController {
                 matchingPasswordsLabel.isHidden = false
             }
         }
+    
+    let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
+    fileprivate func startAnimation() {
+            loading.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(loading)
+            NSLayoutConstraint.activate([
+                loading.widthAnchor.constraint(equalToConstant: 40),
+                loading.heightAnchor.constraint(equalToConstant: 40),
+                loading.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 350),
+                loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ])
+            loading.startAnimating()
+        }
+    fileprivate func stopAnimation() {
+            loading.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(loading)
+            NSLayoutConstraint.activate([
+                loading.widthAnchor.constraint(equalToConstant: 40),
+                loading.heightAnchor.constraint(equalToConstant: 40),
+                loading.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 350),
+                loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ])
+            loading.stopAnimating()
+        }
 
 }
 
@@ -185,7 +210,6 @@ extension RegisterViewController : UIPickerViewDelegate, UIPickerViewDataSource 
         selectedGender = genders[row] as String
         return selectedGender
     }
-
 
 }
 

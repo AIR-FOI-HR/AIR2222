@@ -11,16 +11,13 @@ struct RegisterEntries : Codable {
     let contactNum: String
     let gender: Int
     let birthData: String
-  
 }
 
 struct RegisterResponse : Codable {
     let status : String
-    
 }
 
 final class RegisterService {
-    
     func register(
             with entries: RegisterEntries,
             completionHandler: @escaping(Bool)->()){
