@@ -7,13 +7,13 @@ private enum UserStorageValues: String {
 
 final class UserStorage {
 
-static var email: String? {
-    set {
-        _set(value: newValue, key: .email)
-    } get {
-        return _get(valueForKay: .email) as? String
+    static var email: String? {
+        set {
+            _set(value: newValue, key: .email)
+        } get {
+            return _get(valueForKay: .email) as? String
+        }
     }
-}
     
     static var token: String? {
         set {

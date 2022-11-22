@@ -16,6 +16,7 @@
 		4213719129262F1B0082F1C7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4213719029262F1B0082F1C7 /* Login.storyboard */; };
 		4237AC85292C20C700095D47 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237AC84292C20C700095D47 /* LoginCredentials.swift */; };
 		4237AC87292C215F00095D47 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237AC86292C215F00095D47 /* LoginResponse.swift */; };
+		4237AC8B292C46F100095D47 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237AC8A292C46F100095D47 /* Extensions.swift */; };
 		4254AD3F29297E2A004D649D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4254AD3E29297E2A004D649D /* Constants.swift */; };
 		428ADAA529264FF100417940 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ADAA429264FF100417940 /* LoginViewController.swift */; };
 		429B678329283F00004228E8 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 429B678229283F00004228E8 /* NVActivityIndicatorView */; };
@@ -37,6 +38,7 @@
 		4213719029262F1B0082F1C7 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		4237AC84292C20C700095D47 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		4237AC86292C215F00095D47 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		4237AC8A292C46F100095D47 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4254AD3E29297E2A004D649D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		428ADAA429264FF100417940 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		42DB272B292656ED0027A00C /* LoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		420CDAAE290E55C90074ACFA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4237AC89292C46DC00095D47 /* Extensions */,
 				4237AC83292C20AA00095D47 /* Models */,
 				4254AD3D29297E16004D649D /* Constants */,
 				42DB2732292672820027A00C /* Storage */,
@@ -156,6 +159,14 @@
 				4237AC86292C215F00095D47 /* LoginResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4237AC89292C46DC00095D47 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4237AC8A292C46F100095D47 /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4254AD3D29297E16004D649D /* Constants */ = {
@@ -234,6 +245,7 @@
 			packageReferences = (
 				42DB272D292657540027A00C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				429B678129283F00004228E8 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
+				4237AC88292C3CCA00095D47 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 420CDA95290E54380074ACFA /* Products */;
 			projectDirPath = "";
@@ -268,6 +280,7 @@
 				4237AC87292C215F00095D47 /* LoginResponse.swift in Sources */,
 				420CDA98290E54380074ACFA /* AppDelegate.swift in Sources */,
 				42DB2734292672970027A00C /* UserStorage.swift in Sources */,
+				4237AC8B292C46F100095D47 /* Extensions.swift in Sources */,
 				420CDA9A290E54380074ACFA /* SceneDelegate.swift in Sources */,
 				4254AD3F29297E2A004D649D /* Constants.swift in Sources */,
 				420CDAB5290E56EB0074ACFA /* InitialViewController.swift in Sources */,
@@ -479,6 +492,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4237AC88292C3CCA00095D47 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		429B678129283F00004228E8 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
