@@ -18,14 +18,4 @@ class InitialViewController: UIViewController {
             present(viewController, animated: true)
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-    }
-    
-
-   
-
 }
