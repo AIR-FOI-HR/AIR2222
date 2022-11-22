@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import NVActivityIndicatorView
 
 class LoginViewController: UIViewController {
     
@@ -15,11 +16,15 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var loginButton: UIButton!
     
     private let loginService = LoginService()
+    var iconClick = false
+    let buttonPasswordShow = UIButton(type: .custom)
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         
+        startAnimation()
         guard let credentails = getLoginCredentials() else {
             showAlert(title: "Insufficient information", message: "Please enter email and password")
+            stopAnimation()
             return
         }
         
@@ -44,8 +49,10 @@ class LoginViewController: UIViewController {
             case .success(let token):
                 UserStorage.token = token.token
                 UserStorage.email = credentials.email
+                self.stopAnimation()
             case .failure:
                 self.showAlert(title: "Wrong credentials", message: "Please enter your login info")
+                self.stopAnimation()
             }
         }
     }
@@ -64,14 +71,9 @@ class LoginViewController: UIViewController {
         self.showButton()
     }
     
-    
-    var iconClick = false
-    let buttonPasswordShow = UIButton(type: .custom)
-    
     private func showButton() {
         buttonPasswordShow.tintColor = UIColor.orange
         buttonPasswordShow.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
-        buttonPasswordShow.frame = CGRect(x: CGFloat(passwordTextField.frame.size.width + 25), y: CGFloat(5), width: CGFloat(20), height: CGFloat(20))
         buttonPasswordShow.addTarget(self, action: #selector(self.refresh), for: .touchUpInside)
         passwordTextField.rightView = buttonPasswordShow
         passwordTextField.rightViewMode = .always
@@ -92,7 +94,27 @@ class LoginViewController: UIViewController {
         iconClick = !iconClick
     }
     
+    let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
+        fileprivate func startAnimation() {
+                loading.translatesAutoresizingMaskIntoConstraints = false
+                view.addSubview(loading)
+                NSLayoutConstraint.activate([
+                    loading.widthAnchor.constraint(equalToConstant: 40),
+                    loading.heightAnchor.constraint(equalToConstant: 40),
+                    loading.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100),
+                    loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+                ])
+                loading.startAnimating()
+            }
+        fileprivate func stopAnimation() {
+                loading.stopAnimating()
+            }
+    
+    @IBAction func closeLoginViewController(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
 }
+
 
 extension LoginViewController: UITextFieldDelegate {
 

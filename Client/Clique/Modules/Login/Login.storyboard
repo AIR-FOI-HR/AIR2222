@@ -56,6 +56,19 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPN-lV-c9v">
+                                <rect key="frame" x="15" y="15.000000000000004" width="30" height="34.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="8KX-s3-Ghg"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system">
+                                    <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="closeLoginViewController:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="dg7-aO-Cqb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -63,8 +76,11 @@
                             <constraint firstItem="CU1-Bu-ePP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="74M-ez-4w5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CU1-Bu-ePP" secondAttribute="trailing" constant="32" id="AJQ-e5-VFI"/>
                             <constraint firstItem="CU1-Bu-ePP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="E8m-eN-g3U"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="fPN-lV-c9v" secondAttribute="trailing" constant="345" id="MIK-5h-IYs"/>
                             <constraint firstItem="Rql-Vg-o77" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Vvu-FR-01c"/>
+                            <constraint firstItem="fPN-lV-c9v" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="15" id="Wre-gp-MRL"/>
                             <constraint firstAttribute="bottom" secondItem="Rql-Vg-o77" secondAttribute="bottom" id="YPx-y7-FOL"/>
+                            <constraint firstItem="fPN-lV-c9v" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="d0Y-L1-VSW"/>
                             <constraint firstItem="EPe-wu-iYy" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="250" id="nJn-wV-HID"/>
                             <constraint firstItem="EPe-wu-iYy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="qbH-qg-8fF"/>
                             <constraint firstItem="Rql-Vg-o77" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="vFx-GJ-QMc"/>
@@ -84,6 +100,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="background" width="736" height="1472"/>
         <image name="logo" width="955" height="997"/>
         <systemColor name="systemBackgroundColor">
