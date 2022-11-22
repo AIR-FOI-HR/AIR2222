@@ -60,21 +60,26 @@ class RegisterViewController: UIViewController {
 
         override func viewDidLoad() {
             super.viewDidLoad()
-
+            self.hideKeyboardWhenTappedAround()
+            
             genderPickerView.delegate = self
             genderPickerView.dataSource = self
-            
+            pickerView.delegate = self
+            pickerView.dataSource = self
             passwordCheckLabel.isHidden = true
             matchingPasswordsLabel.isHidden = true
             emptyFieldsLabel.isHidden = true
-
             txtPassword.isSecureTextEntry = true
             txtRePassword.isSecureTextEntry = true
-
-            pickerView.delegate = self
-            pickerView.dataSource = self
-
             dPdateOfBirth.maximumDate = Date()
+            
+            self.txtName.delegate = self
+            self.txtSurname.delegate = self
+            txtEmail.delegate = self
+            txtPhoneNumber.delegate = self
+            txtPassword.delegate = self
+            txtRePassword.delegate = self
+        
 
             txtPassword.addTarget(self, action: #selector(checkAndDisplayError(textfield:)), for: .editingChanged)
             txtRePassword.addTarget(self, action: #selector(compareAndDisplay(textfield:)), for: .editingChanged)
@@ -182,6 +187,29 @@ extension RegisterViewController : UIPickerViewDelegate, UIPickerViewDataSource 
     }
 
 
+}
+
+extension RegisterViewController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == txtName {
+            txtSurname.becomeFirstResponder()
+        }
+        if textField == txtSurname{
+            txtPhoneNumber.becomeFirstResponder()
+        }
+        if textField == txtPhoneNumber{
+            txtEmail.becomeFirstResponder()
+        }
+        if textField == txtEmail{
+            txtPassword.becomeFirstResponder()
+        }
+        if textField == txtPassword{
+            txtRePassword.becomeFirstResponder()
+        }
+        return true
+    }
+    
 }
 
 
