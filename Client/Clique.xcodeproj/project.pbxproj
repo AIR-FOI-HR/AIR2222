@@ -245,7 +245,6 @@
 			packageReferences = (
 				42DB272D292657540027A00C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				429B678129283F00004228E8 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
-				4237AC88292C3CCA00095D47 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 420CDA95290E54380074ACFA /* Products */;
 			projectDirPath = "";
@@ -492,14 +491,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4237AC88292C3CCA00095D47 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		429B678129283F00004228E8 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";

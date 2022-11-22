@@ -95,7 +95,7 @@ class LoginViewController: UIViewController {
     }
     
     let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
-        fileprivate func startAnimation() {
+        func startAnimation() {
                 loading.translatesAutoresizingMaskIntoConstraints = false
                 view.addSubview(loading)
                 NSLayoutConstraint.activate([
@@ -106,7 +106,7 @@ class LoginViewController: UIViewController {
                 ])
                 loading.startAnimating()
             }
-        fileprivate func stopAnimation() {
+        func stopAnimation() {
                 loading.stopAnimating()
             }
     
