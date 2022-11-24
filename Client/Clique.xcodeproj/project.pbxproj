@@ -18,6 +18,7 @@
 		4237AC8B292C46F100095D47 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237AC8A292C46F100095D47 /* Extensions.swift */; };
 		42464B01292F7ADA009FDE1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CDA99290E54380074ACFA /* SceneDelegate.swift */; };
 		42496D0C29301C9A00D972C9 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 42496D0B29301C9A00D972C9 /* KeychainAccess */; };
+		42496D10293033AA00D972C9 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 42496D0F293033AA00D972C9 /* IQKeyboardManagerSwift */; };
 		4254AD3F29297E2A004D649D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4254AD3E29297E2A004D649D /* Constants.swift */; };
 		42740C3F2926468900CD1DFC /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42740C3E2926468900CD1DFC /* Register.storyboard */; };
 		428ADAA529264FF100417940 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ADAA429264FF100417940 /* LoginViewController.swift */; };
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42496D10293033AA00D972C9 /* IQKeyboardManagerSwift in Frameworks */,
 				42496D0C29301C9A00D972C9 /* KeychainAccess in Frameworks */,
 				420C5D92292C586C001E650D /* NVActivityIndicatorViewExtended in Frameworks */,
 				420C5D90292C586C001E650D /* NVActivityIndicatorView in Frameworks */,
@@ -219,6 +221,7 @@
 				420C5D8F292C586C001E650D /* NVActivityIndicatorView */,
 				420C5D91292C586C001E650D /* NVActivityIndicatorViewExtended */,
 				42496D0B29301C9A00D972C9 /* KeychainAccess */,
+				42496D0F293033AA00D972C9 /* IQKeyboardManagerSwift */,
 			);
 			productName = Clique;
 			productReference = 420CDA94290E54380074ACFA /* Clique.app */;
@@ -252,7 +255,7 @@
 				42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				42496D0D2930311400D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 420CDA95290E54380074ACFA /* Products */;
 			projectDirPath = "";
@@ -516,12 +519,12 @@
 				kind = branch;
 			};
 		};
-		42496D0D2930311400D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+		42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 		42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
@@ -549,6 +552,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		42496D0F293033AA00D972C9 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 		42D99DE52928362300516EF9 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

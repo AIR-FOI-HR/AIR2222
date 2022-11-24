@@ -8,8 +8,11 @@
 import UIKit
 import Alamofire
 import NVActivityIndicatorView
+import IQKeyboardManagerSwift
 
 class LoginViewController: UIViewController {
+    
+//    let returnKeyHandler: IQKeyboardManager
     
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
@@ -65,9 +68,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.emailTextField.delegate = self
-        self.passwordTextField.delegate = self
-        self.hideKeyboardWhenTappedAround()
+//        returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self]
+//        self.emailTextField.delegate = self
+//        self.passwordTextField.delegate = self
+//        self.hideKeyboardWhenTappedAround()
         self.showButton()
     }
     
@@ -77,6 +81,8 @@ class LoginViewController: UIViewController {
         buttonPasswordShow.addTarget(self, action: #selector(self.refresh), for: .touchUpInside)
         passwordTextField.rightView = buttonPasswordShow
         passwordTextField.rightViewMode = .always
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.rightView?.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     @IBAction func refresh(_ sender: Any) {
@@ -116,14 +122,14 @@ class LoginViewController: UIViewController {
 }
 
 
-extension LoginViewController: UITextFieldDelegate {
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
-            passwordTextField.becomeFirstResponder()
-        } else if textField == passwordTextField {
-            passwordTextField.resignFirstResponder()
-        }
-        return true
-    }
-}
+//extension LoginViewController: UITextFieldDelegate {
+//
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        if textField == emailTextField {
+//            passwordTextField.becomeFirstResponder()
+//        } else if textField == passwordTextField {
+//            IQKeyboardManager.shared.resignFirstResponder()
+//        }
+//        return true
+//    }
+//}
