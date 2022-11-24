@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let token):
                 UserStorage.token = token.token
-                UserStorage.email = credentials.email
+                print(UserStorage.token)
                 self.stopAnimation()
             case .failure:
                 self.showAlert(title: "Wrong credentials", message: "Please enter your login info")

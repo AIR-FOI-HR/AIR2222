@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let storyboard = UIStoryboard(name: "Register" , bundle:nil)
+        let storyboard = UIStoryboard(name: "Login" , bundle:nil)
         let viewController = storyboard.instantiateInitialViewController()
         
         window = UIWindow(windowScene: windowScene)
