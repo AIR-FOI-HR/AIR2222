@@ -49,7 +49,7 @@ namespace CliqueWebService.Controllers
                 {
                     List<User> userList = new List<User>();
                     var hash = _businessLogic.ConvertToSHA256(password);
-                    string query = $"SELECT user_id, name, surname, email, gender_name, hash_password FROM Users, Gender WHERE email LIKE '{email}' AND hash_password LIKE '{hash.ToLower()}' ";
+                    string query = $"SELECT user_id, name, surname, email, g.gender_name, contact_no, birth_data, profile_pic FROM Users, Gender as g WHERE email LIKE '{email}' AND hash_password LIKE '{hash.ToLower()}' AND g.gender_id = gender";
                     var reader = _db.ExecuteQuery(query);
                     if (!reader.HasRows)
                     {

@@ -132,6 +132,53 @@ namespace CliqueWebService.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("UpdateUserPassword")]
+        public ActionResult UpdateUserPassword([FromBody] LoginRequest user)
+        {
+            DocumentResponse docResponse = new DocumentResponse();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _db.Connect();
+                }
+                catch (Exception ex)
+                {
+                    docResponse.Error = ex.Message;
+                    docResponse.Status = "500 - Internal Server Error";
+                    docResponse.Method = "POST";
+                    return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
+                }
+                string query = $"UPDATE Users SET hash_password = '{_businessLogic.ConvertToSHA256(user.Password).ToLower()}' WHERE email = '{user.Email}'";
+                _db.BeginTransaction();
+                try
+                {
+                    _db.ExecuteNonQuery(query);
+                    _db.CommitTransaction();
+                    docResponse.Message = "Password successfully updated";
+                    docResponse.Status = "200 - OK";
+                    docResponse.Method = "POST";
+                    return Ok(docResponse);
+                }
+                catch
+                {
+                    _db.RollbackTransaction();
+                    _db.CommitTransaction();
+                    docResponse.Error = "Couldn't update password";
+                    docResponse.Status = "500 - Internal Server Error";
+                    docResponse.Method = "POST";
+                    return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
+                }
+            }
+            else
+            {
+                docResponse.Error = "Incorrectly formated JSON request";
+                docResponse.Status = "400 - Bad Request";
+                docResponse.Method = "POST";
+                return BadRequest(docResponse);
+            }
+        }
 
-    }
+        }
 }

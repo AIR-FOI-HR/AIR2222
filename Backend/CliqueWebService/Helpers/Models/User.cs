@@ -13,6 +13,7 @@ namespace CliqueWebService.Helpers.Models
         public string? password { get; set; }
         public string? contact_no { get; set; }
         public DateTime? birth_data { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? profile_pic { get; set; }
     }
 }
