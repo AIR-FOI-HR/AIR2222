@@ -5,9 +5,11 @@
 
 import UIKit
 import NVActivityIndicatorView
+import IQKeyboardManagerSwift
 
 class RegisterViewController: UIViewController {
 
+    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     @IBOutlet private weak var txtName: UITextField!
     @IBOutlet private weak var txtSurname: UITextField!
     @IBOutlet private weak var txtEmail: UITextField!
@@ -64,7 +66,6 @@ class RegisterViewController: UIViewController {
 
         override func viewDidLoad() {
             super.viewDidLoad()
-//            self.hideKeyboardWhenTappedAround()
             
             genderPickerView.delegate = self
             genderPickerView.dataSource = self
@@ -77,14 +78,8 @@ class RegisterViewController: UIViewController {
             txtRePassword.isSecureTextEntry = true
             dPdateOfBirth.maximumDate = Date()
             
-//            self.txtName.delegate = self
-//            self.txtSurname.delegate = self
-//            txtEmail.delegate = self
-//            txtPhoneNumber.delegate = self
-//            txtPassword.delegate = self
-//            txtRePassword.delegate = self
-        
-
+            returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
+            
             txtPassword.addTarget(self, action: #selector(checkAndDisplayError(textfield:)), for: .editingChanged)
             txtRePassword.addTarget(self, action: #selector(compareAndDisplay(textfield:)), for: .editingChanged)
 
@@ -205,31 +200,4 @@ extension RegisterViewController : UIPickerViewDelegate, UIPickerViewDataSource 
         selectedGender = genders[row] as String
         return selectedGender
     }
-    
-    
 }
-
-//extension RegisterViewController : UITextFieldDelegate {
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        if textField == txtName {
-//            txtSurname.becomeFirstResponder()
-//        }
-//        if textField == txtSurname{
-//            txtPhoneNumber.becomeFirstResponder()
-//        }
-//        if textField == txtPhoneNumber{
-//            txtEmail.becomeFirstResponder()
-//        }
-//        if textField == txtEmail{
-//            txtPassword.becomeFirstResponder()
-//        }
-//        if textField == txtPassword{
-//            txtRePassword.becomeFirstResponder()
-//        }
-//        return true
-//    }
-//
-//}
-
-
-

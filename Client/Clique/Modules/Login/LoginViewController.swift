@@ -12,8 +12,7 @@ import IQKeyboardManagerSwift
 
 class LoginViewController: UIViewController {
     
-//    let returnKeyHandler: IQKeyboardManager
-    
+    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var loginButton: UIButton!
@@ -68,10 +67,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        returnKeyHandler = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self]
-//        self.emailTextField.delegate = self
-//        self.passwordTextField.delegate = self
-//        self.hideKeyboardWhenTappedAround()
+        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         self.showButton()
     }
     
@@ -120,16 +116,3 @@ class LoginViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 }
-
-
-//extension LoginViewController: UITextFieldDelegate {
-//
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        if textField == emailTextField {
-//            passwordTextField.becomeFirstResponder()
-//        } else if textField == passwordTextField {
-//            IQKeyboardManager.shared.resignFirstResponder()
-//        }
-//        return true
-//    }
-//}
