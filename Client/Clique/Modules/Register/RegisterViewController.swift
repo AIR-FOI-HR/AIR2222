@@ -20,7 +20,10 @@ class RegisterViewController: UIViewController {
     @IBOutlet private weak var matchingPasswordsLabel: UILabel!
     @IBOutlet private weak var ageSwitcher: UISwitch!
     
-
+    var iconClick = false
+    let buttonPasswordShow = UIButton(type: .custom)
+    let buttonRePasswordShow = UIButton(type: .custom)
+    
     private let registerService = RegisterService()
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
@@ -65,6 +68,8 @@ class RegisterViewController: UIViewController {
             txtPassword.isSecureTextEntry = true
             txtRePassword.isSecureTextEntry = true
             registerButton.isEnabled = false
+            
+            self.showButton()
         
             returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
             
@@ -137,6 +142,51 @@ class RegisterViewController: UIViewController {
         
         }
     
+    private func showButton() {
+        buttonPasswordShow.tintColor = UIColor.orange
+        buttonRePasswordShow.tintColor = UIColor.orange
+        buttonPasswordShow.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+        buttonRePasswordShow.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+        buttonPasswordShow.addTarget(self, action: #selector(self.refreshShowPassword), for: .touchUpInside)
+        buttonRePasswordShow.addTarget(self, action: #selector(self.refreshShowRePassword), for: .touchUpInside)
+        txtPassword.rightView = buttonPasswordShow
+        txtPassword.rightViewMode = .always
+        txtPassword.translatesAutoresizingMaskIntoConstraints = false
+        txtPassword.rightView?.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        txtRePassword.rightView = buttonRePasswordShow
+        txtRePassword.rightViewMode = .always
+        txtRePassword.translatesAutoresizingMaskIntoConstraints = false
+        txtRePassword.rightView?.widthAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    @IBAction func refreshShowPassword(_ sender: Any) {
+        if iconClick {
+            txtPassword.isSecureTextEntry = true
+            buttonPasswordShow.tintColor = UIColor.orange
+            buttonPasswordShow.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+        }
+        else {
+            txtPassword.isSecureTextEntry = false
+            buttonPasswordShow.tintColor = UIColor.orange
+            buttonPasswordShow.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+        }
+        iconClick = !iconClick
+    }
+    
+    @IBAction func refreshShowRePassword(_ sender: Any) {
+        if iconClick {
+            txtRePassword.isSecureTextEntry = true
+            buttonRePasswordShow.tintColor = UIColor.orange
+            buttonRePasswordShow.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+        }
+        else {
+            txtRePassword.isSecureTextEntry = false
+            buttonRePasswordShow.tintColor = UIColor.orange
+            buttonRePasswordShow.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+        }
+        iconClick = !iconClick
+    }
+    
     let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
     private func startAnimation() {
             loading.translatesAutoresizingMaskIntoConstraints = false
@@ -156,6 +206,7 @@ class RegisterViewController: UIViewController {
     @IBAction func closeRegisterViewController(_ sender: UIButton){
             dismiss(animated: true, completion: nil)
     }
+    
 }
 
 
