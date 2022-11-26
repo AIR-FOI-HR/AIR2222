@@ -126,11 +126,33 @@ namespace CliqueWebService.Controllers
                     docResponse.Method = "POST";
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
+                string date; 
+                if(userForRegistration.BirthData != null)
+                {
+                    date = userForRegistration.BirthData.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    date = "";
+                }
                 string query = $"INSERT INTO Users(name, surname, email, hash_password, contact_no, birth_data, gender) VALUES ('{userForRegistration.Name}', '{userForRegistration.Surname}', " +
-                    $"'{userForRegistration.Email}', '{_businessLogic.ConvertToSHA256(userForRegistration.Password)}', '{userForRegistration.ContactNum}', '{userForRegistration.BirthData.ToString("yyyy-MM-dd")}', {userForRegistration.Gender})";
+                    $"'{userForRegistration.Email}', '{_businessLogic.ConvertToSHA256(userForRegistration.Password)}', '{userForRegistration.ContactNum}', '{date}', {userForRegistration.Gender})";
                 _db.BeginTransaction();
+                string checkUserQ = $"SELECT COUNT(*) FROM Users WHERE email LIKE '{userForRegistration.Email}' OR hash_password LIKE '{_businessLogic.ConvertToSHA256(userForRegistration.Password)}'";
                 try
                 {
+                    var reader = _db.ExecuteQuery(checkUserQ);
+                    while (reader.Read())
+                    {
+                        if (reader.GetInt32(0) > 0)
+                        {
+                            docResponse.Message = "User with this username or password already exists";
+                            docResponse.Status = "400";
+                            docResponse.Method = "POST";
+                            return BadRequest(docResponse);
+                        }
+                    }
+                    reader.Close();
                     _db.ExecuteNonQuery(query);
                     _db.CommitTransaction();
                     docResponse.Message = "User successfully registered";
