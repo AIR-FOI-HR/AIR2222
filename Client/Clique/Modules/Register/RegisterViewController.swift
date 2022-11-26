@@ -19,6 +19,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet private weak var passwordCheckLabel: UILabel!
     @IBOutlet private weak var matchingPasswordsLabel: UILabel!
     @IBOutlet private weak var ageSwitcher: UISwitch!
+    @IBOutlet private weak var backButton: UIButton!
     
     var iconClick = false
     let buttonPasswordShow = UIButton(type: .custom)

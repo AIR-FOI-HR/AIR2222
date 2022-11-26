@@ -27,6 +27,10 @@
 		42DB272C292656ED0027A00C /* LoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DB272B292656ED0027A00C /* LoginServices.swift */; };
 		42DB2734292672970027A00C /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DB2733292672970027A00C /* UserStorage.swift */; };
 		42EA63232932AADB007417D0 /* RegisterEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA63222932AADB007417D0 /* RegisterEntries.swift */; };
+		42EA63292932BB6E007417D0 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA63282932BB6E007417D0 /* InitialViewController.swift */; };
+		42EA632B2932BB7D007417D0 /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42EA632A2932BB7D007417D0 /* Initial.storyboard */; };
+		42EA632E2932C4FD007417D0 /* FakeUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42EA632D2932C4FD007417D0 /* FakeUser.storyboard */; };
+		42EA63302932C514007417D0 /* FakeUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA632F2932C514007417D0 /* FakeUserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +51,10 @@
 		42DB272B292656ED0027A00C /* LoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
 		42DB2733292672970027A00C /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
 		42EA63222932AADB007417D0 /* RegisterEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEntries.swift; sourceTree = "<group>"; };
+		42EA63282932BB6E007417D0 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		42EA632A2932BB7D007417D0 /* Initial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Initial.storyboard; sourceTree = "<group>"; };
+		42EA632D2932C4FD007417D0 /* FakeUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FakeUser.storyboard; sourceTree = "<group>"; };
+		42EA632F2932C514007417D0 /* FakeUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeUserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,8 @@
 		420CDAAD290E55C00074ACFA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				42EA632C2932C4E9007417D0 /* FakeUser */,
+				42EA63272932BB49007417D0 /* Initial */,
 				42740C3D2926467500CD1DFC /* Register */,
 				4213718F29262F050082F1C7 /* Login */,
 			);
@@ -192,6 +202,24 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		42EA63272932BB49007417D0 /* Initial */ = {
+			isa = PBXGroup;
+			children = (
+				42EA63282932BB6E007417D0 /* InitialViewController.swift */,
+				42EA632A2932BB7D007417D0 /* Initial.storyboard */,
+			);
+			path = Initial;
+			sourceTree = "<group>";
+		};
+		42EA632C2932C4E9007417D0 /* FakeUser */ = {
+			isa = PBXGroup;
+			children = (
+				42EA632D2932C4FD007417D0 /* FakeUser.storyboard */,
+				42EA632F2932C514007417D0 /* FakeUserViewController.swift */,
+			);
+			path = FakeUser;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -263,9 +291,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42EA632E2932C4FD007417D0 /* FakeUser.storyboard in Resources */,
 				4213719129262F1B0082F1C7 /* Login.storyboard in Resources */,
 				420CDAA4290E543A0074ACFA /* LaunchScreen.storyboard in Resources */,
 				420CDAA1290E543A0074ACFA /* Assets.xcassets in Resources */,
+				42EA632B2932BB7D007417D0 /* Initial.storyboard in Resources */,
 				42740C3F2926468900CD1DFC /* Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,8 +310,10 @@
 				42464B01292F7ADA009FDE1D /* SceneDelegate.swift in Sources */,
 				4237AC85292C20C700095D47 /* LoginCredentials.swift in Sources */,
 				428ADAA529264FF100417940 /* LoginViewController.swift in Sources */,
+				42EA63292932BB6E007417D0 /* InitialViewController.swift in Sources */,
 				4237AC87292C215F00095D47 /* LoginResponse.swift in Sources */,
 				420CDA98290E54380074ACFA /* AppDelegate.swift in Sources */,
+				42EA63302932C514007417D0 /* FakeUserViewController.swift in Sources */,
 				429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */,
 				42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */,
 				42EA63232932AADB007417D0 /* RegisterEntries.swift in Sources */,
