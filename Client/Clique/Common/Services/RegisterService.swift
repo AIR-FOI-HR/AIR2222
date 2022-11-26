@@ -1,15 +1,6 @@
 import Alamofire
 import UIKit
 
-struct RegisterEntries : Codable {
-
-    let email : String
-    let password : String
-    let name: String
-    let surname: String
-}
-
-
 final class RegisterService {
     
     func register(
@@ -30,7 +21,6 @@ final class RegisterService {
                     
                 }
             }
-        }
-    
+        }    
 }
 

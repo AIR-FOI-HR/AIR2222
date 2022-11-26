@@ -27,6 +27,7 @@
 		42D99DE62928362300516EF9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 42D99DE52928362300516EF9 /* Alamofire */; };
 		42DB272C292656ED0027A00C /* LoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DB272B292656ED0027A00C /* LoginServices.swift */; };
 		42DB2734292672970027A00C /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DB2733292672970027A00C /* UserStorage.swift */; };
+		42EA63232932AADB007417D0 /* RegisterEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA63222932AADB007417D0 /* RegisterEntries.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		42D99DE2292835C700516EF9 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		42DB272B292656ED0027A00C /* LoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
 		42DB2733292672970027A00C /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		42EA63222932AADB007417D0 /* RegisterEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEntries.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			children = (
 				4237AC84292C20C700095D47 /* LoginCredentials.swift */,
 				4237AC86292C215F00095D47 /* LoginResponse.swift */,
+				42EA63222932AADB007417D0 /* RegisterEntries.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				420CDA98290E54380074ACFA /* AppDelegate.swift in Sources */,
 				429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */,
 				42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */,
+				42EA63232932AADB007417D0 /* RegisterEntries.swift in Sources */,
 				42DB2734292672970027A00C /* UserStorage.swift in Sources */,
 				4237AC8B292C46F100095D47 /* Extensions.swift in Sources */,
 				4254AD3F29297E2A004D649D /* Constants.swift in Sources */,
