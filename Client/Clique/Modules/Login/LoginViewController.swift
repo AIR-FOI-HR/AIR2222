@@ -67,6 +67,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(UserStorage.token)
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         self.showButton()
     }
