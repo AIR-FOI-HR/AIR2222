@@ -15,7 +15,7 @@ namespace CliqueWebService.Helpers
                 name = reader.GetString(1),
                 surname = reader.GetString(2),
                 email = reader.GetString(3),
-                gender = reader.GetString(4).Trim()
+                gender = (reader.GetValue(4) != DBNull.Value) ? reader.GetString(4).Trim() : null
             };
 
             return user;
@@ -38,7 +38,7 @@ namespace CliqueWebService.Helpers
                     name = reader.GetString(11),
                     surname = reader.GetString(12),
                     email = reader.GetString(13),
-                    gender = reader.GetString(15).Trim()
+                    gender = (reader.GetValue(15) != DBNull.Value) ? reader.GetString(15).Trim() : null
                 },
                 category = reader.GetString(14)
             };
@@ -74,6 +74,28 @@ namespace CliqueWebService.Helpers
             {
                 return false;
             }
+        }
+        public Category FillCategory(SqlDataReader reader)
+        {
+            Category ev = new Category
+            {
+                category_id = reader.GetInt32(0),
+                category_name = reader.GetString(1),
+                category_pic = (reader.GetValue(2) != DBNull.Value) ? reader.GetString(2) : null,
+                category_color = reader.GetString(3)
+            };
+            return ev;
+        }
+
+        public Currency FillCurrency(SqlDataReader reader)
+        {
+            Currency ev = new Currency
+            {
+                currency_id = reader.GetInt32(0),
+                currency_name = reader.GetString(1),
+                currency_abbr = reader.GetString(2)
+            };
+            return ev;
         }
     }
 }

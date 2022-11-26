@@ -49,7 +49,7 @@ namespace CliqueWebService.Controllers
                 {
                     List<User> userList = new List<User>();
                     var hash = _businessLogic.ConvertToSHA256(password);
-                    string query = $"SELECT user_id, name, surname, email, gender_name, hash_password FROM Users, Gender WHERE email LIKE '{email}' AND hash_password LIKE '{hash.ToLower()}' ";
+                    string query = $"SELECT user_id, name, surname, email, hash_password FROM Users, Gender WHERE email LIKE '{email}' AND hash_password LIKE '{hash.ToLower()}' ";
                     var reader = _db.ExecuteQuery(query);
                     if (!reader.HasRows)
                     {
@@ -122,23 +122,14 @@ namespace CliqueWebService.Controllers
                 catch (Exception ex)
                 {
                     docResponse.Error = ex.Message;
-                    docResponse.Status = "500 - Internal Server Error";
+                    docResponse.Status = "0";
                     docResponse.Method = "POST";
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
-                string date; 
-                if(userForRegistration.BirthData != null)
-                {
-                    date = userForRegistration.BirthData.ToString("yyyy-MM-dd");
-                }
-                else
-                {
-                    date = "";
-                }
-                string query = $"INSERT INTO Users(name, surname, email, hash_password, contact_no, birth_data, gender) VALUES ('{userForRegistration.Name}', '{userForRegistration.Surname}', " +
-                    $"'{userForRegistration.Email}', '{_businessLogic.ConvertToSHA256(userForRegistration.Password)}', '{userForRegistration.ContactNum}', '{date}', {userForRegistration.Gender})";
+                string query = $"INSERT INTO Users(name, surname, email, hash_password) VALUES ('{userForRegistration.Name}', '{userForRegistration.Surname}', " +
+                    $"'{userForRegistration.Email}', '{_businessLogic.ConvertToSHA256(userForRegistration.Password)}')";
                 _db.BeginTransaction();
-                string checkUserQ = $"SELECT COUNT(*) FROM Users WHERE email LIKE '{userForRegistration.Email}' OR hash_password LIKE '{_businessLogic.ConvertToSHA256(userForRegistration.Password)}'";
+                string checkUserQ = $"SELECT COUNT(*) FROM Users WHERE email LIKE '{userForRegistration.Email}'";
                 try
                 {
                     var reader = _db.ExecuteQuery(checkUserQ);
@@ -147,7 +138,7 @@ namespace CliqueWebService.Controllers
                         if (reader.GetInt32(0) > 0)
                         {
                             docResponse.Message = "User with this username or password already exists";
-                            docResponse.Status = "400";
+                            docResponse.Status = "0";
                             docResponse.Method = "POST";
                             return BadRequest(docResponse);
                         }
@@ -156,7 +147,7 @@ namespace CliqueWebService.Controllers
                     _db.ExecuteNonQuery(query);
                     _db.CommitTransaction();
                     docResponse.Message = "User successfully registered";
-                    docResponse.Status = "200 - OK";
+                    docResponse.Status = "1";
                     docResponse.Method = "POST";
                     return Ok(docResponse);
                 }
@@ -165,15 +156,15 @@ namespace CliqueWebService.Controllers
                     _db.RollbackTransaction();
                     _db.CommitTransaction();
                     docResponse.Error = "Couldn't register user";
-                    docResponse.Status = "500 - Internal Server Error";
+                    docResponse.Status = "0";
                     docResponse.Method = "POST";
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
             }
             else
             {
-                docResponse.Error = "Incorrectly formated JSON request";
-                docResponse.Status = "400 - Bad Request";
+                docResponse.Errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
+                docResponse.Status = "0";
                 docResponse.Method = "POST";
                 return BadRequest(docResponse);
             }

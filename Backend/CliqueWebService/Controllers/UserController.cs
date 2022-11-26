@@ -31,7 +31,7 @@ namespace CliqueWebService.Controllers
             } catch (Exception ex)
             {
                 returnResponse.Method = "GET";
-                returnResponse.Status = "500 - Internal Server Error";
+                returnResponse.Status = "0";
                 returnResponse.Events = null;
                 returnResponse.Error = ex.Message;
                 return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
@@ -60,21 +60,21 @@ namespace CliqueWebService.Controllers
 
                 if (!idExists)
                 {
-                    returnResponse.Status = "400 - Bad Request";
+                    returnResponse.Status = "0";
                     returnResponse.Method = "GET";
                     returnResponse.Events = null;
                     returnResponse.Error = $"User with ID = {id} not found.";
                     return BadRequest(returnResponse);
                 }
 
-                returnResponse.Status = "200 - OK";
+                returnResponse.Status = "1";
                 returnResponse.Method = "GET";
                 returnResponse.Users = user;
                 return Ok(returnResponse);
             } catch (Exception ex)
             {
                 _db.Disconnect();
-                returnResponse.Status = "500 - Internal Server Error";
+                returnResponse.Status = "0";
                 returnResponse.Method = "GET";
                 returnResponse.Events = null;
                 returnResponse.Error = ex.Message;

@@ -22,6 +22,7 @@ namespace CliqueWebService.Controllers
         }
         
         [HttpGet]
+        [Route("GetAllEvents")]
         public ActionResult GetEvents()
         {
             DocumentResponse returnResponse = new DocumentResponse();
@@ -31,7 +32,7 @@ namespace CliqueWebService.Controllers
             }catch (Exception ex)
             {
                 returnResponse.Method = "GET";
-                returnResponse.Status = "500 - Internal Server Error";
+                returnResponse.Status = "0";
                 returnResponse.Events = null;
                 returnResponse.Error = ex.Message;
                 return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
@@ -58,7 +59,7 @@ namespace CliqueWebService.Controllers
 
                 _db.Disconnect();
 
-                returnResponse.Status = "200 - OK";
+                returnResponse.Status = "1";
                 returnResponse.Method = "GET";
                 returnResponse.Events = events;
                 return Ok(returnResponse);
@@ -66,7 +67,7 @@ namespace CliqueWebService.Controllers
             }catch (Exception ex)
             {
                 _db.Disconnect();
-                returnResponse.Status = "500 - Internal Server Error";
+                returnResponse.Status = "0";
                 returnResponse.Method = "GET";
                 returnResponse.Events = null;
                 returnResponse.Error = ex.Message;
@@ -75,7 +76,8 @@ namespace CliqueWebService.Controllers
         }
 
         // GET api/<EventController>/5
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("GetEventByID/{id}")]
         public ActionResult GetEventByID(int id)
         {
             DocumentResponse returnResponse = new DocumentResponse();
@@ -86,7 +88,7 @@ namespace CliqueWebService.Controllers
             catch (Exception ex)
             {
                 returnResponse.Method = "GET";
-                returnResponse.Status = "500 - Internal Server Error";
+                returnResponse.Status = "0";
                 returnResponse.Events = null;
                 returnResponse.Error = ex.Message;
                 return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
@@ -112,7 +114,7 @@ namespace CliqueWebService.Controllers
                 _db.Disconnect();
                 if (!idExists)
                 {
-                    returnResponse.Status = "400 - Bad Request";
+                    returnResponse.Status = "0";
                     returnResponse.Method = "GET";
                     returnResponse.Events = null;
                     returnResponse.Error = $"Event with ID = {id} not found.";
@@ -120,19 +122,100 @@ namespace CliqueWebService.Controllers
                 }
 
                 returnResponse.Events = events.ToList();
-                returnResponse.Status = "200 - OK";
+                returnResponse.Status = "1";
                 returnResponse.Method = "GET";
                 return Ok(returnResponse);
             }
             catch(Exception ex)
             {
-                returnResponse.Status = "500 - Internal Server Error";
+                returnResponse.Status = "0";
                 returnResponse.Method = "GET";
                 returnResponse.Events = null;
                 returnResponse.Error = ex.Message;
                 return StatusCode(StatusCodes.Status500InternalServerError,returnResponse);
             }
         }
+
+        [HttpPost]
+        [Route("CreateNewEvent")]
+        public ActionResult CreateEvent([FromBody] CreateEventRequest request)
+        {
+            if (Request.Headers.Keys.Contains("Authorization"))
+            {
+                return Ok();
+            }
+            return Unauthorized();
+        }
+
+        [HttpGet]
+        [Route("GetCurrencies")]
+        public ActionResult GetCurrencies()
+        {
+
+            List<Currency> currencies = new List<Currency>();
+            try
+            {
+                _db.Connect();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Server Error");
+            }
+
+            try
+            {
+                string query = $"SELECT * FROM Currencies";
+                var reader = _db.ExecuteQuery(query);
+                while (reader.Read())
+                {
+                    if (reader.GetValue(0) != DBNull.Value)
+                    {
+                        currencies.Add(_businessLogic.FillCurrency(reader));
+                    }
+                }
+                reader.Close();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Server Error");
+            }
+            return Ok(currencies);
+        }
+
+        [HttpGet]
+        [Route("GetCategories")]
+        public ActionResult GetCategories()
+        {
+            List<Category> categories = new List<Category>();
+            try
+            {
+                _db.Connect();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Server Error");
+            }
+
+            try
+            {
+                string query = $"SELECT * FROM Categories";
+                var reader = _db.ExecuteQuery(query);
+                while (reader.Read())
+                {
+                    if(reader.GetValue(0) != DBNull.Value)
+                    {
+                        categories.Add(_businessLogic.FillCategory(reader));
+                    }
+                }
+                reader.Close();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Server Error");
+            }
+            return Ok(categories);
+        }
+
 
         //// POST api/<EventController>
         //[HttpPost]
