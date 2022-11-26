@@ -15,25 +15,18 @@ class RegisterViewController: UIViewController {
     @IBOutlet private weak var txtEmail: UITextField!
     @IBOutlet private weak var txtPassword: UITextField!
     @IBOutlet private weak var txtRePassword: UITextField!
-    @IBOutlet private weak var txtPhoneNumber: UITextField!
     @IBOutlet private weak var registerButton: UIButton!
-    @IBOutlet private weak var dPdateOfBirth: UIDatePicker!
     @IBOutlet private weak var passwordCheckLabel: UILabel!
     @IBOutlet private weak var matchingPasswordsLabel: UILabel!
-    @IBOutlet private weak var emptyFieldsLabel: UILabel!
-    @IBOutlet private weak var genderPickerView: UIPickerView!
+    @IBOutlet private weak var ageSwitcher: UISwitch!
     
 
-    let genders = ["Male", "Female", "Non-binary"]
-    var pickerView = UIPickerView()
-    private var selectedGender : String?
     private let registerService = RegisterService()
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         
         guard let registerEntries = getRegisterEntries() else {
-            emptyFieldsLabel.text = "All fields must be filled."
-            emptyFieldsLabel.isHidden = false
+            alert(fwdMessage: "Please fill all required information.")
             return
         }
         
@@ -67,28 +60,22 @@ class RegisterViewController: UIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             
-            genderPickerView.delegate = self
-            genderPickerView.dataSource = self
-            pickerView.delegate = self
-            pickerView.dataSource = self
             passwordCheckLabel.isHidden = true
             matchingPasswordsLabel.isHidden = true
-            emptyFieldsLabel.isHidden = true
             txtPassword.isSecureTextEntry = true
             txtRePassword.isSecureTextEntry = true
-            dPdateOfBirth.maximumDate = Date()
-            
+            registerButton.isEnabled = false
+        
             returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
             
             txtPassword.addTarget(self, action: #selector(checkAndDisplayError(textfield:)), for: .editingChanged)
             txtRePassword.addTarget(self, action: #selector(compareAndDisplay(textfield:)), for: .editingChanged)
+            ageSwitcher.addTarget(self, action:
+                #selector(registerButtonEnabled(switcher:)), for: .valueChanged)
 
         }
     
         func getRegisterEntries() -> RegisterEntries? {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let birthData = dateFormatter.string(from: dPdateOfBirth.date)
         
             guard
                 let name = txtName.text,
@@ -96,33 +83,17 @@ class RegisterViewController: UIViewController {
                 let email = txtEmail.text,
                 let password = txtPassword.text,
                 let rePassword = txtRePassword.text,
-                let contactNum = txtPhoneNumber.text,
 
-            !name.isEmpty && !surname.isEmpty && !email.isEmpty && !password.isEmpty && !rePassword.isEmpty && !contactNum.isEmpty
+            !name.isEmpty && !surname.isEmpty && !email.isEmpty && !password.isEmpty && !rePassword.isEmpty
                     
             else {
                 return nil
             }
-            let entries = RegisterEntries(email: email,password: password, name: name, surname: surname, contactNum: contactNum, gender: genderCheck(), birthData: birthData )
+            let entries = RegisterEntries(email: email,password: password, name: name, surname: surname)
             return entries
 
         }
 
-        func genderCheck() -> Int{
-            var chosenGender = 0
-
-            if(selectedGender == "Male"){
-                chosenGender = 1
-            }
-            else if(selectedGender == "Female"){
-                chosenGender = 2
-            }
-            else if(selectedGender == "Non-binary"){
-                chosenGender = 3
-            }
-            return chosenGender
-        }
-    
         func checkPasswords() -> Bool {
             var check = false
 
@@ -157,6 +128,15 @@ class RegisterViewController: UIViewController {
             }
         }
     
+        @objc func registerButtonEnabled (switcher: UISwitch) {
+            if(switcher.isOn){
+                registerButton.isEnabled = true
+            }else if(!switcher.isOn){
+                registerButton.isEnabled = false
+            }
+        
+        }
+    
     let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
     private func startAnimation() {
             loading.translatesAutoresizingMaskIntoConstraints = false
@@ -178,26 +158,4 @@ class RegisterViewController: UIViewController {
     }
 }
 
-extension RegisterViewController : UIPickerViewDelegate, UIPickerViewDataSource {
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 30
-    }
 
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return genders.count
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        selectedGender = genders[row]
-        return genders[row]
-    }
-
-    private func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) -> String? {
-        selectedGender = genders[row] as String
-        return selectedGender
-    }
-}

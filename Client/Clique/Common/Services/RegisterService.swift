@@ -8,9 +8,6 @@ struct RegisterEntries : Codable {
     let password : String
     let name: String
     let surname: String
-    let contactNum: String
-    let gender: Int
-    let birthData: String
 }
 
 struct RegisterResponse : Codable {
@@ -18,6 +15,7 @@ struct RegisterResponse : Codable {
 }
 
 final class RegisterService {
+    
     func register(
             with entries: RegisterEntries,
             completionHandler: @escaping(Bool)->()){
