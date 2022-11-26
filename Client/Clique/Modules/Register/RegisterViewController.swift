@@ -43,16 +43,15 @@ class RegisterViewController: UIViewController {
     }
         func register(with registerEntries: RegisterEntries) {
             registerService.register(with: registerEntries) { (isSuccess) in
-                    if isSuccess{
-                        self.alert(fwdMessage: "Successfully registrated!")
-                        self.stopAnimation()
-                    }else{
-                        self.alert(fwdMessage: "Wrong input.")
-                        self.stopAnimation()
-                    }
-            }
-            
+                if isSuccess{
+                    self.alert(fwdMessage: "Successfully registrated!")
+                    self.stopAnimation()
+                }else{
+                    self.alert(fwdMessage: "Wrong input.")
+                    self.stopAnimation()
+                }
         }
+    }
     
         func alert(fwdMessage: String){
             let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)

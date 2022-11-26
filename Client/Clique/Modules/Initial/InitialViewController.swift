@@ -18,5 +18,4 @@ class InitialViewController: UIViewController {
             present(viewController, animated: true)
         }
     }
-    
 }

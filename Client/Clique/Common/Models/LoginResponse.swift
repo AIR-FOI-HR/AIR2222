@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct LoginResponse : Codable {
+struct LoginResponse: Codable {
     let token: String
 }

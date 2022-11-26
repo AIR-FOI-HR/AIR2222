@@ -50,7 +50,6 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let token):
                 UserStorage.token = token.token
-                print(UserStorage.token)
                 self.stopAnimation()
             case .failure:
                 self.alert(fwdMessage: "Please enter your login info")
