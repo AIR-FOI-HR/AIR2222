@@ -41,7 +41,7 @@ namespace CliqueWebService.Helpers
                     name = reader.GetString(11),
                     surname = reader.GetString(12),
                     email = reader.GetString(13),
-                    gender = reader.GetString(15).Trim()
+                    gender = (reader.GetValue(15) != DBNull.Value) ? reader.GetString(15) : null,
                 },
                 category = reader.GetString(14)
             };
