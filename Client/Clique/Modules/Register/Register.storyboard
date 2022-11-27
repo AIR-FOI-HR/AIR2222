@@ -16,63 +16,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Tx3-XF-Wdl">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="denoise_background" translatesAutoresizingMaskIntoConstraints="NO" id="Tx3-XF-Wdl">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exA-DB-e6H">
                                 <rect key="frame" x="15" y="237" width="360" height="335"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="o55-bC-ND3">
-                                        <rect key="frame" x="20" y="15" width="320" height="305"/>
+                                        <rect key="frame" x="25" y="15" width="310" height="305"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5RO-tz-72h">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="310" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Surname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yjQ-Ju-pSC">
-                                                <rect key="frame" x="0.0" y="44" width="320" height="34"/>
+                                                <rect key="frame" x="0.0" y="44" width="310" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BCG-j9-qWi">
-                                                <rect key="frame" x="0.0" y="88" width="320" height="34"/>
+                                                <rect key="frame" x="0.0" y="88" width="310" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VeD-s2-Ja5">
-                                                <rect key="frame" x="0.0" y="132" width="320" height="34"/>
+                                                <rect key="frame" x="0.0" y="132" width="310" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axk-PR-FZU">
-                                                <rect key="frame" x="0.0" y="176" width="320" height="17"/>
+                                                <rect key="frame" x="0.0" y="176" width="310" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j3l-t1-PjV">
-                                                <rect key="frame" x="0.0" y="203" width="320" height="34"/>
+                                                <rect key="frame" x="0.0" y="203" width="310" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhh-Bf-Qog">
-                                                <rect key="frame" x="0.0" y="247" width="320" height="17"/>
+                                                <rect key="frame" x="0.0" y="247" width="310" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oe4-HW-rjr">
-                                                <rect key="frame" x="0.0" y="274" width="320" height="31"/>
+                                                <rect key="frame" x="0.0" y="274" width="310" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am over thirteen." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcP-wa-ZPJ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="271" height="31"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="261" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MGq-on-YlT">
-                                                        <rect key="frame" x="271" y="0.0" width="51" height="31"/>
+                                                        <rect key="frame" x="261" y="0.0" width="51" height="31"/>
                                                         <color key="onTintColor" red="1" green="0.62008686410000002" blue="0.36049274879999998" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </switch>
                                                 </subviews>
@@ -82,10 +82,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.51860319225993379" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="o55-bC-ND3" secondAttribute="trailing" constant="20" id="2RG-ou-58H"/>
+                                    <constraint firstAttribute="trailing" secondItem="o55-bC-ND3" secondAttribute="trailing" constant="25" id="2RG-ou-58H"/>
                                     <constraint firstAttribute="bottom" secondItem="o55-bC-ND3" secondAttribute="bottom" constant="15" id="5kd-SX-fT2"/>
                                     <constraint firstItem="o55-bC-ND3" firstAttribute="top" secondItem="exA-DB-e6H" secondAttribute="top" constant="15" id="WYU-s2-zlL"/>
-                                    <constraint firstItem="o55-bC-ND3" firstAttribute="leading" secondItem="exA-DB-e6H" secondAttribute="leading" constant="20" id="qkK-Nv-XwN"/>
+                                    <constraint firstItem="o55-bC-ND3" firstAttribute="leading" secondItem="exA-DB-e6H" secondAttribute="leading" constant="25" id="qkK-Nv-XwN"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -169,7 +169,7 @@
     <resources>
         <image name="aaaaaaaaaaaa_1" width="884" height="923"/>
         <image name="arrow.backward" catalog="system" width="128" height="95"/>
-        <image name="background" width="736" height="1472"/>
+        <image name="denoise_background" width="736" height="1353"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
