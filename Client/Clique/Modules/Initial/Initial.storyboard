@@ -16,12 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="wJa-Qc-LCd">
-                                <rect key="frame" x="0.0" y="-34" width="393" height="886"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="wNT-Pg-MVi">
+                                <rect key="frame" x="-105" y="-298" width="550" height="1305"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="0E3-eh-YXa">
-                                <rect key="frame" x="32" y="178.99999999999997" width="329" height="327.33333333333326"/>
+                                <rect key="frame" x="32" y="188.99999999999997" width="329" height="327.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Bib-US-Cks">
                                         <rect key="frame" x="0.0" y="0.0" width="329" height="191.33333333333334"/>
@@ -74,7 +74,7 @@
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="0E3-eh-YXa" secondAttribute="trailing" constant="32" id="OwQ-vC-tKC"/>
                             <constraint firstItem="0E3-eh-YXa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="Ug3-9F-Iuw"/>
-                            <constraint firstItem="0E3-eh-YXa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="120" id="k54-Ub-JcJ"/>
+                            <constraint firstItem="0E3-eh-YXa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="130" id="k54-Ub-JcJ"/>
                         </constraints>
                     </view>
                     <connections>
