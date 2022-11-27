@@ -18,6 +18,10 @@
 		42464B01292F7ADA009FDE1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CDA99290E54380074ACFA /* SceneDelegate.swift */; };
 		42496D0C29301C9A00D972C9 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 42496D0B29301C9A00D972C9 /* KeychainAccess */; };
 		42496D10293033AA00D972C9 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 42496D0F293033AA00D972C9 /* IQKeyboardManagerSwift */; };
+		4253AE872933AAC80054DC2B /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4253AE862933AAC80054DC2B /* Profile.storyboard */; };
+		4253AE892933AD2B0054DC2B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4253AE882933AD2B0054DC2B /* ProfileViewController.swift */; };
+		4253AE8C2933BF2A0054DC2B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4253AE8B2933BF2A0054DC2B /* Settings.storyboard */; };
+		4253AE8E2933BF6D0054DC2B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4253AE8D2933BF6D0054DC2B /* SettingsViewController.swift */; };
 		4254AD3F29297E2A004D649D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4254AD3E29297E2A004D649D /* Constants.swift */; };
 		42740C3F2926468900CD1DFC /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42740C3E2926468900CD1DFC /* Register.storyboard */; };
 		428ADAA529264FF100417940 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ADAA429264FF100417940 /* LoginViewController.swift */; };
@@ -41,6 +45,10 @@
 		4213719029262F1B0082F1C7 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		4237AC84292C20C700095D47 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		4237AC86292C215F00095D47 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		4253AE862933AAC80054DC2B /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		4253AE882933AD2B0054DC2B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		4253AE8B2933BF2A0054DC2B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		4253AE8D2933BF6D0054DC2B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4254AD3E29297E2A004D649D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		42740C3E2926468900CD1DFC /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		428ADAA429264FF100417940 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +117,8 @@
 		420CDAAD290E55C00074ACFA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4253AE8A2933BF130054DC2B /* Settings */,
+				4253AE852933AA9B0054DC2B /* Profile */,
 				42EA63272932BB49007417D0 /* Initial */,
 				42740C3D2926467500CD1DFC /* Register */,
 				4213718F29262F050082F1C7 /* Login */,
@@ -161,6 +171,24 @@
 				42EA63222932AADB007417D0 /* RegisterEntries.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4253AE852933AA9B0054DC2B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				4253AE862933AAC80054DC2B /* Profile.storyboard */,
+				4253AE882933AD2B0054DC2B /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		4253AE8A2933BF130054DC2B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4253AE8B2933BF2A0054DC2B /* Settings.storyboard */,
+				4253AE8D2933BF6D0054DC2B /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		4254AD3D29297E16004D649D /* Constants */ = {
@@ -277,11 +305,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4253AE872933AAC80054DC2B /* Profile.storyboard in Resources */,
 				4213719129262F1B0082F1C7 /* Login.storyboard in Resources */,
 				420CDAA4290E543A0074ACFA /* LaunchScreen.storyboard in Resources */,
 				420CDAA1290E543A0074ACFA /* Assets.xcassets in Resources */,
 				42EA632B2932BB7D007417D0 /* Initial.storyboard in Resources */,
 				42740C3F2926468900CD1DFC /* Register.storyboard in Resources */,
+				4253AE8C2933BF2A0054DC2B /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +331,9 @@
 				429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */,
 				42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */,
 				42EA63232932AADB007417D0 /* RegisterEntries.swift in Sources */,
+				4253AE8E2933BF6D0054DC2B /* SettingsViewController.swift in Sources */,
 				42DB2734292672970027A00C /* UserStorage.swift in Sources */,
+				4253AE892933AD2B0054DC2B /* ProfileViewController.swift in Sources */,
 				4254AD3F29297E2A004D649D /* Constants.swift in Sources */,
 				42DB272C292656ED0027A00C /* LoginServices.swift in Sources */,
 			);
@@ -442,7 +474,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 97SHP38V89;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Clique/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -469,7 +501,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 97SHP38V89;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Clique/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
