@@ -8,9 +8,11 @@
 import UIKit
 import Alamofire
 import NVActivityIndicatorView
+import IQKeyboardManagerSwift
 
 class LoginViewController: UIViewController {
     
+    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var loginButton: UIButton!
@@ -23,7 +25,7 @@ class LoginViewController: UIViewController {
         
         startAnimation()
         guard let credentails = getLoginCredentials() else {
-            showAlert(title: "Insufficient information", message: "Please enter email and password")
+            alert(fwdMessage: "Please enter email and password")
             stopAnimation()
             return
         }
@@ -48,26 +50,24 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let token):
                 UserStorage.token = token.token
-                UserStorage.email = credentials.email
                 self.stopAnimation()
             case .failure:
-                self.showAlert(title: "Wrong credentials", message: "Please enter your login info")
+                self.alert(fwdMessage: "Please enter your login info")
                 self.stopAnimation()
             }
         }
     }
     
-    func showAlert(title: String, message: String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(alert, animated: true, completion: nil)
+    func alert(fwdMessage: String){
+        let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.emailTextField.delegate = self
-        self.passwordTextField.delegate = self
-        self.hideKeyboardWhenTappedAround()
+        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         self.showButton()
     }
     
@@ -77,6 +77,8 @@ class LoginViewController: UIViewController {
         buttonPasswordShow.addTarget(self, action: #selector(self.refresh), for: .touchUpInside)
         passwordTextField.rightView = buttonPasswordShow
         passwordTextField.rightViewMode = .always
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.rightView?.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     @IBAction func refresh(_ sender: Any) {
@@ -112,18 +114,5 @@ class LoginViewController: UIViewController {
     
     @IBAction func closeLoginViewController(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
-    }
-}
-
-
-extension LoginViewController: UITextFieldDelegate {
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
-            passwordTextField.becomeFirstResponder()
-        } else if textField == passwordTextField {
-            passwordTextField.resignFirstResponder()
-        }
-        return true
     }
 }

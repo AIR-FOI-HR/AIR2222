@@ -1,35 +1,43 @@
 import UIKit
+import KeychainAccess
 
-private enum UserStorageValues: String {
-   case email = "email"
+
+enum UserStorageValues: String {
     case token = "token"
 }
 
-final class UserStorage {
+let keychain = Keychain(service: "token")
 
-    static var email: String? {
+class UserStorage {
+    
+    static var token: String {
         set {
-            _set(value: newValue, key: .email)
+            setKey(value: newValue, key: .token)
         } get {
-            return _get(valueForKay: .email) as? String
+            return (_get(key: .token) ?? "")!
         }
     }
     
-    static var token: String? {
-        set {
-            _set(value: newValue, key: .token)
-        } get {
-            return _get(valueForKay: .token) as? String
-        }
+    private static func _get(key: UserStorageValues) -> String? {
+        return  try? keychain.get(key.rawValue)
     }
 
-
-private static func _set(value: Any?, key: UserStorageValues) {
-    UserDefaults.standard.set(value, forKey: key.rawValue)
-}
-
-private static func _get(valueForKay key: UserStorageValues) -> Any? {
-    return UserDefaults.standard.value(forKey: key.rawValue)
-}
-
+    private static func setKey(value: String, key: UserStorageValues) {
+        do {
+            try keychain.set(value, key: key.rawValue)
+        }
+        catch let error {
+            print(error)
+        }
+    }
+    
+    func removeKey(key: UserStorageValues) {
+         do {
+             try keychain.remove(key.rawValue)
+         } catch let error {
+             print("error: \(error)")
+         }
+     }
+    
+    
 }

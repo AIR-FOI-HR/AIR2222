@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct LoginCredentials : Codable {
+struct LoginCredentials: Codable {
     let email: String
     let password: String
 }
