@@ -3,6 +3,7 @@ using DataAccess;
 using CliqueWebService.Helpers;
 using CliqueWebService.Helpers.Models;
 
+
 namespace CliqueWebService.Controllers
 {
     [Route("api/[controller]")]
@@ -140,11 +141,79 @@ namespace CliqueWebService.Controllers
         [Route("CreateNewEvent")]
         public ActionResult CreateEvent([FromBody] CreateEventRequest request)
         {
+            DocumentResponse dr = new DocumentResponse();
+            try
+            {
+                _db.Connect();
+            }
+            catch (Exception ex)
+            {
+                dr.Method = "POST";
+                dr.Status = "0";
+                dr.Error = "Server Error";
+                return StatusCode(StatusCodes.Status500InternalServerError, dr);
+            }
+            string id = "0";
             if (Request.Headers.Keys.Contains("Authorization"))
             {
-                return Ok();
+                string token = Request.Headers["Authorization"];
+                if (_businessLogic.isJWTValid(token.Replace("Bearer ", "")))
+                {
+                    id = User.Claims.FirstOrDefault(i => i.Type.Contains("UserId")).Value;
+                }
             }
-            return Unauthorized();
+            if (id == "0")
+            {
+                dr.Method = "POST";
+                dr.Error = "Unauthorized user";
+                dr.Status = "0";
+                return Unauthorized(dr);
+            }
+            if (!ModelState.IsValid)
+            {
+                dr.Method = "POST";
+                dr.Errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
+                dr.Status = "0";
+                return BadRequest(dr);
+            }
+            if(request.Cost != "0" && string.IsNullOrEmpty(request.Currency))
+            {
+                dr.Method = "POST";
+                dr.Error = "Please enter the currency";
+                dr.Status = "0";
+                return BadRequest(dr);
+            }
+            _db.BeginTransaction();
+            try
+            {
+                string q = "";
+
+                if (request.Cost == "0")
+                {
+                    q = $"INSERT INTO Events(event_name, event_location, event_date, event_time, participations_no, creator, category)" +
+                    $" VALUES ('{request.EventName}', '{request.EventLocation}', '{request.EventTimeStamp.ToString("yyyy-MM-dd")}', '{request.EventTimeStamp.ToString("HH:mm:ss")}', '{request.ParticipantsNo}', '{id}', '{request.Category}')";
+                }
+                else
+                {
+                    q = $"INSERT INTO Events(event_name, event_location, event_date, event_time, participations_no, cost, currency,creator, category)" +
+                        $" VALUES ('{request.EventName}', '{request.EventLocation}', '{request.EventTimeStamp.ToString("yyyy-MM-dd")}', '{request.EventTimeStamp.ToString("HH:mm:ss")}', '{request.ParticipantsNo}', '{request.Cost}', '{request.Currency}','{id}', '{request.Category}')"; 
+                }
+                _db.ExecuteNonQuery(q);
+                _db.CommitTransaction();
+                dr.Method = "POST";
+                dr.Error = "Event Added";
+                dr.Status = "1";
+                return Ok(dr);
+            }
+            catch
+            {
+                _db.RollbackTransaction();
+                _db.CommitTransaction();
+                dr.Method = "POST";
+                dr.Error = "Server Error";
+                dr.Status = "0";
+                return StatusCode(StatusCodes.Status500InternalServerError, dr);
+            }
         }
 
         [HttpGet]

@@ -87,7 +87,7 @@ namespace CliqueWebService.Controllers
                         _configuration["Jwt:Issuer"],
                         _configuration["Jwt:Audience"],
                         claims,
-                        expires: DateTime.Now.AddMinutes(15),
+                        expires: DateTime.Now.AddMinutes(60),
                         signingCredentials: signIn);
 
                     string insert = $"INSERT INTO Tokens (token, user_id, token_expires) VALUES ('{new JwtSecurityTokenHandler().WriteToken(token)}', {user.user_id}, '{token.ValidTo.ToString("yyyy-MM-dd HH:mm:ss")}')";

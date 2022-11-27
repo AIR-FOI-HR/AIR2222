@@ -1,5 +1,6 @@
 ﻿using CliqueWebService.Helpers.Models;
 using System.Data.SqlClient;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -96,6 +97,25 @@ namespace CliqueWebService.Helpers
                 currency_abbr = reader.GetString(2)
             };
             return ev;
+        }
+        public bool isJWTValid(string token)
+        { 
+            var exp = GetTokenExpirationTime(token);
+            var tokenDate = DateTimeOffset.FromUnixTimeSeconds(exp).UtcDateTime;
+
+            var now = DateTime.Now.ToUniversalTime();
+
+            var valid = tokenDate >= now;
+
+            return valid;
+        }
+        public long GetTokenExpirationTime(string token)
+        {
+            var jwt = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = jwt.ReadJwtToken(token);
+            var tokenExp = jwtSecurityToken.Claims.First(claim => claim.Type.Equals("exp")).Value;
+            var ticks = long.Parse(tokenExp);
+            return ticks;
         }
     }
 }
