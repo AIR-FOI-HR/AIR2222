@@ -13,6 +13,20 @@
 		420CDAA4290E543A0074ACFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420CDAA2290E543A0074ACFA /* LaunchScreen.storyboard */; };
 		420CDAB3290E56BD0074ACFA /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420CDAB2290E56BD0074ACFA /* Initial.storyboard */; };
 		420CDAB5290E56EB0074ACFA /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CDAB4290E56EB0074ACFA /* InitialViewController.swift */; };
+		427F18772923F6D9009284DA /* EventList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427F18762923F6D9009284DA /* EventList.storyboard */; };
+		427F18792923F6FB009284DA /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F18782923F6FB009284DA /* EventListViewController.swift */; };
+		427F187C2923F793009284DA /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F187B2923F793009284DA /* Event.swift */; };
+		427F187E2924083A009284DA /* EventListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427F187D2924083A009284DA /* EventListTableViewCell.xib */; };
+		427F188029240924009284DA /* EventListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F187F29240924009284DA /* EventListTableViewCell.swift */; };
+		427F188329263D9A009284DA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 427F188229263D9A009284DA /* Alamofire */; };
+		427F1886292643DA009284DA /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F1885292643DA009284DA /* UIImageView+Extension.swift */; };
+		427F188929264468009284DA /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 427F188829264468009284DA /* AlamofireImage */; };
+		427F18942927BCD2009284DA /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F18932927BCD2009284DA /* EventDetailViewController.swift */; };
+		42DD304E292A9C8D0054B088 /* EventDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DD304D292A9C8D0054B088 /* EventDetail.storyboard */; };
+		42DD305129310F3F0054B088 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD305029310F3F0054B088 /* Constants.swift */; };
+		42DD305429310FFB0054B088 /* EventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD305329310FFB0054B088 /* EventServices.swift */; };
+		42DD3058293279D20054B088 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD3057293279D20054B088 /* Creator.swift */; };
+		42DD305C29341E730054B088 /* EventGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD305B29341E730054B088 /* EventGet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +38,18 @@
 		420CDAA5290E543A0074ACFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		420CDAB2290E56BD0074ACFA /* Initial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Initial.storyboard; sourceTree = "<group>"; };
 		420CDAB4290E56EB0074ACFA /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		427F18762923F6D9009284DA /* EventList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventList.storyboard; sourceTree = "<group>"; };
+		427F18782923F6FB009284DA /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		427F187B2923F793009284DA /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		427F187D2924083A009284DA /* EventListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListTableViewCell.xib; sourceTree = "<group>"; };
+		427F187F29240924009284DA /* EventListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListTableViewCell.swift; sourceTree = "<group>"; };
+		427F1885292643DA009284DA /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		427F18932927BCD2009284DA /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		42DD304D292A9C8D0054B088 /* EventDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventDetail.storyboard; sourceTree = "<group>"; };
+		42DD305029310F3F0054B088 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		42DD305329310FFB0054B088 /* EventServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventServices.swift; sourceTree = "<group>"; };
+		42DD3057293279D20054B088 /* Creator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
+		42DD305B29341E730054B088 /* EventGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				427F188329263D9A009284DA /* Alamofire in Frameworks */,
+				427F188929264468009284DA /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +105,8 @@
 		420CDAAD290E55C00074ACFA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				427F188A2927BB24009284DA /* Event detail */,
+				427F18752923F681009284DA /* Event list */,
 				420CDAB1290E56240074ACFA /* Initial */,
 			);
 			path = Modules;
@@ -85,6 +115,10 @@
 		420CDAAE290E55C90074ACFA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				42DD305229310FE30054B088 /* Services */,
+				42DD304F29310F220054B088 /* Constants */,
+				427F1884292643A6009284DA /* Extensions */,
+				427F187A2923F778009284DA /* Models */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -115,6 +149,60 @@
 			path = Initial;
 			sourceTree = "<group>";
 		};
+		427F18752923F681009284DA /* Event list */ = {
+			isa = PBXGroup;
+			children = (
+				427F18762923F6D9009284DA /* EventList.storyboard */,
+				427F18782923F6FB009284DA /* EventListViewController.swift */,
+				427F187D2924083A009284DA /* EventListTableViewCell.xib */,
+				427F187F29240924009284DA /* EventListTableViewCell.swift */,
+			);
+			path = "Event list";
+			sourceTree = "<group>";
+		};
+		427F187A2923F778009284DA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				427F187B2923F793009284DA /* Event.swift */,
+				42DD3057293279D20054B088 /* Creator.swift */,
+				42DD305B29341E730054B088 /* EventGet.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		427F1884292643A6009284DA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				427F1885292643DA009284DA /* UIImageView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		427F188A2927BB24009284DA /* Event detail */ = {
+			isa = PBXGroup;
+			children = (
+				42DD304D292A9C8D0054B088 /* EventDetail.storyboard */,
+				427F18932927BCD2009284DA /* EventDetailViewController.swift */,
+			);
+			path = "Event detail";
+			sourceTree = "<group>";
+		};
+		42DD304F29310F220054B088 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				42DD305029310F3F0054B088 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		42DD305229310FE30054B088 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				42DD305329310FFB0054B088 /* EventServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -131,6 +219,10 @@
 			dependencies = (
 			);
 			name = Clique;
+			packageProductDependencies = (
+				427F188229263D9A009284DA /* Alamofire */,
+				427F188829264468009284DA /* AlamofireImage */,
+			);
 			productName = Clique;
 			productReference = 420CDA94290E54380074ACFA /* Clique.app */;
 			productType = "com.apple.product-type.application";
@@ -159,6 +251,10 @@
 				Base,
 			);
 			mainGroup = 420CDA8B290E54380074ACFA;
+			packageReferences = (
+				427F188129263D9A009284DA /* XCRemoteSwiftPackageReference "Alamofire" */,
+				427F188729264468009284DA /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+			);
 			productRefGroup = 420CDA95290E54380074ACFA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -174,8 +270,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				420CDAA4290E543A0074ACFA /* LaunchScreen.storyboard in Resources */,
+				427F18772923F6D9009284DA /* EventList.storyboard in Resources */,
 				420CDAA1290E543A0074ACFA /* Assets.xcassets in Resources */,
 				420CDAB3290E56BD0074ACFA /* Initial.storyboard in Resources */,
+				42DD304E292A9C8D0054B088 /* EventDetail.storyboard in Resources */,
+				427F187E2924083A009284DA /* EventListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,9 +285,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42DD305429310FFB0054B088 /* EventServices.swift in Sources */,
+				42DD305C29341E730054B088 /* EventGet.swift in Sources */,
+				427F188029240924009284DA /* EventListTableViewCell.swift in Sources */,
 				420CDA98290E54380074ACFA /* AppDelegate.swift in Sources */,
+				427F1886292643DA009284DA /* UIImageView+Extension.swift in Sources */,
+				427F18792923F6FB009284DA /* EventListViewController.swift in Sources */,
 				420CDA9A290E54380074ACFA /* SceneDelegate.swift in Sources */,
 				420CDAB5290E56EB0074ACFA /* InitialViewController.swift in Sources */,
+				427F18942927BCD2009284DA /* EventDetailViewController.swift in Sources */,
+				427F187C2923F793009284DA /* Event.swift in Sources */,
+				42DD305129310F3F0054B088 /* Constants.swift in Sources */,
+				42DD3058293279D20054B088 /* Creator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +502,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		427F188129263D9A009284DA /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		427F188729264468009284DA /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		427F188229263D9A009284DA /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 427F188129263D9A009284DA /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		427F188829264468009284DA /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 427F188729264468009284DA /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 420CDA8C290E54380074ACFA /* Project object */;
 }
