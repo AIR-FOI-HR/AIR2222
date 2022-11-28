@@ -15,5 +15,6 @@ namespace CliqueWebService.Helpers.Models
         public DateTime? birth_data { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? profile_pic { get; set; }
+        public string? bio { get; set; }
     }
 }

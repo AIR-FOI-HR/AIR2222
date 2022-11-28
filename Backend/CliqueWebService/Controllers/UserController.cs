@@ -39,7 +39,7 @@ namespace CliqueWebService.Controllers
             try
             {
                 List<User> user = new List<User>();
-                string query = $"SELECT user_id, name, surname, email, gender_name, contact_no, birth_data, profile_pic FROM Users, Gender WHERE user_id = {id} AND gender_id = gender";
+                string query = $"SELECT user_id, name, surname, email, gender_name, contact_no, birth_data, profile_pic, bio FROM Users LEFT JOIN Gender ON gender_id = gender WHERE user_id = {id}";
                 bool idExists = true;
                 var reader = _db.ExecuteQuery(query);
                 if (!reader.HasRows)
@@ -102,7 +102,7 @@ namespace CliqueWebService.Controllers
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
                 string query = $"UPDATE Users SET name = '{user.name}', surname = '{user.surname}', email = '{user.email}', contact_no = '{user.contact_no}', " +
-                    $"birth_data = '{user.birth_data}', gender = {user.gender} WHERE user_id = {user.user_id}";
+                    $"birth_data = '{user.birth_data}', gender = {user.gender}, bio = {user.bio} WHERE user_id = {user.user_id}";
                 _db.BeginTransaction();
                 try
                 {
