@@ -2,32 +2,46 @@ import UIKit
 
 class CreateEventViewController: UIViewController {
   
-    @IBOutlet private weak var downButton: UIButton!
+    @IBOutlet private weak var downButtonCategory: UIButton!
+    @IBOutlet private weak var downButtonCurrency: UIButton!
     @IBOutlet private weak var categoryTextField: UITextField!
+    @IBOutlet private weak var currencyTextField: UITextField!
     private let createEventService = CreateEventService()
     var categories = [String]()
-    var pickerView = UIPickerView()
+    var currencies = [String]()
+    var pickerViewCategory = UIPickerView()
+    var pickerViewCurrency = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryTextField.delegate = self
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        categoryTextField.inputView = pickerView
+        currencyTextField.delegate = self
+        pickerViewCategory.delegate = self
+        pickerViewCategory.dataSource = self
+        pickerViewCurrency.delegate = self
+        pickerViewCurrency.dataSource = self
+        
+        categoryTextField.inputView = pickerViewCategory
+        currencyTextField.inputView = pickerViewCurrency
         categoryTextField.tintColor = UIColor.clear
+        currencyTextField.tintColor = UIColor.clear
         getCategories()
+        getCurrencies()
     }
  
-    @IBAction func downButtonPressed(_ sender: UIButton){
+    @IBAction func downButtonCategoryPressed(_ sender: UIButton){
         categoryTextField.becomeFirstResponder()
+    }
+    @IBAction func downButtonCyrrencyPressed(_ sender: UIButton){
+        currencyTextField.becomeFirstResponder()
     }
     
     func getCategories() {
         createEventService.getCategories{ result in
             switch result {
-            case .success(let cats):
-                for cat in cats{
-                    self.categories.append(cat.category_name)
+            case .success(let categories):
+                for category in categories{
+                    self.categories.append(category.category_name)
                 }
             case .failure:
                 return
@@ -35,6 +49,18 @@ class CreateEventViewController: UIViewController {
         }
     }
     
+    func getCurrencies() {
+        createEventService.getCurrencies{ result in
+            switch result {
+            case .success(let currencies):
+                for currency in currencies{
+                    self.currencies.append(currency.currency_abbr)
+                }
+            case .failure:
+                return
+            }
+        }
+    }
 }
 
 extension CreateEventViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -43,13 +69,28 @@ extension CreateEventViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categories.count
+        if(pickerView == pickerViewCategory){
+            return categories.count
+        }
+        else{
+            return currencies.count
+        }
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return categories[row]
+        if(pickerView == pickerViewCategory){
+            return categories[row]
+        }
+        else{
+            return currencies[row]
+        }
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        categoryTextField.text = categories[row]
+        if(pickerView == pickerViewCategory){
+            categoryTextField.text = categories[row]
+        }
+        else{
+            currencyTextField.text = currencies[row]
+        }
     }
     
 }

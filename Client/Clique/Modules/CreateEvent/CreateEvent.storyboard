@@ -35,8 +35,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PoY-Q5-HgR">
+                                <rect key="frame" x="24" y="232" width="60" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2cA-4h-wtM">
                                 <rect key="frame" x="147" y="187" width="221" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tje-7j-d30">
+                                <rect key="frame" x="116" y="223" width="82" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
@@ -53,7 +69,19 @@
                                     <color key="baseForegroundColor" red="0.80622481140000002" green="0.53243185029999995" blue="0.30697383140000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="downButtonPressed:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="y5S-Fq-3uA"/>
+                                    <action selector="downButtonCategoryPressed:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="Kok-7u-cn5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ra-9r-1GQ">
+                                <rect key="frame" x="155" y="223" width="43" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="chevron.down" catalog="system" symbolScale="default"/>
+                                    <color key="baseForegroundColor" red="0.80622481140000002" green="0.53243185029999995" blue="0.30697383140000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="downButtonCyrrencyPressed:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="vck-fh-CJE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -62,7 +90,9 @@
                     </view>
                     <connections>
                         <outlet property="categoryTextField" destination="2cA-4h-wtM" id="0nx-ut-e21"/>
-                        <outlet property="downButton" destination="8nH-mK-AwD" id="DNK-Oi-Vuh"/>
+                        <outlet property="currencyTextField" destination="Tje-7j-d30" id="vji-n6-Sy3"/>
+                        <outlet property="downButtonCategory" destination="8nH-mK-AwD" id="XJV-5R-XHp"/>
+                        <outlet property="downButtonCurrency" destination="2Ra-9r-1GQ" id="OXH-tj-B0P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

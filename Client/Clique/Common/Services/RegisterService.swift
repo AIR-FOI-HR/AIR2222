@@ -3,10 +3,7 @@ import UIKit
 
 final class RegisterService {
     
-    func register(
-        with entries: RegisterEntries,
-        completionHandler: @escaping(Bool)->()){
-            
+    func register(with entries: RegisterEntries,completionHandler: @escaping(Bool)->()){
             AF.request(Constants.Service.registerURL,
                        method: .post,
                        parameters : entries,
@@ -21,6 +18,7 @@ final class RegisterService {
                     
                 }
             }
-        }    
+        }
+    
 }
 
