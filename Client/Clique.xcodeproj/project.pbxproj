@@ -13,6 +13,10 @@
 		420CDAA1290E543A0074ACFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 420CDAA0290E543A0074ACFA /* Assets.xcassets */; };
 		420CDAA4290E543A0074ACFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420CDAA2290E543A0074ACFA /* LaunchScreen.storyboard */; };
 		4213719129262F1B0082F1C7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4213719029262F1B0082F1C7 /* Login.storyboard */; };
+		421487182933FC170053B344 /* CreateEventViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421487172933FC170053B344 /* CreateEventViewContoller.swift */; };
+		4214871A2933FC360053B344 /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 421487192933FC360053B344 /* CreateEvent.storyboard */; };
+		4214871E293427BC0053B344 /* CreateEventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4214871D293427BC0053B344 /* CreateEventService.swift */; };
+		4214872029342C7A0053B344 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4214871F29342C7A0053B344 /* Category.swift */; };
 		4237AC85292C20C700095D47 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237AC84292C20C700095D47 /* LoginCredentials.swift */; };
 		4237AC87292C215F00095D47 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237AC86292C215F00095D47 /* LoginResponse.swift */; };
 		42464B01292F7ADA009FDE1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CDA99290E54380074ACFA /* SceneDelegate.swift */; };
@@ -39,6 +43,10 @@
 		420CDAA3290E543A0074ACFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		420CDAA5290E543A0074ACFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4213719029262F1B0082F1C7 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		421487172933FC170053B344 /* CreateEventViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewContoller.swift; sourceTree = "<group>"; };
+		421487192933FC360053B344 /* CreateEvent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
+		4214871D293427BC0053B344 /* CreateEventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventService.swift; sourceTree = "<group>"; };
+		4214871F29342C7A0053B344 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		4237AC84292C20C700095D47 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		4237AC86292C215F00095D47 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		4254AD3E29297E2A004D649D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -109,6 +117,7 @@
 		420CDAAD290E55C00074ACFA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				421487162933FBF70053B344 /* CreateEvent */,
 				42EA63272932BB49007417D0 /* Initial */,
 				42740C3D2926467500CD1DFC /* Register */,
 				4213718F29262F050082F1C7 /* Login */,
@@ -153,12 +162,22 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		421487162933FBF70053B344 /* CreateEvent */ = {
+			isa = PBXGroup;
+			children = (
+				421487172933FC170053B344 /* CreateEventViewContoller.swift */,
+				421487192933FC360053B344 /* CreateEvent.storyboard */,
+			);
+			path = CreateEvent;
+			sourceTree = "<group>";
+		};
 		4237AC83292C20AA00095D47 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				4237AC84292C20C700095D47 /* LoginCredentials.swift */,
 				4237AC86292C215F00095D47 /* LoginResponse.swift */,
 				42EA63222932AADB007417D0 /* RegisterEntries.swift */,
+				4214871F29342C7A0053B344 /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -185,6 +204,7 @@
 			children = (
 				42DB272B292656ED0027A00C /* LoginServices.swift */,
 				42D99DE2292835C700516EF9 /* RegisterService.swift */,
+				4214871D293427BC0053B344 /* CreateEventService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -278,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4213719129262F1B0082F1C7 /* Login.storyboard in Resources */,
+				4214871A2933FC360053B344 /* CreateEvent.storyboard in Resources */,
 				420CDAA4290E543A0074ACFA /* LaunchScreen.storyboard in Resources */,
 				420CDAA1290E543A0074ACFA /* Assets.xcassets in Resources */,
 				42EA632B2932BB7D007417D0 /* Initial.storyboard in Resources */,
@@ -298,11 +319,14 @@
 				42EA63292932BB6E007417D0 /* InitialViewController.swift in Sources */,
 				4237AC87292C215F00095D47 /* LoginResponse.swift in Sources */,
 				420CDA98290E54380074ACFA /* AppDelegate.swift in Sources */,
+				421487182933FC170053B344 /* CreateEventViewContoller.swift in Sources */,
 				429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */,
 				42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */,
 				42EA63232932AADB007417D0 /* RegisterEntries.swift in Sources */,
 				42DB2734292672970027A00C /* UserStorage.swift in Sources */,
+				4214872029342C7A0053B344 /* Category.swift in Sources */,
 				4254AD3F29297E2A004D649D /* Constants.swift in Sources */,
+				4214871E293427BC0053B344 /* CreateEventService.swift in Sources */,
 				42DB272C292656ED0027A00C /* LoginServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,7 +466,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 97SHP38V89;
+				DEVELOPMENT_TEAM = 8T3R2Z9R5W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Clique/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -454,7 +478,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = hr.foi.air.Clique;
+				PRODUCT_BUNDLE_IDENTIFIER = hr.foi.air.Clique1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -469,7 +493,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 97SHP38V89;
+				DEVELOPMENT_TEAM = 8T3R2Z9R5W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Clique/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -481,7 +505,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = hr.foi.air.Clique;
+				PRODUCT_BUNDLE_IDENTIFIER = hr.foi.air.Clique1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

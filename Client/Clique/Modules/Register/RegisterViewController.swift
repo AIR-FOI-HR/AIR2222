@@ -26,6 +26,7 @@ class RegisterViewController: UIViewController {
     let buttonRePasswordShow = UIButton(type: .custom)
     
     private let registerService = RegisterService()
+    private let loginViewController = LoginViewController()
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         
@@ -44,8 +45,9 @@ class RegisterViewController: UIViewController {
         func register(with registerEntries: RegisterEntries) {
             registerService.register(with: registerEntries) { (isSuccess) in
                 if isSuccess{
-                    self.alert(fwdMessage: "Successfully registrated!")
+                    self.alertShowLogin(fwdMessage: "Successfully registrated!")
                     self.stopAnimation()
+
                 }else{
                     self.alert(fwdMessage: "Wrong input.")
                     self.stopAnimation()
@@ -58,7 +60,22 @@ class RegisterViewController: UIViewController {
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
+            
         }
+    
+    func alertShowLogin(fwdMessage: String){
+        let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: {_ -> Void in
+            let storyboard = UIStoryboard(name: "Login" , bundle:nil)
+            if let viewController = storyboard.instantiateInitialViewController() {
+                self.present(viewController, animated: true)
+            }
+        })
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+        
+        
+    }
 
         override func viewDidLoad() {
             super.viewDidLoad()
