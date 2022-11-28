@@ -186,22 +186,27 @@ namespace CliqueWebService.Controllers
             _db.BeginTransaction();
             try
             {
+                string desc = "";
+                if (!string.IsNullOrEmpty(request.Description))
+                {
+                    desc = request.Description;
+                }
                 string q = "";
 
                 if (request.Cost == "0")
                 {
-                    q = $"INSERT INTO Events(event_name, event_location, event_date, event_time, participations_no, creator, category)" +
-                    $" VALUES ('{request.EventName}', '{request.EventLocation}', '{request.EventTimeStamp.ToString("yyyy-MM-dd")}', '{request.EventTimeStamp.ToString("HH:mm:ss")}', '{request.ParticipantsNo}', '{id}', '{request.Category}')";
+                    q = $"INSERT INTO Events(event_name, event_location, event_date, event_time, participations_no, creator, category, description)" +
+                    $" VALUES ('{request.EventName}', '{request.EventLocation}', '{request.EventTimeStamp.ToString("yyyy-MM-dd")}', '{request.EventTimeStamp.ToString("HH:mm:ss")}', '{request.ParticipantsNo}', '{id}', '{request.Category}', '{desc}')";
                 }
                 else
                 {
-                    q = $"INSERT INTO Events(event_name, event_location, event_date, event_time, participations_no, cost, currency,creator, category)" +
-                        $" VALUES ('{request.EventName}', '{request.EventLocation}', '{request.EventTimeStamp.ToString("yyyy-MM-dd")}', '{request.EventTimeStamp.ToString("HH:mm:ss")}', '{request.ParticipantsNo}', '{request.Cost}', '{request.Currency}','{id}', '{request.Category}')"; 
+                    q = $"INSERT INTO Events(event_name, event_location, event_date, event_time, participations_no, cost, currency,creator, category, description)" +
+                        $" VALUES ('{request.EventName}', '{request.EventLocation}', '{request.EventTimeStamp.ToString("yyyy-MM-dd")}', '{request.EventTimeStamp.ToString("HH:mm:ss")}', '{request.ParticipantsNo}', '{request.Cost}', '{request.Currency}','{id}', '{request.Category}', {desc})"; 
                 }
                 _db.ExecuteNonQuery(q);
                 _db.CommitTransaction();
                 dr.Method = "POST";
-                dr.Error = "Event Added";
+                dr.Message = "Event Added";
                 dr.Status = "1";
                 return Ok(dr);
             }

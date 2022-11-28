@@ -22,5 +22,7 @@ namespace CliqueWebService.Helpers.Models
         [Required]
         [RegularExpression("[0-9]", ErrorMessage = "Select category")]
         public string Category { get; set; }
+
+        public string Description { get; set; }
     }
 }

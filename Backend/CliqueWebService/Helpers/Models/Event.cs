@@ -14,5 +14,6 @@ namespace CliqueWebService.Helpers.Models
         public string? currency { get; set; }
         public string category { get; set; }
         public User creator { get; set; }
+        public string description { get; set; }
     }
 }

@@ -32,16 +32,17 @@ namespace CliqueWebService.Helpers
                 event_timestamp = reader.GetDateTime(3).ToString("dd/MM/yyyy") + " " + reader.GetTimeSpan(4).ToString(),
                 participants_no = reader.GetInt32(5),
                 cost = (reader.GetValue(6) != DBNull.Value) ? reader.GetDouble(6) : 0,
-                currency = (reader.GetValue(10) != DBNull.Value) ? reader.GetString(10) : null,
+                currency = (reader.GetValue(11) != DBNull.Value) ? reader.GetString(11) : null,
                 creator = new User
                 {
-                    user_id = reader.GetInt32(16),
-                    name = reader.GetString(11),
-                    surname = reader.GetString(12),
-                    email = reader.GetString(13),
-                    gender = (reader.GetValue(15) != DBNull.Value) ? reader.GetString(15).Trim() : null
+                    user_id = reader.GetInt32(17),
+                    name = reader.GetString(12),
+                    surname = reader.GetString(13),
+                    email = reader.GetString(14),
+                    gender = (reader.GetValue(16) != DBNull.Value) ? reader.GetString(16).Trim() : null
                 },
-                category = reader.GetString(14)
+                category = reader.GetString(15),
+                description = (reader.GetValue(10) != DBNull.Value) ? reader.GetString(10) : null
             };
             return ev;
         }
