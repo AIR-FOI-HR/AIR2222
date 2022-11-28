@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventListTableViewCell" rowHeight="424" id="eQ0-ci-o3r" customClass="EventListTableViewCell" customModule="Clique" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="632" height="424"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eQ0-ci-o3r" id="Ope-dE-SPj">
+                <rect key="frame" x="0.0" y="0.0" width="632" height="424"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iLm-Du-uZY">
+                        <rect key="frame" x="0.0" y="0.0" width="632" height="424"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
+                    </imageView>
+                    <view alpha="0.59999999999999998" contentMode="scaleToFill" id="EmC-gW-aHB">
+                        <rect key="frame" x="0.0" y="-210" width="632" height="844"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <viewLayoutGuide key="safeArea" id="PMA-CY-4VI"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
+                    </view>
+                    <stackView opaque="NO" contentMode="center" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xef-el-LFl">
+                        <rect key="frame" x="20" y="11" width="592" height="402"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uem-Sr-I5H">
+                                <rect key="frame" x="0.0" y="0.0" width="592" height="402"/>
+                                <rect key="contentStretch" x="0.69999999999999996" y="0.0" width="1" height="1"/>
+                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="46"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Uem-Sr-I5H" secondAttribute="bottom" id="p0S-9G-HYu"/>
+                            <constraint firstItem="Uem-Sr-I5H" firstAttribute="top" secondItem="xef-el-LFl" secondAttribute="top" id="sdu-s8-tHT"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" systemColor="labelColor"/>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="xef-el-LFl" secondAttribute="trailing" id="5RT-zw-0B0"/>
+                    <constraint firstAttribute="bottom" secondItem="iLm-Du-uZY" secondAttribute="bottom" id="947-i0-EaJ"/>
+                    <constraint firstItem="xef-el-LFl" firstAttribute="leading" secondItem="Ope-dE-SPj" secondAttribute="leadingMargin" id="9Me-KO-Vsj"/>
+                    <constraint firstAttribute="trailing" secondItem="iLm-Du-uZY" secondAttribute="trailing" id="EAZ-ku-PMn"/>
+                    <constraint firstItem="iLm-Du-uZY" firstAttribute="top" secondItem="Ope-dE-SPj" secondAttribute="top" id="GLr-oj-D2y"/>
+                    <constraint firstItem="xef-el-LFl" firstAttribute="top" secondItem="Ope-dE-SPj" secondAttribute="topMargin" id="UEb-3q-G9l"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="xef-el-LFl" secondAttribute="bottom" id="iVF-gg-I9O"/>
+                    <constraint firstItem="iLm-Du-uZY" firstAttribute="leading" secondItem="Ope-dE-SPj" secondAttribute="leading" id="oRE-5i-eKJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" systemColor="labelColor"/>
+            <connections>
+                <outlet property="_eventImage" destination="iLm-Du-uZY" id="P5S-KK-scy"/>
+                <outlet property="_nameLabel" destination="Uem-Sr-I5H" id="OsX-UV-MjO"/>
+            </connections>
+            <point key="canvasLocation" x="50.769230769230766" y="50.473933649289094"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
