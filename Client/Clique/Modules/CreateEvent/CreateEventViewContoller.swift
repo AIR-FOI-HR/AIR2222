@@ -6,6 +6,14 @@ class CreateEventViewController: UIViewController {
     @IBOutlet private weak var downButtonCurrency: UIButton!
     @IBOutlet private weak var categoryTextField: UITextField!
     @IBOutlet private weak var currencyTextField: UITextField!
+    @IBOutlet private weak var dateTimePicker: UIDatePicker!
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var locationTextField: UITextField!
+    @IBOutlet private weak var participantsTextField: UITextField!
+    @IBOutlet private weak var costTextField: UITextField!
+    @IBOutlet private weak var shortDescriptionTextField: UITextField!
+    @IBOutlet private weak var participantsStepper: UIStepper!
+    
     private let createEventService = CreateEventService()
     var categories = [String]()
     var currencies = [String]()
@@ -14,6 +22,7 @@ class CreateEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         categoryTextField.delegate = self
         currencyTextField.delegate = self
         pickerViewCategory.delegate = self
@@ -21,12 +30,57 @@ class CreateEventViewController: UIViewController {
         pickerViewCurrency.delegate = self
         pickerViewCurrency.dataSource = self
         
+        categoryTextField.layer.shadowOpacity = 0.3
+        categoryTextField.layer.shadowRadius = 2.0
+        categoryTextField.layer.shadowOffset = CGSize.zero
+        categoryTextField.layer.shadowColor = UIColor.gray.cgColor
+        
+        nameTextField.layer.shadowOpacity = 0.3
+        nameTextField.layer.shadowRadius = 2.0
+        nameTextField.layer.shadowOffset = CGSize.zero
+        nameTextField.layer.shadowColor = UIColor.gray.cgColor
+        
+        locationTextField.layer.shadowOpacity = 0.3
+        locationTextField.layer.shadowRadius = 2.0
+        locationTextField.layer.shadowOffset = CGSize.zero
+        locationTextField.layer.shadowColor = UIColor.gray.cgColor
+        
+        dateTimePicker.layer.shadowOpacity = 0.3
+        dateTimePicker.layer.shadowRadius = 2.0
+        dateTimePicker.layer.shadowOffset = CGSize.zero
+        dateTimePicker.layer.shadowColor = UIColor.gray.cgColor
+        
+        participantsTextField.layer.shadowOpacity = 0.3
+        participantsTextField.layer.shadowRadius = 2.0
+        participantsTextField.layer.shadowOffset = CGSize.zero
+        participantsTextField.layer.shadowColor = UIColor.gray.cgColor
+        
+        costTextField.layer.shadowOpacity = 0.3
+        costTextField.layer.shadowRadius = 2.0
+        costTextField.layer.shadowOffset = CGSize.zero
+        costTextField.layer.shadowColor = UIColor.gray.cgColor
+        
+        currencyTextField.layer.shadowOpacity = 0.3
+        currencyTextField.layer.shadowRadius = 2.0
+        currencyTextField.layer.shadowOffset = CGSize.zero
+        currencyTextField.layer.shadowColor = UIColor.gray.cgColor
+        
+        shortDescriptionTextField.layer.shadowOpacity = 0.3
+        shortDescriptionTextField.layer.shadowRadius = 2.0
+        shortDescriptionTextField.layer.shadowOffset = CGSize.zero
+        shortDescriptionTextField.layer.shadowColor = UIColor.gray.cgColor
+        
         categoryTextField.inputView = pickerViewCategory
         currencyTextField.inputView = pickerViewCurrency
         categoryTextField.tintColor = UIColor.clear
         currencyTextField.tintColor = UIColor.clear
         getCategories()
         getCurrencies()
+    }
+    
+    @IBAction func stpActWeight(_ sender: Any) {
+        let number = Int(participantsStepper.value)
+            participantsTextField.text = "\(number)"
     }
  
     @IBAction func downButtonCategoryPressed(_ sender: UIButton){
