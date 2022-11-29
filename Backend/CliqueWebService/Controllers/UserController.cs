@@ -102,7 +102,7 @@ namespace CliqueWebService.Controllers
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
                 string query = $"UPDATE Users SET name = '{user.name}', surname = '{user.surname}', email = '{user.email}', contact_no = '{user.contact_no}', " +
-                    $"birth_data = '{user.birth_data}', gender = {user.gender}, bio = {user.bio} WHERE user_id = {user.user_id}";
+                    $"birth_data = '{user.birth_data}', gender = {user.gender}, bio = '{user.bio}' WHERE user_id = {user.user_id}";
                 _db.BeginTransaction();
                 try
                 {
