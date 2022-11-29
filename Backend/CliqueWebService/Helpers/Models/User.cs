@@ -8,6 +8,7 @@ namespace CliqueWebService.Helpers.Models
         public string? name { get; set; }
         public string? surname { get; set; }
         public string? email { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? gender { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? password { get; set; }
