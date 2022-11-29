@@ -11,7 +11,7 @@ class CreateEventViewController: UIViewController {
     @IBOutlet private weak var locationTextField: UITextField!
     @IBOutlet private weak var participantsTextField: UITextField!
     @IBOutlet private weak var costTextField: UITextField!
-    @IBOutlet private weak var shortDescriptionTextField: UITextField!
+    @IBOutlet private weak var shortDescriptionTextView: UITextView!
     @IBOutlet private weak var participantsStepper: UIStepper!
     
     private let createEventService = CreateEventService()
@@ -22,6 +22,7 @@ class CreateEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        participantsTextField.addTarget(self, action: #selector(participantsTextFieldDidChange(_:)), for: .editingChanged)
         
         categoryTextField.delegate = self
         currencyTextField.delegate = self
@@ -32,43 +33,45 @@ class CreateEventViewController: UIViewController {
         
         categoryTextField.layer.shadowOpacity = 0.3
         categoryTextField.layer.shadowRadius = 2.0
-        categoryTextField.layer.shadowOffset = CGSize.zero
+        categoryTextField.layer.shadowOffset = CGSizeMake(3, 3)
         categoryTextField.layer.shadowColor = UIColor.gray.cgColor
         
         nameTextField.layer.shadowOpacity = 0.3
         nameTextField.layer.shadowRadius = 2.0
-        nameTextField.layer.shadowOffset = CGSize.zero
+        nameTextField.layer.shadowOffset = CGSizeMake(3, 3)
         nameTextField.layer.shadowColor = UIColor.gray.cgColor
         
         locationTextField.layer.shadowOpacity = 0.3
         locationTextField.layer.shadowRadius = 2.0
-        locationTextField.layer.shadowOffset = CGSize.zero
+        locationTextField.layer.shadowOffset = CGSizeMake(3, 3)
         locationTextField.layer.shadowColor = UIColor.gray.cgColor
         
         dateTimePicker.layer.shadowOpacity = 0.3
         dateTimePicker.layer.shadowRadius = 2.0
-        dateTimePicker.layer.shadowOffset = CGSize.zero
+        dateTimePicker.layer.shadowOffset = CGSizeMake(3, 3)
         dateTimePicker.layer.shadowColor = UIColor.gray.cgColor
         
         participantsTextField.layer.shadowOpacity = 0.3
         participantsTextField.layer.shadowRadius = 2.0
-        participantsTextField.layer.shadowOffset = CGSize.zero
+        participantsTextField.layer.shadowOffset = CGSizeMake(3, 3)
         participantsTextField.layer.shadowColor = UIColor.gray.cgColor
         
         costTextField.layer.shadowOpacity = 0.3
         costTextField.layer.shadowRadius = 2.0
-        costTextField.layer.shadowOffset = CGSize.zero
+        costTextField.layer.shadowOffset = CGSizeMake(3, 3)
         costTextField.layer.shadowColor = UIColor.gray.cgColor
         
         currencyTextField.layer.shadowOpacity = 0.3
         currencyTextField.layer.shadowRadius = 2.0
-        currencyTextField.layer.shadowOffset = CGSize.zero
+        currencyTextField.layer.shadowOffset = CGSizeMake(3, 3)
         currencyTextField.layer.shadowColor = UIColor.gray.cgColor
         
-        shortDescriptionTextField.layer.shadowOpacity = 0.3
-        shortDescriptionTextField.layer.shadowRadius = 2.0
-        shortDescriptionTextField.layer.shadowOffset = CGSize.zero
-        shortDescriptionTextField.layer.shadowColor = UIColor.gray.cgColor
+//        shortDescriptionTextView.layer.shadowOpacity = 0.3
+//        shortDescriptionTextView.layer.shadowRadius = 2.0
+//        shortDescriptionTextView.layer.shadowOffset = CGSizeMake(3, 3)
+//        shortDescriptionTextView.layer.shadowColor = UIColor.gray.cgColor
+//        shortDescriptionTextView.layer.cornerRadius = 7
+//        shortDescriptionTextView.layer.masksToBounds = false
         
         categoryTextField.inputView = pickerViewCategory
         currencyTextField.inputView = pickerViewCurrency
@@ -78,15 +81,18 @@ class CreateEventViewController: UIViewController {
         getCurrencies()
     }
     
-    @IBAction func stpActWeight(_ sender: Any) {
-        let number = Int(participantsStepper.value)
-            participantsTextField.text = "\(number)"
+    @objc func participantsTextFieldDidChange(_ textField: UITextField) {
+        self.participantsStepper.value = Double(textField.text!) ?? 0.0
+    }
+    
+    @IBAction func stteperChange(_ sender: Any) {
+            participantsTextField.text = "\(Int(participantsStepper.value))"
     }
  
-    @IBAction func downButtonCategoryPressed(_ sender: UIButton){
+    @IBAction func downButtonCategoryPressed(_ sender: UIButton) {
         categoryTextField.becomeFirstResponder()
     }
-    @IBAction func downButtonCyrrencyPressed(_ sender: UIButton){
+    @IBAction func downButtonCyrrencyPressed(_ sender: UIButton) {
         currencyTextField.becomeFirstResponder()
     }
     
