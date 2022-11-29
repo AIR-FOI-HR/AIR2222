@@ -166,7 +166,22 @@ namespace CliqueWebService.Controllers
         public ActionResult UpdateUserData([FromBody] User user)
         {
             DocumentResponse docResponse = new DocumentResponse();
-
+            string id = "0";
+            if (Request.Headers.Keys.Contains("Authorization"))
+            {
+                string token = Request.Headers["Authorization"];
+                if (_businessLogic.isJWTValid(token.Replace("Bearer ", "")))
+                {
+                    id = User.Claims.FirstOrDefault(i => i.Type.Contains("UserId")).Value;
+                }
+            }
+            if (id == "0")
+            {
+                docResponse.Method = "POST";
+                docResponse.Error = "Unauthorized user";
+                docResponse.Status = "0";
+                return Unauthorized(docResponse);
+            }
             if (ModelState.IsValid)
             {
                 try
@@ -181,7 +196,7 @@ namespace CliqueWebService.Controllers
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
                 string query = $"UPDATE Users SET name = '{user.name}', surname = '{user.surname}', email = '{user.email}', contact_no = '{user.contact_no}', " +
-                    $"birth_data = '{user.birth_data}', gender = {user.gender}, bio = '{user.bio}' WHERE user_id = {user.user_id}";
+                    $"birth_data = '{user.birth_data}', gender = {user.gender}, bio = '{user.bio}' WHERE user_id = {id}";
                 _db.BeginTransaction();
                 try
                 {
