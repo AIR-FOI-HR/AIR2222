@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l0G-lb-gmx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l0G-lb-gmx">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -30,7 +30,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="329" height="380"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Aos-oG-3Ky">
-                                                                <rect key="frame" x="0.0" y="0.0" width="329" height="384"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="329" height="370"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="bod-XZ-EHL">
                                                                         <rect key="frame" x="0.0" y="0.0" width="329" height="34.333333333333336"/>
@@ -50,36 +50,30 @@
                                                                             <constraint firstAttribute="height" constant="125" id="ky4-5N-vHP"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7I8-la-X6V">
-                                                                        <rect key="frame" x="136.33333333333334" y="195.33333333333331" width="56.666666666666657" height="28.666666666666657"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7I8-la-X6V">
+                                                                        <rect key="frame" x="139.66666666666666" y="195.33333333333331" width="50" height="50"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GhT-dU-M1U">
-                                                                        <rect key="frame" x="140.66666666666666" y="242" width="48" height="24"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2l-Gv-9DK">
-                                                                        <rect key="frame" x="0.0" y="284" width="329" height="100"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="100" id="38M-AE-D5q"/>
-                                                                        </constraints>
-                                                                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="p5M-sK-MAc">
+                                                                        <rect key="frame" x="0.0" y="263.33333333333331" width="329" height="106.66666666666669"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <color key="textColor" systemColor="labelColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                    </textView>
                                                                 </subviews>
                                                                 <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="p5M-sK-MAc" secondAttribute="trailing" id="BM7-3f-yA1"/>
                                                                     <constraint firstAttribute="trailing" secondItem="bod-XZ-EHL" secondAttribute="trailing" id="FuA-oR-8pj"/>
                                                                     <constraint firstItem="bod-XZ-EHL" firstAttribute="leading" secondItem="Aos-oG-3Ky" secondAttribute="leading" id="QvL-X4-fHc"/>
+                                                                    <constraint firstItem="p5M-sK-MAc" firstAttribute="leading" secondItem="Aos-oG-3Ky" secondAttribute="leading" id="bg6-Xi-yE4"/>
                                                                 </constraints>
                                                             </stackView>
                                                         </subviews>
                                                         <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="Aos-oG-3Ky" secondAttribute="bottom" constant="10" id="7Cz-YC-ZY9"/>
                                                             <constraint firstItem="Aos-oG-3Ky" firstAttribute="leading" secondItem="3mx-dm-oLM" secondAttribute="leading" id="9Yz-79-8X4"/>
                                                             <constraint firstAttribute="trailing" secondItem="Aos-oG-3Ky" secondAttribute="trailing" id="cHj-8m-E7u"/>
                                                             <constraint firstAttribute="height" constant="380" id="eIi-mz-ERJ"/>
@@ -219,10 +213,12 @@
                         <outlet property="createdEventsButton" destination="jaO-tC-ORb" id="P5I-rN-o7j"/>
                         <outlet property="editButton" destination="TEh-hs-fI3" id="cQI-5Q-wFO"/>
                         <outlet property="joinedEventsButton" destination="6tX-DH-6oX" id="DX2-D7-AFa"/>
+                        <outlet property="labelProfileName" destination="7I8-la-X6V" id="Z6d-4o-41x"/>
                         <outlet property="myEventsButton" destination="vIc-jf-CDb" id="FW2-uQ-L5r"/>
                         <outlet property="pastCreatedEventsButton" destination="A3r-93-HjI" id="DSA-kh-j3F"/>
                         <outlet property="pastJoinedEventsButton" destination="jN4-og-kUG" id="Bff-Jf-TbJ"/>
                         <outlet property="profileImage" destination="jYQ-dW-0dh" id="Igs-nh-PBz"/>
+                        <outlet property="textViewBio" destination="p5M-sK-MAc" id="0cG-1x-gmk"/>
                         <outletCollection property="eventsButtons" destination="6tX-DH-6oX" collectionClass="NSMutableArray" id="Pup-i1-zO9"/>
                         <outletCollection property="eventsButtons" destination="jN4-og-kUG" collectionClass="NSMutableArray" id="oyz-Sv-ifu"/>
                         <outletCollection property="eventsButtons" destination="jaO-tC-ORb" collectionClass="NSMutableArray" id="dNQ-oO-p0B"/>
@@ -260,6 +256,9 @@
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="120"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

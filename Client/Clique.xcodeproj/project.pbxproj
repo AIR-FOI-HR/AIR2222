@@ -23,6 +23,9 @@
 		4253AE8C2933BF2A0054DC2B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4253AE8B2933BF2A0054DC2B /* Settings.storyboard */; };
 		4253AE8E2933BF6D0054DC2B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4253AE8D2933BF6D0054DC2B /* SettingsViewController.swift */; };
 		4254AD3F29297E2A004D649D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4254AD3E29297E2A004D649D /* Constants.swift */; };
+		425B8D12293585F500907BD9 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8D11293585F500907BD9 /* ProfileService.swift */; };
+		425B8D142935866000907BD9 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8D132935866000907BD9 /* UserProfile.swift */; };
+		425B8D1629358C3400907BD9 /* UserGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8D1529358C3400907BD9 /* UserGet.swift */; };
 		4272BF1429340FAB00797045 /* JoinedEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272BF1329340FAB00797045 /* JoinedEventsViewController.swift */; };
 		4272BF1629340FB700797045 /* JoinedEvents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4272BF1529340FB700797045 /* JoinedEvents.storyboard */; };
 		4272BF1B2934136C00797045 /* PastCreatedEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272BF1A2934136C00797045 /* PastCreatedEventsViewController.swift */; };
@@ -59,6 +62,9 @@
 		4253AE8B2933BF2A0054DC2B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		4253AE8D2933BF6D0054DC2B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4254AD3E29297E2A004D649D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		425B8D11293585F500907BD9 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		425B8D132935866000907BD9 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		425B8D1529358C3400907BD9 /* UserGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGet.swift; sourceTree = "<group>"; };
 		4272BF1329340FAB00797045 /* JoinedEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedEventsViewController.swift; sourceTree = "<group>"; };
 		4272BF1529340FB700797045 /* JoinedEvents.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JoinedEvents.storyboard; sourceTree = "<group>"; };
 		4272BF1A2934136C00797045 /* PastCreatedEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastCreatedEventsViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +198,8 @@
 				4237AC84292C20C700095D47 /* LoginCredentials.swift */,
 				4237AC86292C215F00095D47 /* LoginResponse.swift */,
 				42EA63222932AADB007417D0 /* RegisterEntries.swift */,
+				425B8D132935866000907BD9 /* UserProfile.swift */,
+				425B8D1529358C3400907BD9 /* UserGet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -280,6 +288,7 @@
 			children = (
 				42DB272B292656ED0027A00C /* LoginServices.swift */,
 				42D99DE2292835C700516EF9 /* RegisterService.swift */,
+				425B8D11293585F500907BD9 /* ProfileService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -394,7 +403,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4272BF1429340FAB00797045 /* JoinedEventsViewController.swift in Sources */,
+				425B8D1629358C3400907BD9 /* UserGet.swift in Sources */,
 				42464B01292F7ADA009FDE1D /* SceneDelegate.swift in Sources */,
+				425B8D142935866000907BD9 /* UserProfile.swift in Sources */,
 				4237AC85292C20C700095D47 /* LoginCredentials.swift in Sources */,
 				428ADAA529264FF100417940 /* LoginViewController.swift in Sources */,
 				42EA63292932BB6E007417D0 /* InitialViewController.swift in Sources */,
@@ -402,6 +413,7 @@
 				4272BF212934139700797045 /* CreatedEventsViewController.swift in Sources */,
 				420CDA98290E54380074ACFA /* AppDelegate.swift in Sources */,
 				429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */,
+				425B8D12293585F500907BD9 /* ProfileService.swift in Sources */,
 				42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */,
 				42EA63232932AADB007417D0 /* RegisterEntries.swift in Sources */,
 				4272BF27293413D400797045 /* PastJoinedEventsViewController.swift in Sources */,

@@ -17,12 +17,35 @@ class ProfileViewController: UIViewController {
     @IBOutlet private weak var pastJoinedEventsButton: UIButton!
     @IBOutlet private weak var createdEventsButton: UIButton!
     @IBOutlet private weak var pastCreatedEventsButton: UIButton!
+    @IBOutlet private weak var labelProfileName: UILabel!
+    @IBOutlet private weak var textViewBio: UITextView!
+    
+    private let profileService = ProfileService()
+    
+    
+    func getUser(){
+        profileService.getUser { result in
+            switch result {
+            case .success(let user):
+                for item in user {
+                    self.labelProfileName.text = item.name + " " + item.surname
+                    self.textViewBio.text = item.bio
+                }
+                return
+            case .failure:
+                return
+            }
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getUser()
         profileImage.circleImage()
     }
+    
+    
     
     func showDropDown() {
         eventsButtons.forEach { button in
