@@ -228,7 +228,7 @@ namespace CliqueWebService.Controllers
 
         [HttpPost]
         [Route("UpdateUserPassword")]
-        public ActionResult UpdateUserPassword([FromBody] LoginRequest user)
+        public ActionResult UpdateUserPassword([FromBody] string newPass)
         {
             DocumentResponse docResponse = new DocumentResponse();
             if (ModelState.IsValid)
@@ -244,7 +244,23 @@ namespace CliqueWebService.Controllers
                     docResponse.Method = "POST";
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
-                string query = $"UPDATE Users SET hash_password = '{_businessLogic.ConvertToSHA256(user.Password).ToLower()}' WHERE email = '{user.Email}'";
+                string id = "0";
+                if (Request.Headers.Keys.Contains("Authorization"))
+                {
+                    string token = Request.Headers["Authorization"];
+                    if (_businessLogic.isJWTValid(token.Replace("Bearer ", "")))
+                    {
+                        id = User.Claims.FirstOrDefault(i => i.Type.Contains("UserId")).Value;
+                    }
+                }
+                if (id == "0")
+                {
+                    docResponse.Method = "POST";
+                    docResponse.Error = "Unauthorized user";
+                    docResponse.Status = "0";
+                    return Unauthorized(docResponse);
+                }
+                string query = $"UPDATE Users SET hash_password = '{_businessLogic.ConvertToSHA256(newPass).ToLower()}' WHERE user_id = '{id}'";
                 _db.BeginTransaction();
                 try
                 {
