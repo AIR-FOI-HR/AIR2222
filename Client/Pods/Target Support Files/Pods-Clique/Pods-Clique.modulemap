@@ -1,0 +1,6 @@
+framework module Pods_Clique {
+  umbrella header "Pods-Clique-umbrella.h"
+
+  export *
+  module * { export * }
+}

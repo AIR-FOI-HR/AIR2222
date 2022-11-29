@@ -34,9 +34,11 @@
 		42EA63232932AADB007417D0 /* RegisterEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA63222932AADB007417D0 /* RegisterEntries.swift */; };
 		42EA63292932BB6E007417D0 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA63282932BB6E007417D0 /* InitialViewController.swift */; };
 		42EA632B2932BB7D007417D0 /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42EA632A2932BB7D007417D0 /* Initial.storyboard */; };
+		D0EA17324406950A77511525 /* Pods_Clique.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8950886CD7358474A8BA9D7 /* Pods_Clique.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F35E469DC98F630AE5B4F27 /* Pods-Clique.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clique.debug.xcconfig"; path = "Target Support Files/Pods-Clique/Pods-Clique.debug.xcconfig"; sourceTree = "<group>"; };
 		420CDA94290E54380074ACFA /* Clique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clique.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		420CDA97290E54380074ACFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		420CDA99290E54380074ACFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,8 @@
 		42EA63222932AADB007417D0 /* RegisterEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEntries.swift; sourceTree = "<group>"; };
 		42EA63282932BB6E007417D0 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		42EA632A2932BB7D007417D0 /* Initial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Initial.storyboard; sourceTree = "<group>"; };
+		9A2FC9E0DFFEBC7D85D27343 /* Pods-Clique.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Clique.release.xcconfig"; path = "Target Support Files/Pods-Clique/Pods-Clique.release.xcconfig"; sourceTree = "<group>"; };
+		B8950886CD7358474A8BA9D7 /* Pods_Clique.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Clique.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,17 +77,28 @@
 				420C5D92292C586C001E650D /* NVActivityIndicatorViewExtended in Frameworks */,
 				420C5D90292C586C001E650D /* NVActivityIndicatorView in Frameworks */,
 				42D99DE62928362300516EF9 /* Alamofire in Frameworks */,
+				D0EA17324406950A77511525 /* Pods_Clique.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A62F3FFD15265A2B445D6A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B8950886CD7358474A8BA9D7 /* Pods_Clique.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		420CDA8B290E54380074ACFA = {
 			isa = PBXGroup;
 			children = (
 				420CDA96290E54380074ACFA /* Clique */,
 				420CDA95290E54380074ACFA /* Products */,
+				5DF8C815A847D2D8B238E45F /* Pods */,
+				1A62F3FFD15265A2B445D6A2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -229,6 +244,16 @@
 			path = Initial;
 			sourceTree = "<group>";
 		};
+		5DF8C815A847D2D8B238E45F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3F35E469DC98F630AE5B4F27 /* Pods-Clique.debug.xcconfig */,
+				9A2FC9E0DFFEBC7D85D27343 /* Pods-Clique.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -236,9 +261,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 420CDAA8290E543A0074ACFA /* Build configuration list for PBXNativeTarget "Clique" */;
 			buildPhases = (
+				8FE8AC724AD98679D2280953 /* [CP] Check Pods Manifest.lock */,
 				420CDA90290E54380074ACFA /* Sources */,
 				420CDA91290E54380074ACFA /* Frameworks */,
 				420CDA92290E54380074ACFA /* Resources */,
+				C47F108C4B6BDCBA416FFEDA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,10 +308,10 @@
 			);
 			mainGroup = 420CDA8B290E54380074ACFA;
 			packageReferences = (
-				42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
-				42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire.git" */,
+				420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView.git" */,
+				42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess.git" */,
+				42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */,
 			);
 			productRefGroup = 420CDA95290E54380074ACFA /* Products */;
 			projectDirPath = "";
@@ -310,6 +337,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8FE8AC724AD98679D2280953 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Clique-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C47F108C4B6BDCBA416FFEDA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Clique/Pods-Clique-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Clique/Pods-Clique-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Clique/Pods-Clique-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		420CDA90290E54380074ACFA /* Sources */ = {
@@ -465,6 +534,7 @@
 		};
 		420CDAA9290E543A0074ACFA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F35E469DC98F630AE5B4F27 /* Pods-Clique.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -492,6 +562,7 @@
 		};
 		420CDAAA290E543A0074ACFA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A2FC9E0DFFEBC7D85D27343 /* Pods-Clique.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -541,7 +612,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+		420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
 			requirement = {
@@ -549,7 +620,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+		42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
 			requirement = {
@@ -557,7 +628,7 @@
 				kind = branch;
 			};
 		};
-		42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+		42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
@@ -565,7 +636,7 @@
 				kind = branch;
 			};
 		};
-		42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -578,27 +649,27 @@
 /* Begin XCSwiftPackageProductDependency section */
 		420C5D8F292C586C001E650D /* NVActivityIndicatorView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			package = 420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView.git" */;
 			productName = NVActivityIndicatorView;
 		};
 		420C5D91292C586C001E650D /* NVActivityIndicatorViewExtended */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			package = 420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView.git" */;
 			productName = NVActivityIndicatorViewExtended;
 		};
 		42496D0B29301C9A00D972C9 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			package = 42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess.git" */;
 			productName = KeychainAccess;
 		};
 		42496D0F293033AA00D972C9 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			package = 42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */;
 			productName = IQKeyboardManagerSwift;
 		};
 		42D99DE52928362300516EF9 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire.git" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
