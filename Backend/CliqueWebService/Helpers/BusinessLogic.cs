@@ -16,7 +16,11 @@ namespace CliqueWebService.Helpers
                 name = reader.GetString(1),
                 surname = reader.GetString(2),
                 email = reader.GetString(3),
-                gender = (reader.GetValue(4) != DBNull.Value) ? reader.GetString(4).Trim() : null
+                gender = (reader.GetValue(4) != DBNull.Value) ? reader.GetString(4).Trim() : null,
+                contact_no = reader.GetString(5),
+                birth_data = reader.GetDateTime(6),
+                profile_pic = (reader.GetValue(7) != DBNull.Value) ? reader.GetString(7) : "empty",
+                bio = (reader.GetValue(8) != DBNull.Value) ? reader.GetString(8) : "empty"
             };
 
             return user;
