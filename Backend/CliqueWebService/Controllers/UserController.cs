@@ -345,7 +345,7 @@ namespace CliqueWebService.Controllers
             {
                 _db.ExecuteNonQuery(query);
                 _db.CommitTransaction();
-                return Ok();
+                return Ok($"https://cliquestorage.blob.core.windows.net/file-upload/user_{id}.jpg");
             }
             catch
             {
@@ -354,6 +354,47 @@ namespace CliqueWebService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
-
+        [HttpGet]
+        [Route("GetProfilePic")]
+        public ActionResult GetProfilePic()
+        {
+            try
+            {
+                _db.Connect();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            string id = "0";
+            if (Request.Headers.Keys.Contains("Authorization"))
+            {
+                string token = Request.Headers["Authorization"];
+                if (_businessLogic.isJWTValid(token.Replace("Bearer ", "")))
+                {
+                    id = User.Claims.FirstOrDefault(i => i.Type.Contains("UserId")).Value;
+                }
+            }
+            if (id == "0")
+            {
+                return Unauthorized();
+            }
+            string url = "";
+            string q = $"SELECT profile_pic FROM Users WHERE user_id = {id}";
+            var reader = _db.ExecuteQuery(q);
+            while (reader.Read())
+            {
+                if (reader.GetValue(0) != DBNull.Value && !string.IsNullOrEmpty(reader.GetString(0)))
+                {
+                    url = reader.GetString(0);
+                }
+                else
+                {
+                    url = "https://cliquestorage.blob.core.windows.net/file-upload/user_0.jpg";
+                }
+            }
+            reader.Close();
+            return Ok(url);
+        }
     }
 }
