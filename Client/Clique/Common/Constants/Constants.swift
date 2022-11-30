@@ -13,8 +13,7 @@ enum Constants {
         private static let baseURL = "https://cliquewebservice20221115180920.azurewebsites.net/api/"
         static let registerURL = baseURL.appending("Authentication/RegisterUser")
         static let loginURL = baseURL.appending("Authentication/LoginUser")
-        static let profileIDUrl = baseURL.appending("User")
-        static let profileURL = baseURL.appending("User/4")
+        static let profileGetUserURL = baseURL.appending("User")
+        static let profileUpdateURL = baseURL.appending("User/UpdateUserData")
     }
-
 }

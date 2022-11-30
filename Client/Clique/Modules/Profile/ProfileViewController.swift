@@ -22,7 +22,6 @@ class ProfileViewController: UIViewController {
     
     private let profileService = ProfileService()
     
-    
     func getUser(){
         profileService.getUser { result in
             switch result {
@@ -35,7 +34,6 @@ class ProfileViewController: UIViewController {
             case .failure:
                 return
             }
-            
         }
     }
     
@@ -44,13 +42,19 @@ class ProfileViewController: UIViewController {
         getUser()
         profileImage.circleImage()
     }
-    
-    
-    
+
     func showDropDown() {
         eventsButtons.forEach { button in
             button.isHidden = !button.isHidden
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    @IBAction func editButtonPressed(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "ProfileEdit" , bundle:nil)
+        if let viewController = storyboard.instantiateInitialViewController() {
+            viewController.modalPresentationStyle = .fullScreen
+            present(viewController, animated: true)
         }
     }
     

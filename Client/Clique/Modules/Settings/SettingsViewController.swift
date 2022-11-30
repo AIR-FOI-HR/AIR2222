@@ -13,7 +13,8 @@ class SettingsViewController: UIViewController {
         userStorage.removeKey(key: UserStorageValues.token)
         let storyboard = UIStoryboard(name: "Initial" , bundle:nil)
         if let viewController = storyboard.instantiateInitialViewController() {
-            self.present(viewController, animated: true)
+            viewController.modalPresentationStyle = .fullScreen
+            present(viewController, animated: true)
         }
     }
 

@@ -52,8 +52,8 @@ class LoginViewController: UIViewController {
                 UserStorage.token = token.token
                 let storyboard = UIStoryboard(name: "Settings" , bundle:nil)
                 if let viewController = storyboard.instantiateInitialViewController() {
+                    viewController.modalPresentationStyle = .fullScreen
                     self.present(viewController, animated: true)
-                    //                    self.show(viewController, sender: true)
                 }
                 self.stopAnimation()
             case .failure:

@@ -40,6 +40,9 @@
                                                                                 <color key="tintColor" red="0.19205251370000001" green="0.15921307600000001" blue="0.1388969186" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <state key="normal" title="Button"/>
                                                                                 <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system"/>
+                                                                                <connections>
+                                                                                    <action selector="editButtonPressed:" destination="k85-Gf-EOC" eventType="primaryActionTriggered" id="mjU-qs-DkH"/>
+                                                                                </connections>
                                                                             </button>
                                                                         </subviews>
                                                                     </stackView>

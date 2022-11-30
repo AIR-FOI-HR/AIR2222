@@ -18,7 +18,6 @@ class InitialViewController: UIViewController {
         if let viewController = storyboard.instantiateInitialViewController() {
             viewController.modalPresentationStyle = .fullScreen
             present(viewController, animated: true)
-//            show(viewController, sender: self)
         }
     }
 }

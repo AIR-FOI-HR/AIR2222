@@ -16,7 +16,7 @@ final class ProfileService {
             + " " + "\(UserStorage.token)",
             "Accept": "application/json"
         ]
-        AF.request(Constants.Service.profileIDUrl, method: .get, headers: headers)
+        AF.request(Constants.Service.profileGetUserURL, method: .get, headers: headers)
             .validate(statusCode: 200..<300).responseData {
                 response in
                 switch response.result {
@@ -39,4 +39,27 @@ final class ProfileService {
             }
     }
     
+    func updateUser(
+        with entries: UserProfileUpdateData,
+        completionHandler: @escaping(Bool)->()){
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer"
+                + " " + "\(UserStorage.token)",
+                "Accept": "application/json"
+            ]
+            AF.request(Constants.Service.profileUpdateURL,
+                       method: .post,
+                       parameters : entries,
+                       encoder: JSONParameterEncoder.default, headers: headers
+            ).validate(statusCode: 200..<300).response{
+                response in
+                switch response.result {
+                case .success(_):
+                    completionHandler(true)
+                case .failure(_):
+                    completionHandler(false)
+                    
+                }
+            }
+        }
 }
