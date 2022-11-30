@@ -322,7 +322,8 @@ namespace CliqueWebService.Controllers
                 Stream myBlob = new MemoryStream();
                 myBlob = file.OpenReadStream();
                 var blobClient = new BlobContainerClient(storageConnection, containerName);
-                var blob = blobClient.GetBlobClient(id + ".jpg");
+                var blob = blobClient.GetBlobClient("user_" + id + ".jpg");
+                blob.DeleteIfExists(DeleteSnapshotsOption.IncludeSnapshots);
                 await blob.UploadAsync(myBlob);
             }
             catch (Exception ex)
@@ -338,7 +339,7 @@ namespace CliqueWebService.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
-            string query = $"UPDATE Users SET profile_pic = 'https://cliquestorage.blob.core.windows.net/file-upload/{id}.jpg' WHERE user_id = '{id}'";
+            string query = $"UPDATE Users SET profile_pic = 'https://cliquestorage.blob.core.windows.net/file-upload/user_{id}.jpg' WHERE user_id = '{id}'";
             _db.BeginTransaction();
             try
             {
