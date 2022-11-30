@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = viewController
             window?.makeKeyAndVisible()
         } else {
-            let storyboard = UIStoryboard(name: "Settings" , bundle:nil)
+            let storyboard = UIStoryboard(name: "Profile" , bundle:nil)
             let viewController = storyboard.instantiateInitialViewController()
             
             window = UIWindow(windowScene: windowScene)

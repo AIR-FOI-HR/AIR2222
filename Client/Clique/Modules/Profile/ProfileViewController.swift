@@ -42,6 +42,12 @@ class ProfileViewController: UIViewController {
         getUser()
         profileImage.circleImage()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getUser()
+        profileImage.circleImage()
+    }
 
     func showDropDown() {
         eventsButtons.forEach { button in

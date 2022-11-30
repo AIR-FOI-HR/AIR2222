@@ -37,7 +37,7 @@ class ProfileEditViewController: UIViewController{
         }
     }
     
-    @IBAction func loginButtonPressed(_ sender: UIButton) {
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
         
         guard let userProfileData = getProfileData() else {
             alert(fwdMessage: "Please enter all required info.")
@@ -45,6 +45,7 @@ class ProfileEditViewController: UIViewController{
         }
         
         updateUser(with: userProfileData)
+        dismiss(animated: true, completion: nil)
     }
     
     func updateUser(with userUpdateData: UserProfileUpdateData) {
@@ -75,7 +76,7 @@ class ProfileEditViewController: UIViewController{
             return nil
         }
         
-        let profileData = UserProfileUpdateData(name: name, surname: surname, email: email, gender: "", contact_no: "", birth_data: selectedDate, profile_pic: "", bio: bio)
+        let profileData = UserProfileUpdateData(name: name, surname: surname, email: email, gender: "1", contact_no: "empty", birth_data: selectedDate, profile_pic: "empty", bio: bio)
         return profileData
     }
     
@@ -86,10 +87,14 @@ class ProfileEditViewController: UIViewController{
         self.present(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func closeProfileEditViewController(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         getUser()
-        let yesterdayDate = Calendar.current.date(byAdding: .year, value: -13, to: Date())
-        datePicker.maximumDate = yesterdayDate
+        let allowedAgeDate = Calendar.current.date(byAdding: .year, value: -13, to: Date())
+        datePicker.maximumDate = allowedAgeDate
     }
 }
 
