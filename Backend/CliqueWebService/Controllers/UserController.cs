@@ -195,7 +195,7 @@ namespace CliqueWebService.Controllers
                 catch (Exception ex)
                 {
                     docResponse.Error = ex.Message;
-                    docResponse.Status = "500 - Internal Server Error";
+                    docResponse.Status = "0";
                     docResponse.Method = "POST";
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
@@ -207,7 +207,7 @@ namespace CliqueWebService.Controllers
                     _db.ExecuteNonQuery(query);
                     _db.CommitTransaction();
                     docResponse.Message = "User successfully updated";
-                    docResponse.Status = "200 - OK";
+                    docResponse.Status = "1";
                     docResponse.Method = "POST";
                     return Ok(docResponse);
                 }
@@ -216,7 +216,7 @@ namespace CliqueWebService.Controllers
                     _db.RollbackTransaction();
                     _db.CommitTransaction();
                     docResponse.Error = "Couldn't update user";
-                    docResponse.Status = "500 - Internal Server Error";
+                    docResponse.Status = "0";
                     docResponse.Method = "POST";
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
@@ -224,7 +224,7 @@ namespace CliqueWebService.Controllers
             else
             {
                 docResponse.Error = "Incorrectly formated JSON request";
-                docResponse.Status = "400 - Bad Request";
+                docResponse.Status = "0";
                 docResponse.Method = "POST";
                 return BadRequest(docResponse);
             }
@@ -244,7 +244,7 @@ namespace CliqueWebService.Controllers
                 catch (Exception ex)
                 {
                     docResponse.Error = ex.Message;
-                    docResponse.Status = "500 - Internal Server Error";
+                    docResponse.Status = "0";
                     docResponse.Method = "POST";
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
@@ -271,7 +271,7 @@ namespace CliqueWebService.Controllers
                     _db.ExecuteNonQuery(query);
                     _db.CommitTransaction();
                     docResponse.Message = "Password successfully updated";
-                    docResponse.Status = "200 - OK";
+                    docResponse.Status = "1";
                     docResponse.Method = "POST";
                     return Ok(docResponse);
                 }
@@ -280,7 +280,7 @@ namespace CliqueWebService.Controllers
                     _db.RollbackTransaction();
                     _db.CommitTransaction();
                     docResponse.Error = "Couldn't update password";
-                    docResponse.Status = "500 - Internal Server Error";
+                    docResponse.Status = "0";
                     docResponse.Method = "POST";
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
@@ -288,7 +288,7 @@ namespace CliqueWebService.Controllers
             else
             {
                 docResponse.Error = "Incorrectly formated JSON request";
-                docResponse.Status = "400 - Bad Request";
+                docResponse.Status = "0";
                 docResponse.Method = "POST";
                 return BadRequest(docResponse);
             }

@@ -150,7 +150,7 @@ namespace CliqueWebService.Controllers
             catch (Exception ex)
             {
                 returnResponse.Method = "GET";
-                returnResponse.Status = "500 - Internal Server Error";
+                returnResponse.Status = "0";
                 returnResponse.Events = null;
                 returnResponse.Error = ex.Message;
                 return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
@@ -176,7 +176,7 @@ namespace CliqueWebService.Controllers
                 _db.Disconnect();
                 if (!idExists)
                 {
-                    returnResponse.Status = "400 - Bad Request";
+                    returnResponse.Status = "0";
                     returnResponse.Method = "GET";
                     returnResponse.Events = null;
                     returnResponse.Error = $"User didn't create any events";
@@ -184,13 +184,13 @@ namespace CliqueWebService.Controllers
                 }
 
                 returnResponse.Events = events.ToList();
-                returnResponse.Status = "200 - OK";
+                returnResponse.Status = "1";
                 returnResponse.Method = "GET";
                 return Ok(returnResponse);
             }
             catch (Exception ex)
             {
-                returnResponse.Status = "500 - Internal Server Error";
+                returnResponse.Status = "0";
                 returnResponse.Method = "GET";
                 returnResponse.Events = null;
                 returnResponse.Error = ex.Message;
@@ -209,7 +209,7 @@ namespace CliqueWebService.Controllers
             catch (Exception ex)
             {
                 returnResponse.Method = "GET";
-                returnResponse.Status = "500 - Internal Server Error";
+                returnResponse.Status = "0";
                 returnResponse.Events = null;
                 returnResponse.Error = ex.Message;
                 return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
@@ -235,7 +235,7 @@ namespace CliqueWebService.Controllers
                 _db.Disconnect();
                 if (!idExists)
                 {
-                    returnResponse.Status = "400 - Bad Request";
+                    returnResponse.Status = "0";
                     returnResponse.Method = "GET";
                     returnResponse.Events = null;
                     returnResponse.Error = $"User isn't signed in any events.";
@@ -243,13 +243,13 @@ namespace CliqueWebService.Controllers
                 }
 
                 returnResponse.Events = events.ToList();
-                returnResponse.Status = "200 - OK";
+                returnResponse.Status = "1";
                 returnResponse.Method = "GET";
                 return Ok(returnResponse);
             }
             catch (Exception ex)
             {
-                returnResponse.Status = "500 - Internal Server Error";
+                returnResponse.Status = "0";
                 returnResponse.Method = "GET";
                 returnResponse.Events = null;
                 returnResponse.Error = ex.Message;
