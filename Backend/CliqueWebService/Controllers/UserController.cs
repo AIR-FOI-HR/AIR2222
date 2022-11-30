@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using DataAccess;
 using CliqueWebService.Helpers;
 using CliqueWebService.Helpers.Models;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 
 namespace CliqueWebService.Controllers
 {
@@ -11,6 +13,7 @@ namespace CliqueWebService.Controllers
     {
         Database _db;
         BusinessLogic _businessLogic;
+        string storageConnection;
         private readonly IConfiguration _configuration;
         // GET: api/<EventController>
 
@@ -18,6 +21,7 @@ namespace CliqueWebService.Controllers
         {
             _configuration = configuration ?? throw new ArgumentNullException();
             _db = new Database(configuration.GetConnectionString("AzureDatabase"));
+            storageConnection = configuration.GetConnectionString("AzureStorage");
             _businessLogic = new BusinessLogic();
         }
 
@@ -290,5 +294,65 @@ namespace CliqueWebService.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("UploadProfileImage")]
+        public async Task<IActionResult> Run(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest();
+            }
+
+            string id = "0";
+            if (Request.Headers.Keys.Contains("Authorization"))
+            {
+                string token = Request.Headers["Authorization"];
+                if (_businessLogic.isJWTValid(token.Replace("Bearer ", "")))
+                {
+                    id = User.Claims.FirstOrDefault(i => i.Type.Contains("UserId")).Value;
+                }
+            }
+            if (id == "0")
+            {
+                return Unauthorized();
+            }
+            try
+            {
+                string containerName = "file-upload";
+                Stream myBlob = new MemoryStream();
+                myBlob = file.OpenReadStream();
+                var blobClient = new BlobContainerClient(storageConnection, containerName);
+                var blob = blobClient.GetBlobClient(id + ".jpg");
+                await blob.UploadAsync(myBlob);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+
+            try
+            {
+                _db.Connect();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            string query = $"UPDATE Users SET profile_pic = 'https://cliquestorage.blob.core.windows.net/file-upload/{id}.jpg' WHERE user_id = '{id}'";
+            _db.BeginTransaction();
+            try
+            {
+                _db.ExecuteNonQuery(query);
+                _db.CommitTransaction();
+                return Ok();
+            }
+            catch
+            {
+                _db.RollbackTransaction();
+                _db.CommitTransaction();
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
+
+    }
 }
