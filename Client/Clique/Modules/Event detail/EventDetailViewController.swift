@@ -14,9 +14,18 @@ class EventDetailViewController: UIViewController{
     @IBOutlet private var _eventPreparation: UILabel!
     @IBOutlet private var _eventName: UILabel!
     @IBOutlet private var _eventImage: UIImageView!
+    @IBOutlet private var _eventCreator: UILabel!
+    @IBOutlet private var _eventLocation: UILabel!
+    @IBOutlet private var _eventTimestamp: UILabel!
+    @IBOutlet private var _eventParticipantsNum: UILabel!
+    @IBOutlet private var _eventCost: UILabel!
+    @IBOutlet private var _eventCategory: UILabel!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         _setupUI()
+        
     }
     
 }
@@ -26,9 +35,19 @@ private extension EventDetailViewController {
     func _setupUI(){
         
         guard let _event = eventGet else {return}
-        title = _event.eventName
+        //title = _event.eventName
         _eventName.text = _event.eventName
-        
-        
+        //_eventPreparation.text = _event.eventDesc    Ne radi zato sto imamo stari link
+        _eventCreator.text = _event.eventCreator.userName + " " + _event.eventCreator.userSurname
+        _eventLocation.text = _event.eventLocation
+        _eventTimestamp.text = _event.eventTimestamp
+        _eventParticipantsNum.text = String(_event.eventParticipantNumber)
+        if (_event.eventCost == 0 ){
+            _eventCost.text = "FREE"
+        }
+        else{
+            _eventCost.text = String(_event.eventCost!)
+        }
+        _eventCategory.text = _event.eventCategory
     }
 }

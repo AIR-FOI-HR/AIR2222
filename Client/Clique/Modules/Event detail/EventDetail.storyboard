@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vfD-ly-4vk">
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfD-ly-4vk">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -219,9 +219,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="_eventCategory" destination="d16-NA-xYv" id="2ZX-Qf-m77"/>
+                        <outlet property="_eventCost" destination="KSC-Kx-yHt" id="9Ga-XX-pyW"/>
+                        <outlet property="_eventCreator" destination="Ugm-yv-jJ6" id="4ZN-1B-wTu"/>
                         <outlet property="_eventImage" destination="ipo-qj-S1U" id="0wp-Hp-6SQ"/>
+                        <outlet property="_eventLocation" destination="jdC-ix-vef" id="sux-yL-f2j"/>
                         <outlet property="_eventName" destination="mJc-49-y62" id="snJ-yb-AQ9"/>
+                        <outlet property="_eventParticipantsNum" destination="c1h-IU-n1C" id="Xep-Sd-z8k"/>
                         <outlet property="_eventPreparation" destination="zAP-cj-rz6" id="VbC-hd-axs"/>
+                        <outlet property="_eventTimestamp" destination="piS-pd-3Uk" id="PCL-9B-S1o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLZ-aJ-uBV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
