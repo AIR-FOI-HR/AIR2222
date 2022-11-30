@@ -36,9 +36,12 @@
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uue-Bc-ogn">
-                                        <rect key="frame" x="55" y="0.0" width="260.33333333333331" height="34"/>
+                                        <rect key="frame" x="55" y="0.0" width="260.33333333333337" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="c7l-7R-NGj"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LG3-EH-s6A">
                                         <rect key="frame" x="320.33333333333331" y="0.0" width="49.666666666666686" height="34"/>
@@ -69,6 +72,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0dP-Pm-6eD"/>
                     <connections>
+                        <outlet property="_buttonFilter" destination="LG3-EH-s6A" id="7zG-Eo-As9"/>
                         <outlet property="_searchEventsTextField" destination="Uue-Bc-ogn" id="usa-HZ-SkY"/>
                         <outlet property="_tableView" destination="jhO-Gj-HN8" id="6Rx-pl-Uk4"/>
                     </connections>
