@@ -14,12 +14,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options
     connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let storyboard = UIStoryboard(name: "Settings" , bundle:nil)
-        let viewController = storyboard.instantiateInitialViewController()
+        if(UserStorage.token == ""){
+            let storyboard = UIStoryboard(name: "Initial" , bundle:nil)
+            let viewController = storyboard.instantiateInitialViewController()
+            
+            window = UIWindow(windowScene: windowScene)
+            window?.rootViewController = viewController
+            window?.makeKeyAndVisible()
+        } else {
+            let storyboard = UIStoryboard(name: "Settings" , bundle:nil)
+            let viewController = storyboard.instantiateInitialViewController()
+            
+            window = UIWindow(windowScene: windowScene)
+            window?.rootViewController = viewController
+            window?.makeKeyAndVisible()
+        }
         
-        window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = viewController
-        window?.makeKeyAndVisible()
+        
+        
     }
 
 }

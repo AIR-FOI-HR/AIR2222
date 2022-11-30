@@ -50,6 +50,11 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let token):
                 UserStorage.token = token.token
+                let storyboard = UIStoryboard(name: "Settings" , bundle:nil)
+                if let viewController = storyboard.instantiateInitialViewController() {
+                    self.present(viewController, animated: true)
+                    //                    self.show(viewController, sender: true)
+                }
                 self.stopAnimation()
             case .failure:
                 self.alert(fwdMessage: "Please enter your login info")

@@ -18,11 +18,13 @@ final class LoginService {
                        parameters : credentials,
                        encoder: JSONParameterEncoder.default ).responseDecodable(of:LoginResponse.self) {
                 dataResponse in
+                
                 switch dataResponse.result {
                 case .success(let token):
                     completion(.success(token))   
                 case .failure(let error):
                     completion(.failure(error))
+                    debugPrint(error.localizedDescription)
                 }
             }
         }

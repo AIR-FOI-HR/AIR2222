@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct UserGet: Codable {
     let status: String
     let method: String

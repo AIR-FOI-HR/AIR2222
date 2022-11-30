@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l0G-lb-gmx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MrT-NZ-X8Y">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zR-5Q-mNv">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="642"/>
@@ -44,14 +44,14 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jYQ-dW-0dh">
-                                                                        <rect key="frame" x="102" y="52.333333333333343" width="125" height="125"/>
+                                                                        <rect key="frame" x="102" y="52.333333333333329" width="125" height="124.99999999999999"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="125" id="RvB-xC-WjW"/>
                                                                             <constraint firstAttribute="height" constant="125" id="ky4-5N-vHP"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7I8-la-X6V">
-                                                                        <rect key="frame" x="139.66666666666666" y="195.33333333333331" width="50" height="50"/>
+                                                                        <rect key="frame" x="139.66666666666666" y="195.33333333333334" width="50" height="50"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -208,7 +208,7 @@
                             <constraint firstItem="MrT-NZ-X8Y" firstAttribute="leading" secondItem="3GI-j8-m5r" secondAttribute="leading" id="wL3-E1-Xgm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="0YK-CV-8VM"/>
+                    <navigationItem key="navigationItem" title="Profile" style="editor" id="0YK-CV-8VM"/>
                     <connections>
                         <outlet property="createdEventsButton" destination="jaO-tC-ORb" id="P5I-rN-o7j"/>
                         <outlet property="editButton" destination="TEh-hs-fI3" id="cQI-5Q-wFO"/>
@@ -227,35 +227,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zk8-b3-M9A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1600.7633587786258" y="-1319.0140845070423"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="N8P-jS-XEU">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="l0G-lb-gmx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="person" catalog="system" id="gbG-i8-iJo">
-                        <color key="badgeColor" red="0.97590136289999996" green="0.42688212689999999" blue="0.20423529579999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OA3-3N-RtS">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.60002936200000001" blue="0.34990315100000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="k85-Gf-EOC" kind="relationship" relationship="rootViewController" id="aiP-8Z-HfF"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nHX-2O-4ag" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="674.04580152671758" y="-1319.0140845070423"/>
+            <point key="canvasLocation" x="2527.4809160305344" y="-1319.0140845070423"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="120"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
-        <image name="person" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
