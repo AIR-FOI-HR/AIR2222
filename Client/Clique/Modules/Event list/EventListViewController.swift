@@ -15,6 +15,8 @@ class EventListViewController : UIViewController , UIAlertViewDelegate {
     private var datasource: [Event] = []{
         didSet{_tableView.reloadData()}}
     private var eventServices = EventServices()
+    
+    @IBOutlet private var _searchEventsTextField: UITextField!
     @IBOutlet private var _tableView: UITableView!
     
     override func viewDidLoad(){
@@ -22,6 +24,11 @@ class EventListViewController : UIViewController , UIAlertViewDelegate {
         super.viewDidLoad()
         _setupUI()
         self._tableView.reloadData()
+        
+        _searchEventsTextField.layer.shadowOpacity = 0.3
+        _searchEventsTextField.layer.shadowRadius = 2.0
+        _searchEventsTextField.layer.shadowOffset = CGSizeMake(3, 3)
+        _searchEventsTextField.layer.shadowColor = UIColor.gray.cgColor
     }
 }
 
@@ -68,9 +75,9 @@ extension EventListViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: EventListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EventListTableViewCell") as! EventListTableViewCell
         cell.configure(with: datasource[indexPath.row])
-        cell.contentView.layer.cornerRadius = 70
-        cell.contentView.layer.borderWidth = 2
-        cell.contentView.layer.borderColor = UIColor.systemOrange.cgColor
+        cell.contentView.layer.cornerRadius = 7
+        cell.contentView.layer.borderWidth = 0.5
+        cell.contentView.layer.borderColor = UIColor.lightGray.cgColor
 
         return cell
     }
