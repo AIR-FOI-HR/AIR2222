@@ -195,7 +195,7 @@ namespace CliqueWebService.Controllers
                 catch (Exception ex)
                 {
                     docResponse.Error = ex.Message;
-                    docResponse.Status = "500 - Internal Server Error";
+                    docResponse.Status = "0";
                     docResponse.Method = "POST";
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
@@ -207,7 +207,7 @@ namespace CliqueWebService.Controllers
                     _db.ExecuteNonQuery(query);
                     _db.CommitTransaction();
                     docResponse.Message = "User successfully updated";
-                    docResponse.Status = "200 - OK";
+                    docResponse.Status = "1";
                     docResponse.Method = "POST";
                     return Ok(docResponse);
                 }
@@ -216,7 +216,7 @@ namespace CliqueWebService.Controllers
                     _db.RollbackTransaction();
                     _db.CommitTransaction();
                     docResponse.Error = "Couldn't update user";
-                    docResponse.Status = "500 - Internal Server Error";
+                    docResponse.Status = "0";
                     docResponse.Method = "POST";
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
@@ -224,7 +224,7 @@ namespace CliqueWebService.Controllers
             else
             {
                 docResponse.Error = "Incorrectly formated JSON request";
-                docResponse.Status = "400 - Bad Request";
+                docResponse.Status = "0";
                 docResponse.Method = "POST";
                 return BadRequest(docResponse);
             }
@@ -244,7 +244,7 @@ namespace CliqueWebService.Controllers
                 catch (Exception ex)
                 {
                     docResponse.Error = ex.Message;
-                    docResponse.Status = "500 - Internal Server Error";
+                    docResponse.Status = "0";
                     docResponse.Method = "POST";
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
@@ -271,6 +271,7 @@ namespace CliqueWebService.Controllers
                 {
                     int count = _db.ExecuteNonQuery(query);
                     _db.CommitTransaction();
+<<<<<<< HEAD
                     if(count > 0)
                     {
                         docResponse.Message = "Password successfully updated";
@@ -280,6 +281,10 @@ namespace CliqueWebService.Controllers
                         docResponse.Message = "Old password is incorrect";
                         docResponse.Status = "403 - Forbidden";
                     }
+=======
+                    docResponse.Message = "Password successfully updated";
+                    docResponse.Status = "1";
+>>>>>>> 75b45c38811658cf16fde3f9877735ef064ac8a5
                     docResponse.Method = "POST";
                     return Ok(docResponse);
                 }
@@ -288,7 +293,7 @@ namespace CliqueWebService.Controllers
                     _db.RollbackTransaction();
                     _db.CommitTransaction();
                     docResponse.Error = "Couldn't update password";
-                    docResponse.Status = "500 - Internal Server Error";
+                    docResponse.Status = "0";
                     docResponse.Method = "POST";
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
@@ -296,7 +301,7 @@ namespace CliqueWebService.Controllers
             else
             {
                 docResponse.Error = "Incorrectly formated JSON request";
-                docResponse.Status = "400 - Bad Request";
+                docResponse.Status = "0";
                 docResponse.Method = "POST";
                 return BadRequest(docResponse);
             }
@@ -330,7 +335,8 @@ namespace CliqueWebService.Controllers
                 Stream myBlob = new MemoryStream();
                 myBlob = file.OpenReadStream();
                 var blobClient = new BlobContainerClient(storageConnection, containerName);
-                var blob = blobClient.GetBlobClient(id + ".jpg");
+                var blob = blobClient.GetBlobClient("user_" + id + ".jpg");
+                blob.DeleteIfExists(DeleteSnapshotsOption.IncludeSnapshots);
                 await blob.UploadAsync(myBlob);
             }
             catch (Exception ex)
@@ -346,13 +352,13 @@ namespace CliqueWebService.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
-            string query = $"UPDATE Users SET profile_pic = 'https://cliquestorage.blob.core.windows.net/file-upload/{id}.jpg' WHERE user_id = '{id}'";
+            string query = $"UPDATE Users SET profile_pic = 'https://cliquestorage.blob.core.windows.net/file-upload/user_{id}.jpg' WHERE user_id = '{id}'";
             _db.BeginTransaction();
             try
             {
                 _db.ExecuteNonQuery(query);
                 _db.CommitTransaction();
-                return Ok();
+                return Ok($"https://cliquestorage.blob.core.windows.net/file-upload/user_{id}.jpg");
             }
             catch
             {
@@ -361,6 +367,47 @@ namespace CliqueWebService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
-
+        [HttpGet]
+        [Route("GetProfilePic")]
+        public ActionResult GetProfilePic()
+        {
+            try
+            {
+                _db.Connect();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            string id = "0";
+            if (Request.Headers.Keys.Contains("Authorization"))
+            {
+                string token = Request.Headers["Authorization"];
+                if (_businessLogic.isJWTValid(token.Replace("Bearer ", "")))
+                {
+                    id = User.Claims.FirstOrDefault(i => i.Type.Contains("UserId")).Value;
+                }
+            }
+            if (id == "0")
+            {
+                return Unauthorized();
+            }
+            string url = "";
+            string q = $"SELECT profile_pic FROM Users WHERE user_id = {id}";
+            var reader = _db.ExecuteQuery(q);
+            while (reader.Read())
+            {
+                if (reader.GetValue(0) != DBNull.Value && !string.IsNullOrEmpty(reader.GetString(0)))
+                {
+                    url = reader.GetString(0);
+                }
+                else
+                {
+                    url = "https://cliquestorage.blob.core.windows.net/file-upload/user_0.jpg";
+                }
+            }
+            reader.Close();
+            return Ok(url);
+        }
     }
 }

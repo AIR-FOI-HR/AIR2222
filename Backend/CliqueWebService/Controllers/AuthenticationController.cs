@@ -69,7 +69,7 @@ namespace CliqueWebService.Controllers
                 }
                 catch (Exception e)
                 {
-                    return BadRequest("Could not connect to database");
+                    return BadRequest("Something went wrong");
                 }
                 if (user != null)
                 {
@@ -93,7 +93,7 @@ namespace CliqueWebService.Controllers
                     string insert = $"INSERT INTO Tokens (token, user_id, token_expires) VALUES ('{new JwtSecurityTokenHandler().WriteToken(token)}', {user.user_id}, '{token.ValidTo.ToString("yyyy-MM-dd HH:mm:ss")}')";
                     _db.ExecuteNonQuery(insert);
                     _db.Disconnect();
-                    return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo });
+                    return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token), validTo = token.ValidTo.ToString("yyyy-MM-dd HH:mm:ss") });
                 }
                 else
                 {
