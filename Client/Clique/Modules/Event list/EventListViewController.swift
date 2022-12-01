@@ -73,8 +73,6 @@ private extension EventListViewController {
         }else{
             datasource = allEvents
         }
-        
-        debugPrint(datasource)
         _tableView.reloadData()
     }
     

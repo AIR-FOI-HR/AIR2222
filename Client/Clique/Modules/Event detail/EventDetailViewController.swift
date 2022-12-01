@@ -11,7 +11,7 @@ import UIKit
 class EventDetailViewController: UIViewController{
     var eventGet : Event!
     
-    @IBOutlet private var _eventPreparation: UILabel!
+    @IBOutlet private var _eventDescription: UILabel!
     @IBOutlet private var _eventName: UILabel!
     @IBOutlet private var _eventImage: UIImageView!
     @IBOutlet private var _eventCreator: UILabel!
@@ -37,7 +37,7 @@ private extension EventDetailViewController {
         guard let _event = eventGet else {return}
         //title = _event.eventName
         _eventName.text = _event.eventName
-        //_eventPreparation.text = _event.eventDesc    Ne radi zato sto imamo stari link
+        _eventDescription.text = _event.eventDescription
         _eventCreator.text = _event.eventCreator.userName + " " + _event.eventCreator.userSurname
         _eventLocation.text = _event.eventLocation
         _eventTimestamp.text = _event.eventTimestamp

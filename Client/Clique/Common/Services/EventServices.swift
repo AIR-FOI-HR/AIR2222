@@ -21,10 +21,8 @@ final class EventServices{
                         let data = response.data
                         let decoder = JSONDecoder()
                         let event = try decoder.decode(EventGet.self, from: data!)
-                        debugPrint(event)
                         eventGets.append(event)
                         events = event.events
-                        debugPrint(events)
                         completion(.success(events))
                     }catch{
                         print(error)
