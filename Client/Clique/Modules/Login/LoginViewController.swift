@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let token):
                 UserStorage.token = token.token
-                let storyboard = UIStoryboard(name: "Settings" , bundle:nil)
+                let storyboard = UIStoryboard(name: "Profile" , bundle:nil)
                 if let viewController = storyboard.instantiateInitialViewController() {
                     viewController.modalPresentationStyle = .fullScreen
                     self.present(viewController, animated: true)

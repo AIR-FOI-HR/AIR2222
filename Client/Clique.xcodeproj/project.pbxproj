@@ -25,6 +25,8 @@
 		42541810293785D500782493 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 4254180F293785D500782493 /* Hero */; };
 		425418122937EEFE00782493 /* UserProfileUpdateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425418112937EEFE00782493 /* UserProfileUpdateData.swift */; };
 		4254AD3F29297E2A004D649D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4254AD3E29297E2A004D649D /* Constants.swift */; };
+		425992F929383C2800DEFA34 /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425992F829383C2800DEFA34 /* SecurityViewController.swift */; };
+		425992FB29383C3400DEFA34 /* Security.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425992FA29383C3400DEFA34 /* Security.storyboard */; };
 		425B8D12293585F500907BD9 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8D11293585F500907BD9 /* ProfileService.swift */; };
 		425B8D142935866000907BD9 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8D132935866000907BD9 /* UserProfile.swift */; };
 		425B8D1829359BA100907BD9 /* ProfileEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425B8D1729359BA100907BD9 /* ProfileEdit.storyboard */; };
@@ -42,6 +44,7 @@
 		429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429AC2692926ADF60029498B /* RegisterViewController.swift */; };
 		429EEA842936458E0026B866 /* UserGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EEA832936458E0026B866 /* UserGet.swift */; };
 		429FCA292933F2F200269AC5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FCA282933F2F200269AC5 /* Extensions.swift */; };
+		42D904382938263200831199 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 42D904372938263200831199 /* SkeletonView */; };
 		42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D99DE2292835C700516EF9 /* RegisterService.swift */; };
 		42D99DE62928362300516EF9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 42D99DE52928362300516EF9 /* Alamofire */; };
 		42DB272C292656ED0027A00C /* LoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DB272B292656ED0027A00C /* LoginServices.swift */; };
@@ -67,6 +70,8 @@
 		4253AE8D2933BF6D0054DC2B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		425418112937EEFE00782493 /* UserProfileUpdateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileUpdateData.swift; sourceTree = "<group>"; };
 		4254AD3E29297E2A004D649D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		425992F829383C2800DEFA34 /* SecurityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityViewController.swift; sourceTree = "<group>"; };
+		425992FA29383C3400DEFA34 /* Security.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Security.storyboard; sourceTree = "<group>"; };
 		425B8D11293585F500907BD9 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		425B8D132935866000907BD9 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		425B8D1729359BA100907BD9 /* ProfileEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileEdit.storyboard; sourceTree = "<group>"; };
@@ -98,6 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42496D10293033AA00D972C9 /* IQKeyboardManagerSwift in Frameworks */,
+				42D904382938263200831199 /* SkeletonView in Frameworks */,
 				42496D0C29301C9A00D972C9 /* KeychainAccess in Frameworks */,
 				420C5D92292C586C001E650D /* NVActivityIndicatorViewExtended in Frameworks */,
 				420C5D90292C586C001E650D /* NVActivityIndicatorView in Frameworks */,
@@ -229,6 +235,8 @@
 			children = (
 				4253AE8B2933BF2A0054DC2B /* Settings.storyboard */,
 				4253AE8D2933BF6D0054DC2B /* SettingsViewController.swift */,
+				425992F829383C2800DEFA34 /* SecurityViewController.swift */,
+				425992FA29383C3400DEFA34 /* Security.storyboard */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -344,6 +352,7 @@
 				42496D0B29301C9A00D972C9 /* KeychainAccess */,
 				42496D0F293033AA00D972C9 /* IQKeyboardManagerSwift */,
 				4254180F293785D500782493 /* Hero */,
+				42D904372938263200831199 /* SkeletonView */,
 			);
 			productName = Clique;
 			productReference = 420CDA94290E54380074ACFA /* Clique.app */;
@@ -379,6 +388,7 @@
 				42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				4254180E293785D500782493 /* XCRemoteSwiftPackageReference "Hero" */,
+				42D904362938263200831199 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 420CDA95290E54380074ACFA /* Products */;
 			projectDirPath = "";
@@ -394,6 +404,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				425992FB29383C3400DEFA34 /* Security.storyboard in Resources */,
 				4253AE872933AAC80054DC2B /* Profile.storyboard in Resources */,
 				4213719129262F1B0082F1C7 /* Login.storyboard in Resources */,
 				4272BF25293413AE00797045 /* PastJoinedEvents.storyboard in Resources */,
@@ -429,6 +440,7 @@
 				429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */,
 				425B8D12293585F500907BD9 /* ProfileService.swift in Sources */,
 				42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */,
+				425992F929383C2800DEFA34 /* SecurityViewController.swift in Sources */,
 				42EA63232932AADB007417D0 /* RegisterEntries.swift in Sources */,
 				4272BF27293413D400797045 /* PastJoinedEventsViewController.swift in Sources */,
 				429EEA842936458E0026B866 /* UserGet.swift in Sources */,
@@ -685,6 +697,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		42D904362938263200831199 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -720,6 +740,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4254180E293785D500782493 /* XCRemoteSwiftPackageReference "Hero" */;
 			productName = Hero;
+		};
+		42D904372938263200831199 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42D904362938263200831199 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 		42D99DE52928362300516EF9 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

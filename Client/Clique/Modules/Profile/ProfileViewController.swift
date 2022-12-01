@@ -6,6 +6,7 @@
 import UIKit
 import NVActivityIndicatorView
 import IQKeyboardManagerSwift
+import SkeletonView
 
 class ProfileViewController: UIViewController {
     
@@ -27,6 +28,12 @@ class ProfileViewController: UIViewController {
             switch result {
             case .success(let user):
                 for item in user {
+                    
+                    
+                    self.profileImage.stopSkeletonAnimation()
+                    self.labelProfileName.stopSkeletonAnimation()
+                    self.textViewBio.stopSkeletonAnimation()
+                    self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
                     self.labelProfileName.text = item.name + " " + item.surname
                     self.textViewBio.text = item.bio
                 }
@@ -41,12 +48,47 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         getUser()
         profileImage.circleImage()
+        
+        profileImage.layer.masksToBounds = false
+        labelProfileName.layer.masksToBounds = false
+        textViewBio.layer.masksToBounds = false
+        
+        profileImage.isSkeletonable = true
+        profileImage.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        
+        labelProfileName.isSkeletonable = true
+        labelProfileName.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        
+        textViewBio.isSkeletonable = true
+        textViewBio.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        
+        SkeletonAppearance.default.skeletonCornerRadius = 100
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        profileImage.circleImage()
         getUser()
         profileImage.circleImage()
+        
+        profileImage.layer.masksToBounds = false
+        labelProfileName.layer.masksToBounds = false
+        textViewBio.layer.masksToBounds = false
+        
+        profileImage.isSkeletonable = true
+        profileImage.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        
+        labelProfileName.isSkeletonable = true
+        labelProfileName.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        
+        textViewBio.isSkeletonable = true
+        textViewBio.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        
+        SkeletonAppearance.default.skeletonCornerRadius = 100
+        
+        
     }
 
     func showDropDown() {
@@ -58,6 +100,14 @@ class ProfileViewController: UIViewController {
     
     @IBAction func editButtonPressed(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "ProfileEdit" , bundle:nil)
+        if let viewController = storyboard.instantiateInitialViewController() {
+            viewController.modalPresentationStyle = .fullScreen
+            present(viewController, animated: true)
+        }
+    }
+    
+    @IBAction func settingsButtonPressed(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Settings" , bundle:nil)
         if let viewController = storyboard.instantiateInitialViewController() {
             viewController.modalPresentationStyle = .fullScreen
             present(viewController, animated: true)
