@@ -80,8 +80,8 @@ extension EventListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "EventDetail", bundle: nil)
-        let eventDetailViewController =  storyboard.instantiateViewController(withIdentifier: "EventDetail") as? EventDetailViewController
+        let storyboard = UIStoryboard(name: Constants.Storyboards.eventDetail, bundle: nil)
+        let eventDetailViewController =  storyboard.instantiateViewController(withIdentifier: Constants.Storyboards.eventDetail) as? EventDetailViewController
         
         eventDetailViewController?.eventGet = events[indexPath.row]
         navigationController?.pushViewController(eventDetailViewController!, animated: true)
@@ -91,7 +91,7 @@ extension EventListViewController: UITableViewDelegate {
 extension EventListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: EventListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "EventListTableViewCell") as! EventListTableViewCell
+        let cell: EventListTableViewCell = tableView.dequeueReusableCell(withIdentifier: Constants.Storyboards.eventListTableViewCell) as! EventListTableViewCell
         cell.configure(with: events[indexPath.row])
         cell.contentView.layer.cornerRadius = 7
         cell.contentView.layer.borderWidth = 0.5

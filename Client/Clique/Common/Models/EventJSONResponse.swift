@@ -8,8 +8,9 @@
 import Foundation
 
 
-struct EventGet: Codable {
+struct EventJSONResponse: Codable {
     let status: String
     let method: String
     let events: [Event]
+    
 }

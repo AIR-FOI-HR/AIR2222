@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Event: Codable{
+struct Event: Codable {
     let eventID: Int
     let eventName: String
     let eventLocation: String

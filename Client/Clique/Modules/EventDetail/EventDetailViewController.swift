@@ -42,10 +42,12 @@ private extension EventDetailViewController {
         _eventLocation.text = _event.eventLocation
         _eventTimestamp.text = _event.eventTimestamp
         _eventParticipantsNum.text = String(_event.eventParticipantNumber)
-        if let price = _event.eventCost{
-            _eventCost.text = price == 0 ? "FREE" : String(price)
-        } else {
-            _eventCost.text = "FREE"
+        if
+            let price = _event.eventCost{
+            _eventCost.text = price == 0 ? Constants.Labels.labelFree : String(price)
+        }
+        else {
+            _eventCost.text = Constants.Labels.labelFree
         }
         _eventCategory.text = _event.eventCategory
     }
