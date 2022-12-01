@@ -39,7 +39,7 @@
                                                                                 <rect key="frame" x="0.0" y="34.333333333333329" width="74.666666666666671" height="34.333333333333329"/>
                                                                                 <state key="normal" title="Button"/>
                                                                                 <buttonConfiguration key="configuration" style="plain" image="gearshape.fill" catalog="system">
-                                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
                                                                                 </buttonConfiguration>
                                                                                 <connections>
                                                                                     <action selector="settingsButtonPressed:" destination="k85-Gf-EOC" eventType="touchUpInside" id="DSW-uf-QYQ"/>
@@ -50,7 +50,7 @@
                                                                                 <color key="tintColor" red="0.19205251370000001" green="0.15921307600000001" blue="0.1388969186" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <state key="normal" title="Button"/>
                                                                                 <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system">
-                                                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
                                                                                 </buttonConfiguration>
                                                                                 <connections>
                                                                                     <action selector="editButtonPressed:" destination="k85-Gf-EOC" eventType="primaryActionTriggered" id="mjU-qs-DkH"/>
@@ -70,15 +70,12 @@
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
-                                                                                <real key="value" value="10"/>
+                                                                                <real key="value" value="58"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7I8-la-X6V">
-                                                                        <rect key="frame" x="94.666666666666686" y="229.66666666666669" width="140" height="50"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" constant="140" id="lcp-gr-siD"/>
-                                                                        </constraints>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7I8-la-X6V">
+                                                                        <rect key="frame" x="0.0" y="229.66666666666669" width="329" height="50"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -89,7 +86,7 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="p5M-sK-MAc">
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5M-sK-MAc">
                                                                         <rect key="frame" x="0.0" y="297.66666666666669" width="329" height="72.333333333333314"/>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <color key="textColor" systemColor="labelColor"/>
@@ -108,6 +105,8 @@
                                                                     <constraint firstAttribute="trailing" secondItem="bod-XZ-EHL" secondAttribute="trailing" id="FuA-oR-8pj"/>
                                                                     <constraint firstItem="bod-XZ-EHL" firstAttribute="leading" secondItem="Aos-oG-3Ky" secondAttribute="leading" id="QvL-X4-fHc"/>
                                                                     <constraint firstItem="p5M-sK-MAc" firstAttribute="leading" secondItem="Aos-oG-3Ky" secondAttribute="leading" id="bg6-Xi-yE4"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="7I8-la-X6V" secondAttribute="trailing" id="fa8-IJ-SdE"/>
+                                                                    <constraint firstItem="7I8-la-X6V" firstAttribute="leading" secondItem="Aos-oG-3Ky" secondAttribute="leading" id="nls-HL-w2t"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -327,6 +326,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

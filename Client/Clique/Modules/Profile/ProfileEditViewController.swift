@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SkeletonView
 
-class ProfileEditViewController: UIViewController{
+class ProfileEditViewController: UIViewController {
     
     @IBOutlet weak var imgProfile: UIImageView!
     @IBOutlet weak var btnChooseImage: UIButton!
@@ -29,6 +30,14 @@ class ProfileEditViewController: UIViewController{
                     self.surnameTextField.text = item.surname
                     self.emailTextField.text = item.email
                     self.textViewBio.text = item.bio
+                    self.imgProfile.stopSkeletonAnimation()
+                    self.emailTextField.stopSkeletonAnimation()
+                    self.nameTextfield.stopSkeletonAnimation()
+                    self.surnameTextField.stopSkeletonAnimation()
+                    self.textViewBio.stopSkeletonAnimation()
+                    self.datePicker.stopSkeletonAnimation()
+                    
+                    self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
                 }
                 return
             case .failure:
@@ -43,7 +52,6 @@ class ProfileEditViewController: UIViewController{
             alert(fwdMessage: "Please enter all required info.")
             return
         }
-        
         updateUser(with: userProfileData)
         dismiss(animated: true, completion: nil)
     }
@@ -80,7 +88,7 @@ class ProfileEditViewController: UIViewController{
         return profileData
     }
     
-    func alert(fwdMessage: String){
+    func alert(fwdMessage: String) {
         let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(defaultAction)
@@ -92,9 +100,40 @@ class ProfileEditViewController: UIViewController{
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         getUser()
         let allowedAgeDate = Calendar.current.date(byAdding: .year, value: -13, to: Date())
         datePicker.maximumDate = allowedAgeDate
+        imgProfile.layer.masksToBounds = false
+        imgProfile.isSkeletonable = true
+        imgProfile.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        
+        emailTextField.layer.masksToBounds = false
+        emailTextField.isSkeletonable = true
+        emailTextField.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        
+        nameTextfield.layer.masksToBounds = false
+        nameTextfield.isSkeletonable = true
+        nameTextfield.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        
+        surnameTextField.layer.masksToBounds = false
+        surnameTextField.isSkeletonable = true
+        surnameTextField.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        
+        textViewBio.layer.masksToBounds = false
+        textViewBio.isSkeletonable = true
+        textViewBio.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        
+        datePicker.layer.masksToBounds = false
+        datePicker.isSkeletonable = true
+        datePicker.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        
+        SkeletonAppearance.default.skeletonCornerRadius = 100
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getUser()
     }
 }
 

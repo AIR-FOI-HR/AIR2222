@@ -41,6 +41,8 @@
 		4272BF27293413D400797045 /* PastJoinedEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272BF26293413D400797045 /* PastJoinedEventsViewController.swift */; };
 		42740C3F2926468900CD1DFC /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42740C3E2926468900CD1DFC /* Register.storyboard */; };
 		428ADAA529264FF100417940 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ADAA429264FF100417940 /* LoginViewController.swift */; };
+		429861B729392CA4001CF447 /* PasswordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429861B629392CA4001CF447 /* PasswordData.swift */; };
+		429861B929392D45001CF447 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429861B829392D45001CF447 /* SettingsService.swift */; };
 		429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429AC2692926ADF60029498B /* RegisterViewController.swift */; };
 		429EEA842936458E0026B866 /* UserGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EEA832936458E0026B866 /* UserGet.swift */; };
 		429FCA292933F2F200269AC5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FCA282933F2F200269AC5 /* Extensions.swift */; };
@@ -86,6 +88,8 @@
 		4272BF26293413D400797045 /* PastJoinedEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastJoinedEventsViewController.swift; sourceTree = "<group>"; };
 		42740C3E2926468900CD1DFC /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		428ADAA429264FF100417940 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		429861B629392CA4001CF447 /* PasswordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordData.swift; sourceTree = "<group>"; };
+		429861B829392D45001CF447 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		429AC2692926ADF60029498B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		429EEA832936458E0026B866 /* UserGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGet.swift; sourceTree = "<group>"; };
 		429FCA282933F2F200269AC5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 				425B8D132935866000907BD9 /* UserProfile.swift */,
 				429EEA832936458E0026B866 /* UserGet.swift */,
 				425418112937EEFE00782493 /* UserProfileUpdateData.swift */,
+				429861B629392CA4001CF447 /* PasswordData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 				42DB272B292656ED0027A00C /* LoginServices.swift */,
 				42D99DE2292835C700516EF9 /* RegisterService.swift */,
 				425B8D11293585F500907BD9 /* ProfileService.swift */,
+				429861B829392D45001CF447 /* SettingsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -427,6 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				429861B929392D45001CF447 /* SettingsService.swift in Sources */,
 				4272BF1429340FAB00797045 /* JoinedEventsViewController.swift in Sources */,
 				42464B01292F7ADA009FDE1D /* SceneDelegate.swift in Sources */,
 				425B8D142935866000907BD9 /* UserProfile.swift in Sources */,
@@ -437,6 +444,7 @@
 				4237AC87292C215F00095D47 /* LoginResponse.swift in Sources */,
 				4272BF212934139700797045 /* CreatedEventsViewController.swift in Sources */,
 				420CDA98290E54380074ACFA /* AppDelegate.swift in Sources */,
+				429861B729392CA4001CF447 /* PasswordData.swift in Sources */,
 				429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */,
 				425B8D12293585F500907BD9 /* ProfileService.swift in Sources */,
 				42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */,

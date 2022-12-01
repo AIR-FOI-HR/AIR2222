@@ -17,46 +17,75 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8L-S4-7RZ">
-                                <rect key="frame" x="32" y="186.33333333333337" width="329" height="170"/>
+                                <rect key="frame" x="32" y="186.33333333333337" width="329" height="310"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="bnA-jw-bUY">
-                                        <rect key="frame" x="8" y="8" width="313" height="150.66666666666666"/>
+                                        <rect key="frame" x="8" y="8" width="313" height="233"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99Y-dL-FkS">
-                                                <rect key="frame" x="0.0" y="0.0" width="116.66666666666667" height="20.333333333333332"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Old password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99Y-dL-FkS">
+                                                <rect key="frame" x="0.0" y="0.0" width="109" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nLw-bA-BB0">
+                                                <rect key="frame" x="0.0" y="34.333333333333314" width="313" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WU7-V1-BAd">
+                                                <rect key="frame" x="0.0" y="82.333333333333343" width="116.66666666666667" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f96-UE-E3x">
-                                                <rect key="frame" x="0.0" y="34.333333333333314" width="313" height="34"/>
+                                                <rect key="frame" x="0.0" y="116.66666666666666" width="313" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat new password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jo3-Ah-kcL">
-                                                <rect key="frame" x="0.0" y="82.333333333333343" width="172" height="20.333333333333329"/>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Characters check label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jo3-Ah-kcL">
+                                                <rect key="frame" x="0.0" y="157.66666666666666" width="313" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <color key="highlightedColor" systemColor="systemRedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat new password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHg-Jy-hYq">
+                                                <rect key="frame" x="0.0" y="164.66666666666666" width="172" height="20.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uIA-mr-RfR">
-                                                <rect key="frame" x="0.0" y="116.66666666666666" width="313" height="34"/>
+                                                <rect key="frame" x="0.0" y="198.99999999999997" width="313" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matching password label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n39-bw-Dqf">
+                                                <rect key="frame" x="0.0" y="232.99999999999997" width="313" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <color key="highlightedColor" systemColor="systemRedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="f96-UE-E3x" secondAttribute="trailing" id="BEN-Vm-y7F"/>
+                                            <constraint firstItem="nLw-bA-BB0" firstAttribute="leading" secondItem="bnA-jw-bUY" secondAttribute="leading" id="DtR-Dr-ues"/>
                                             <constraint firstItem="uIA-mr-RfR" firstAttribute="leading" secondItem="bnA-jw-bUY" secondAttribute="leading" id="S1t-nE-cli"/>
                                             <constraint firstItem="f96-UE-E3x" firstAttribute="leading" secondItem="bnA-jw-bUY" secondAttribute="leading" id="YIh-P2-Xm9"/>
+                                            <constraint firstAttribute="trailing" secondItem="Jo3-Ah-kcL" secondAttribute="trailing" id="dLU-K9-olL"/>
+                                            <constraint firstItem="n39-bw-Dqf" firstAttribute="leading" secondItem="bnA-jw-bUY" secondAttribute="leading" id="eaT-mE-ynR"/>
+                                            <constraint firstAttribute="trailing" secondItem="n39-bw-Dqf" secondAttribute="trailing" id="lYd-p4-VEe"/>
+                                            <constraint firstItem="Jo3-Ah-kcL" firstAttribute="leading" secondItem="bnA-jw-bUY" secondAttribute="leading" id="oKC-VY-Evf"/>
                                             <constraint firstAttribute="trailing" secondItem="uIA-mr-RfR" secondAttribute="trailing" id="oUs-xi-rxQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="nLw-bA-BB0" secondAttribute="trailing" id="qcV-Sw-sGP"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="bnA-jw-bUY" firstAttribute="top" secondItem="c8L-S4-7RZ" secondAttribute="top" constant="8" id="BFz-qs-Umc"/>
-                                    <constraint firstAttribute="height" constant="170" id="BMj-bq-9hc"/>
+                                    <constraint firstAttribute="height" constant="310" id="BMj-bq-9hc"/>
                                     <constraint firstItem="bnA-jw-bUY" firstAttribute="leading" secondItem="c8L-S4-7RZ" secondAttribute="leading" constant="8" id="Etf-8R-xBd"/>
                                     <constraint firstAttribute="trailing" secondItem="bnA-jw-bUY" secondAttribute="trailing" constant="8" id="hQf-AY-TEq"/>
                                 </constraints>
@@ -72,7 +101,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dj0-78-R5o">
-                                <rect key="frame" x="40" y="392.33333333333331" width="313" height="34.333333333333314"/>
+                                <rect key="frame" x="40" y="532.33333333333337" width="313" height="34.333333333333371"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save">
@@ -80,6 +109,9 @@
                                         <color key="backgroundColor" red="1" green="0.60002936200000001" blue="0.34990315100000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </backgroundConfiguration>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="W3S-JS-svn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -97,6 +129,12 @@
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="QMa-mb-a6S" id="XdL-pr-jIl"/>
+                        <outlet property="matchingPasswordsLabel" destination="n39-bw-Dqf" id="WTQ-Wm-YUG"/>
+                        <outlet property="newPasswordTextField" destination="f96-UE-E3x" id="tzc-3b-vmC"/>
+                        <outlet property="oldPasswordTextField" destination="nLw-bA-BB0" id="6sr-8w-ivQ"/>
+                        <outlet property="passwordCheckLabel" destination="Jo3-Ah-kcL" id="DdY-rY-XZp"/>
+                        <outlet property="repeatNewPasswordTextField" destination="uIA-mr-RfR" id="Mx8-gV-0KW"/>
+                        <outlet property="savePasswordButton" destination="Dj0-78-R5o" id="fab-q7-44g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -108,6 +146,9 @@
         <image name="xmark.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

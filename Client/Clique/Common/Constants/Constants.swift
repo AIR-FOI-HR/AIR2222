@@ -15,5 +15,6 @@ enum Constants {
         static let loginURL = baseURL.appending("Authentication/LoginUser")
         static let profileGetUserURL = baseURL.appending("User")
         static let profileUpdateURL = baseURL.appending("User/UpdateUserData")
+        static let passwordUpdateURL = baseURL.appending("User/UpdateUserPassword")
     }
 }

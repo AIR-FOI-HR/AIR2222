@@ -23,17 +23,16 @@ class ProfileViewController: UIViewController {
     
     private let profileService = ProfileService()
     
-    func getUser(){
+    func getUser() {
         profileService.getUser { result in
             switch result {
             case .success(let user):
                 for item in user {
-                    
-                    
                     self.profileImage.stopSkeletonAnimation()
                     self.labelProfileName.stopSkeletonAnimation()
                     self.textViewBio.stopSkeletonAnimation()
                     self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
+                    
                     self.labelProfileName.text = item.name + " " + item.surname
                     self.textViewBio.text = item.bio
                 }
@@ -71,7 +70,6 @@ class ProfileViewController: UIViewController {
         
         profileImage.circleImage()
         getUser()
-        profileImage.circleImage()
         
         profileImage.layer.masksToBounds = false
         labelProfileName.layer.masksToBounds = false
@@ -85,10 +83,6 @@ class ProfileViewController: UIViewController {
         
         textViewBio.isSkeletonable = true
         textViewBio.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
-        
-        SkeletonAppearance.default.skeletonCornerRadius = 100
-        
-        
     }
 
     func showDropDown() {

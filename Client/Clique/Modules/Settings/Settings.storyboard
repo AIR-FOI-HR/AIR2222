@@ -17,8 +17,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="aaaaaaaaaaaa_1" translatesAutoresizingMaskIntoConstraints="NO" id="xxp-Vo-Htd">
-                                <rect key="frame" x="132" y="173" width="129" height="128"/>
+                                <rect key="frame" x="132" y="173" width="129" height="129"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="129" id="TN2-Yc-wU0"/>
+                                </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npa-B0-9qb">
+                                <rect key="frame" x="32" y="362" width="329" height="34.333333333333314"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Security">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="securityButtonPressed:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="hU7-pM-qlo"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMY-wC-rkZ">
                                 <rect key="frame" x="32" y="429" width="329" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
@@ -30,19 +46,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="logOutButtonPressed:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="RLz-lm-3jN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kv7-JO-u5S">
-                                <rect key="frame" x="32" y="359" width="329" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Security">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                    </backgroundConfiguration>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="securityButtonPressed:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="bnj-hG-2wn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KY2-y5-ozZ">
@@ -59,17 +62,16 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kv7-JO-u5S" secondAttribute="trailing" constant="32" id="D6e-U3-hfi"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hMY-wC-rkZ" secondAttribute="trailing" constant="32" id="Df9-RB-vTb"/>
                             <constraint firstItem="xxp-Vo-Htd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="132" id="JV3-p2-Us9"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xxp-Vo-Htd" secondAttribute="trailing" constant="132" id="LhW-RW-iit"/>
-                            <constraint firstItem="hMY-wC-rkZ" firstAttribute="top" secondItem="kv7-JO-u5S" secondAttribute="bottom" constant="35" id="OPy-S4-IJF"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="hMY-wC-rkZ" secondAttribute="bottom" constant="354.66666666666669" id="RYo-og-COv"/>
                             <constraint firstItem="KY2-y5-ozZ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="Tgu-mA-0WB"/>
+                            <constraint firstItem="Npa-B0-9qb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="VDa-wl-FbH"/>
                             <constraint firstItem="KY2-y5-ozZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="29" id="WQD-y3-SYl"/>
-                            <constraint firstItem="kv7-JO-u5S" firstAttribute="top" secondItem="xxp-Vo-Htd" secondAttribute="bottom" constant="58" id="a0H-dO-YaK"/>
-                            <constraint firstItem="kv7-JO-u5S" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="aU0-2J-3Sw"/>
                             <constraint firstItem="hMY-wC-rkZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="hCb-uP-p4i"/>
+                            <constraint firstItem="Npa-B0-9qb" firstAttribute="top" secondItem="xxp-Vo-Htd" secondAttribute="bottom" constant="60" id="odx-Be-TX2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Npa-B0-9qb" secondAttribute="trailing" constant="32" id="qaF-Sr-nK1"/>
                             <constraint firstItem="xxp-Vo-Htd" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="114" id="vba-og-8Yh"/>
                         </constraints>
                     </view>
@@ -79,7 +81,7 @@
                     <connections>
                         <outlet property="closeButton" destination="KY2-y5-ozZ" id="PSA-fb-0KM"/>
                         <outlet property="logOutButton" destination="hMY-wC-rkZ" id="DO1-Nc-xjl"/>
-                        <outlet property="securityButton" destination="kv7-JO-u5S" id="Tb6-s3-AsH"/>
+                        <outlet property="securityButton" destination="Npa-B0-9qb" id="dgj-dp-sCn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -91,6 +93,9 @@
         <image name="aaaaaaaaaaaa_1" width="884" height="923"/>
         <image name="gear" catalog="system" width="128" height="122"/>
         <image name="xmark.circle" catalog="system" width="128" height="123"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

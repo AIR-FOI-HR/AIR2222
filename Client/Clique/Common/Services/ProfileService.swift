@@ -57,7 +57,6 @@ final class ProfileService {
                 switch response.result {
                 case .success(_):
                     completionHandler(true)
-                    
                 case .failure(_):
                     completionHandler(false)
                     
