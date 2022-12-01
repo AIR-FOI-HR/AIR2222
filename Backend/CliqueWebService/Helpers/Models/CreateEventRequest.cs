@@ -12,15 +12,15 @@ namespace CliqueWebService.Helpers.Models
         [Required]
         public DateTime EventTimeStamp { get; set; }
         [Required]
-        [RegularExpression("[0-9]", ErrorMessage = "Invalid number of participants")]
+        [RegularExpression("[0-9]*", ErrorMessage = "Invalid number of participants")]
         public string ParticipantsNo { get; set; }
         [Required]
-        [RegularExpression("[0-9]", ErrorMessage = "Invalid cost format")]
+        [RegularExpression("[0-9].*", ErrorMessage = "Invalid cost format")]
         public string Cost { get; set; }
-        [RegularExpression("[0-9]", ErrorMessage = "Select currency")]
+        [RegularExpression("[0-9]*", ErrorMessage = "Select currency")]
         public string Currency { get; set; }
         [Required]
-        [RegularExpression("[0-9]", ErrorMessage = "Select category")]
+        [RegularExpression("[0-9]*", ErrorMessage = "Select category")]
         public string Category { get; set; }
 
         public string Description { get; set; }

@@ -150,7 +150,7 @@ namespace CliqueWebService.Controllers
             catch (Exception ex)
             {
                 returnResponse.Method = "GET";
-                returnResponse.Status = "500 - Internal Server Error";
+                returnResponse.Status = "0";
                 returnResponse.Events = null;
                 returnResponse.Error = ex.Message;
                 return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
@@ -176,7 +176,7 @@ namespace CliqueWebService.Controllers
                 _db.Disconnect();
                 if (!idExists)
                 {
-                    returnResponse.Status = "400 - Bad Request";
+                    returnResponse.Status = "0";
                     returnResponse.Method = "GET";
                     returnResponse.Events = null;
                     returnResponse.Error = $"User didn't create any events";
@@ -184,13 +184,13 @@ namespace CliqueWebService.Controllers
                 }
 
                 returnResponse.Events = events.ToList();
-                returnResponse.Status = "200 - OK";
+                returnResponse.Status = "1";
                 returnResponse.Method = "GET";
                 return Ok(returnResponse);
             }
             catch (Exception ex)
             {
-                returnResponse.Status = "500 - Internal Server Error";
+                returnResponse.Status = "0";
                 returnResponse.Method = "GET";
                 returnResponse.Events = null;
                 returnResponse.Error = ex.Message;
@@ -209,7 +209,7 @@ namespace CliqueWebService.Controllers
             catch (Exception ex)
             {
                 returnResponse.Method = "GET";
-                returnResponse.Status = "500 - Internal Server Error";
+                returnResponse.Status = "0";
                 returnResponse.Events = null;
                 returnResponse.Error = ex.Message;
                 return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
@@ -235,7 +235,7 @@ namespace CliqueWebService.Controllers
                 _db.Disconnect();
                 if (!idExists)
                 {
-                    returnResponse.Status = "400 - Bad Request";
+                    returnResponse.Status = "0";
                     returnResponse.Method = "GET";
                     returnResponse.Events = null;
                     returnResponse.Error = $"User isn't signed in any events.";
@@ -243,13 +243,13 @@ namespace CliqueWebService.Controllers
                 }
 
                 returnResponse.Events = events.ToList();
-                returnResponse.Status = "200 - OK";
+                returnResponse.Status = "1";
                 returnResponse.Method = "GET";
                 return Ok(returnResponse);
             }
             catch (Exception ex)
             {
-                returnResponse.Status = "500 - Internal Server Error";
+                returnResponse.Status = "0";
                 returnResponse.Method = "GET";
                 returnResponse.Events = null;
                 returnResponse.Error = ex.Message;
@@ -296,7 +296,7 @@ namespace CliqueWebService.Controllers
                 dr.Status = "0";
                 return BadRequest(dr);
             }
-            if (request.Cost != "0" && string.IsNullOrEmpty(request.Currency))
+            if (double.Parse(request.Cost) > 0 && (string.IsNullOrEmpty(request.Currency) || request.Currency == "0"))
             {
                 dr.Method = "POST";
                 dr.Error = "Please enter the currency";
@@ -321,7 +321,7 @@ namespace CliqueWebService.Controllers
                 else
                 {
                     q = $"INSERT INTO Events(event_name, event_location, event_date, event_time, participations_no, cost, currency,creator, category, description)" +
-                        $" VALUES ('{request.EventName}', '{request.EventLocation}', '{request.EventTimeStamp.ToString("yyyy-MM-dd")}', '{request.EventTimeStamp.ToString("HH:mm:ss")}', '{request.ParticipantsNo}', '{request.Cost}', '{request.Currency}','{id}', '{request.Category}', {desc})";
+                        $" VALUES ('{request.EventName}', '{request.EventLocation}', '{request.EventTimeStamp.ToString("yyyy-MM-dd")}', '{request.EventTimeStamp.ToString("HH:mm:ss")}', '{request.ParticipantsNo}', '{request.Cost}', '{request.Currency}','{id}', '{request.Category}', '{desc}')";
                 }
                 _db.ExecuteNonQuery(q);
                 _db.CommitTransaction();

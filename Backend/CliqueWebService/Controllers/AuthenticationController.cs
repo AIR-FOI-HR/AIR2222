@@ -49,7 +49,7 @@ namespace CliqueWebService.Controllers
                 {
                     List<User> userList = new List<User>();
                     var hash = _businessLogic.ConvertToSHA256(password);
-                    string query = $"SELECT user_id, name, surname, email, g.gender_name, contact_no, birth_data, profile_pic, bio FROM Users, Gender as g WHERE email LIKE '{email}' AND hash_password LIKE '{hash.ToLower()}' AND g.gender_id = gender";
+                    string query = $"SELECT user_id, name, surname, email, gender_name, contact_no, birth_data, profile_pic, bio FROM Users LEFT JOIN Gender ON gender_id = gender WHERE email LIKE '{email}' AND hash_password LIKE '{hash.ToLower()}'";
                     var reader = _db.ExecuteQuery(query);
                     if (!reader.HasRows)
                     {
@@ -69,7 +69,7 @@ namespace CliqueWebService.Controllers
                 }
                 catch (Exception e)
                 {
-                    return BadRequest("Could not connect to database");
+                    return BadRequest("Something went wrong");
                 }
                 if (user != null)
                 {
@@ -93,7 +93,7 @@ namespace CliqueWebService.Controllers
                     string insert = $"INSERT INTO Tokens (token, user_id, token_expires) VALUES ('{new JwtSecurityTokenHandler().WriteToken(token)}', {user.user_id}, '{token.ValidTo.ToString("yyyy-MM-dd HH:mm:ss")}')";
                     _db.ExecuteNonQuery(insert);
                     _db.Disconnect();
-                    return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo });
+                    return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token), validTo = token.ValidTo.ToString("yyyy-MM-dd HH:mm:ss") });
                 }
                 else
                 {
