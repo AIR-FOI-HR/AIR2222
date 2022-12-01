@@ -1,29 +1,21 @@
-//
-//  InitialViewController.swift
-//  Clique
-//
-//  Created by Infinum on 30.10.2022..
-//
-
 import UIKit
 
 class InitialViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet private weak var logInButton: UIButton!
+    @IBOutlet private weak var registerButton: UIButton!
+    
+    @IBAction func loginButtonPressed( sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Login" , bundle:nil)
+        if let viewController = storyboard.instantiateInitialViewController() {
+            present(viewController, animated: true)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func registerButtonPressed( sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Register" , bundle:nil)
+        if let viewController = storyboard.instantiateInitialViewController() {
+            present(viewController, animated: true)
+        }
     }
-    */
-
 }

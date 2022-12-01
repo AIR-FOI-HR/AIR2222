@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class EventDetailViewController: UIViewController{
-    var eventGet : Event!
+    var eventGet : Event?
     
     @IBOutlet private var _eventDescription: UILabel!
     @IBOutlet private var _eventName: UILabel!
@@ -32,9 +32,9 @@ class EventDetailViewController: UIViewController{
 
 private extension EventDetailViewController {
     
-    func _setupUI(){
+    func _setupUI() {
         
-        guard let _event = eventGet else {return}
+        guard let _event = eventGet else { return }
         //title = _event.eventName
         _eventName.text = _event.eventName
         _eventDescription.text = _event.eventDescription
@@ -42,11 +42,10 @@ private extension EventDetailViewController {
         _eventLocation.text = _event.eventLocation
         _eventTimestamp.text = _event.eventTimestamp
         _eventParticipantsNum.text = String(_event.eventParticipantNumber)
-        if (_event.eventCost == 0 ){
+        if let price = _event.eventCost{
+            _eventCost.text = price == 0 ? "FREE" : String(price)
+        } else {
             _eventCost.text = "FREE"
-        }
-        else{
-            _eventCost.text = String(_event.eventCost!)
         }
         _eventCategory.text = _event.eventCategory
     }
