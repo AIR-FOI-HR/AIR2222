@@ -15,6 +15,7 @@ enum Constants {
         static let loginURL = baseURL.appending("Authentication/LoginUser")
         static let categoriesURL = baseURL.appending("Event/GetCategories")
         static let currenciesURL = baseURL.appending("Event/GetCurrencies")
+        static let createEventURL = baseURL.appending("Event/CreateNewEvent")
     }
 
 }

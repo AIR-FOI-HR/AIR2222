@@ -18,12 +18,17 @@
 		4214871E293427BC0053B344 /* CreateEventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4214871D293427BC0053B344 /* CreateEventService.swift */; };
 		4214872029342C7A0053B344 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4214871F29342C7A0053B344 /* Category.swift */; };
 		421487222934413D0053B344 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421487212934413D0053B344 /* Currency.swift */; };
+		422A63932935A53A00ABB4C4 /* ShortDescription.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 422A63922935A53A00ABB4C4 /* ShortDescription.storyboard */; };
+		422A63952935A56400ABB4C4 /* ShortDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A63942935A56400ABB4C4 /* ShortDescriptionViewController.swift */; };
 		4237AC85292C20C700095D47 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237AC84292C20C700095D47 /* LoginCredentials.swift */; };
 		4237AC87292C215F00095D47 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237AC86292C215F00095D47 /* LoginResponse.swift */; };
 		42464B01292F7ADA009FDE1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CDA99290E54380074ACFA /* SceneDelegate.swift */; };
 		42496D0C29301C9A00D972C9 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 42496D0B29301C9A00D972C9 /* KeychainAccess */; };
 		42496D10293033AA00D972C9 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 42496D0F293033AA00D972C9 /* IQKeyboardManagerSwift */; };
 		4254AD3F29297E2A004D649D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4254AD3E29297E2A004D649D /* Constants.swift */; };
+		425FAC14293801D400486755 /* PlaceAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FAC13293801D400486755 /* PlaceAutocompleteViewController.swift */; };
+		425FAC162938020600486755 /* PlaceAutocomplete.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425FAC152938020600486755 /* PlaceAutocomplete.storyboard */; };
+		425FAC182938131200486755 /* CreateEventEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FAC172938131200486755 /* CreateEventEntries.swift */; };
 		42740C3F2926468900CD1DFC /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42740C3E2926468900CD1DFC /* Register.storyboard */; };
 		428ADAA529264FF100417940 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ADAA429264FF100417940 /* LoginViewController.swift */; };
 		429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429AC2692926ADF60029498B /* RegisterViewController.swift */; };
@@ -51,9 +56,14 @@
 		4214871D293427BC0053B344 /* CreateEventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventService.swift; sourceTree = "<group>"; };
 		4214871F29342C7A0053B344 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		421487212934413D0053B344 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		422A63922935A53A00ABB4C4 /* ShortDescription.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShortDescription.storyboard; sourceTree = "<group>"; };
+		422A63942935A56400ABB4C4 /* ShortDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortDescriptionViewController.swift; sourceTree = "<group>"; };
 		4237AC84292C20C700095D47 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		4237AC86292C215F00095D47 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		4254AD3E29297E2A004D649D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		425FAC13293801D400486755 /* PlaceAutocompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAutocompleteViewController.swift; sourceTree = "<group>"; };
+		425FAC152938020600486755 /* PlaceAutocomplete.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlaceAutocomplete.storyboard; sourceTree = "<group>"; };
+		425FAC172938131200486755 /* CreateEventEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventEntries.swift; sourceTree = "<group>"; };
 		42740C3E2926468900CD1DFC /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		428ADAA429264FF100417940 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		429AC2692926ADF60029498B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +194,10 @@
 			children = (
 				421487172933FC170053B344 /* CreateEventViewContoller.swift */,
 				421487192933FC360053B344 /* CreateEvent.storyboard */,
+				422A63922935A53A00ABB4C4 /* ShortDescription.storyboard */,
+				422A63942935A56400ABB4C4 /* ShortDescriptionViewController.swift */,
+				425FAC13293801D400486755 /* PlaceAutocompleteViewController.swift */,
+				425FAC152938020600486755 /* PlaceAutocomplete.storyboard */,
 			);
 			path = CreateEvent;
 			sourceTree = "<group>";
@@ -196,6 +210,7 @@
 				42EA63222932AADB007417D0 /* RegisterEntries.swift */,
 				4214871F29342C7A0053B344 /* Category.swift */,
 				421487212934413D0053B344 /* Currency.swift */,
+				425FAC172938131200486755 /* CreateEventEntries.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -250,7 +265,6 @@
 				3F35E469DC98F630AE5B4F27 /* Pods-Clique.debug.xcconfig */,
 				9A2FC9E0DFFEBC7D85D27343 /* Pods-Clique.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -308,10 +322,10 @@
 			);
 			mainGroup = 420CDA8B290E54380074ACFA;
 			packageReferences = (
-				42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire.git" */,
-				420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView.git" */,
-				42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess.git" */,
-				42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */,
+				42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
+				42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 420CDA95290E54380074ACFA /* Products */;
 			projectDirPath = "";
@@ -329,9 +343,11 @@
 			files = (
 				4213719129262F1B0082F1C7 /* Login.storyboard in Resources */,
 				4214871A2933FC360053B344 /* CreateEvent.storyboard in Resources */,
+				425FAC162938020600486755 /* PlaceAutocomplete.storyboard in Resources */,
 				420CDAA4290E543A0074ACFA /* LaunchScreen.storyboard in Resources */,
 				420CDAA1290E543A0074ACFA /* Assets.xcassets in Resources */,
 				42EA632B2932BB7D007417D0 /* Initial.storyboard in Resources */,
+				422A63932935A53A00ABB4C4 /* ShortDescription.storyboard in Resources */,
 				42740C3F2926468900CD1DFC /* Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,13 +405,16 @@
 				4237AC85292C20C700095D47 /* LoginCredentials.swift in Sources */,
 				428ADAA529264FF100417940 /* LoginViewController.swift in Sources */,
 				42EA63292932BB6E007417D0 /* InitialViewController.swift in Sources */,
+				422A63952935A56400ABB4C4 /* ShortDescriptionViewController.swift in Sources */,
 				421487222934413D0053B344 /* Currency.swift in Sources */,
 				4237AC87292C215F00095D47 /* LoginResponse.swift in Sources */,
 				420CDA98290E54380074ACFA /* AppDelegate.swift in Sources */,
 				421487182933FC170053B344 /* CreateEventViewContoller.swift in Sources */,
 				429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */,
+				425FAC182938131200486755 /* CreateEventEntries.swift in Sources */,
 				42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */,
 				42EA63232932AADB007417D0 /* RegisterEntries.swift in Sources */,
+				425FAC14293801D400486755 /* PlaceAutocompleteViewController.swift in Sources */,
 				42DB2734292672970027A00C /* UserStorage.swift in Sources */,
 				4214872029342C7A0053B344 /* Category.swift in Sources */,
 				4254AD3F29297E2A004D649D /* Constants.swift in Sources */,
@@ -612,7 +631,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView.git" */ = {
+		420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
 			requirement = {
@@ -620,7 +639,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess.git" */ = {
+		42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
 			requirement = {
@@ -628,7 +647,7 @@
 				kind = branch;
 			};
 		};
-		42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */ = {
+		42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
@@ -636,7 +655,7 @@
 				kind = branch;
 			};
 		};
-		42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire.git" */ = {
+		42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -649,27 +668,27 @@
 /* Begin XCSwiftPackageProductDependency section */
 		420C5D8F292C586C001E650D /* NVActivityIndicatorView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView.git" */;
+			package = 420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
 			productName = NVActivityIndicatorView;
 		};
 		420C5D91292C586C001E650D /* NVActivityIndicatorViewExtended */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView.git" */;
+			package = 420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
 			productName = NVActivityIndicatorViewExtended;
 		};
 		42496D0B29301C9A00D972C9 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess.git" */;
+			package = 42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
 		42496D0F293033AA00D972C9 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager.git" */;
+			package = 42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
 		42D99DE52928362300516EF9 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire.git" */;
+			package = 42D99DE42928362300516EF9 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */

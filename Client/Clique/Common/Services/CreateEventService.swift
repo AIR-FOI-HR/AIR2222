@@ -48,4 +48,25 @@ final class CreateEventService {
                 }
             }
         }
+    
+    func createEvent(with entries: CreateEventEntries, completionHandler: @escaping(Bool) -> ()){
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer"
+            + " " + "\(UserStorage.token)",
+            "Accept" : "application/json"
+        ]
+        AF.request(Constants.Service.createEventURL, method: .post, parameters: entries, encoder: JSONParameterEncoder.default, headers: headers)
+            .validate(statusCode: 200..<300).response{
+            response in
+            debugPrint(response)
+            switch response .result {
+            case.success(_):
+                completionHandler(true)
+            case.failure(_):
+                debugPrint(response)
+                completionHandler(false)
+            }
+        }
+        
+    }
 }

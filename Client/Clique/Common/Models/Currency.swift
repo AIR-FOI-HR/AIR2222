@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Currency: Codable{
+struct Currency: Codable {
     let currency_id: Int
     let currency_name: String
     let currency_abbr: String
