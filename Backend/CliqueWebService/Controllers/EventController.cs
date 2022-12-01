@@ -296,7 +296,7 @@ namespace CliqueWebService.Controllers
                 dr.Status = "0";
                 return BadRequest(dr);
             }
-            if (request.Cost != "0" && string.IsNullOrEmpty(request.Currency))
+            if (double.Parse(request.Cost) > 0 && (string.IsNullOrEmpty(request.Currency) || request.Currency == "0"))
             {
                 dr.Method = "POST";
                 dr.Error = "Please enter the currency";
@@ -321,7 +321,7 @@ namespace CliqueWebService.Controllers
                 else
                 {
                     q = $"INSERT INTO Events(event_name, event_location, event_date, event_time, participations_no, cost, currency,creator, category, description)" +
-                        $" VALUES ('{request.EventName}', '{request.EventLocation}', '{request.EventTimeStamp.ToString("yyyy-MM-dd")}', '{request.EventTimeStamp.ToString("HH:mm:ss")}', '{request.ParticipantsNo}', '{request.Cost}', '{request.Currency}','{id}', '{request.Category}', {desc})";
+                        $" VALUES ('{request.EventName}', '{request.EventLocation}', '{request.EventTimeStamp.ToString("yyyy-MM-dd")}', '{request.EventTimeStamp.ToString("HH:mm:ss")}', '{request.ParticipantsNo}', '{request.Cost}', '{request.Currency}','{id}', '{request.Category}', '{desc}')";
                 }
                 _db.ExecuteNonQuery(q);
                 _db.CommitTransaction();

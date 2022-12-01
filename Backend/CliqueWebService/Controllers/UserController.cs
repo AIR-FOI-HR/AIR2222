@@ -264,7 +264,25 @@ namespace CliqueWebService.Controllers
                     docResponse.Status = "0";
                     return Unauthorized(docResponse);
                 }
-                string query = $"UPDATE Users SET hash_password = '{_businessLogic.ConvertToSHA256(passwordChangeRequest.NewPassword).ToLower()}' WHERE user_id = '{id}' AND CONVERT(VARCHAR, hash_password) = '{_businessLogic.ConvertToSHA256(passwordChangeRequest.OldPassword).ToLower()}'";
+                string passFromDB = "";
+                string q1 = $"SELECT hash_password FROM Users WHERE user_id = {id}";
+                var reader = _db.ExecuteQuery(q1);
+                while (reader.Read())
+                {
+                    if(reader.GetValue(0) != DBNull.Value)
+                    {
+                        passFromDB = reader.GetString(0);
+                    }
+                }
+                reader.Close();
+                if (passFromDB.ToLower() != _businessLogic.ConvertToSHA256(passwordChangeRequest.OldPassword).ToLower())
+                {
+                    docResponse.Method = "POST";
+                    docResponse.Message = "Old password is incorrect";
+                    docResponse.Status = "0";
+                    return BadRequest(docResponse);
+                }
+                string query = $"UPDATE Users SET hash_password = '{_businessLogic.ConvertToSHA256(passwordChangeRequest.NewPassword).ToLower()}' WHERE user_id = '{id}'";
                 _db.BeginTransaction();
                 try
                 {
@@ -273,16 +291,17 @@ namespace CliqueWebService.Controllers
                     if(count > 0)
                     {
                         docResponse.Message = "Password successfully updated";
-                        docResponse.Status = "200 - OK";
+                        docResponse.Status = "1";
+                        docResponse.Method = "POST";
+                        return Ok(docResponse);
+
                     } else
                     {
+                        docResponse.Method = "POST";
                         docResponse.Message = "Old password is incorrect";
-                        docResponse.Status = "403 - Forbidden";
+                        docResponse.Status = "0";
+                        return BadRequest(docResponse);
                     }
-                    docResponse.Message = "Password successfully updated";
-                    docResponse.Status = "1";
-                    docResponse.Method = "POST";
-                    return Ok(docResponse);
                 }
                 catch
                 {
