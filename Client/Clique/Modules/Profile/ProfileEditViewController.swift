@@ -129,6 +129,7 @@ class ProfileEditViewController: UIViewController {
         datePicker.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
         
         SkeletonAppearance.default.skeletonCornerRadius = 100
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

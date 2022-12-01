@@ -141,8 +141,17 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyU-vj-hdc">
+                                                                        <rect key="frame" x="32" y="162" width="313" height="20.333333333333343"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
                                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="h56-DH-Wqj">
-                                                                        <rect key="frame" x="32" y="162" width="313" height="107"/>
+                                                                        <rect key="frame" x="32" y="202.33333333333337" width="313" height="68.333333333333314"/>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <color key="textColor" systemColor="labelColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -152,17 +161,43 @@
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
                                                                                 <real key="value" value="7"/>
                                                                             </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </textView>
-                                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="8Vl-V4-lPr">
-                                                                        <rect key="frame" x="36.666666666666657" y="289" width="304" height="36"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                                 <real key="value" value="7"/>
                                                                             </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                                                <real key="value" value="0.5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
-                                                                    </datePicker>
+                                                                    </textView>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="EBO-Qm-1or">
+                                                                        <rect key="frame" x="32" y="290.66666666666663" width="313" height="34.333333333333314"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of birth:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czt-kC-PfH">
+                                                                                <rect key="frame" x="0.0" y="6.9999999999999982" width="147" height="20.333333333333329"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                            </label>
+                                                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="8Vl-V4-lPr">
+                                                                                <rect key="frame" x="166" y="0.0" width="147" height="34.333333333333336"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                                                                        <real key="value" value="7"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                            </datePicker>
+                                                                        </subviews>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </stackView>
                                                                 </subviews>
                                                                 <constraints>
                                                                     <constraint firstItem="h56-DH-Wqj" firstAttribute="leading" secondItem="gKi-hR-eRx" secondAttribute="leading" constant="32" id="1Hs-Te-maI"/>
@@ -170,9 +205,12 @@
                                                                     <constraint firstAttribute="trailing" secondItem="vhZ-6n-GHe" secondAttribute="trailing" constant="32" id="dW5-8P-IUU"/>
                                                                     <constraint firstAttribute="trailing" secondItem="8lY-fX-FKm" secondAttribute="trailing" constant="32" id="j60-sI-Gcc"/>
                                                                     <constraint firstItem="8lY-fX-FKm" firstAttribute="leading" secondItem="gKi-hR-eRx" secondAttribute="leading" constant="32" id="lxW-hR-yBN"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="dyU-vj-hdc" secondAttribute="trailing" constant="32" id="nVK-dl-jpr"/>
                                                                     <constraint firstItem="5AW-bb-TzC" firstAttribute="leading" secondItem="gKi-hR-eRx" secondAttribute="leading" constant="32" id="pvf-UY-MQ5"/>
                                                                     <constraint firstItem="vhZ-6n-GHe" firstAttribute="leading" secondItem="gKi-hR-eRx" secondAttribute="leading" constant="32" id="q5f-ak-Kto"/>
+                                                                    <constraint firstItem="dyU-vj-hdc" firstAttribute="leading" secondItem="gKi-hR-eRx" secondAttribute="leading" constant="32" id="rgj-K5-weD"/>
                                                                     <constraint firstAttribute="trailing" secondItem="h56-DH-Wqj" secondAttribute="trailing" constant="32" id="yNP-v7-biO"/>
+                                                                    <constraint firstItem="EBO-Qm-1or" firstAttribute="leading" secondItem="gKi-hR-eRx" secondAttribute="leading" constant="32" id="z12-MG-s1b"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
