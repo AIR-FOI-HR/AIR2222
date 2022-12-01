@@ -264,14 +264,12 @@ namespace CliqueWebService.Controllers
                     docResponse.Status = "0";
                     return Unauthorized(docResponse);
                 }
-                //string query = $"UPDATE Users SET hash_password = '{_businessLogic.ConvertToSHA256(passwordChangeRequest.NewPassword).ToLower()}' WHERE user_id = '{id}' AND CONVERT(VARCHAR, hash_password) = '{_businessLogic.ConvertToSHA256(passwordChangeRequest.OldPassword).ToLower()}'";
-                string query = $"UPDATE Users SET hash_password = '{passwordChangeRequest.NewPassword.ToLower()}' WHERE user_id = '{id}' AND CONVERT(VARCHAR, hash_password) = '{passwordChangeRequest.OldPassword.ToLower()}'";
+                string query = $"UPDATE Users SET hash_password = '{_businessLogic.ConvertToSHA256(passwordChangeRequest.NewPassword).ToLower()}' WHERE user_id = '{id}' AND CONVERT(VARCHAR, hash_password) = '{_businessLogic.ConvertToSHA256(passwordChangeRequest.OldPassword).ToLower()}'";
                 _db.BeginTransaction();
                 try
                 {
                     int count = _db.ExecuteNonQuery(query);
                     _db.CommitTransaction();
-<<<<<<< HEAD
                     if(count > 0)
                     {
                         docResponse.Message = "Password successfully updated";
@@ -281,10 +279,8 @@ namespace CliqueWebService.Controllers
                         docResponse.Message = "Old password is incorrect";
                         docResponse.Status = "403 - Forbidden";
                     }
-=======
                     docResponse.Message = "Password successfully updated";
                     docResponse.Status = "1";
->>>>>>> 75b45c38811658cf16fde3f9877735ef064ac8a5
                     docResponse.Method = "POST";
                     return Ok(docResponse);
                 }
