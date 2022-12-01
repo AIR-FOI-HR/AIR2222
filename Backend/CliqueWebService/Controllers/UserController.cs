@@ -232,7 +232,7 @@ namespace CliqueWebService.Controllers
 
         [HttpPost]
         [Route("UpdateUserPassword")]
-        public ActionResult UpdateUserPassword([FromBody] string newPass)
+        public ActionResult UpdateUserPassword([FromBody] PasswordChangeRequest passwordChangeRequest)
         {
             DocumentResponse docResponse = new DocumentResponse();
             if (ModelState.IsValid)
@@ -264,14 +264,22 @@ namespace CliqueWebService.Controllers
                     docResponse.Status = "0";
                     return Unauthorized(docResponse);
                 }
-                string query = $"UPDATE Users SET hash_password = '{_businessLogic.ConvertToSHA256(newPass).ToLower()}' WHERE user_id = '{id}'";
+                //string query = $"UPDATE Users SET hash_password = '{_businessLogic.ConvertToSHA256(passwordChangeRequest.NewPassword).ToLower()}' WHERE user_id = '{id}' AND CONVERT(VARCHAR, hash_password) = '{_businessLogic.ConvertToSHA256(passwordChangeRequest.OldPassword).ToLower()}'";
+                string query = $"UPDATE Users SET hash_password = '{passwordChangeRequest.NewPassword.ToLower()}' WHERE user_id = '{id}' AND CONVERT(VARCHAR, hash_password) = '{passwordChangeRequest.OldPassword.ToLower()}'";
                 _db.BeginTransaction();
                 try
                 {
-                    _db.ExecuteNonQuery(query);
+                    int count = _db.ExecuteNonQuery(query);
                     _db.CommitTransaction();
-                    docResponse.Message = "Password successfully updated";
-                    docResponse.Status = "200 - OK";
+                    if(count > 0)
+                    {
+                        docResponse.Message = "Password successfully updated";
+                        docResponse.Status = "200 - OK";
+                    } else
+                    {
+                        docResponse.Message = "Old password is incorrect";
+                        docResponse.Status = "403 - Forbidden";
+                    }
                     docResponse.Method = "POST";
                     return Ok(docResponse);
                 }
