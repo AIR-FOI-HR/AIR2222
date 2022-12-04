@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -34,13 +33,13 @@
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="center" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xef-el-LFl">
-                        <rect key="frame" x="20" y="11" width="592" height="402"/>
+                        <rect key="frame" x="16" y="11" width="600" height="139"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="center" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fug-o7-bvz">
-                                <rect key="frame" x="0.0" y="35" width="592" height="64"/>
+                                <rect key="frame" x="0.0" y="35" width="600" height="51"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uem-Sr-I5H">
-                                        <rect key="frame" x="0.0" y="0.0" width="592" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="34"/>
                                         <rect key="contentStretch" x="0.69999999999999996" y="0.0" width="1" height="1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="4DJ-Fh-Wjs"/>
@@ -50,7 +49,7 @@
                                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMj-Zm-F2Z">
-                                        <rect key="frame" x="0.0" y="30" width="592" height="34"/>
+                                        <rect key="frame" x="0.0" y="34" width="600" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="wXc-Ux-cgE"/>
                                         </constraints>
@@ -61,19 +60,19 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="I2X-sx-3Wv">
-                                <rect key="frame" x="0.0" y="364" width="592" height="38"/>
+                                <rect key="frame" x="0.0" y="101" width="600" height="38"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qMi-Um-h46">
-                                        <rect key="frame" x="8" y="0.66666666666668561" width="584" height="34.333333333333336"/>
+                                        <rect key="frame" x="8" y="0.66666666666665719" width="592" height="34.333333333333336"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mBj-AL-z6j">
-                                                <rect key="frame" x="0.0" y="8.6666666666666288" width="534" height="17"/>
+                                                <rect key="frame" x="0.0" y="8.6666666666666856" width="542" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jsp-JF-4Ti">
-                                                <rect key="frame" x="534" y="0.0" width="50" height="34.333333333333336"/>
+                                                <rect key="frame" x="542" y="0.0" width="50" height="34.333333333333336"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="7vE-SB-SBG"/>
                                                 </constraints>
@@ -116,11 +115,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="_eventDateTime" destination="iMj-Zm-F2Z" id="oEf-bo-Bsd"/>
                 <outlet property="_eventImage" destination="iLm-Du-uZY" id="P5S-KK-scy"/>
                 <outlet property="_eventLocation" destination="mBj-AL-z6j" id="oaa-of-IPC"/>
+                <outlet property="_eventName" destination="Uem-Sr-I5H" id="OsX-UV-MjO"/>
+                <outlet property="_eventTimestamp" destination="iMj-Zm-F2Z" id="oEf-bo-Bsd"/>
                 <outlet property="_likeButton" destination="Jsp-JF-4Ti" id="ch1-M9-ACF"/>
-                <outlet property="_nameLabel" destination="Uem-Sr-I5H" id="OsX-UV-MjO"/>
             </connections>
             <point key="canvasLocation" x="50.769230769230766" y="50.473933649289094"/>
         </tableViewCell>

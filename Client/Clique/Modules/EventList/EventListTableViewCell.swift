@@ -11,14 +11,16 @@ import Alamofire
 
 class EventListTableViewCell: UITableViewCell {
     
-    @IBOutlet private var _nameLabel: UILabel!
+    @IBOutlet private var _eventName: UILabel!
     @IBOutlet private var _eventImage: UIImageView!
     @IBOutlet private var _eventLocation: UILabel!
-    @IBOutlet private var _eventDateTime: UILabel!
+    @IBOutlet private var _eventTimestamp: UILabel!
     @IBOutlet private var _likeButton: UIButton!
      
     func configure(with event: Event) {
-        _nameLabel.text = event.eventName
+        _eventName.text = event.eventName
+        _eventLocation.text = event.eventLocation
+        _eventTimestamp.text = event.eventTimestamp
         layoutSubviews()
     }
     
@@ -28,17 +30,9 @@ class EventListTableViewCell: UITableViewCell {
         
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         
-        _nameLabel.layer.shadowOpacity = 0.3
-        _nameLabel.layer.shadowRadius = 2.0
-        _nameLabel.layer.shadowOffset = CGSizeMake(3, 3)
-        _nameLabel.layer.shadowColor = UIColor.gray.cgColor
-    }
-//    func setupImage(with url: String){
-//        AF.request(url).responseImage{[weak self] response in
-//            if
-//                case.success(let image) = response.result {self?._eventImage.image = image
-//            }
-//        }
-//    }
-    
+        _eventName.layer.shadowOpacity = 0.3
+        _eventName.layer.shadowRadius = 2.0
+        _eventName.layer.shadowOffset = CGSizeMake(3, 3)
+        _eventName.layer.shadowColor = UIColor.gray.cgColor
+    }  
 }

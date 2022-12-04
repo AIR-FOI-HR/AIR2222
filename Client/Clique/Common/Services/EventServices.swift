@@ -12,7 +12,8 @@ final class EventServices {
     
     func getEvent(completion: @escaping(Result<[Event], Error>) -> Void) {
         AF.request(Constants.Service.eventsURL, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: nil, interceptor: nil)
-            .validate(statusCode: 200..<300).responseData { response in
+            .validate(statusCode: 200..<300)
+            .responseData { response in
                 switch response.result {
                 case .success(_):
                     do {
