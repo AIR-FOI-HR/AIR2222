@@ -44,7 +44,6 @@ namespace CliqueWebService.Controllers
                 User user = new User();
                 user = null;
                 try
-
                 {
                     List<User> userList = new List<User>();
                     var hash = _businessLogic.ConvertToSHA256(password);
@@ -63,13 +62,13 @@ namespace CliqueWebService.Controllers
                         }
                     }
                     reader.Close();
-
                     user = userList[0];
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
                     return BadRequest("Something went wrong");
                 }
+
                 if (user != null)
                 {
                     var claims = new[] {
@@ -102,7 +101,7 @@ namespace CliqueWebService.Controllers
             }
             else
             {
-                return BadRequest();
+                return BadRequest("Invalid JSON");
             }
         }
 
@@ -120,13 +119,14 @@ namespace CliqueWebService.Controllers
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
                 }
+
                 string query = $"INSERT INTO Users(name, surname, email, hash_password) VALUES ('{userForRegistration.Name}', '{userForRegistration.Surname}', " +
                     $"'{userForRegistration.Email}', '{_businessLogic.ConvertToSHA256(userForRegistration.Password)}')";
                 _db.BeginTransaction();
-                string checkUserQ = $"SELECT COUNT(*) FROM Users WHERE email LIKE '{userForRegistration.Email}'";
+                string checkUserQuery = $"SELECT COUNT(*) FROM Users WHERE email LIKE '{userForRegistration.Email}'";
                 try
                 {
-                    var reader = _db.ExecuteQuery(checkUserQ);
+                    var reader = _db.ExecuteQuery(checkUserQuery);
                     while (reader.Read())
                     {
                         if (reader.GetInt32(0) > 0)

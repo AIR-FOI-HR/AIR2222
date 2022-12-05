@@ -34,6 +34,7 @@ namespace CliqueWebService.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
+
             string id = "0";
             if (Request.Headers.Keys.Contains("Authorization"))
             {
@@ -47,15 +48,15 @@ namespace CliqueWebService.Controllers
             {   
                 return Unauthorized();
             }
+
             try
             {
                 User user = new User();
                 string query = $"SELECT user_id, name, surname, email, gender_name, contact_no, birth_data, profile_pic, bio FROM Users LEFT JOIN Gender ON gender_id = gender WHERE user_id = {id}";
-                bool idExists = true;
                 var reader = _db.ExecuteQuery(query);
                 if (!reader.HasRows)
                 {
-                    idExists = false;
+                    return BadRequest($"User not found!");
                 }
 
                 while (reader.Read())
@@ -65,14 +66,8 @@ namespace CliqueWebService.Controllers
                         user = _businessLogic.GetUsers(reader);
                     }
                 }
-
                 reader.Close();
                 _db.Disconnect();
-
-                if (!idExists)
-                {
-                    return BadRequest($"User with ID = {id} not found");
-                }
                 return Ok(user);
             } catch (Exception ex)
             {
@@ -96,11 +91,10 @@ namespace CliqueWebService.Controllers
             {
                 User user = new User();
                 string query = $"SELECT user_id, name, surname, email, gender_name, contact_no, birth_data, profile_pic, bio FROM Users LEFT JOIN Gender ON gender_id = gender WHERE user_id = {id}";
-                bool idExists = true;
                 var reader = _db.ExecuteQuery(query);
                 if (!reader.HasRows)
                 {
-                    idExists = false;
+                    return BadRequest($"User with {id} not found!");
                 }
 
                 while (reader.Read())
@@ -110,14 +104,8 @@ namespace CliqueWebService.Controllers
                         user = _businessLogic.GetUsers(reader);
                     }
                 }
-
                 reader.Close();
                 _db.Disconnect();
-
-                if (!idExists)
-                {
-                    return BadRequest();
-                }
                 return Ok(user);
             }
             catch (Exception ex)
@@ -144,6 +132,7 @@ namespace CliqueWebService.Controllers
             {
                 return Unauthorized();
             }
+
             if (ModelState.IsValid)
             {
                 try
@@ -154,6 +143,7 @@ namespace CliqueWebService.Controllers
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
                 }
+
                 string query = $"UPDATE Users SET name = '{user.name}', surname = '{user.surname}', email = '{user.email}', contact_no = '{user.contact_no}', " +
                     $"birth_data = '{user.birth_data}', gender = {user.gender}, bio = '{user.bio}' WHERE user_id = {id}";
                 _db.BeginTransaction();
@@ -190,6 +180,7 @@ namespace CliqueWebService.Controllers
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
                 }
+
                 string id = "0";
                 if (Request.Headers.Keys.Contains("Authorization"))
                 {
@@ -203,6 +194,7 @@ namespace CliqueWebService.Controllers
                 {
                     return Unauthorized();
                 }
+
                 string passFromDB = "";
                 string q1 = $"SELECT hash_password FROM Users WHERE user_id = {id}";
                 var reader = _db.ExecuteQuery(q1);
@@ -268,6 +260,7 @@ namespace CliqueWebService.Controllers
             {
                 return Unauthorized();
             }
+
             try
             {
                 string containerName = "file-upload";
