@@ -45,12 +45,12 @@ namespace CliqueWebService.Controllers
                 user = null;
                 try
                 {
-                    List<User> userList = new List<User>();
                     var hash = _businessLogic.ConvertToSHA256(password);
                     string query = $"SELECT user_id, name, surname, email, gender_name, contact_no, birth_data, profile_pic, bio FROM Users LEFT JOIN Gender ON gender_id = gender WHERE email LIKE '{email}' AND hash_password LIKE '{hash.ToLower()}'";
                     var reader = _db.ExecuteQuery(query);
                     if (!reader.HasRows)
                     {
+                        _db.Disconnect();
                         return BadRequest("User not found");
                     }
 
@@ -58,15 +58,15 @@ namespace CliqueWebService.Controllers
                     {
                         if (reader.GetValue(0) != DBNull.Value)
                         {
-                            userList.Add(_businessLogic.GetUsers(reader));
+                            user = _businessLogic.GetUsers(reader);
                         }
                     }
                     reader.Close();
-                    user = userList[0];
                 }
                 catch (Exception ex)
                 {
-                    return BadRequest("Something went wrong");
+                    _db.Disconnect();
+                    return BadRequest(ex.Message);
                 }
 
                 if (user != null)
