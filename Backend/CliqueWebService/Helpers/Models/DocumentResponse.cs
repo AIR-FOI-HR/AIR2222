@@ -7,11 +7,13 @@ namespace CliqueWebService.Helpers
     {
         
         public string Status { get; set; }
-        public string Method { get; set; }
+        //public string Method { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public List<Event>?  Events { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public List<User>? Users { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public User User { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string Error { get; set; }
 

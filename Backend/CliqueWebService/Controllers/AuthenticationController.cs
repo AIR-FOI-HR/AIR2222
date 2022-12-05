@@ -123,7 +123,6 @@ namespace CliqueWebService.Controllers
                 {
                     docResponse.Error = ex.Message;
                     docResponse.Status = "0";
-                    docResponse.Method = "POST";
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
                 string query = $"INSERT INTO Users(name, surname, email, hash_password) VALUES ('{userForRegistration.Name}', '{userForRegistration.Surname}', " +
@@ -139,7 +138,6 @@ namespace CliqueWebService.Controllers
                         {
                             docResponse.Message = "User with this username or password already exists";
                             docResponse.Status = "0";
-                            docResponse.Method = "POST";
                             return BadRequest(docResponse);
                         }
                     }
@@ -148,7 +146,6 @@ namespace CliqueWebService.Controllers
                     _db.CommitTransaction();
                     docResponse.Message = "User successfully registered";
                     docResponse.Status = "1";
-                    docResponse.Method = "POST";
                     return Ok(docResponse);
                 }
                 catch
@@ -157,7 +154,6 @@ namespace CliqueWebService.Controllers
                     _db.CommitTransaction();
                     docResponse.Error = "Couldn't register user";
                     docResponse.Status = "0";
-                    docResponse.Method = "POST";
                     return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
                 }
             }
@@ -165,7 +161,6 @@ namespace CliqueWebService.Controllers
             {
                 docResponse.Errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
                 docResponse.Status = "0";
-                docResponse.Method = "POST";
                 return BadRequest(docResponse);
             }
 
