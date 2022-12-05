@@ -6,7 +6,7 @@ namespace CliqueWebService.Helpers
     public class DocumentResponse
     {
         
-        public string Status { get; set; }
+        //public string Status { get; set; }
         //public string Method { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public List<Event>?  Events { get; set; }

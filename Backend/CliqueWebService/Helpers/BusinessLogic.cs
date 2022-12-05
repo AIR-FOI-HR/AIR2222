@@ -22,7 +22,6 @@ namespace CliqueWebService.Helpers
                 profile_pic = (reader.GetValue(7) != DBNull.Value) ? reader.GetString(7) : "empty",
                 bio = (reader.GetValue(8) != DBNull.Value) ? reader.GetString(8) : "empty"
             };
-
             return user;
         }
 
@@ -69,7 +68,7 @@ namespace CliqueWebService.Helpers
 
             if (trimmedEmail.EndsWith("."))
             {
-                return false; // suggested by @TK-421
+                return false;
             }
             try
             {

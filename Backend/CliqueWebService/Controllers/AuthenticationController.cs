@@ -4,7 +4,6 @@ using CliqueWebService.Helpers;
 using CliqueWebService.Helpers.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Cryptography;
 using System.Text;
 using System.Security.Claims;
 
@@ -111,8 +110,6 @@ namespace CliqueWebService.Controllers
         [Route("RegisterUser")]
         public ActionResult RegisterUser([FromBody] RegisterRequest userForRegistration)
         {
-            DocumentResponse docResponse = new DocumentResponse();
-
             if (ModelState.IsValid)
             {
                 try
@@ -121,9 +118,7 @@ namespace CliqueWebService.Controllers
                 }
                 catch (Exception ex)
                 {
-                    docResponse.Error = ex.Message;
-                    docResponse.Status = "0";
-                    return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
+                    return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
                 }
                 string query = $"INSERT INTO Users(name, surname, email, hash_password) VALUES ('{userForRegistration.Name}', '{userForRegistration.Surname}', " +
                     $"'{userForRegistration.Email}', '{_businessLogic.ConvertToSHA256(userForRegistration.Password)}')";
@@ -136,32 +131,24 @@ namespace CliqueWebService.Controllers
                     {
                         if (reader.GetInt32(0) > 0)
                         {
-                            docResponse.Message = "User with this username or password already exists";
-                            docResponse.Status = "0";
-                            return BadRequest(docResponse);
+                            return BadRequest("User with this username or password already exists");
                         }
                     }
                     reader.Close();
                     _db.ExecuteNonQuery(query);
                     _db.CommitTransaction();
-                    docResponse.Message = "User successfully registered";
-                    docResponse.Status = "1";
-                    return Ok(docResponse);
+                    return Ok("User successfully registered");
                 }
                 catch
                 {
                     _db.RollbackTransaction();
                     _db.CommitTransaction();
-                    docResponse.Error = "Couldn't register user";
-                    docResponse.Status = "0";
-                    return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Couldn't register user");
                 }
             }
             else
             {
-                docResponse.Errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
-                docResponse.Status = "0";
-                return BadRequest(docResponse);
+                return BadRequest(ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage));
             }
 
         }

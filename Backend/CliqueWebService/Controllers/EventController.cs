@@ -13,7 +13,6 @@ namespace CliqueWebService.Controllers
         Database _db;
         BusinessLogic _businessLogic;
         private readonly IConfiguration _configuration;
-        // GET: api/<EventController>
 
         public EventController(IConfiguration configuration)
         {
@@ -26,17 +25,13 @@ namespace CliqueWebService.Controllers
         [Route("GetAllEvents")]
         public ActionResult GetEvents()
         {
-            DocumentResponse returnResponse = new DocumentResponse();
             try
             {
                 _db.Connect();
             }
             catch (Exception ex)
             {
-                returnResponse.Status = "0";
-                returnResponse.Events = null;
-                returnResponse.Error = ex.Message;
-                return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
             string q = $"SELECT e.*, cur.currency_abbr, u.name, u.surname, u.email, cat.category_name, g.gender_name, u.user_id FROM Events e LEFT JOIN Categories cat ON e.category = cat.category_id LEFT JOIN Users u ON e.creator = u.user_id LEFT JOIN Currencies cur ON cur.currency_id = e.currency LEFT JOIN Gender g ON u.gender = g.gender_id";
             try
@@ -57,40 +52,28 @@ namespace CliqueWebService.Controllers
                     }
                 }
                 reader.Close();
-
                 _db.Disconnect();
-
-                returnResponse.Status = "1";
-                returnResponse.Events = events;
-                return Ok(returnResponse);
+                return Ok(events);
 
             }
             catch (Exception ex)
             {
                 _db.Disconnect();
-                returnResponse.Status = "0";
-                returnResponse.Events = null;
-                returnResponse.Error = ex.Message;
-                return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
 
-        // GET api/<EventController>/5
         [HttpGet]
         [Route("GetEventByID/{id}")]
         public ActionResult GetEventByID(int id)
         {
-            DocumentResponse returnResponse = new DocumentResponse();
             try
             {
                 _db.Connect();
             }
             catch (Exception ex)
             {
-                returnResponse.Status = "0";
-                returnResponse.Events = null;
-                returnResponse.Error = ex.Message;
-                return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
             try
             {
@@ -113,39 +96,26 @@ namespace CliqueWebService.Controllers
                 _db.Disconnect();
                 if (!idExists)
                 {
-                    returnResponse.Status = "0";
-                    returnResponse.Events = null;
-                    returnResponse.Error = $"Event with ID = {id} not found.";
-                    return BadRequest(returnResponse);
+                    return BadRequest($"Event with ID = {id} not found.");
                 }
-
-                returnResponse.Events = events.ToList();
-                returnResponse.Status = "1";
-                return Ok(returnResponse);
+                return Ok(events);
             }
             catch (Exception ex)
             {
-                returnResponse.Status = "0";
-                returnResponse.Events = null;
-                returnResponse.Error = ex.Message;
-                return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
 
         [HttpGet("eventscreatedby/{user_id}")]
         public ActionResult GetEventsCreatedByUserID(int user_id)
         {
-            DocumentResponse returnResponse = new DocumentResponse();
             try
             {
                 _db.Connect();
             }
             catch (Exception ex)
             {
-                returnResponse.Status = "0";
-                returnResponse.Events = null;
-                returnResponse.Error = ex.Message;
-                return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
             try
             {
@@ -168,39 +138,26 @@ namespace CliqueWebService.Controllers
                 _db.Disconnect();
                 if (!idExists)
                 {
-                    returnResponse.Status = "0";
-                    returnResponse.Events = null;
-                    returnResponse.Error = $"User didn't create any events";
-                    return BadRequest(returnResponse);
+                    return BadRequest("User didn't create any events");
                 }
-
-                returnResponse.Events = events.ToList();
-                returnResponse.Status = "1";
-                return Ok(returnResponse);
+                return Ok(events.ToList());
             }
             catch (Exception ex)
             {
-                returnResponse.Status = "0";
-                returnResponse.Events = null;
-                returnResponse.Error = ex.Message;
-                return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
 
         [HttpGet("eventssignedup/{user_id}")]
         public ActionResult GetEventsSignedUpByUserID(int user_id)
         {
-            DocumentResponse returnResponse = new DocumentResponse();
             try
             {
                 _db.Connect();
             }
             catch (Exception ex)
             {
-                returnResponse.Status = "0";
-                returnResponse.Events = null;
-                returnResponse.Error = ex.Message;
-                return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
             try
             {
@@ -223,22 +180,13 @@ namespace CliqueWebService.Controllers
                 _db.Disconnect();
                 if (!idExists)
                 {
-                    returnResponse.Status = "0";
-                    returnResponse.Events = null;
-                    returnResponse.Error = $"User isn't signed in any events.";
-                    return BadRequest(returnResponse);
+                    return BadRequest("User isn't signed in any events.");
                 }
-
-                returnResponse.Events = events.ToList();
-                returnResponse.Status = "1";
-                return Ok(returnResponse);
+                return Ok(events.ToList());
             }
             catch (Exception ex)
             {
-                returnResponse.Status = "0";
-                returnResponse.Events = null;
-                returnResponse.Error = ex.Message;
-                return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
 
@@ -246,16 +194,13 @@ namespace CliqueWebService.Controllers
         [Route("CreateNewEvent")]
         public ActionResult CreateEvent([FromBody] CreateEventRequest request)
         {
-            DocumentResponse dr = new DocumentResponse();
             try
             {
                 _db.Connect();
             }
             catch (Exception ex)
             {
-                dr.Status = "0";
-                dr.Error = "Server Error";
-                return StatusCode(StatusCodes.Status500InternalServerError, dr);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Server error");
             }
             string id = "0";
             if (Request.Headers.Keys.Contains("Authorization"))
@@ -268,21 +213,15 @@ namespace CliqueWebService.Controllers
             }
             if (id == "0")
             {
-                dr.Error = "Unauthorized user";
-                dr.Status = "0";
-                return Unauthorized(dr);
+                return Unauthorized();
             }
             if (!ModelState.IsValid)
             {
-                dr.Errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
-                dr.Status = "0";
-                return BadRequest(dr);
+                return BadRequest(ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage));
             }
             if (double.Parse(request.Cost) > 0 && (string.IsNullOrEmpty(request.Currency) || request.Currency == "0"))
             {
-                dr.Error = "Please enter the currency";
-                dr.Status = "0";
-                return BadRequest(dr);
+                return BadRequest("Please enter the currency");
             }
             _db.BeginTransaction();
             try
@@ -306,17 +245,13 @@ namespace CliqueWebService.Controllers
                 }
                 _db.ExecuteNonQuery(q);
                 _db.CommitTransaction();
-                dr.Message = "Event Added";
-                dr.Status = "1";
-                return Ok(dr);
+                return Ok("Event added");
             }
             catch
             {
                 _db.RollbackTransaction();
                 _db.CommitTransaction();
-                dr.Error = "Server Error";
-                dr.Status = "0";
-                return StatusCode(StatusCodes.Status500InternalServerError, dr);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Server error");
             }
         }
 
@@ -324,7 +259,6 @@ namespace CliqueWebService.Controllers
         [Route("GetCurrencies")]
         public ActionResult GetCurrencies()
         {
-
             List<Currency> currencies = new List<Currency>();
             try
             {
