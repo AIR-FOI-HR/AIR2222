@@ -305,5 +305,71 @@ namespace CliqueWebService.Controllers
             }
             return Ok(categories);
         }
+        [HttpPost]
+        [Route("UpdateEvent/{eventID}")]
+        public ActionResult UpdateEvent([FromBody] CreateEventRequest req, int eventId)
+        {
+            try
+            {
+                _db.Connect();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Server Error");
+            }
+            string userId = "0";
+            if (Request.Headers.Keys.Contains("Authorization"))
+            {
+                string token = Request.Headers["Authorization"];
+                if (_businessLogic.isJWTValid(token.Replace("Bearer ", "")))
+                {
+                    userId = User.Claims.FirstOrDefault(i => i.Type.Contains("UserId")).Value;
+                }
+            }
+            if (userId == "0")
+            {
+                return Unauthorized();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage));
+            }
+            if (double.Parse(req.Cost) > 0 && (string.IsNullOrEmpty(req.Currency) || req.Currency == "0"))
+            {
+                return BadRequest("Please enter the currency");
+            }
+            _db.BeginTransaction();
+            try
+            {
+                string desc = "";
+                if (!string.IsNullOrEmpty(req.Description))
+                {
+                    desc = req.Description;
+                }
+                string query = "";
+                if (req.Cost == "0")
+                {
+                    query = $"UPDATE Events SET event_name = '{req.EventName}', event_date = '{req.EventTimeStamp.ToString("yyyy-MM-dd")}'," +
+                    $" event_time = '{req.EventTimeStamp.ToString("HH:mm:ss")}', event_location = '{req.EventLocation}', participations_no = {req.ParticipantsNo}," +
+                    $" category = {req.Category}, description = '{desc}' WHERE event_id = {eventId}";
+                }
+                else
+                {
+                    query = $"UPDATE Events SET event_name = '{req.EventName}', event_date = '{req.EventTimeStamp.ToString("yyyy-MM-dd")}'," +
+                    $" event_time = '{req.EventTimeStamp.ToString("HH:mm:ss")}', event_location = '{req.EventLocation}', participations_no = {req.ParticipantsNo}," +
+                    $" category = {req.Category}, description = '{desc}', cost = {req.Cost}, currency = {req.Currency} WHERE event_id = {eventId}";
+                }
+                _db.ExecuteNonQuery(query);
+                _db.CommitTransaction();
+                return Ok("Event Updated.");
+            }
+            catch
+            {
+                _db.RollbackTransaction();
+                _db.CommitTransaction();
+                return StatusCode(StatusCodes.Status500InternalServerError, "Server error");
+            }
+        }
     }
 }
