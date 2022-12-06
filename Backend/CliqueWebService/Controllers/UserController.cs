@@ -15,7 +15,6 @@ namespace CliqueWebService.Controllers
         BusinessLogic _businessLogic;
         string storageConnection;
         private readonly IConfiguration _configuration;
-        // GET: api/<EventController>
 
         public UserController(IConfiguration configuration)
         {
@@ -28,18 +27,14 @@ namespace CliqueWebService.Controllers
         [HttpGet]
         public ActionResult GetCurrentUser()
         {
-            DocumentResponse returnResponse = new DocumentResponse();
             try
             {
                 _db.Connect();
             } catch (Exception ex)
             {
-                returnResponse.Method = "GET";
-                returnResponse.Status = "0";
-                returnResponse.Events = null;
-                returnResponse.Error = ex.Message;
-                return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
+
             string id = "0";
             if (Request.Headers.Keys.Contains("Authorization"))
             {
@@ -50,118 +45,73 @@ namespace CliqueWebService.Controllers
                 }
             }
             if (id == "0")
-            {
-                returnResponse.Method = "POST";
-                returnResponse.Error = "Unauthorized user";
-                returnResponse.Status = "0";
-                return Unauthorized(returnResponse);
+            {   
+                return Unauthorized();
             }
+
             try
             {
-                List<User> user = new List<User>();
+                User user = new User();
                 string query = $"SELECT user_id, name, surname, email, gender_name, contact_no, birth_data, profile_pic, bio FROM Users LEFT JOIN Gender ON gender_id = gender WHERE user_id = {id}";
-                bool idExists = true;
                 var reader = _db.ExecuteQuery(query);
                 if (!reader.HasRows)
                 {
-                    idExists = false;
+                    return BadRequest($"User not found!");
                 }
 
                 while (reader.Read())
                 {
                     if (reader.GetValue(0) != DBNull.Value)
                     {
-                        user.Add(_businessLogic.GetUsers(reader));
+                        user = _businessLogic.GetUsers(reader);
                     }
                 }
-
                 reader.Close();
                 _db.Disconnect();
-
-                if (!idExists)
-                {
-                    returnResponse.Status = "0";
-                    returnResponse.Method = "GET";
-                    returnResponse.Events = null;
-                    returnResponse.Error = $"User with ID = {id} not found.";
-                    return BadRequest(returnResponse);
-                }
-
-                returnResponse.Status = "1";
-                returnResponse.Method = "GET";
-                returnResponse.Users = user;
-                return Ok(returnResponse);
+                return Ok(user);
             } catch (Exception ex)
             {
                 _db.Disconnect();
-                returnResponse.Status = "0";
-                returnResponse.Method = "GET";
-                returnResponse.Events = null;
-                returnResponse.Error = ex.Message;
-                return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
 
         [HttpGet("{id}")]
         public ActionResult GetUserByID(int id)
         {
-            DocumentResponse returnResponse = new DocumentResponse();
             try
             {
                 _db.Connect();
             }
             catch (Exception ex)
             {
-                returnResponse.Method = "GET";
-                returnResponse.Status = "0";
-                returnResponse.Events = null;
-                returnResponse.Error = ex.Message;
-                return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
             try
             {
-                List<User> user = new List<User>();
+                User user = new User();
                 string query = $"SELECT user_id, name, surname, email, gender_name, contact_no, birth_data, profile_pic, bio FROM Users LEFT JOIN Gender ON gender_id = gender WHERE user_id = {id}";
-                bool idExists = true;
                 var reader = _db.ExecuteQuery(query);
                 if (!reader.HasRows)
                 {
-                    idExists = false;
+                    return BadRequest($"User with {id} not found!");
                 }
 
                 while (reader.Read())
                 {
                     if (reader.GetValue(0) != DBNull.Value)
                     {
-                        user.Add(_businessLogic.GetUsers(reader));
+                        user = _businessLogic.GetUsers(reader);
                     }
                 }
-
                 reader.Close();
                 _db.Disconnect();
-
-                if (!idExists)
-                {
-                    returnResponse.Status = "0";
-                    returnResponse.Method = "GET";
-                    returnResponse.Events = null;
-                    returnResponse.Error = $"User with ID = {id} not found.";
-                    return BadRequest(returnResponse);
-                }
-
-                returnResponse.Status = "1";
-                returnResponse.Method = "GET";
-                returnResponse.Users = user;
-                return Ok(returnResponse);
+                return Ok(user);
             }
             catch (Exception ex)
             {
                 _db.Disconnect();
-                returnResponse.Status = "0";
-                returnResponse.Method = "GET";
-                returnResponse.Events = null;
-                returnResponse.Error = ex.Message;
-                return StatusCode(StatusCodes.Status500InternalServerError, returnResponse);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
 
@@ -169,7 +119,6 @@ namespace CliqueWebService.Controllers
         [Route("UpdateUserData")]
         public ActionResult UpdateUserData([FromBody] User user)
         {
-            DocumentResponse docResponse = new DocumentResponse();
             string id = "0";
             if (Request.Headers.Keys.Contains("Authorization"))
             {
@@ -181,11 +130,9 @@ namespace CliqueWebService.Controllers
             }
             if (id == "0")
             {
-                docResponse.Method = "POST";
-                docResponse.Error = "Unauthorized user";
-                docResponse.Status = "0";
-                return Unauthorized(docResponse);
+                return Unauthorized();
             }
+
             if (ModelState.IsValid)
             {
                 try
@@ -194,11 +141,9 @@ namespace CliqueWebService.Controllers
                 }
                 catch (Exception ex)
                 {
-                    docResponse.Error = ex.Message;
-                    docResponse.Status = "0";
-                    docResponse.Method = "POST";
-                    return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
+                    return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
                 }
+
                 string query = $"UPDATE Users SET name = '{user.name}', surname = '{user.surname}', email = '{user.email}', contact_no = '{user.contact_no}', " +
                     $"birth_data = '{user.birth_data}', gender = {user.gender}, bio = '{user.bio}' WHERE user_id = {id}";
                 _db.BeginTransaction();
@@ -206,27 +151,18 @@ namespace CliqueWebService.Controllers
                 {
                     _db.ExecuteNonQuery(query);
                     _db.CommitTransaction();
-                    docResponse.Message = "User successfully updated";
-                    docResponse.Status = "1";
-                    docResponse.Method = "POST";
-                    return Ok(docResponse);
+                    return Ok();
                 }
                 catch
                 {
                     _db.RollbackTransaction();
                     _db.CommitTransaction();
-                    docResponse.Error = "Couldn't update user";
-                    docResponse.Status = "0";
-                    docResponse.Method = "POST";
-                    return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Couldn't update user");
                 }
             }
             else
             {
-                docResponse.Error = "Incorrectly formated JSON request";
-                docResponse.Status = "0";
-                docResponse.Method = "POST";
-                return BadRequest(docResponse);
+                return BadRequest("Incorrectly formated JSON!");
             }
         }
 
@@ -234,7 +170,6 @@ namespace CliqueWebService.Controllers
         [Route("UpdateUserPassword")]
         public ActionResult UpdateUserPassword([FromBody] PasswordChangeRequest passwordChangeRequest)
         {
-            DocumentResponse docResponse = new DocumentResponse();
             if (ModelState.IsValid)
             {
                 try
@@ -243,11 +178,9 @@ namespace CliqueWebService.Controllers
                 }
                 catch (Exception ex)
                 {
-                    docResponse.Error = ex.Message;
-                    docResponse.Status = "0";
-                    docResponse.Method = "POST";
-                    return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
+                    return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
                 }
+
                 string id = "0";
                 if (Request.Headers.Keys.Contains("Authorization"))
                 {
@@ -259,11 +192,9 @@ namespace CliqueWebService.Controllers
                 }
                 if (id == "0")
                 {
-                    docResponse.Method = "POST";
-                    docResponse.Error = "Unauthorized user";
-                    docResponse.Status = "0";
-                    return Unauthorized(docResponse);
+                    return Unauthorized();
                 }
+
                 string passFromDB = "";
                 string q1 = $"SELECT hash_password FROM Users WHERE user_id = {id}";
                 var reader = _db.ExecuteQuery(q1);
@@ -277,10 +208,7 @@ namespace CliqueWebService.Controllers
                 reader.Close();
                 if (passFromDB.ToLower() != _businessLogic.ConvertToSHA256(passwordChangeRequest.OldPassword).ToLower())
                 {
-                    docResponse.Method = "POST";
-                    docResponse.Message = "Old password is incorrect";
-                    docResponse.Status = "0";
-                    return BadRequest(docResponse);
+                    return BadRequest("Old password is incorrect");
                 }
                 string query = $"UPDATE Users SET hash_password = '{_businessLogic.ConvertToSHA256(passwordChangeRequest.NewPassword).ToLower()}' WHERE user_id = '{id}'";
                 _db.BeginTransaction();
@@ -290,35 +218,23 @@ namespace CliqueWebService.Controllers
                     _db.CommitTransaction();
                     if(count > 0)
                     {
-                        docResponse.Message = "Password successfully updated";
-                        docResponse.Status = "1";
-                        docResponse.Method = "POST";
-                        return Ok(docResponse);
+                        return Ok("Password succesfully updated");
 
                     } else
                     {
-                        docResponse.Method = "POST";
-                        docResponse.Message = "Old password is incorrect";
-                        docResponse.Status = "0";
-                        return BadRequest(docResponse);
+                        return BadRequest("Old password is incorrect");
                     }
                 }
                 catch
                 {
                     _db.RollbackTransaction();
                     _db.CommitTransaction();
-                    docResponse.Error = "Couldn't update password";
-                    docResponse.Status = "0";
-                    docResponse.Method = "POST";
-                    return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Couldn't update password");
                 }
             }
             else
             {
-                docResponse.Error = "Incorrectly formated JSON request";
-                docResponse.Status = "0";
-                docResponse.Method = "POST";
-                return BadRequest(docResponse);
+                return BadRequest("Incorrectly formated JSON request");
             }
         }
 
@@ -344,6 +260,7 @@ namespace CliqueWebService.Controllers
             {
                 return Unauthorized();
             }
+
             try
             {
                 string containerName = "file-upload";

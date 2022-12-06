@@ -4,7 +4,6 @@ using CliqueWebService.Helpers;
 using CliqueWebService.Helpers.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Cryptography;
 using System.Text;
 using System.Security.Claims;
 
@@ -45,14 +44,13 @@ namespace CliqueWebService.Controllers
                 User user = new User();
                 user = null;
                 try
-
                 {
-                    List<User> userList = new List<User>();
                     var hash = _businessLogic.ConvertToSHA256(password);
                     string query = $"SELECT user_id, name, surname, email, gender_name, contact_no, birth_data, profile_pic, bio FROM Users LEFT JOIN Gender ON gender_id = gender WHERE email LIKE '{email}' AND hash_password LIKE '{hash.ToLower()}'";
                     var reader = _db.ExecuteQuery(query);
                     if (!reader.HasRows)
                     {
+                        _db.Disconnect();
                         return BadRequest("User not found");
                     }
 
@@ -60,17 +58,17 @@ namespace CliqueWebService.Controllers
                     {
                         if (reader.GetValue(0) != DBNull.Value)
                         {
-                            userList.Add(_businessLogic.GetUsers(reader));
+                            user = _businessLogic.GetUsers(reader);
                         }
                     }
                     reader.Close();
-
-                    user = userList[0];
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    return BadRequest("Something went wrong");
+                    _db.Disconnect();
+                    return BadRequest(ex.Message);
                 }
+
                 if (user != null)
                 {
                     var claims = new[] {
@@ -103,7 +101,7 @@ namespace CliqueWebService.Controllers
             }
             else
             {
-                return BadRequest();
+                return BadRequest("Invalid JSON");
             }
         }
 
@@ -111,8 +109,6 @@ namespace CliqueWebService.Controllers
         [Route("RegisterUser")]
         public ActionResult RegisterUser([FromBody] RegisterRequest userForRegistration)
         {
-            DocumentResponse docResponse = new DocumentResponse();
-
             if (ModelState.IsValid)
             {
                 try
@@ -121,52 +117,38 @@ namespace CliqueWebService.Controllers
                 }
                 catch (Exception ex)
                 {
-                    docResponse.Error = ex.Message;
-                    docResponse.Status = "0";
-                    docResponse.Method = "POST";
-                    return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
+                    return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
                 }
+
                 string query = $"INSERT INTO Users(name, surname, email, hash_password) VALUES ('{userForRegistration.Name}', '{userForRegistration.Surname}', " +
                     $"'{userForRegistration.Email}', '{_businessLogic.ConvertToSHA256(userForRegistration.Password)}')";
                 _db.BeginTransaction();
-                string checkUserQ = $"SELECT COUNT(*) FROM Users WHERE email LIKE '{userForRegistration.Email}'";
+                string checkUserQuery = $"SELECT COUNT(*) FROM Users WHERE email LIKE '{userForRegistration.Email}'";
                 try
                 {
-                    var reader = _db.ExecuteQuery(checkUserQ);
+                    var reader = _db.ExecuteQuery(checkUserQuery);
                     while (reader.Read())
                     {
                         if (reader.GetInt32(0) > 0)
                         {
-                            docResponse.Message = "User with this username or password already exists";
-                            docResponse.Status = "0";
-                            docResponse.Method = "POST";
-                            return BadRequest(docResponse);
+                            return BadRequest("User with this username or password already exists");
                         }
                     }
                     reader.Close();
                     _db.ExecuteNonQuery(query);
                     _db.CommitTransaction();
-                    docResponse.Message = "User successfully registered";
-                    docResponse.Status = "1";
-                    docResponse.Method = "POST";
-                    return Ok(docResponse);
+                    return Ok("User successfully registered");
                 }
                 catch
                 {
                     _db.RollbackTransaction();
                     _db.CommitTransaction();
-                    docResponse.Error = "Couldn't register user";
-                    docResponse.Status = "0";
-                    docResponse.Method = "POST";
-                    return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Couldn't register user");
                 }
             }
             else
             {
-                docResponse.Errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
-                docResponse.Status = "0";
-                docResponse.Method = "POST";
-                return BadRequest(docResponse);
+                return BadRequest(ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage));
             }
 
         }

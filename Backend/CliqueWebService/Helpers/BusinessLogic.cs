@@ -17,12 +17,11 @@ namespace CliqueWebService.Helpers
                 surname = reader.GetString(2),
                 email = reader.GetString(3),
                 gender = (reader.GetValue(4) != DBNull.Value) ? reader.GetString(4).Trim() : null,
-                contact_no = reader.GetString(5),
-                birth_data = reader.GetDateTime(6),
-                profile_pic = (reader.GetValue(7) != DBNull.Value) ? reader.GetString(7) : "empty",
-                bio = (reader.GetValue(8) != DBNull.Value) ? reader.GetString(8) : "empty"
+                contact_no = (reader.GetValue(5) != DBNull.Value) ? reader.GetString(5).Trim() : null,
+                birth_data = (reader.GetValue(6) != DBNull.Value) ? reader.GetDateTime(6) : null,
+                profile_pic = (reader.GetValue(7) != DBNull.Value) ? reader.GetString(7) : null,
+                bio = (reader.GetValue(8) != DBNull.Value) ? reader.GetString(8) : null
             };
-
             return user;
         }
 
@@ -69,7 +68,7 @@ namespace CliqueWebService.Helpers
 
             if (trimmedEmail.EndsWith("."))
             {
-                return false; // suggested by @TK-421
+                return false;
             }
             try
             {
