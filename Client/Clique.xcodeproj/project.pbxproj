@@ -37,7 +37,7 @@
 		42DB2734292672970027A00C /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DB2733292672970027A00C /* UserStorage.swift */; };
 		42DD304E292A9C8D0054B088 /* EventDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DD304D292A9C8D0054B088 /* EventDetail.storyboard */; };
 		42DD305429310FFB0054B088 /* EventServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD305329310FFB0054B088 /* EventServices.swift */; };
-		42DD3058293279D20054B088 /* Creator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD3057293279D20054B088 /* Creator.swift */; };
+		42DD3058293279D20054B088 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DD3057293279D20054B088 /* User.swift */; };
 		42EA63232932AADB007417D0 /* RegisterEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA63222932AADB007417D0 /* RegisterEntries.swift */; };
 		42EA63292932BB6E007417D0 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EA63282932BB6E007417D0 /* InitialViewController.swift */; };
 		42EA632B2932BB7D007417D0 /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42EA632A2932BB7D007417D0 /* Initial.storyboard */; };
@@ -69,7 +69,7 @@
 		42DB2733292672970027A00C /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
 		42DD304D292A9C8D0054B088 /* EventDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventDetail.storyboard; sourceTree = "<group>"; };
 		42DD305329310FFB0054B088 /* EventServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventServices.swift; sourceTree = "<group>"; };
-		42DD3057293279D20054B088 /* Creator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
+		42DD3057293279D20054B088 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		42EA63222932AADB007417D0 /* RegisterEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEntries.swift; sourceTree = "<group>"; };
 		42EA63282932BB6E007417D0 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		42EA632A2932BB7D007417D0 /* Initial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Initial.storyboard; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				427F187B2923F793009284DA /* Event.swift */,
-				42DD3057293279D20054B088 /* Creator.swift */,
+				42DD3057293279D20054B088 /* User.swift */,
 				4237AC84292C20C700095D47 /* LoginCredentials.swift */,
 				4237AC86292C215F00095D47 /* LoginResponse.swift */,
 				42EA63222932AADB007417D0 /* RegisterEntries.swift */,
@@ -364,7 +364,7 @@
 				427F18792923F6FB009284DA /* EventListViewController.swift in Sources */,
 				427F18942927BCD2009284DA /* EventDetailViewController.swift in Sources */,
 				427F187C2923F793009284DA /* Event.swift in Sources */,
-				42DD3058293279D20054B088 /* Creator.swift in Sources */,
+				42DD3058293279D20054B088 /* User.swift in Sources */,
 				42464B01292F7ADA009FDE1D /* SceneDelegate.swift in Sources */,
 				4237AC85292C20C700095D47 /* LoginCredentials.swift in Sources */,
 				428ADAA529264FF100417940 /* LoginViewController.swift in Sources */,

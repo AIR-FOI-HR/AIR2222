@@ -15,7 +15,7 @@ struct Event: Codable {
     let eventParticipantNumber: Int
     let eventCost: Double?
     let eventCurrency: String?
-    let eventCreator: Creator
+    let eventCreator: User
     let eventCategory: String
     let eventDescription: String?
     
