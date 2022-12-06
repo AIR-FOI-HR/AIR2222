@@ -8,7 +8,11 @@ class SettingsViewController: UIViewController {
     @IBOutlet private weak var closeButton: UIButton!
     @IBOutlet private weak var securityButton: UIButton!
     
-    var userStorage = UserStorage()
+    private var userStorage = UserStorage()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     @IBAction func logOutButtonPressed(_ sender: UIButton) {
         userStorage.removeKey(key: UserStorageValues.token)

@@ -2,8 +2,8 @@ import UIKit
 
 class InitialViewController: UIViewController {
 
-    @IBOutlet private weak var logInButton: UIButton!
-    @IBOutlet private weak var registerButton: UIButton!
+    @IBOutlet private var logInButton: UIButton!
+    @IBOutlet private var registerButton: UIButton!
     
     @IBAction func loginButtonPressed( sender: UIButton) {
         let storyboard = UIStoryboard(name: "Login" , bundle:nil)

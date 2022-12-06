@@ -17,7 +17,7 @@ class SecurityViewController: UIViewController {
     let repeatNewPasswordShowButton = UIButton(type: .custom)
     
     @IBOutlet weak var savePasswordButton: UIButton!
-    private let settingsService = SettingService()
+    private let settingsService = SettingsService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +72,7 @@ class SecurityViewController: UIViewController {
         
     }
     
-    func alert(fwdMessage: String){
+    func alert(fwdMessage: String) {
         let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(defaultAction)
@@ -90,7 +90,7 @@ class SecurityViewController: UIViewController {
         return check
     }
 
-    @objc func checkAndDisplayError (textfield: UITextField) {
+    @objc func checkAndDisplayError(textfield: UITextField) {
 
         if (textfield.text?.count ?? 0>=8){
             passwordCheckLabel.text = ""
@@ -102,7 +102,7 @@ class SecurityViewController: UIViewController {
         }
     }
 
-    @objc func compareAndDisplay (textfield: UITextField) {
+    @objc func compareAndDisplay(textfield: UITextField) {
 
         if (textfield.text == newPasswordTextField.text ) {
             matchingPasswordsLabel.isHidden = true

@@ -11,17 +11,17 @@ import SkeletonView
 
 class ProfileEditViewController: UIViewController {
     
-    @IBOutlet weak var imgProfile: UIImageView!
-    @IBOutlet weak var btnChooseImage: UIButton!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var nameTextfield: UITextField!
-    @IBOutlet weak var surnameTextField: UITextField!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var textViewBio: UITextView!
+    @IBOutlet private var imgProfile: UIImageView!
+    @IBOutlet private var btnChooseImage: UIButton!
+    @IBOutlet private var emailTextField: UITextField!
+    @IBOutlet private var nameTextfield: UITextField!
+    @IBOutlet private var surnameTextField: UITextField!
+    @IBOutlet private var datePicker: UIDatePicker!
+    @IBOutlet private var textViewBio: UITextView!
     
     private let profileService = ProfileService()
     
-    func getUser(){
+    func getUser() {
         profileService.getUser { result in
             switch result {
             case .success(let user):
@@ -47,7 +47,6 @@ class ProfileEditViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        
         guard let userProfileData = getProfileData() else {
             alert(fwdMessage: "Please enter all required info.")
             return

@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-final class SettingService {
+final class SettingsService {
     
     func changePassword (
         with entries: PasswordData,

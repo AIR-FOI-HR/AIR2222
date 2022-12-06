@@ -8,5 +8,7 @@
 import UIKit
 
 class PastJoinedEventsViewController: UIViewController {
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }

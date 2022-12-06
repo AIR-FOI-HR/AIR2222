@@ -10,16 +10,16 @@ import SkeletonView
 
 class ProfileViewController: UIViewController {
     
-    @IBOutlet private weak var editButton: UIButton!
-    @IBOutlet private weak var profileImage: UIImageView!
-    @IBOutlet private weak var myEventsButton: UIButton!
+    @IBOutlet private var editButton: UIButton!
+    @IBOutlet private var profileImage: UIImageView!
+    @IBOutlet private var myEventsButton: UIButton!
     @IBOutlet private var eventsButtons: [UIButton]!
-    @IBOutlet private weak var joinedEventsButton: UIButton!
-    @IBOutlet private weak var pastJoinedEventsButton: UIButton!
-    @IBOutlet private weak var createdEventsButton: UIButton!
-    @IBOutlet private weak var pastCreatedEventsButton: UIButton!
-    @IBOutlet private weak var labelProfileName: UILabel!
-    @IBOutlet private weak var textViewBio: UITextView!
+    @IBOutlet private var joinedEventsButton: UIButton!
+    @IBOutlet private var pastJoinedEventsButton: UIButton!
+    @IBOutlet private var createdEventsButton: UIButton!
+    @IBOutlet private var pastCreatedEventsButton: UIButton!
+    @IBOutlet private var labelProfileName: UILabel!
+    @IBOutlet private var textViewBio: UITextView!
     
     private let profileService = ProfileService()
     

@@ -8,5 +8,7 @@
 import UIKit
 
 class CreatedEventsViewController: UIViewController {
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }

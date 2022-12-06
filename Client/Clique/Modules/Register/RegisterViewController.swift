@@ -10,16 +10,16 @@ import IQKeyboardManagerSwift
 class RegisterViewController: UIViewController {
 
     var returnKeyHandler = IQKeyboardReturnKeyHandler()
-    @IBOutlet private weak var txtName: UITextField!
-    @IBOutlet private weak var txtSurname: UITextField!
-    @IBOutlet private weak var txtEmail: UITextField!
-    @IBOutlet private weak var txtPassword: UITextField!
-    @IBOutlet private weak var txtRePassword: UITextField!
-    @IBOutlet private weak var registerButton: UIButton!
-    @IBOutlet private weak var passwordCheckLabel: UILabel!
-    @IBOutlet private weak var matchingPasswordsLabel: UILabel!
-    @IBOutlet private weak var ageSwitcher: UISwitch!
-    @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private var txtName: UITextField!
+    @IBOutlet private var txtSurname: UITextField!
+    @IBOutlet private var txtEmail: UITextField!
+    @IBOutlet private var txtPassword: UITextField!
+    @IBOutlet private var txtRePassword: UITextField!
+    @IBOutlet private var registerButton: UIButton!
+    @IBOutlet private var passwordCheckLabel: UILabel!
+    @IBOutlet private var matchingPasswordsLabel: UILabel!
+    @IBOutlet private var ageSwitcher: UISwitch!
+    @IBOutlet private var backButton: UIButton!
     
     var iconClick = false
     let buttonPasswordShow = UIButton(type: .custom)

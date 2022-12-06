@@ -13,9 +13,9 @@ import IQKeyboardManagerSwift
 class LoginViewController: UIViewController {
     
     var returnKeyHandler = IQKeyboardReturnKeyHandler()
-    @IBOutlet private weak var emailTextField: UITextField!
-    @IBOutlet private weak var passwordTextField: UITextField!
-    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private var emailTextField: UITextField!
+    @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var loginButton: UIButton!
     
     private let loginService = LoginService()
     var iconClick = false
