@@ -22,20 +22,15 @@ class EventDetailViewController: UIViewController{
     @IBOutlet private var _eventCategory: UILabel!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         _setupUI()
-        
     }
-    
 }
 
 private extension EventDetailViewController {
     
     func _setupUI() {
-        
         guard let _event = eventGet else { return }
-        //title = _event.eventName
         _eventName.text = _event.eventName
         _eventDescription.text = _event.eventDescription
         _eventCreator.text = _event.eventCreator.userName + " " + _event.eventCreator.userSurname
@@ -45,8 +40,7 @@ private extension EventDetailViewController {
         if
             let price = _event.eventCost{
             _eventCost.text = price == 0 ? Constants.Labels.labelFree : String(price)
-        }
-        else {
+        } else {
             _eventCost.text = Constants.Labels.labelFree
         }
         _eventCategory.text = _event.eventCategory

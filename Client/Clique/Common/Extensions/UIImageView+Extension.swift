@@ -11,14 +11,12 @@ import Alamofire
 import AlamofireImage
 
 extension UIImageView {
-    func setupImage(with url: String?) {
+    func setup(with url: String?) {
         guard let _url = url else { return }
         AF.request(_url)
             .responseImage { [weak self] response in
-                guard let _self = self else { return }
-                if
-                    case.success (let image) = response.result {_self.image = image
-                    
+            if case .success(let image) = response.result {
+                self?.image = image
             }
         }
     }

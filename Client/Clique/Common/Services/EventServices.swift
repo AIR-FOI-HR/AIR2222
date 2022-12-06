@@ -11,24 +11,12 @@ import UIKit
 final class EventServices {
     
     func getEvent(completion: @escaping(Result<[Event], Error>) -> Void) {
-        AF.request(Constants.Service.eventsURL, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: nil, interceptor: nil)
+        AF.request(Constants.Service.eventsURL, method: .get)
             .validate(statusCode: 200..<300)
-            .responseData { response in
+            .responseDecodable(of: [Event].self) { response in
                 switch response.result {
-                case .success(_):
-                    do {
-                        var events: [Event] = []
-                        var eventGets: [EventJSONResponse] = []
-                        let data = response.data
-                        let decoder = JSONDecoder()
-                        let event = try decoder.decode(EventJSONResponse.self, from: data!)
-                        eventGets.append(event)
-                        events = event.events
-                        completion(.success(events))
-                    } catch {
-                        print(error)
-                    }
-                    
+                case .success(let eventResponse):
+                    completion(.success(eventResponse))
                 case .failure(let error):
                     completion(.failure(error))
                 }
