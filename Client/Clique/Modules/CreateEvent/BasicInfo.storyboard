@@ -392,6 +392,9 @@
                                     </backgroundConfiguration>
                                     <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="postButtonPressedWith_sender:" destination="duU-pN-hgI" eventType="primaryActionTriggered" id="pnx-pC-NW3"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="PgY-o8-p4F">
                                 <rect key="frame" x="32" y="184.99999999999997" width="329" height="425.33333333333326"/>
@@ -549,6 +552,7 @@
                         <outlet property="eventNameLabel" destination="Rfe-hj-i7l" id="VZu-5V-99k"/>
                         <outlet property="locationLabel" destination="t89-4r-3WI" id="IVj-hL-fe8"/>
                         <outlet property="participantNumberLabel" destination="eGG-ht-CMU" id="YJN-cB-OgX"/>
+                        <outlet property="postButton" destination="O7N-ax-nqB" id="LZu-do-K5y"/>
                         <outlet property="shortDescriptionLabel" destination="9JD-Q8-2Ec" id="eWv-GR-OGg"/>
                     </connections>
                 </viewController>

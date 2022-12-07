@@ -36,7 +36,7 @@ class ShortDescriptionViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
-            var shortDescription = shortDescriptionTextView.text,
+            let shortDescription = shortDescriptionTextView.text,
             !shortDescription.isEmpty
         else{
             alert(fwdMessage: "Please enter short description.")

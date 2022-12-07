@@ -58,6 +58,7 @@ final class CreateEventService {
         AF.request(Constants.Service.createEventURL, method: .post, parameters: entries, encoder: JSONParameterEncoder.default, headers: headers)
             .validate(statusCode: 200..<300).response{
             response in
+            print(response)
             switch response .result {
             case.success(_):
                 completionHandler(true)

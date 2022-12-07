@@ -25,6 +25,10 @@ class DateTimeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let chosenDate = dateFormatter.string(from: chosenDateTime.date)
+        
         if segue.identifier == "sendDateTime" {
             
             let controller = segue.destination as! LocationViewController
@@ -33,7 +37,7 @@ class DateTimeViewController: UIViewController {
             controller.participantNumber = participantNumber
             controller.eventCost = eventCost
             controller.currency = currency
-            controller.chosenDateTime = chosenDateTime.date.description
+            controller.chosenDateTime = chosenDate
         }
     }
 }
