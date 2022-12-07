@@ -15,40 +15,17 @@ protocol ShortDescriptionViewControllerDelegate {
 class ShortDescriptionViewController: UIViewController {
     
     @IBOutlet private weak var shortDescriptionTextView: UITextView!
-    @IBOutlet private weak var postButton: UIButton!
-    @IBOutlet private weak var dismissButton: UIButton!
 
     var delegate : ShortDescriptionViewControllerDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        shortDescriptionTextView.layer.shadowOpacity = 0.3
-        shortDescriptionTextView.layer.shadowRadius = 2.0
-        shortDescriptionTextView.layer.shadowOffset = CGSizeMake(3, 3)
-        shortDescriptionTextView.layer.shadowColor = UIColor.gray.cgColor
+        title = "Short Description"
         shortDescriptionTextView.layer.cornerRadius = 7
         shortDescriptionTextView.layer.masksToBounds = false
         shortDescriptionTextView.delegate = self
     }
     
-    @IBAction func postButtonPressed(_ sender: UIButton) {
-        startAnimation()
-        guard
-            let description = shortDescriptionTextView.text,
-            !description.isEmpty
-        else {
-            alert(fwdMessage: "Please fill out short description.")
-            return
-            }
-        delegate.didInputShortDesc(description: description)
-        stopAnimation()
-    }
-    
-    @IBAction func dismissButtonPressed(_ sender: UIButton) {
-        dismiss(animated: true,completion: nil)
-    }
-          
     let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
     func startAnimation() {
         loading.translatesAutoresizingMaskIntoConstraints = false
