@@ -18,3 +18,14 @@ struct UserProfile: Codable {
     let bio: String
 }
 
+struct UserProfileUpdateData: Codable {
+    let name: String
+    let surname: String
+    let email: String
+    let gender: String
+    let contact_no: String
+    let birth_data: String
+    let profile_pic: String
+    let bio: String
+}
+

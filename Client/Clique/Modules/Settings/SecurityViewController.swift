@@ -69,7 +69,8 @@ class SecurityViewController: UIViewController {
     
     func checkPasswords() -> Bool {
         
-        if newPasswordTextField.text?.count ?? 0>=8 && newPasswordTextField.text == repeatNewPasswordTextField.text {
+        if newPasswordTextField.text?.count ?? 0>=8 &&
+            newPasswordTextField.text == repeatNewPasswordTextField.text {
                 return true
         }
         else {
@@ -78,7 +79,7 @@ class SecurityViewController: UIViewController {
     }
 
     @objc func checkAndDisplayError(textfield: UITextField) {
-
+        
         if textfield.text?.count ?? 0>=8 {
             passwordCheckLabel.text = ""
             passwordCheckLabel.isHidden = true

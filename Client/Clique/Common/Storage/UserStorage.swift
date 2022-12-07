@@ -12,18 +12,18 @@ class UserStorage {
     
     static var token: String? {
         set {
-            setKey(value: newValue, key: .token)
+            setKey(value: newValue!, key: .token)
         } get {
-            return _get(key: .token) as? String
+            return getKey(key: .token) as? String
         }
     }
     
-    private static func _get(key: UserStorageValues) -> Any? {
+    private static func getKey(key: UserStorageValues) -> Any? {
         return  try? keychain.get(key.rawValue)
     }
 
-    private static func setKey(value: String!, key: UserStorageValues) {
-         try? keychain.set(value, key: key.rawValue)
+    private static func setKey(value: String, key: UserStorageValues) {
+        try? keychain.set(value, key: key.rawValue)
     }
     
     func removeKey(key: UserStorageValues) {

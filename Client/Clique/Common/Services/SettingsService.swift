@@ -13,15 +13,10 @@ final class SettingsService {
     func changePassword (
         with entries: PasswordData,
         completionHandler: @escaping(Bool)->()){
-            let headers: HTTPHeaders = [
-                "Authorization": "Bearer"
-                + " " + "\(UserStorage.token!)",
-                "Accept": "application/json"
-            ]
             AF.request(Constants.Service.passwordUpdateURL,
                        method: .post,
                        parameters : entries,
-                       encoder: JSONParameterEncoder.default, headers: headers
+                       encoder: JSONParameterEncoder.default, headers: Constants.Service.headers
             ).validate(statusCode: 200..<300)
                 .response{
                 response in

@@ -73,7 +73,8 @@ class ProfileEditViewController: UIViewController {
                     self.textViewBio.stopSkeletonAnimation()
                     self.datePicker.stopSkeletonAnimation()
                     
-                    self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
+                    self.view.hideSkeleton(reloadDataAfter: true,
+                                           transition: .crossDissolve(0.5))
             case .failure:
                 return
             }

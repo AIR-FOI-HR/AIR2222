@@ -11,13 +11,9 @@ import Alamofire
 final class ProfileService {
     
     func getUser(completion: @escaping(Result<UserProfile, Error>) -> Void){
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer"
-            + " " + "\(UserStorage.token!)",
-            "Accept": "application/json"
-        ]
-        AF.request(Constants.Service.profileGetUserURL, method: .get, headers: headers)
-            .validate(statusCode: 200..<300).responseDecodable(of: UserProfile.self) {
+        AF.request(Constants.Service.profileGetUserURL, method: .get, headers: Constants.Service.headers)
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: UserProfile.self) {
                 dataResponse in
                 switch dataResponse.result {
                 case .success(let user):
@@ -33,16 +29,12 @@ final class ProfileService {
     func updateUser(
         with entries: UserProfileUpdateData,
         completionHandler: @escaping(Bool)->()){
-            let headers: HTTPHeaders = [
-                "Authorization": "Bearer"
-                + " " + "\(UserStorage.token!)",
-                "Accept": "application/json"
-            ]
             AF.request(Constants.Service.profileUpdateURL,
                        method: .post,
                        parameters : entries,
-                       encoder: JSONParameterEncoder.default, headers: headers
-            ).validate(statusCode: 200..<300).response{
+                       encoder: JSONParameterEncoder.default, headers: Constants.Service.headers
+            ).validate(statusCode: 200..<300)
+                .response{
                 response in
                 debugPrint(response)
                 switch response.result {

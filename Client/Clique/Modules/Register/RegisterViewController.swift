@@ -55,7 +55,6 @@ class RegisterViewController: UIViewController {
 
         override func viewDidLoad() {
             super.viewDidLoad()
-            
             passwordCheckLabel.isHidden = true
             matchingPasswordsLabel.isHidden = true
             txtPassword.isSecureTextEntry = true

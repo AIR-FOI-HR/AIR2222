@@ -33,13 +33,16 @@ class ProfileViewController: UIViewController {
         textViewBio.layer.masksToBounds = false
 
         profileImage.isSkeletonable = true
-        profileImage.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        profileImage.showAnimatedSkeleton(usingColor: .clouds,
+                                          transition: .crossDissolve(0.5))
         
         labelProfileName.isSkeletonable = true
-        labelProfileName.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        labelProfileName.showAnimatedSkeleton(usingColor: .clouds,
+                                              transition: .crossDissolve(0.5))
 
         textViewBio.isSkeletonable = true
-        textViewBio.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        textViewBio.showAnimatedSkeleton(usingColor: .clouds,
+                                         transition: .crossDissolve(0.5))
     }
     
     private func getUser() {
@@ -49,7 +52,8 @@ class ProfileViewController: UIViewController {
                     self.profileImage.stopSkeletonAnimation()
                     self.labelProfileName.stopSkeletonAnimation()
                     self.textViewBio.stopSkeletonAnimation()
-                    self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
+                    self.view.hideSkeleton(reloadDataAfter: true,
+                                           transition: .crossDissolve(0.5))
                     
                     self.labelProfileName.text = user.name + " " + user.surname
                     self.textViewBio.text = user.bio
