@@ -15,7 +15,15 @@ protocol ShortDescriptionViewControllerDelegate {
 class ShortDescriptionViewController: UIViewController {
     
     @IBOutlet private weak var shortDescriptionTextView: UITextView!
-
+    
+    var selectedCategory: String = ""
+    var eventName: String = ""
+    var participantNumber: String = ""
+    var eventCost: String = ""
+    var currency: String = ""
+    var chosenDateTime: String = ""
+    var location: String = ""
+    
     var delegate : ShortDescriptionViewControllerDelegate!
 
     override func viewDidLoad() {
@@ -24,6 +32,27 @@ class ShortDescriptionViewController: UIViewController {
         shortDescriptionTextView.layer.cornerRadius = 7
         shortDescriptionTextView.layer.masksToBounds = false
         shortDescriptionTextView.delegate = self
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            var shortDescription = shortDescriptionTextView.text,
+            !shortDescription.isEmpty
+        else{
+            alert(fwdMessage: "Please enter short description.")
+            return
+        }
+        if segue.identifier == "sendAll" {
+            let controller = segue.destination as! CreateEventOverviewViewController
+            controller.selectedCategory = selectedCategory
+            controller.eventName = eventName
+            controller.participantNumber = participantNumber
+            controller.eventCost = eventCost
+            controller.currency = currency
+            controller.chosenDateTime = chosenDateTime
+            controller.location = location
+            controller.shortDescription = shortDescriptionTextView.text
+        }
     }
     
     let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)

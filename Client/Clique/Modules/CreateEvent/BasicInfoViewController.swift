@@ -50,7 +50,26 @@ class BasicInfoViewController: UIViewController {
         getCategories()
         getCurrencies()
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            var selectedCategory = categoryTextField.text,
+            var eventName = nameTextField.text,
+            var participantNumber = participantsTextField.text,
+            !selectedCategory.isEmpty && !eventName.isEmpty && !participantNumber.isEmpty
+        else{
+            alert(fwdMessage: "Please fill all required information.")
+            return
+        }
+        if segue.identifier == "sendInfo" {
+            let controller = segue.destination as! DateTimeViewController
+            controller.selectedCategory = categoryTextField.text!
+            controller.eventName = nameTextField.text!
+            controller.participantNumber = participantsTextField.text!
+            controller.eventCost = costTextField.text!
+            controller.currency = currencyTextField.text!
+            }
+        
+    }
     @IBAction func downButtonCategoryPressed(_ sender: UIButton) {
         categoryTextField.becomeFirstResponder()
     }

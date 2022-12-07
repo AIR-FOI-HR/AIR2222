@@ -28,7 +28,6 @@
 		42496D0C29301C9A00D972C9 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 42496D0B29301C9A00D972C9 /* KeychainAccess */; };
 		42496D10293033AA00D972C9 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 42496D0F293033AA00D972C9 /* IQKeyboardManagerSwift */; };
 		4254AD3F29297E2A004D649D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4254AD3E29297E2A004D649D /* Constants.swift */; };
-		425FAC14293801D400486755 /* PlaceAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FAC13293801D400486755 /* PlaceAutocompleteViewController.swift */; };
 		425FAC182938131200486755 /* CreateEventEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FAC172938131200486755 /* CreateEventEntries.swift */; };
 		42740C3F2926468900CD1DFC /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42740C3E2926468900CD1DFC /* Register.storyboard */; };
 		428ADAA529264FF100417940 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ADAA429264FF100417940 /* LoginViewController.swift */; };
@@ -62,7 +61,6 @@
 		4237AC84292C20C700095D47 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		4237AC86292C215F00095D47 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		4254AD3E29297E2A004D649D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		425FAC13293801D400486755 /* PlaceAutocompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAutocompleteViewController.swift; sourceTree = "<group>"; };
 		425FAC172938131200486755 /* CreateEventEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventEntries.swift; sourceTree = "<group>"; };
 		42740C3E2926468900CD1DFC /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		428ADAA429264FF100417940 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 				421487172933FC170053B344 /* BasicInfoViewController.swift */,
 				421487192933FC360053B344 /* BasicInfo.storyboard */,
 				422A63942935A56400ABB4C4 /* ShortDescriptionViewController.swift */,
-				425FAC13293801D400486755 /* PlaceAutocompleteViewController.swift */,
 				423375E2294008E0009FA6C1 /* DateTimeViewController.swift */,
 				422A9157294032730079554F /* LocationViewController.swift */,
 				422A9159294032970079554F /* CreateEventOverviewViewController.swift */,
@@ -350,7 +347,6 @@
 				425FAC182938131200486755 /* CreateEventEntries.swift in Sources */,
 				42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */,
 				42EA63232932AADB007417D0 /* RegisterEntries.swift in Sources */,
-				425FAC14293801D400486755 /* PlaceAutocompleteViewController.swift in Sources */,
 				42DB2734292672970027A00C /* UserStorage.swift in Sources */,
 				4214872029342C7A0053B344 /* Category.swift in Sources */,
 				4254AD3F29297E2A004D649D /* Constants.swift in Sources */,

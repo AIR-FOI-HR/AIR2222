@@ -16,8 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.resignFirstResponder()
-        
-//        GMSPlacesClient.provideAPIKey("AIzaSyC0NNY4L9uG_Vbn3oEyy-141uhKQzDb_VU")
+
         return true
     }
 
