@@ -27,7 +27,7 @@ class BasicInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Basic info"
+        title = "Basic info (1/5)"
         costSwitcher.addTarget(self, action: #selector(costInputEnabled(switcher:)), for: .valueChanged)
 
         categoryTextField.delegate = self
@@ -76,6 +76,13 @@ class BasicInfoViewController: UIViewController {
     
     @IBAction func downButtonCyrrencyPressed(_ sender: UIButton) {
         currencyTextField.becomeFirstResponder()
+    }
+    
+    @IBAction func nextButtonPressed(_ sender: UIBarButtonItem) {
+        guard let viewContoller = UIStoryboard(name: "DateTime", bundle: nil).instantiateInitialViewController() as? DateTimeViewController else{
+            return
+        }
+        navigationController?.pushViewController(viewContoller, animated: true)
     }
     
     func getCategories() {

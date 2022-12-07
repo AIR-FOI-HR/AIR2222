@@ -28,10 +28,17 @@ class ShortDescriptionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Short Description"
+        title = "Short Description (4/5)"
         shortDescriptionTextView.layer.cornerRadius = 7
         shortDescriptionTextView.layer.masksToBounds = false
         shortDescriptionTextView.delegate = self
+    }
+    
+    @IBAction func nextButtonPressed(_ sender: UIBarButtonItem) {
+        guard let viewContoller = UIStoryboard(name: "CreateEventOverview", bundle: nil).instantiateInitialViewController() as? CreateEventOverviewViewController else{
+            return
+        }
+        navigationController?.pushViewController(viewContoller, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

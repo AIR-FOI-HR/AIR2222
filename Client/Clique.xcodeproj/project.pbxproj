@@ -21,6 +21,7 @@
 		422A63952935A56400ABB4C4 /* ShortDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A63942935A56400ABB4C4 /* ShortDescriptionViewController.swift */; };
 		422A9158294032730079554F /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A9157294032730079554F /* LocationViewController.swift */; };
 		422A915A294032970079554F /* CreateEventOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A9159294032970079554F /* CreateEventOverviewViewController.swift */; };
+		422A91602940AA2F0079554F /* DateTime.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 422A915F2940AA2F0079554F /* DateTime.storyboard */; };
 		423375E3294008E0009FA6C1 /* DateTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423375E2294008E0009FA6C1 /* DateTimeViewController.swift */; };
 		4237AC85292C20C700095D47 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237AC84292C20C700095D47 /* LoginCredentials.swift */; };
 		4237AC87292C215F00095D47 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237AC86292C215F00095D47 /* LoginResponse.swift */; };
@@ -32,6 +33,9 @@
 		42740C3F2926468900CD1DFC /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42740C3E2926468900CD1DFC /* Register.storyboard */; };
 		428ADAA529264FF100417940 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428ADAA429264FF100417940 /* LoginViewController.swift */; };
 		429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429AC2692926ADF60029498B /* RegisterViewController.swift */; };
+		42BA9E982940B738008CAA90 /* CreateEventOverview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BA9E972940B738008CAA90 /* CreateEventOverview.storyboard */; };
+		42BA9E9A2940B777008CAA90 /* Location.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BA9E992940B777008CAA90 /* Location.storyboard */; };
+		42BA9E9E2940B7A9008CAA90 /* ShortDescription.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BA9E9D2940B7A9008CAA90 /* ShortDescription.storyboard */; };
 		42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D99DE2292835C700516EF9 /* RegisterService.swift */; };
 		42D99DE62928362300516EF9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 42D99DE52928362300516EF9 /* Alamofire */; };
 		42DB272C292656ED0027A00C /* LoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DB272B292656ED0027A00C /* LoginServices.swift */; };
@@ -57,6 +61,7 @@
 		422A63942935A56400ABB4C4 /* ShortDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortDescriptionViewController.swift; sourceTree = "<group>"; };
 		422A9157294032730079554F /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		422A9159294032970079554F /* CreateEventOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventOverviewViewController.swift; sourceTree = "<group>"; };
+		422A915F2940AA2F0079554F /* DateTime.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DateTime.storyboard; sourceTree = "<group>"; };
 		423375E2294008E0009FA6C1 /* DateTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeViewController.swift; sourceTree = "<group>"; };
 		4237AC84292C20C700095D47 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		4237AC86292C215F00095D47 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
@@ -65,6 +70,9 @@
 		42740C3E2926468900CD1DFC /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		428ADAA429264FF100417940 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		429AC2692926ADF60029498B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		42BA9E972940B738008CAA90 /* CreateEventOverview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateEventOverview.storyboard; sourceTree = "<group>"; };
+		42BA9E992940B777008CAA90 /* Location.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Location.storyboard; sourceTree = "<group>"; };
+		42BA9E9D2940B7A9008CAA90 /* ShortDescription.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShortDescription.storyboard; sourceTree = "<group>"; };
 		42D99DE2292835C700516EF9 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		42DB272B292656ED0027A00C /* LoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
 		42DB2733292672970027A00C /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
@@ -177,14 +185,31 @@
 		421487162933FBF70053B344 /* CreateEvent */ = {
 			isa = PBXGroup;
 			children = (
-				421487172933FC170053B344 /* BasicInfoViewController.swift */,
-				421487192933FC360053B344 /* BasicInfo.storyboard */,
-				422A63942935A56400ABB4C4 /* ShortDescriptionViewController.swift */,
-				423375E2294008E0009FA6C1 /* DateTimeViewController.swift */,
-				422A9157294032730079554F /* LocationViewController.swift */,
-				422A9159294032970079554F /* CreateEventOverviewViewController.swift */,
+				42BA9E962940B70A008CAA90 /* CreateEventOverview */,
+				42BA9E952940B701008CAA90 /* Location */,
+				42BA9E942940B6F3008CAA90 /* ShortDescription */,
+				422A915C2940A59A0079554F /* DateTime */,
+				422A915B2940A5480079554F /* BasicInfo */,
 			);
 			path = CreateEvent;
+			sourceTree = "<group>";
+		};
+		422A915B2940A5480079554F /* BasicInfo */ = {
+			isa = PBXGroup;
+			children = (
+				421487172933FC170053B344 /* BasicInfoViewController.swift */,
+				421487192933FC360053B344 /* BasicInfo.storyboard */,
+			);
+			path = BasicInfo;
+			sourceTree = "<group>";
+		};
+		422A915C2940A59A0079554F /* DateTime */ = {
+			isa = PBXGroup;
+			children = (
+				423375E2294008E0009FA6C1 /* DateTimeViewController.swift */,
+				422A915F2940AA2F0079554F /* DateTime.storyboard */,
+			);
+			path = DateTime;
 			sourceTree = "<group>";
 		};
 		4237AC83292C20AA00095D47 /* Models */ = {
@@ -215,6 +240,33 @@
 				429AC2692926ADF60029498B /* RegisterViewController.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		42BA9E942940B6F3008CAA90 /* ShortDescription */ = {
+			isa = PBXGroup;
+			children = (
+				422A63942935A56400ABB4C4 /* ShortDescriptionViewController.swift */,
+				42BA9E9D2940B7A9008CAA90 /* ShortDescription.storyboard */,
+			);
+			path = ShortDescription;
+			sourceTree = "<group>";
+		};
+		42BA9E952940B701008CAA90 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				422A9157294032730079554F /* LocationViewController.swift */,
+				42BA9E992940B777008CAA90 /* Location.storyboard */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		42BA9E962940B70A008CAA90 /* CreateEventOverview */ = {
+			isa = PBXGroup;
+			children = (
+				422A9159294032970079554F /* CreateEventOverviewViewController.swift */,
+				42BA9E972940B738008CAA90 /* CreateEventOverview.storyboard */,
+			);
+			path = CreateEventOverview;
 			sourceTree = "<group>";
 		};
 		42D99DE1292835AE00516EF9 /* Services */ = {
@@ -317,9 +369,13 @@
 			files = (
 				4213719129262F1B0082F1C7 /* Login.storyboard in Resources */,
 				4214871A2933FC360053B344 /* BasicInfo.storyboard in Resources */,
+				42BA9E982940B738008CAA90 /* CreateEventOverview.storyboard in Resources */,
+				42BA9E9A2940B777008CAA90 /* Location.storyboard in Resources */,
 				420CDAA4290E543A0074ACFA /* LaunchScreen.storyboard in Resources */,
 				420CDAA1290E543A0074ACFA /* Assets.xcassets in Resources */,
 				42EA632B2932BB7D007417D0 /* Initial.storyboard in Resources */,
+				422A91602940AA2F0079554F /* DateTime.storyboard in Resources */,
+				42BA9E9E2940B7A9008CAA90 /* ShortDescription.storyboard in Resources */,
 				42740C3F2926468900CD1DFC /* Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

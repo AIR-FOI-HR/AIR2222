@@ -19,9 +19,16 @@ class DateTimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Date and Time"
+        title = "Date and Time (2/5)"
         
         
+    }
+    
+    @IBAction func nextButtonPressed(_ sender: UIBarButtonItem) {
+        guard let viewContoller = UIStoryboard(name: "Location", bundle: nil).instantiateInitialViewController() as? LocationViewController else{
+            return
+        }
+        navigationController?.pushViewController(viewContoller, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

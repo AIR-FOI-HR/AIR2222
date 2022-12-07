@@ -20,7 +20,14 @@ class LocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Location"
+        title = "Location (3/5)"
+    }
+    
+    @IBAction func nextButtonPressed(_ sender: UIBarButtonItem) {
+        guard let viewContoller = UIStoryboard(name: "ShortDescription", bundle: nil).instantiateInitialViewController() as? ShortDescriptionViewController else{
+            return
+        }
+        navigationController?.pushViewController(viewContoller, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

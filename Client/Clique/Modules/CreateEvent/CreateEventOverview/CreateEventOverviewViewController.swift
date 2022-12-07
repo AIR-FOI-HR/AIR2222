@@ -35,7 +35,7 @@ class CreateEventOverviewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Overview"
+        title = "Overview (5/5)"
         categoryLabel.text = selectedCategory
         eventNameLabel.text = eventName
         participantNumberLabel.text = participantNumber
