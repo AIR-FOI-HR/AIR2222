@@ -25,7 +25,8 @@ class LoginViewController: UIViewController {
         
         startAnimation()
         guard let credentails = getLoginCredentials() else {
-            alert(fwdMessage: "Please enter email and password")
+            Constants.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg,
+                                   viewController: self)
             stopAnimation()
             return
         }
@@ -50,30 +51,17 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let token):
                 UserStorage.token = token.token
-                let storyboard = UIStoryboard(name: "Profile" , bundle:nil)
+                let storyboard = UIStoryboard(name: "Profile" , bundle: nil)
                 if let viewController = storyboard.instantiateInitialViewController() {
                     viewController.modalPresentationStyle = .fullScreen
                     self.present(viewController, animated: true)
                 }
                 self.stopAnimation()
             case .failure:
-                self.alert(fwdMessage: "Please enter your login info")
+                Constants.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
                 self.stopAnimation()
             }
         }
-    }
-    
-    func alert(fwdMessage: String){
-        let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(defaultAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
-        self.showButton()
     }
     
     private func showButton() {

@@ -30,12 +30,12 @@ class RegisterViewController: UIViewController {
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         
         guard let registerEntries = getRegisterEntries() else {
-            alert(fwdMessage: "Please fill all required information.")
+            Constants.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
             return
         }
         
         guard checkPasswords() else{
-            alert(fwdMessage: "Passwords don't match.")
+            Constants.Alerts.alert(fwdMessage: Constants.Alerts.passwordDontMatchMsg, viewController: self)
             return
         }
         startAnimation()
@@ -44,21 +44,14 @@ class RegisterViewController: UIViewController {
         func register(with registerEntries: RegisterEntries) {
             registerService.register(with: registerEntries) { (isSuccess) in
                 if isSuccess{
-                    self.alert(fwdMessage: "Successfully registrated!")
+                    Constants.Alerts.alert(fwdMessage: Constants.Alerts.successRegisterMsg, viewController: self)
                     self.stopAnimation()
                 }else{
-                    self.alert(fwdMessage: "Wrong input.")
+                    Constants.Alerts.alert(fwdMessage: Constants.Alerts.wrongInputMsg, viewController: self)
                     self.stopAnimation()
                 }
         }
     }
-    
-        func alert(fwdMessage: String){
-            let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            self.present(alertController, animated: true, completion: nil)
-        }
 
         override func viewDidLoad() {
             super.viewDidLoad()

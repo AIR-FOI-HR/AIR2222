@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 enum Constants {
     
@@ -17,5 +18,19 @@ enum Constants {
         static let profileGetUserURL = baseURL.appending("User")
         static let profileUpdateURL = baseURL.appending("User/UpdateUserData")
         static let passwordUpdateURL = baseURL.appending("User/UpdateUserPassword")
+    }
+    
+    enum Alerts {
+        static func alert(fwdMessage: String,viewController: UIViewController){
+            let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            viewController.present(alertController, animated: true, completion: nil)
+        }
+        static let successfullyUpdatedMsg = "Successfully updated."
+        static let pleaseEnterInfoMsg = "Please enter all required info."
+        static let successRegisterMsg = "Successfully registrated"
+        static let passwordDontMatchMsg = "Password don't match"
+        static let wrongInputMsg = "Wrong input"
     }
 }

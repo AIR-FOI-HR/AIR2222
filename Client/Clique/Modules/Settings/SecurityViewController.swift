@@ -10,13 +10,13 @@ class SecurityViewController: UIViewController {
     @IBOutlet weak var repeatNewPasswordTextField: UITextField!
     @IBOutlet private weak var passwordCheckLabel: UILabel!
     @IBOutlet private weak var matchingPasswordsLabel: UILabel!
+    @IBOutlet weak var savePasswordButton: UIButton!
     
     var iconClick = false
     let oldPasswordShowButton = UIButton(type: .custom)
     let newPasswordShowButton = UIButton(type: .custom)
     let repeatNewPasswordShowButton = UIButton(type: .custom)
     
-    @IBOutlet weak var savePasswordButton: UIButton!
     private let settingsService = SettingsService()
     
     override func viewDidLoad() {
@@ -37,14 +37,11 @@ class SecurityViewController: UIViewController {
     }
     
     func getPasswordData() -> PasswordData? {
-        
         guard
             let oldPassword = oldPasswordTextField.text,
             let newPassword = newPasswordTextField.text,
-                !oldPassword.isEmpty && !newPassword.isEmpty
-        else {
-            return nil
-        }
+            !oldPassword.isEmpty && !newPassword.isEmpty
+        else { return nil }
         
         let newPasswordData = PasswordData(OldPassword: oldPassword, NewPassword: newPassword)
         return newPasswordData
@@ -53,46 +50,36 @@ class SecurityViewController: UIViewController {
     func updatePasswordUser(with userPasswords: PasswordData) {
         settingsService.changePassword(with: userPasswords) { (isSuccess) in
             if isSuccess{
-                self.alert(fwdMessage: "Successfully updated password!")
+                Constants.Alerts.alert(fwdMessage: Constants.Alerts.successfullyUpdatedMsg, viewController: self)
                 self.dismiss(animated: true, completion: nil)
             }else{
-                self.alert(fwdMessage: "Please enter all required info.")
+                Constants.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
             }
         }
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        
-        guard let getPsswdData = getPasswordData() else {
-            alert(fwdMessage: "Please enter all required info.")
+        guard let getPasswordData = getPasswordData() else {
+            Constants.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
             return
         }
         
-        updatePasswordUser(with: getPsswdData)
-        
-    }
-    
-    func alert(fwdMessage: String) {
-        let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(defaultAction)
-        self.present(alertController, animated: true, completion: nil)
+        updatePasswordUser(with: getPasswordData)
     }
     
     func checkPasswords() -> Bool {
-        var check = false
-
-        if(newPasswordTextField.text?.count ?? 0>=8 && newPasswordTextField.text == repeatNewPasswordTextField.text){
-                check = true
-        }else {
-            check = false
+        
+        if newPasswordTextField.text?.count ?? 0>=8 && newPasswordTextField.text == repeatNewPasswordTextField.text {
+                return true
         }
-        return check
+        else {
+            return false
+        }
     }
 
     @objc func checkAndDisplayError(textfield: UITextField) {
 
-        if (textfield.text?.count ?? 0>=8){
+        if textfield.text?.count ?? 0>=8 {
             passwordCheckLabel.text = ""
             passwordCheckLabel.isHidden = true
         }
@@ -104,7 +91,7 @@ class SecurityViewController: UIViewController {
 
     @objc func compareAndDisplay(textfield: UITextField) {
 
-        if (textfield.text == newPasswordTextField.text ) {
+        if textfield.text == newPasswordTextField.text {
             matchingPasswordsLabel.isHidden = true
         }
         else {

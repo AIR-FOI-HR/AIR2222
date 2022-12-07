@@ -23,29 +23,8 @@ class ProfileViewController: UIViewController {
     
     private let profileService = ProfileService()
     
-    func getUser() {
-        profileService.getUser { result in
-            switch result {
-            case .success(let user):
-                for item in user {
-                    self.profileImage.stopSkeletonAnimation()
-                    self.labelProfileName.stopSkeletonAnimation()
-                    self.textViewBio.stopSkeletonAnimation()
-                    self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
-                    
-                    self.labelProfileName.text = item.name + " " + item.surname
-                    self.textViewBio.text = item.bio
-                }
-                return
-            case .failure:
-                return
-            }
-        }
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         profileImage.circleImage()
         getUser()
         
@@ -62,8 +41,25 @@ class ProfileViewController: UIViewController {
         textViewBio.isSkeletonable = true
         textViewBio.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
     }
+    
+    private func getUser() {
+        profileService.getUser { result in
+            switch result {
+            case .success(let user):
+                    self.profileImage.stopSkeletonAnimation()
+                    self.labelProfileName.stopSkeletonAnimation()
+                    self.textViewBio.stopSkeletonAnimation()
+                    self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
+                    
+                    self.labelProfileName.text = user.name + " " + user.surname
+                    self.textViewBio.text = user.bio
+            case .failure:
+                return
+            }
+        }
+    }
 
-    func showDropDown() {
+    private func showDropdown() {
         eventsButtons.forEach { button in
             button.isHidden = !button.isHidden
             self.view.layoutIfNeeded()
@@ -87,7 +83,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func selectMyEvents(_ sender: Any) {
-        showDropDown()
+        showDropdown()
     }
     
     @IBAction func joinedEventsButtonPressed(_ sender: UIButton) {

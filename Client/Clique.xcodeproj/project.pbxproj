@@ -44,7 +44,6 @@
 		429861B729392CA4001CF447 /* PasswordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429861B629392CA4001CF447 /* PasswordData.swift */; };
 		429861B929392D45001CF447 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429861B829392D45001CF447 /* SettingsService.swift */; };
 		429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429AC2692926ADF60029498B /* RegisterViewController.swift */; };
-		429EEA842936458E0026B866 /* UserGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429EEA832936458E0026B866 /* UserGet.swift */; };
 		429FCA292933F2F200269AC5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FCA282933F2F200269AC5 /* Extensions.swift */; };
 		42D904382938263200831199 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 42D904372938263200831199 /* SkeletonView */; };
 		42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D99DE2292835C700516EF9 /* RegisterService.swift */; };
@@ -91,7 +90,6 @@
 		429861B629392CA4001CF447 /* PasswordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordData.swift; sourceTree = "<group>"; };
 		429861B829392D45001CF447 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		429AC2692926ADF60029498B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		429EEA832936458E0026B866 /* UserGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGet.swift; sourceTree = "<group>"; };
 		429FCA282933F2F200269AC5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		42D99DE2292835C700516EF9 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		42DB272B292656ED0027A00C /* LoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 				4237AC86292C215F00095D47 /* LoginResponse.swift */,
 				42EA63222932AADB007417D0 /* RegisterEntries.swift */,
 				425B8D132935866000907BD9 /* UserProfile.swift */,
-				429EEA832936458E0026B866 /* UserGet.swift */,
 				425418112937EEFE00782493 /* UserProfileUpdateData.swift */,
 				429861B629392CA4001CF447 /* PasswordData.swift */,
 			);
@@ -451,7 +448,6 @@
 				425992F929383C2800DEFA34 /* SecurityViewController.swift in Sources */,
 				42EA63232932AADB007417D0 /* RegisterEntries.swift in Sources */,
 				4272BF27293413D400797045 /* PastJoinedEventsViewController.swift in Sources */,
-				429EEA842936458E0026B866 /* UserGet.swift in Sources */,
 				4253AE8E2933BF6D0054DC2B /* SettingsViewController.swift in Sources */,
 				429FCA292933F2F200269AC5 /* Extensions.swift in Sources */,
 				4272BF1B2934136C00797045 /* PastCreatedEventsViewController.swift in Sources */,

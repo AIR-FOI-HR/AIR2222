@@ -12,7 +12,6 @@ struct UserProfile: Codable {
     let name: String
     let surname: String
     let email: String
-    let gender: String
     let contact_no: String
     let birth_data: String
     let profile_pic: String

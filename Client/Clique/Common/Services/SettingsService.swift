@@ -15,14 +15,15 @@ final class SettingsService {
         completionHandler: @escaping(Bool)->()){
             let headers: HTTPHeaders = [
                 "Authorization": "Bearer"
-                + " " + "\(UserStorage.token)",
+                + " " + "\(UserStorage.token!)",
                 "Accept": "application/json"
             ]
             AF.request(Constants.Service.passwordUpdateURL,
                        method: .post,
                        parameters : entries,
                        encoder: JSONParameterEncoder.default, headers: headers
-            ).validate(statusCode: 200..<300).response{
+            ).validate(statusCode: 200..<300)
+                .response{
                 response in
                 debugPrint(response)
                 switch response.result {
