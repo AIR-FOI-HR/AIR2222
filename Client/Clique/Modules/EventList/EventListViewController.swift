@@ -14,12 +14,15 @@ class EventListViewController: UIViewController {
     @IBOutlet private var _tableView: UITableView!
     @IBOutlet private var _buttonFilter: UIButton!
     
-    private var events: [Event] = [] {
+//    var dateFrom: Date!
+//    var priceMin: String!
+//    var priceMax: String!
+    private var _events: [Event] = [] {
         didSet { _tableView.reloadData() }
         
     }
-    private var storedEvents: [Event] = []
-    private var eventServices = EventServices()
+    private var _storedEvents: [Event] = []
+    private var _eventServices = EventServices()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,7 @@ class EventListViewController: UIViewController {
 private extension EventListViewController {
     
     func _setupUI() {
+//        _buttonFilter.addTarget(self, action: #selector(openFilterView), for: .touchUpInside)
         _searchEventsTextField.delegate = self
         _tableView.dataSource = self
         _tableView.delegate = self
@@ -44,12 +48,12 @@ private extension EventListViewController {
     }
     
     func _getEvents(){
-        eventServices.getEvent() { [weak self] result in
+        _eventServices.getEvent() { [weak self] result in
             guard let _self = self else { return }
             switch result{
             case .success(let events):
-                _self.events = events
-                _self.storedEvents = _self.events
+                _self._events = events
+                _self._storedEvents = _self._events
             case .failure(let error):
                 print(error)
                 
@@ -57,30 +61,47 @@ private extension EventListViewController {
         }
     }
     
-    func getSearchResults() {
+    func _getSearchResults() {
         guard
             let searchText = _searchEventsTextField.text,
             !searchText.isEmpty
         else {
-            events = storedEvents
+            _events = _storedEvents
             return
         }
         
-        events = storedEvents.filter { $0.eventName.lowercased().contains(searchText.lowercased())
+        _events = _storedEvents.filter { $0.name.lowercased().contains(searchText.lowercased())
         }
     }
+    
+//    @objc func openFilterView(){
+//        let storyboardFilter = UIStoryboard(name: "EventFilter", bundle: nil)
+//        guard let eventFilterViewController = storyboardFilter.instantiateViewController(withIdentifier: "EventFilter") as? EventFilterViewController else { return }
+//        navigationController?.pushViewController(eventFilterViewController, animated: true)
+//        _getFilteredResults()
+//    }
+//
+//    func _getFilteredResults(){
+//        guard let pricemax = Double(priceMax), !priceMax.isEmpty else {
+//            priceMax = "FREE"
+//            return
+//        }
+//        _events = _storedEvents.filter{
+//            $0.eventCost <= pricemax
+//        }
+//    }
 }
 extension EventListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        return _events.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: Constants.Storyboards.eventDetail, bundle: nil)
         let eventDetailViewController =  storyboard.instantiateViewController(withIdentifier: Constants.Storyboards.eventDetail) as? EventDetailViewController
         
-        eventDetailViewController?.eventGet = events[indexPath.row]
+        eventDetailViewController?.event = _events[indexPath.row]
         navigationController?.pushViewController(eventDetailViewController!, animated: true)
     }
 }
@@ -94,7 +115,7 @@ extension EventListViewController: UITableViewDataSource {
             let cell = UITableViewCell()
             return cell
         }
-        cell.configure(with: events[indexPath.row])
+        cell.configure(with: _events[indexPath.row])
         cell.contentView.layer.cornerRadius = 7
         cell.contentView.layer.borderWidth = 0.5
         cell.contentView.layer.borderColor = UIColor.lightGray.cgColor
@@ -107,7 +128,7 @@ extension EventListViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == _searchEventsTextField{
-            getSearchResults()
+            _getSearchResults()
         }
         return true
     }

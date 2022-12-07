@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-class EventDetailViewController: UIViewController{
-    var eventGet : Event?
+class EventDetailViewController: UIViewController {
+    var event : Event?
     
     @IBOutlet private var _eventDescription: UILabel!
     @IBOutlet private var _eventName: UILabel!
@@ -30,19 +30,22 @@ class EventDetailViewController: UIViewController{
 private extension EventDetailViewController {
     
     func _setupUI() {
-        guard let _event = eventGet else { return }
-        _eventName.text = _event.eventName
-        _eventDescription.text = _event.eventDescription
-        _eventCreator.text = _event.eventCreator.userName + " " + _event.eventCreator.userSurname
-        _eventLocation.text = _event.eventLocation
-        _eventTimestamp.text = _event.eventTimestamp
-        _eventParticipantsNum.text = String(_event.eventParticipantNumber)
-        if
-            let price = _event.eventCost{
-            _eventCost.text = price == 0 ? Constants.Labels.labelFree : String(price)
+        guard let _event = self.event else { return }
+        
+        
+        _eventName.text = _event.name
+        _eventDescription.text = _event.description
+        _eventCreator.text = _event.creator.name + " " + _event.creator.surname
+        _eventLocation.text = _event.location
+        _eventTimestamp.text = _event.timestamp
+        _eventParticipantsNum.text = String(_event.participantNumber)
+        let currency = _event.currency
+        if let price = _event.cost {
+            _eventCost.text = price == 0 ? Constants.Labels.labelFree : String(price) + " " + (currency ?? "")
         } else {
             _eventCost.text = Constants.Labels.labelFree
         }
-        _eventCategory.text = _event.eventCategory
+        
+        _eventCategory.text = _event.category
     }
 }

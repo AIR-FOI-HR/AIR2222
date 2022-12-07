@@ -9,16 +9,16 @@ import Foundation
 
 struct User: Codable {
     
-    let userID: Int
-    let userName: String
-    let userSurname: String
-    let userEmail: String
+    let id: Int
+    let name: String
+    let surname: String
+    let email: String
     
     enum CodingKeys: String, CodingKey{
-        case userID = "user_id"
-        case userName = "name"
-        case userSurname = "surname"
-        case userEmail = "email"
+        case id = "user_id"
+        case name = "name"
+        case surname = "surname"
+        case email = "email"
 
     }
 }

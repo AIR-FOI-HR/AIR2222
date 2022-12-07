@@ -18,9 +18,9 @@ class EventListTableViewCell: UITableViewCell {
     @IBOutlet private var _likeButton: UIButton!
      
     func configure(with event: Event) {
-        _eventName.text = event.eventName
-        _eventLocation.text = event.eventLocation
-        _eventTimestamp.text = event.eventTimestamp
+        _eventName.text = event.name
+        _eventLocation.text = event.location
+        _eventTimestamp.text = event.timestamp
         layoutSubviews()
     }
     
