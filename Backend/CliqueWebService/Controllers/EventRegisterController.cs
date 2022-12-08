@@ -48,22 +48,24 @@ namespace CliqueWebService.Controllers
             try
             {
                 List<Event> events = new List<Event>();
-                string query = $"SELECT status_id FROM signs_up_for WHERE status_id = 2 AND event_id = {event_id} AND user_id = {id};";
+                string query = $"SELECT status_id FROM signs_up_for WHERE event_id = {event_id} AND user_id = {id};";
                 var reader = _db.ExecuteQuery(query);
                 if (!reader.HasRows)
                 {
-                    return BadRequest("User isn't signed in any events.");
+                    return BadRequest("Something went wrong!");
                 }
+                int status_id = 0;
                 while (reader.Read())
                 {
                     if (reader.GetValue(0) != DBNull.Value)
                     {
-                        events.Add(_businessLogic.FillEvents(reader));
+                        status_id = reader.GetInt32(0);
                     }
                 }
                 reader.Close();
                 _db.Disconnect();
-                return Ok(events.ToList());
+
+                return Ok(status_id);
             }
             catch (Exception ex)
             {
