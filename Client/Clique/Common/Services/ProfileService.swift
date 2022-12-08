@@ -9,9 +9,8 @@ import UIKit
 import Alamofire
 
 final class ProfileService {
-    
     func getUser(completion: @escaping(Result<UserProfile, Error>) -> Void){
-        AF.request(Constants.Service.profileGetUserURL, method: .get, headers: Constants.Service.headers)
+        AF.request(Constants.Service.profileGetUserURL, method: .get, headers: Constants.Service.authorizationHeader())
             .validate(statusCode: 200..<300)
             .responseDecodable(of: UserProfile.self) {
                 dataResponse in
@@ -32,7 +31,7 @@ final class ProfileService {
             AF.request(Constants.Service.profileUpdateURL,
                        method: .post,
                        parameters : entries,
-                       encoder: JSONParameterEncoder.default, headers: Constants.Service.headers
+                       encoder: JSONParameterEncoder.default, headers: Constants.Service.authorizationHeader()
             ).validate(statusCode: 200..<300)
                 .response{
                 response in

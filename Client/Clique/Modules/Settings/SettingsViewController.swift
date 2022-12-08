@@ -4,9 +4,9 @@ import IQKeyboardManagerSwift
 
 class SettingsViewController: UIViewController {
     
-    @IBOutlet private weak var logOutButton: UIButton!
-    @IBOutlet private weak var closeButton: UIButton!
-    @IBOutlet private weak var securityButton: UIButton!
+    @IBOutlet private var logOutButton: UIButton!
+    @IBOutlet private var closeButton: UIButton!
+    @IBOutlet private var securityButton: UIButton!
     
     private var userStorage = UserStorage()
     
@@ -15,7 +15,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func logOutButtonPressed(_ sender: UIButton) {
-        userStorage.removeKey(key: UserStorageValues.token)
+        UserStorage.token = nil
         let storyboard = UIStoryboard(name: "Initial" , bundle:nil)
         if let viewController = storyboard.instantiateInitialViewController() {
             viewController.modalPresentationStyle = .fullScreen

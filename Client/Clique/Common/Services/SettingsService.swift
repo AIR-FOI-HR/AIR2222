@@ -16,7 +16,7 @@ final class SettingsService {
             AF.request(Constants.Service.passwordUpdateURL,
                        method: .post,
                        parameters : entries,
-                       encoder: JSONParameterEncoder.default, headers: Constants.Service.headers
+                       encoder: JSONParameterEncoder.default, headers: Constants.Service.authorizationHeader()
             ).validate(statusCode: 200..<300)
                 .response{
                 response in

@@ -19,11 +19,14 @@ enum Constants {
         static let profileUpdateURL = baseURL.appending("User/UpdateUserData")
         static let passwordUpdateURL = baseURL.appending("User/UpdateUserPassword")
         
-        static let headers: HTTPHeaders = [
-            "Authorization": "Bearer"
-            + " " + "\(UserStorage.token!)",
-            "Accept": "application/json"
-        ]
+        static func authorizationHeader() -> HTTPHeaders {
+            var header: HTTPHeaders = [
+                "Authorization": "Bearer"
+                + " " + "\(UserStorage.token!)",
+                "Accept": "application/json"
+            ]
+            return header
+        }
     }
     
     enum Alerts {

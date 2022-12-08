@@ -23,26 +23,30 @@ class ProfileViewController: UIViewController {
     
     private let profileService = ProfileService()
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        profileImage.circleImage()
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        profileImage.circleImage()
+//        getUser()
+//        profileImage.layer.masksToBounds = false
+//        labelProfileName.layer.masksToBounds = false
+//        textViewBio.layer.masksToBounds = false
+//
+//        profileImage.isSkeletonable = true
+//        profileImage.showAnimatedSkeleton(usingColor: .clouds,
+//                                          transition: .crossDissolve(0.5))
+//
+//        labelProfileName.isSkeletonable = true
+//        labelProfileName.showAnimatedSkeleton(usingColor: .clouds,
+//                                              transition: .crossDissolve(0.5))
+//
+//        textViewBio.isSkeletonable = true
+//        textViewBio.showAnimatedSkeleton(usingColor: .clouds,
+//                                         transition: .crossDissolve(0.5))
+//    }
+//    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         getUser()
-        
-        profileImage.layer.masksToBounds = false
-        labelProfileName.layer.masksToBounds = false
-        textViewBio.layer.masksToBounds = false
-
-        profileImage.isSkeletonable = true
-        profileImage.showAnimatedSkeleton(usingColor: .clouds,
-                                          transition: .crossDissolve(0.5))
-        
-        labelProfileName.isSkeletonable = true
-        labelProfileName.showAnimatedSkeleton(usingColor: .clouds,
-                                              transition: .crossDissolve(0.5))
-
-        textViewBio.isSkeletonable = true
-        textViewBio.showAnimatedSkeleton(usingColor: .clouds,
-                                         transition: .crossDissolve(0.5))
     }
     
     private func getUser() {

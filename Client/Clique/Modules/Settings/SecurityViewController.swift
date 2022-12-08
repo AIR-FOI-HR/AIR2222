@@ -4,13 +4,13 @@ import IQKeyboardManagerSwift
 
 class SecurityViewController: UIViewController {
     
-    @IBOutlet private weak var closeButton: UIButton!
-    @IBOutlet private weak var oldPasswordTextField: UITextField!
-    @IBOutlet private weak var newPasswordTextField: UITextField!
-    @IBOutlet weak var repeatNewPasswordTextField: UITextField!
-    @IBOutlet private weak var passwordCheckLabel: UILabel!
-    @IBOutlet private weak var matchingPasswordsLabel: UILabel!
-    @IBOutlet weak var savePasswordButton: UIButton!
+    @IBOutlet private var closeButton: UIButton!
+    @IBOutlet private var oldPasswordTextField: UITextField!
+    @IBOutlet private var newPasswordTextField: UITextField!
+    @IBOutlet private var repeatNewPasswordTextField: UITextField!
+    @IBOutlet private var passwordCheckLabel: UILabel!
+    @IBOutlet private var matchingPasswordsLabel: UILabel!
+    @IBOutlet private var savePasswordButton: UIButton!
     
     var iconClick = false
     let oldPasswordShowButton = UIButton(type: .custom)

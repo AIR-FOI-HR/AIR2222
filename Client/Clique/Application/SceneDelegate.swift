@@ -14,19 +14,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options
     connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        var storyboard = UIStoryboard(name: "Initial" , bundle: nil)
-        var viewController = storyboard.instantiateInitialViewController()
         if UserStorage.token != nil {
-            storyboard = UIStoryboard(name: "Profile" , bundle:nil)
-            viewController = storyboard.instantiateInitialViewController()
+            let storyboard = UIStoryboard(name: "Profile" , bundle:nil)
+            let viewController = storyboard.instantiateInitialViewController()
+            
+            window = UIWindow(windowScene: windowScene)
+            window?.rootViewController = viewController
+            window?.makeKeyAndVisible()
         }else if UserStorage.token == nil {
-            storyboard = UIStoryboard(name: "Initial" , bundle:nil)
-            viewController = storyboard.instantiateInitialViewController()
+            let storyboard = UIStoryboard(name: "Initial" , bundle:nil)
+            let viewController = storyboard.instantiateInitialViewController()
+            
+            window = UIWindow(windowScene: windowScene)
+            window?.rootViewController = viewController
+            window?.makeKeyAndVisible()
         }
-        window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = viewController
-        window?.makeKeyAndVisible()
+        
     }
-
 }
 
