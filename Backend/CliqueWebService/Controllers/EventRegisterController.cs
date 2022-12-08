@@ -51,7 +51,7 @@ namespace CliqueWebService.Controllers
                 var reader = _db.ExecuteQuery(query);
                 if (!reader.HasRows)
                 {
-                    return BadRequest("Something went wrong!");
+                    return BadRequest("User isn't signed to event!");
                 }
                 int status_id = 0;
                 while (reader.Read())
@@ -111,7 +111,7 @@ namespace CliqueWebService.Controllers
                 string query = $"INSERT INTO signs_up_for VALUES ({int.Parse(event_id)}, {id}, 2)";
                 _db.ExecuteNonQuery(query);
                 _db.CommitTransaction();
-                return Ok("User is registered to event.");
+                return Ok("User is successfully registered to event.");
             }
             catch
             {
@@ -157,10 +157,10 @@ namespace CliqueWebService.Controllers
             _db.BeginTransaction();
             try
             {
-                string query = $"INSERT INTO signs_up_for VALUES ({int.Parse(event_id)}, {id}, 3)";
+                string query = $"UPDATE signs_up_for SET status_id = 3 WHERE event_id = {int.Parse(event_id)} AND user_id = {id}";
                 _db.ExecuteNonQuery(query);
                 _db.CommitTransaction();
-                return Ok("User is registered to event.");
+                return Ok("User successfully cancelled event.");
             }
             catch
             {
