@@ -4,17 +4,19 @@
 //
 //  Created by Infinum on 29.11.2022..
 //
-
 import UIKit
 import NVActivityIndicatorView
+import IQKeyboardManagerSwift
 
 class ShortDescriptionViewController: UIViewController {
     
+    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     @IBOutlet private var shortDescriptionTextView: UITextView!
     var createEventObject = CreateEventObject()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         shortDescriptionTextView.layer.cornerRadius = 7
         shortDescriptionTextView.layer.masksToBounds = false
         shortDescriptionTextView.delegate = self

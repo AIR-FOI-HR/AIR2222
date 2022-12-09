@@ -1,10 +1,11 @@
 
 import UIKit
 import NVActivityIndicatorView
-
+import IQKeyboardManagerSwift
 
 class BasicInfoViewController: UIViewController {
   
+    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     @IBOutlet private var downButtonCategory: UIButton!
     @IBOutlet private var downButtonCurrency: UIButton!
     @IBOutlet private var categoryTextField: UITextField!
@@ -28,6 +29,7 @@ class BasicInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         onLoadSettings()
         getCategories()
         getCurrencies()

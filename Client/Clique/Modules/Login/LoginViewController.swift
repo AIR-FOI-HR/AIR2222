@@ -18,18 +18,18 @@ class LoginViewController: UIViewController {
     @IBOutlet private weak var loginButton: UIButton!
     
     private let loginService = LoginService()
+    let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
     var iconClick = false
     let buttonPasswordShow = UIButton(type: .custom)
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         
-        startAnimation()
+        Functions.Animations.startAnimation(loading: loading, view: view)
         guard let credentails = getLoginCredentials() else {
             alert(fwdMessage: "Please enter email and password")
-            stopAnimation()
+            Functions.Animations.stopAnimation(loading: self.loading)
             return
         }
-        
         login(with: credentails)
 }
     
@@ -55,10 +55,10 @@ class LoginViewController: UIViewController {
                     viewContoller.modalPresentationStyle = .fullScreen
                     self.present(viewContoller, animated: true)
                 }
-                self.stopAnimation()
+                Functions.Animations.stopAnimation(loading: self.loading)
             case .failure:
                 self.alert(fwdMessage: "Please enter your login info")
-                self.stopAnimation()
+                Functions.Animations.stopAnimation(loading: self.loading)
             }
         }
     }
@@ -96,26 +96,9 @@ class LoginViewController: UIViewController {
             passwordTextField.isSecureTextEntry = false
             buttonPasswordShow.tintColor = UIColor.orange
             buttonPasswordShow.setImage(UIImage(systemName: "eye.fill"), for: .normal)
-            
         }
         iconClick = !iconClick
     }
-    
-    let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
-        func startAnimation() {
-                loading.translatesAutoresizingMaskIntoConstraints = false
-                view.addSubview(loading)
-                NSLayoutConstraint.activate([
-                    loading.widthAnchor.constraint(equalToConstant: 40),
-                    loading.heightAnchor.constraint(equalToConstant: 40),
-                    loading.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100),
-                    loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-                ])
-                loading.startAnimating()
-            }
-        func stopAnimation() {
-                loading.stopAnimating()
-            }
     
     @IBAction func closeLoginViewController(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)

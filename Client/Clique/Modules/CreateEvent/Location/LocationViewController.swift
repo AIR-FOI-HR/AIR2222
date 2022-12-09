@@ -4,16 +4,17 @@
 //
 //  Created by Infinum on 07.12.2022..
 //
-
-import Foundation
 import UIKit
+import IQKeyboardManagerSwift
 
 class LocationViewController: UIViewController {
    
+    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     var createEventObject = CreateEventObject()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
     }
     
     @IBAction func nextButtonPressed(_ sender: UIBarButtonItem) {

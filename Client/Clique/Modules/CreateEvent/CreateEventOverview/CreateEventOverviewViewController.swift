@@ -4,14 +4,13 @@
 //
 //  Created by Infinum on 07.12.2022..
 //
-
-import Foundation
 import UIKit
 import NVActivityIndicatorView
+import IQKeyboardManagerSwift
 
 class CreateEventOverviewViewController: UIViewController {
     
-    var createEventObject = CreateEventObject()
+    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     @IBOutlet private var categoryLabel: UILabel!
     @IBOutlet private var eventNameLabel: UILabel!
     @IBOutlet private var participantNumberLabel: UILabel!
@@ -23,10 +22,12 @@ class CreateEventOverviewViewController: UIViewController {
     @IBOutlet private var postButton: UIButton!
 
     private let createEventService = CreateEventService()
+    var createEventObject = CreateEventObject()
     let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         categoryLabel.text = createEventObject.categoryName
         eventNameLabel.text = createEventObject.eventName
         participantNumberLabel.text = createEventObject.participantsNumber
