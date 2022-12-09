@@ -12,6 +12,8 @@
 		420CDA98290E54380074ACFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CDA97290E54380074ACFA /* AppDelegate.swift */; };
 		420CDAA1290E543A0074ACFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 420CDAA0290E543A0074ACFA /* Assets.xcassets */; };
 		420CDAA4290E543A0074ACFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420CDAA2290E543A0074ACFA /* LaunchScreen.storyboard */; };
+		420EB35D2942A3D1008263B7 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420EB35C2942A3D1008263B7 /* TabBar.storyboard */; };
+		420EB35F2942A3E5008263B7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420EB35E2942A3E5008263B7 /* TabBarViewController.swift */; };
 		4213719129262F1B0082F1C7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4213719029262F1B0082F1C7 /* Login.storyboard */; };
 		4237AC85292C20C700095D47 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237AC84292C20C700095D47 /* LoginCredentials.swift */; };
 		4237AC87292C215F00095D47 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237AC86292C215F00095D47 /* LoginResponse.swift */; };
@@ -61,6 +63,8 @@
 		420CDAA0290E543A0074ACFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		420CDAA3290E543A0074ACFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		420CDAA5290E543A0074ACFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		420EB35C2942A3D1008263B7 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		420EB35E2942A3E5008263B7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4213719029262F1B0082F1C7 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		4237AC84292C20C700095D47 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		4237AC86292C215F00095D47 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 		420CDAAD290E55C00074ACFA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				420EB35B2942A3C0008263B7 /* TabBar */,
 				4272BF192934135900797045 /* PastCreatedEvents */,
 				4272BF182934133500797045 /* CreatedEvents */,
 				4272BF172934132500797045 /* PastJoinedEvents */,
@@ -195,6 +200,15 @@
 				420CDAA2290E543A0074ACFA /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		420EB35B2942A3C0008263B7 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				420EB35C2942A3D1008263B7 /* TabBar.storyboard */,
+				420EB35E2942A3E5008263B7 /* TabBarViewController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		4213718F29262F050082F1C7 /* Login */ = {
@@ -416,6 +430,7 @@
 				425B8D1829359BA100907BD9 /* ProfileEdit.storyboard in Resources */,
 				42740C3F2926468900CD1DFC /* Register.storyboard in Resources */,
 				4272BF1D2934137900797045 /* PastCreatedEvents.storyboard in Resources */,
+				420EB35D2942A3D1008263B7 /* TabBar.storyboard in Resources */,
 				4253AE8C2933BF2A0054DC2B /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +452,7 @@
 				4237AC87292C215F00095D47 /* LoginResponse.swift in Sources */,
 				4272BF212934139700797045 /* CreatedEventsViewController.swift in Sources */,
 				420CDA98290E54380074ACFA /* AppDelegate.swift in Sources */,
+				420EB35F2942A3E5008263B7 /* TabBarViewController.swift in Sources */,
 				429861B729392CA4001CF447 /* PasswordData.swift in Sources */,
 				429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */,
 				425B8D12293585F500907BD9 /* ProfileService.swift in Sources */,

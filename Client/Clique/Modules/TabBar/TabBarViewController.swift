@@ -5,4 +5,12 @@
 //  Created by Infinum on 08.12.2022..
 //
 
-import Foundation
+import UIKit
+
+class TabBarViewController: UITabBarController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+}

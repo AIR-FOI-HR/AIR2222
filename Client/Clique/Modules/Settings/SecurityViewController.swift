@@ -4,7 +4,6 @@ import IQKeyboardManagerSwift
 
 class SecurityViewController: UIViewController {
     
-    @IBOutlet private weak var closeButton: UIButton!
     @IBOutlet private weak var oldPasswordTextField: UITextField!
     @IBOutlet private weak var newPasswordTextField: UITextField!
     @IBOutlet weak var repeatNewPasswordTextField: UITextField!
@@ -30,10 +29,6 @@ class SecurityViewController: UIViewController {
         
         newPasswordTextField.addTarget(self, action: #selector(checkAndDisplayError(textfield:)), for: .editingChanged)
         repeatNewPasswordTextField.addTarget(self, action: #selector(compareAndDisplay(textfield:)), for: .editingChanged)
-    }
-    
-    @IBAction func closeSettingsViewController(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
     }
     
     func getPasswordData() -> PasswordData? {

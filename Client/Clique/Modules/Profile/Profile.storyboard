@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k85-Gf-EOC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5LE-OQ-zXh">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,51 +18,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MrT-NZ-X8Y">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zR-5Q-mNv">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="674"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="635"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0J0-Xj-Baj">
-                                                <rect key="frame" x="32" y="32" width="329" height="610"/>
+                                                <rect key="frame" x="32" y="32" width="329" height="571"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mx-dm-oLM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="380"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="341"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Aos-oG-3Ky">
-                                                                <rect key="frame" x="0.0" y="0.0" width="329" height="370"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="329" height="331"/>
                                                                 <subviews>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="180" translatesAutoresizingMaskIntoConstraints="NO" id="bod-XZ-EHL">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="68.666666666666671"/>
-                                                                        <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tki-3r-rB5">
-                                                                                <rect key="frame" x="0.0" y="34.333333333333329" width="74.666666666666671" height="34.333333333333329"/>
-                                                                                <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain" image="gearshape.fill" catalog="system">
-                                                                                    <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
-                                                                                </buttonConfiguration>
-                                                                                <connections>
-                                                                                    <action selector="settingsButtonPressed:" destination="k85-Gf-EOC" eventType="touchUpInside" id="DSW-uf-QYQ"/>
-                                                                                </connections>
-                                                                            </button>
-                                                                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEh-hs-fI3">
-                                                                                <rect key="frame" x="254.66666666666671" y="34.333333333333329" width="74.333333333333343" height="34.333333333333329"/>
-                                                                                <color key="tintColor" red="0.19205251370000001" green="0.15921307600000001" blue="0.1388969186" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                                <state key="normal" title="Button"/>
-                                                                                <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system">
-                                                                                    <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
-                                                                                </buttonConfiguration>
-                                                                                <connections>
-                                                                                    <action selector="editButtonPressed:" destination="k85-Gf-EOC" eventType="primaryActionTriggered" id="mjU-qs-DkH"/>
-                                                                                </connections>
-                                                                            </button>
-                                                                        </subviews>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </stackView>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jYQ-dW-0dh">
-                                                                        <rect key="frame" x="102" y="86.666666666666657" width="125" height="125"/>
+                                                                        <rect key="frame" x="102" y="0.0" width="125" height="125"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="125" id="RvB-xC-WjW"/>
                                                                             <constraint firstAttribute="height" constant="125" id="ky4-5N-vHP"/>
@@ -70,43 +41,57 @@
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
-                                                                                <real key="value" value="58"/>
+                                                                                <real key="value" value="60"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7I8-la-X6V">
-                                                                        <rect key="frame" x="0.0" y="229.66666666666669" width="329" height="50"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7I8-la-X6V">
+                                                                        <rect key="frame" x="0.0" y="143" width="329" height="50"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
-                                                                                <integer key="value" value="7"/>
+                                                                                <integer key="value" value="5"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5M-sK-MAc">
-                                                                        <rect key="frame" x="0.0" y="297.66666666666669" width="329" height="72.333333333333314"/>
+                                                                        <rect key="frame" x="0.0" y="211" width="329" height="120"/>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="120" id="4D2-HA-w83"/>
+                                                                        </constraints>
                                                                         <color key="textColor" systemColor="labelColor"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
-                                                                                <integer key="value" value="7"/>
+                                                                                <integer key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonLineSpacing">
+                                                                                <real key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="lastLineFillPercent">
+                                                                                <integer key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                                                                <real key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="7"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textView>
                                                                 </subviews>
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="p5M-sK-MAc" secondAttribute="trailing" id="BM7-3f-yA1"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="bod-XZ-EHL" secondAttribute="trailing" id="FuA-oR-8pj"/>
-                                                                    <constraint firstItem="bod-XZ-EHL" firstAttribute="leading" secondItem="Aos-oG-3Ky" secondAttribute="leading" id="QvL-X4-fHc"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="7I8-la-X6V" secondAttribute="trailing" id="K8e-Qc-zo3"/>
                                                                     <constraint firstItem="p5M-sK-MAc" firstAttribute="leading" secondItem="Aos-oG-3Ky" secondAttribute="leading" id="bg6-Xi-yE4"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="7I8-la-X6V" secondAttribute="trailing" id="fa8-IJ-SdE"/>
-                                                                    <constraint firstItem="7I8-la-X6V" firstAttribute="leading" secondItem="Aos-oG-3Ky" secondAttribute="leading" id="nls-HL-w2t"/>
+                                                                    <constraint firstItem="7I8-la-X6V" firstAttribute="leading" secondItem="Aos-oG-3Ky" secondAttribute="leading" id="n9A-M6-Rtz"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -117,7 +102,7 @@
                                                             <constraint firstAttribute="bottom" secondItem="Aos-oG-3Ky" secondAttribute="bottom" constant="10" id="7Cz-YC-ZY9"/>
                                                             <constraint firstItem="Aos-oG-3Ky" firstAttribute="leading" secondItem="3mx-dm-oLM" secondAttribute="leading" id="9Yz-79-8X4"/>
                                                             <constraint firstAttribute="trailing" secondItem="Aos-oG-3Ky" secondAttribute="trailing" id="cHj-8m-E7u"/>
-                                                            <constraint firstAttribute="height" constant="380" id="eIi-mz-ERJ"/>
+                                                            <constraint firstAttribute="height" constant="341" id="eIi-mz-ERJ"/>
                                                             <constraint firstItem="Aos-oG-3Ky" firstAttribute="top" secondItem="3mx-dm-oLM" secondAttribute="top" id="iLT-wF-LHc"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
@@ -125,17 +110,20 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXu-Mz-vUX">
-                                                        <rect key="frame" x="0.0" y="400" width="329" height="210"/>
+                                                        <rect key="frame" x="0.0" y="361" width="329" height="210"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Ox7-XC-h5W">
                                                                 <rect key="frame" x="0.0" y="0.0" width="329" height="34.333333333333336"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIc-jf-CDb">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIc-jf-CDb">
                                                                         <rect key="frame" x="0.0" y="0.0" width="329" height="34.333333333333336"/>
-                                                                        <color key="backgroundColor" red="1" green="0.52504383474090921" blue="0.2898172387300938" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" title="My events                                                    ">
                                                                             <imageReference key="image" image="arrowtriangle.down.fill" catalog="system" symbolScale="small"/>
+                                                                            <backgroundConfiguration key="background">
+                                                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                                            </backgroundConfiguration>
+                                                                            <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </buttonConfiguration>
                                                                         <userDefinedRuntimeAttributes>
@@ -143,6 +131,10 @@
                                                                                 <integer key="value" value="10"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                                                                <real key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
                                                                             <action selector="selectMyEvents:" destination="k85-Gf-EOC" eventType="touchUpInside" id="Rha-oV-iHH"/>
@@ -162,7 +154,7 @@
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
-                                                                            <action selector="joinedEventsButtonPressed:" destination="k85-Gf-EOC" eventType="touchUpInside" id="uha-Bq-S1G"/>
+                                                                            <action selector="joinedEventsButtonPressed:" destination="k85-Gf-EOC" eventType="touchUpInside" id="m7u-dF-qbc"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jN4-og-kUG">
@@ -179,7 +171,7 @@
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
-                                                                            <action selector="pastJoinedEventsButtonPressedWithSender:" destination="k85-Gf-EOC" eventType="touchUpInside" id="mej-sb-2Z5"/>
+                                                                            <action selector="pastJoinedEventsButtonPressed:" destination="k85-Gf-EOC" eventType="touchUpInside" id="mDP-47-PNa"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaO-tC-ORb">
@@ -196,7 +188,7 @@
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
-                                                                            <action selector="createdEventsButtonPressedWithSender:" destination="k85-Gf-EOC" eventType="touchUpInside" id="mUX-xQ-0CM"/>
+                                                                            <action selector="createdEventsButtonPressed:" destination="k85-Gf-EOC" eventType="touchUpInside" id="2WG-wm-u79"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-93-HjI">
@@ -213,7 +205,7 @@
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
-                                                                            <action selector="pastCreatedEventsButtonPressedWithSender:" destination="k85-Gf-EOC" eventType="touchUpInside" id="OeS-cd-5Vn"/>
+                                                                            <action selector="pastCreatedEventsButtonPressed:" destination="k85-Gf-EOC" eventType="touchUpInside" id="oJE-6x-EHe"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -228,6 +220,9 @@
                                                             <constraint firstItem="Ox7-XC-h5W" firstAttribute="top" secondItem="bXu-Mz-vUX" secondAttribute="top" id="tit-2C-gLz"/>
                                                             <constraint firstItem="Ox7-XC-h5W" firstAttribute="leading" secondItem="bXu-Mz-vUX" secondAttribute="leading" id="wI8-Vu-BeQ"/>
                                                         </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
                                                 <userDefinedRuntimeAttributes>
@@ -272,20 +267,31 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="person" catalog="system" id="cu7-fs-0ZF">
-                        <color key="badgeColor" red="0.78238477610000001" green="0.3422334367" blue="0.16373641050000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" title="Profile" style="editor" id="0YK-CV-8VM"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.circle.fill" catalog="system" id="qai-gc-2Q6"/>
+                    <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" style="editor" id="0YK-CV-8VM">
+                        <barButtonItem key="leftBarButtonItem" image="gearshape.fill" catalog="system" id="uB0-A3-Trk">
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <connections>
+                                <action selector="settingsButtonPressed:" destination="k85-Gf-EOC" id="xXN-SU-BeD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="pencil" catalog="system" id="YjN-IQ-6WK">
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <connections>
+                                <action selector="editButtonPressed:" destination="k85-Gf-EOC" id="wgE-Dr-TfG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bioTextView" destination="p5M-sK-MAc" id="wL6-4B-xyp"/>
                         <outlet property="createdEventsButton" destination="jaO-tC-ORb" id="P5I-rN-o7j"/>
-                        <outlet property="editButton" destination="TEh-hs-fI3" id="cQI-5Q-wFO"/>
                         <outlet property="joinedEventsButton" destination="6tX-DH-6oX" id="DX2-D7-AFa"/>
                         <outlet property="labelProfileName" destination="7I8-la-X6V" id="Z6d-4o-41x"/>
                         <outlet property="myEventsButton" destination="vIc-jf-CDb" id="FW2-uQ-L5r"/>
                         <outlet property="pastCreatedEventsButton" destination="A3r-93-HjI" id="DSA-kh-j3F"/>
                         <outlet property="pastJoinedEventsButton" destination="jN4-og-kUG" id="Bff-Jf-TbJ"/>
                         <outlet property="profileImage" destination="jYQ-dW-0dh" id="Igs-nh-PBz"/>
-                        <outlet property="textViewBio" destination="p5M-sK-MAc" id="0cG-1x-gmk"/>
                         <outletCollection property="eventsButtons" destination="6tX-DH-6oX" collectionClass="NSMutableArray" id="Pup-i1-zO9"/>
                         <outletCollection property="eventsButtons" destination="jN4-og-kUG" collectionClass="NSMutableArray" id="oyz-Sv-ifu"/>
                         <outletCollection property="eventsButtons" destination="jaO-tC-ORb" collectionClass="NSMutableArray" id="dNQ-oO-p0B"/>
@@ -293,6 +299,28 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zk8-b3-M9A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4380.9160305343512" y="-1319.0140845070423"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VEn-ig-cHb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5LE-OQ-zXh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="person" catalog="system" id="cu7-fs-0ZF">
+                        <color key="badgeColor" red="0.78238477610000001" green="0.3422334367" blue="0.16373641050000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O7A-42-L7j">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="k85-Gf-EOC" kind="relationship" relationship="rootViewController" id="WWB-qP-Dck"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FuR-AR-UaD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3454.1984732824426" y="-1319.0140845070423"/>
         </scene>
@@ -302,6 +330,7 @@
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person" catalog="system" width="128" height="121"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -5,7 +5,6 @@ import IQKeyboardManagerSwift
 class SettingsViewController: UIViewController {
     
     @IBOutlet private weak var logOutButton: UIButton!
-    @IBOutlet private weak var closeButton: UIButton!
     @IBOutlet private weak var securityButton: UIButton!
     
     private var userStorage = UserStorage()
@@ -23,15 +22,8 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    @IBAction func securityButtonPressed(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Security" , bundle:nil)
-        if let viewController = storyboard.instantiateInitialViewController() {
-            viewController.modalPresentationStyle = .fullScreen
-            present(viewController, animated: true)
-        }
-    }
-    
-    @IBAction func closeSettingsViewController(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func securityButtonPressed(_ sender: UIBarButtonItem) {
+        guard let viewController = UIStoryboard(name: "Security", bundle: nil).instantiateInitialViewController() else { return }
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

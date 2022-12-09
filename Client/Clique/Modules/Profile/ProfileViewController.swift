@@ -10,7 +10,6 @@ import SkeletonView
 
 class ProfileViewController: UIViewController {
     
-    @IBOutlet private var editButton: UIButton!
     @IBOutlet private var profileImage: UIImageView!
     @IBOutlet private var myEventsButton: UIButton!
     @IBOutlet private var eventsButtons: [UIButton]!
@@ -19,7 +18,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet private var createdEventsButton: UIButton!
     @IBOutlet private var pastCreatedEventsButton: UIButton!
     @IBOutlet private var labelProfileName: UILabel!
-    @IBOutlet private var textViewBio: UITextView!
+    @IBOutlet private var bioTextView: UITextView!
     
     private let profileService = ProfileService()
     
@@ -27,22 +26,21 @@ class ProfileViewController: UIViewController {
         super.viewDidAppear(animated)
         profileImage.circleImage()
         getUser()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        profileImage.layer.masksToBounds = false
-        labelProfileName.layer.masksToBounds = false
-        textViewBio.layer.masksToBounds = false
-
-        profileImage.isSkeletonable = true
-        profileImage.showAnimatedSkeleton(usingColor: .clouds,
-                                          transition: .crossDissolve(0.5))
+        profileImage.circleImage()
+        profileImage.skeletonableView()
+        labelProfileName.skeletonableView()
+        bioTextView.skeletonableView()
+        myEventsButton.skeletonableView()
         
-        labelProfileName.isSkeletonable = true
-        labelProfileName.showAnimatedSkeleton(usingColor: .clouds,
-                                              transition: .crossDissolve(0.5))
-
-        textViewBio.isSkeletonable = true
-        textViewBio.showAnimatedSkeleton(usingColor: .clouds,
-                                         transition: .crossDissolve(0.5))
+        labelProfileName.skeletonTextLineHeight = .relativeToFont
+        
+        bioTextView.layer.borderColor = UIColor.systemGray6.cgColor
+        bioTextView.layer.borderWidth = 1
     }
     
     private func getUser() {
@@ -51,70 +49,53 @@ class ProfileViewController: UIViewController {
             case .success(let user):
                     self.profileImage.stopSkeletonAnimation()
                     self.labelProfileName.stopSkeletonAnimation()
-                    self.textViewBio.stopSkeletonAnimation()
+                    self.bioTextView.stopSkeletonAnimation()
+                    self.myEventsButton.stopSkeletonAnimation()
                     self.view.hideSkeleton(reloadDataAfter: true,
                                            transition: .crossDissolve(0.5))
                     
                     self.labelProfileName.text = user.name + " " + user.surname
-                    self.textViewBio.text = user.bio
+                    self.bioTextView.text = user.bio
             case .failure:
                 return
             }
         }
     }
-
-    private func showDropdown() {
+    
+    @IBAction private func editButtonPressed(_ sender: UIBarButtonItem) {
+        guard let viewController = UIStoryboard(name: "ProfileEdit", bundle: nil).instantiateInitialViewController() else { return }
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @IBAction func settingsButtonPressed(_ sender: UIBarButtonItem) {
+        guard let viewController = UIStoryboard(name: "Settings", bundle: nil).instantiateInitialViewController() else { return }
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @IBAction func selectMyEvents(_ sender: Any) {
         eventsButtons.forEach { button in
             button.isHidden = !button.isHidden
             self.view.layoutIfNeeded()
         }
     }
     
-    @IBAction func editButtonPressed(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "ProfileEdit" , bundle:nil)
-        if let viewController = storyboard.instantiateInitialViewController() {
-            viewController.modalPresentationStyle = .fullScreen
-            present(viewController, animated: true)
-        }
+    @IBAction func joinedEventsButtonPressed(_ sender: UIBarButtonItem) {
+        guard let viewController = UIStoryboard(name: "JoinedEvents", bundle: nil).instantiateInitialViewController() else { return }
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @IBAction func settingsButtonPressed(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Settings" , bundle:nil)
-        if let viewController = storyboard.instantiateInitialViewController() {
-            viewController.modalPresentationStyle = .fullScreen
-            present(viewController, animated: true)
-        }
+    @IBAction func pastJoinedEventsButtonPressed(_ sender: UIBarButtonItem) {
+        guard let viewController = UIStoryboard(name: "PastJoinedEvents", bundle: nil).instantiateInitialViewController() else { return }
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @IBAction func selectMyEvents(_ sender: Any) {
-        showDropdown()
+    @IBAction func createdEventsButtonPressed(_ sender: UIBarButtonItem) {
+        guard let viewController = UIStoryboard(name: "CreatedEvents", bundle: nil).instantiateInitialViewController() else { return }
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @IBAction func joinedEventsButtonPressed(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "JoinedEvents" , bundle:nil)
-        if let viewController = storyboard.instantiateInitialViewController() {
-            present(viewController, animated: true)
-        }
-    }
-    
-    @IBAction func pastJoinedEventsButtonPressed( sender: UIButton) {
-        let storyboard = UIStoryboard(name: "PastJoinedEvents" , bundle:nil)
-        if let viewController = storyboard.instantiateInitialViewController() {
-            present(viewController, animated: true)
-        }
-    }
-    
-    @IBAction func createdEventsButtonPressed( sender: UIButton) {
-        let storyboard = UIStoryboard(name: "CreatedEvents" , bundle:nil)
-        if let viewController = storyboard.instantiateInitialViewController() {
-            present(viewController, animated: true)
-        }
-    }
-    
-    @IBAction func pastCreatedEventsButtonPressed( sender: UIButton) {
-        let storyboard = UIStoryboard(name: "PastCreatedEvents" , bundle:nil)
-        if let viewController = storyboard.instantiateInitialViewController() {
-            present(viewController, animated: true)
-        }
+    @IBAction func pastCreatedEventsButtonPressed(_ sender: UIBarButtonItem) {
+        guard let viewController = UIStoryboard(name: "PastCreatedEvents", bundle: nil).instantiateInitialViewController() else { return }
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

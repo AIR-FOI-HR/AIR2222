@@ -17,7 +17,9 @@ class ProfileEditViewController: UIViewController {
     @IBOutlet private var nameTextfield: UITextField!
     @IBOutlet private var surnameTextField: UITextField!
     @IBOutlet private var datePicker: UIDatePicker!
-    @IBOutlet private var textViewBio: UITextView!
+    @IBOutlet private var bioTextView: UITextView!
+    @IBOutlet private var bioLabel: UILabel!
+    @IBOutlet private var dateOfBirthLabel: UILabel!
     
     private let profileService = ProfileService()
     
@@ -26,31 +28,21 @@ class ProfileEditViewController: UIViewController {
         getUser()
         let allowedAgeDate = Calendar.current.date(byAdding: .year, value: -13, to: Date())
         datePicker.maximumDate = allowedAgeDate
-        imgProfile.layer.masksToBounds = false
-        imgProfile.isSkeletonable = true
-        imgProfile.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
         
-        emailTextField.layer.masksToBounds = false
-        emailTextField.isSkeletonable = true
-        emailTextField.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        imgProfile.circleImage()
         
-        nameTextfield.layer.masksToBounds = false
-        nameTextfield.isSkeletonable = true
-        nameTextfield.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        imgProfile.skeletonableView()
+        emailTextField.skeletonableView()
+        nameTextfield.skeletonableView()
+        surnameTextField.skeletonableView()
+        bioTextView.skeletonableView()
+        datePicker.skeletonableView()
+        bioLabel.skeletonableView()
+        dateOfBirthLabel.skeletonableView()
+        btnChooseImage.skeletonableView()
         
-        surnameTextField.layer.masksToBounds = false
-        surnameTextField.isSkeletonable = true
-        surnameTextField.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
-        
-        textViewBio.layer.masksToBounds = false
-        textViewBio.isSkeletonable = true
-        textViewBio.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
-        
-        datePicker.layer.masksToBounds = false
-        datePicker.isSkeletonable = true
-        datePicker.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
-        
-        SkeletonAppearance.default.skeletonCornerRadius = 100
+        bioTextView.layer.borderColor = UIColor.systemGray5.cgColor
+        bioTextView.layer.borderWidth = 1
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,12 +57,12 @@ class ProfileEditViewController: UIViewController {
                     self.nameTextfield.text = user.name
                     self.surnameTextField.text = user.surname
                     self.emailTextField.text = user.email
-                    self.textViewBio.text = user.bio
+                    self.bioTextView.text = user.bio
                     self.imgProfile.stopSkeletonAnimation()
                     self.emailTextField.stopSkeletonAnimation()
                     self.nameTextfield.stopSkeletonAnimation()
                     self.surnameTextField.stopSkeletonAnimation()
-                    self.textViewBio.stopSkeletonAnimation()
+                    self.bioTextView.stopSkeletonAnimation()
                     self.datePicker.stopSkeletonAnimation()
                     
                     self.view.hideSkeleton(reloadDataAfter: true,
@@ -81,7 +73,7 @@ class ProfileEditViewController: UIViewController {
         }
     }
     
-    @IBAction func saveButtonPressed(_ sender: UIButton) {
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         guard let userProfileData = getProfileData() else {
             Constants.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
             return
@@ -111,17 +103,13 @@ class ProfileEditViewController: UIViewController {
             let name = nameTextfield.text,
             let surname = surnameTextField.text,
             let email = emailTextField.text,
-            let bio  = textViewBio.text,
+            let bio  = bioTextView.text,
 
             !name.isEmpty && !surname.isEmpty && !email.isEmpty  && !bio.isEmpty
         else { return nil }
         
         let profileData = UserProfileUpdateData(name: name, surname: surname, email: email, gender: "1", contact_no: "empty", birth_data: selectedDate, profile_pic: "empty", bio: bio)
         return profileData
-    }
-    
-    @IBAction func closeProfileEditViewController(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
     }
 }
 
