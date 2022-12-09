@@ -18,31 +18,30 @@ enum Constants {
         static let profileGetUserURL = baseURL.appending("User")
         static let profileUpdateURL = baseURL.appending("User/UpdateUserData")
         static let passwordUpdateURL = baseURL.appending("User/UpdateUserPassword")
-        
-        static func getToken() -> String {
-            guard let token = UserStorage.token else { return "" }
-            return token
-        }
-        
-        static func authorizationHeader() -> HTTPHeaders {
-            let header: HTTPHeaders = [
-                "Authorization": "Bearer"
-                + " " + "\(getToken())",
+       
+        static func requestHeaders() -> HTTPHeaders {
+            var headers: HTTPHeaders = [
                 "Accept": "application/json"
             ]
-            return header
+
+            if let token = UserStorage.token {
+                headers["Authorization"] = "Bearer \(token)"
+            }
+
+            return headers
         }
     }
         enum Alerts {
-            static let successfullyUpdatedMsg = "Successfully updated."
-            static let pleaseEnterInfoMsg = "Please enter all required info."
-            static let successRegisterMsg = "Successfully registrated"
-            static let passwordDontMatchMsg = "Passwords don't match"
-            static let wrongInputMsg = "Wrong input"
+            static let successfullyUpdatedMessage = "Successfully updated."
+            static let pleaseEnterInfoMessage = "Please enter all required info."
+            static let successRegisterMessage = "Successfully registrated"
+            static let passwordDontMatchMessage = "Passwords don't match"
+            static let wrongInputMessage = "Wrong input"
+            static let defaultActionTitle = "OK"
         }
         
         enum Strings {
-            static let dateFormat = "yyyy-MM-dd"
+            static let dateFormatDateOfBirth = "yyyy-MM-dd"
         }
     }
 

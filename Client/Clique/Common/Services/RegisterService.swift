@@ -17,7 +17,6 @@ final class RegisterService {
                     completionHandler(true)
                 case .failure(_):
                     completionHandler(false)
-                    
                 }
             }
         }    

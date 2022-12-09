@@ -4,7 +4,6 @@ import IQKeyboardManagerSwift
 
 class SecurityViewController: UIViewController {
     
-<<<<<<< HEAD
     @IBOutlet private var closeButton: UIButton!
     @IBOutlet private var oldPasswordTextField: UITextField!
     @IBOutlet private var newPasswordTextField: UITextField!
@@ -12,14 +11,6 @@ class SecurityViewController: UIViewController {
     @IBOutlet private var passwordCheckLabel: UILabel!
     @IBOutlet private var matchingPasswordsLabel: UILabel!
     @IBOutlet private var savePasswordButton: UIButton!
-=======
-    @IBOutlet private weak var oldPasswordTextField: UITextField!
-    @IBOutlet private weak var newPasswordTextField: UITextField!
-    @IBOutlet weak var repeatNewPasswordTextField: UITextField!
-    @IBOutlet private weak var passwordCheckLabel: UILabel!
-    @IBOutlet private weak var matchingPasswordsLabel: UILabel!
-    @IBOutlet weak var savePasswordButton: UIButton!
->>>>>>> bcdbc1ee1aaf6175e3c5263a58de16a9da83d5f4
     
     var iconClick = false
     let oldPasswordShowButton = UIButton(type: .custom)
@@ -55,17 +46,17 @@ class SecurityViewController: UIViewController {
     func updatePasswordUser(with userPasswords: PasswordData) {
         settingsService.changePassword(with: userPasswords) { (isSuccess) in
             if isSuccess{
-                Functions.Alerts.alert(fwdMessage: Constants.Alerts.successfullyUpdatedMsg, viewController: self)
+                Functions.Alerts.alert(alertMessage: Constants.Alerts.successfullyUpdatedMsg, viewController: self)
                 self.dismiss(animated: true, completion: nil)
             } else {
-                Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
+                Functions.Alerts.alert(alertMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
             }
         }
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         guard let getPasswordData = getPasswordData() else {
-            Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
+            Functions.Alerts.alert(alertMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
             return
         }
         

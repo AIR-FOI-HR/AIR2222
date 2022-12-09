@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -183,6 +183,7 @@
                                                                             </label>
                                                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="8Vl-V4-lPr">
                                                                                 <rect key="frame" x="166" y="0.0" width="147" height="44.666666666666664"/>
+                                                                                <color key="tintColor" systemColor="systemOrangeColor"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
@@ -285,17 +286,13 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-<<<<<<< HEAD
-                        <outlet property="bioTextView" destination="h56-DH-Wqj" id="TtY-ny-gDq"/>
-=======
-                        <outlet property="bioLabel" destination="dyU-vj-hdc" id="NLw-Ty-AWZ"/>
-                        <outlet property="bioTextView" destination="h56-DH-Wqj" id="5t2-qJ-Aak"/>
->>>>>>> bcdbc1ee1aaf6175e3c5263a58de16a9da83d5f4
-                        <outlet property="btnChooseImage" destination="jGs-Rv-4Nq" id="Oqa-qc-hIS"/>
+                        <outlet property="bioLabel" destination="dyU-vj-hdc" id="AqK-eY-mmD"/>
+                        <outlet property="bioTextView" destination="h56-DH-Wqj" id="Ktn-jn-qHt"/>
+                        <outlet property="buttonChooseImage" destination="jGs-Rv-4Nq" id="Oqa-qc-hIS"/>
                         <outlet property="dateOfBirthLabel" destination="czt-kC-PfH" id="ZFN-QR-agn"/>
                         <outlet property="datePicker" destination="8Vl-V4-lPr" id="UGZ-uE-QyT"/>
                         <outlet property="emailTextField" destination="8lY-fX-FKm" id="j3a-fS-u3F"/>
-                        <outlet property="imgProfile" destination="owP-QN-96W" id="HiZ-t4-AYo"/>
+                        <outlet property="imageProfile" destination="owP-QN-96W" id="HiZ-t4-AYo"/>
                         <outlet property="nameTextfield" destination="5AW-bb-TzC" id="uuL-tI-hqL"/>
                         <outlet property="surnameTextField" destination="vhZ-6n-GHe" id="uFG-VY-HKn"/>
                     </connections>

@@ -15,20 +15,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         if UserStorage.token != nil {
-            let storyboard = UIStoryboard(name: "Profile" , bundle:nil)
+            let storyboard = UIStoryboard(name: "TabBar" , bundle:nil)
             let viewController = storyboard.instantiateInitialViewController()
-            
+
             window = UIWindow(windowScene: windowScene)
             window?.rootViewController = viewController
             window?.makeKeyAndVisible()
         }else if UserStorage.token == nil {
             let storyboard = UIStoryboard(name: "Initial" , bundle:nil)
             let viewController = storyboard.instantiateInitialViewController()
-            
+
             window = UIWindow(windowScene: windowScene)
             window?.rootViewController = viewController
             window?.makeKeyAndVisible()
         }
+        
         
     }
 }

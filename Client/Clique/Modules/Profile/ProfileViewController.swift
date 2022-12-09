@@ -43,15 +43,10 @@ class ProfileViewController: UIViewController {
 //                                         transition: .crossDissolve(0.5))
 //    }
 //    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         getUser()
-<<<<<<< HEAD
-=======
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
         profileImage.circleImage()
         profileImage.skeletonableView()
@@ -63,7 +58,6 @@ class ProfileViewController: UIViewController {
         
         bioTextView.layer.borderColor = UIColor.systemGray6.cgColor
         bioTextView.layer.borderWidth = 1
->>>>>>> bcdbc1ee1aaf6175e3c5263a58de16a9da83d5f4
     }
     
     private func getUser() {
@@ -84,8 +78,6 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-<<<<<<< HEAD
-=======
     
     @IBAction private func editButtonPressed(_ sender: UIBarButtonItem) {
         guard let viewController = UIStoryboard(name: "ProfileEdit", bundle: nil).instantiateInitialViewController() else { return }
@@ -103,7 +95,6 @@ class ProfileViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
->>>>>>> bcdbc1ee1aaf6175e3c5263a58de16a9da83d5f4
     
     @IBAction func joinedEventsButtonPressed(_ sender: UIBarButtonItem) {
         guard let viewController = UIStoryboard(name: "JoinedEvents", bundle: nil).instantiateInitialViewController() else { return }
@@ -114,20 +105,12 @@ class ProfileViewController: UIViewController {
         guard let viewController = UIStoryboard(name: "PastJoinedEvents", bundle: nil).instantiateInitialViewController() else { return }
         navigationController?.pushViewController(viewController, animated: true)
     }
-    
-<<<<<<< HEAD
-    @IBAction func selectMyEvents(_ sender: Any) {
-        eventsButtons.forEach { button in
-            button.isHidden = !button.isHidden
-            self.view.layoutIfNeeded()
-        }
-=======
+
     @IBAction func createdEventsButtonPressed(_ sender: UIBarButtonItem) {
         guard let viewController = UIStoryboard(name: "CreatedEvents", bundle: nil).instantiateInitialViewController() else { return }
         navigationController?.pushViewController(viewController, animated: true)
->>>>>>> bcdbc1ee1aaf6175e3c5263a58de16a9da83d5f4
     }
-    
+
     @IBAction func pastCreatedEventsButtonPressed(_ sender: UIBarButtonItem) {
         guard let viewController = UIStoryboard(name: "PastCreatedEvents", bundle: nil).instantiateInitialViewController() else { return }
         navigationController?.pushViewController(viewController, animated: true)
