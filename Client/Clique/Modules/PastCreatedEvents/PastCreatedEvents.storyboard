@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Past Created Events View Controller-->
+        <!--Past created events-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="PastCreatedEventsViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
@@ -105,6 +105,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="hbr-NF-1LY" secondAttribute="bottom" id="ukd-mk-Bao"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Past created events" id="wCJ-qe-oq9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

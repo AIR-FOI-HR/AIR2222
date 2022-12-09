@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profile Edit View Controller-->
+        <!--Edit profile-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="ProfileEdit" id="Y6W-OH-hqX" customClass="ProfileEditViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileEdit" title="Edit profile" id="Y6W-OH-hqX" customClass="ProfileEditViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,36 +20,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQq-PH-6c9">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="917"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1004"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLB-u9-Cuf">
-                                                <rect key="frame" x="31.999999999999996" y="64" width="49.666666666666657" height="34.333333333333343"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="xmark.circle" catalog="system">
-                                                    <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="closeProfileEditViewController:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CMG-fh-BF4"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCX-NH-WnY">
-                                                <rect key="frame" x="313.33333333333331" y="64" width="47.666666666666686" height="34.333333333333343"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="checkmark" catalog="system">
-                                                    <color key="baseForegroundColor" red="0.78238477610000001" green="0.3422334367" blue="0.16373641050000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </buttonConfiguration>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
-                                                        <real key="value" value="7"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="saveButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rQc-B3-zKe"/>
-                                                </connections>
-                                            </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="oOF-Tr-7Ng">
-                                                <rect key="frame" x="0.0" y="102" width="393" height="815"/>
+                                                <rect key="frame" x="0.0" y="32" width="393" height="972"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZS6-UT-rDz">
                                                         <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
@@ -66,22 +40,25 @@
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
-                                                                                <real key="value" value="100"/>
+                                                                                <real key="value" value="71"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGs-Rv-4Nq">
-                                                                        <rect key="frame" x="145.66666666666666" y="166" width="102" height="34"/>
+                                                                        <rect key="frame" x="147.33333333333334" y="166" width="98.333333333333343" height="34"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="34" id="EqF-2S-VU9"/>
                                                                         </constraints>
+                                                                        <color key="tintColor" systemColor="systemOrangeColor"/>
                                                                         <state key="normal" title="Button"/>
-                                                                        <buttonConfiguration key="configuration" style="plain" title="Edit photo"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" title="Edit photo">
+                                                                            <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                                                        </buttonConfiguration>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
-                                                                                <real key="value" value="7"/>
+                                                                                <real key="value" value="5"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </button>
@@ -103,13 +80,14 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rjF-w2-Qtq">
-                                                        <rect key="frame" x="0.0" y="217" width="393" height="341"/>
+                                                        <rect key="frame" x="0.0" y="216.99999999999997" width="393" height="350.33333333333326"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gKi-hR-eRx">
-                                                                <rect key="frame" x="8" y="8" width="377" height="325"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="gKi-hR-eRx">
+                                                                <rect key="frame" x="8" y="8" width="377" height="334.33333333333331"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5AW-bb-TzC">
                                                                         <rect key="frame" x="32" y="0.0" width="313" height="34"/>
+                                                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                         <userDefinedRuntimeAttributes>
@@ -120,7 +98,8 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
                                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vhZ-6n-GHe">
-                                                                        <rect key="frame" x="32" y="54" width="313" height="34"/>
+                                                                        <rect key="frame" x="32" y="50" width="313" height="34"/>
+                                                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                         <userDefinedRuntimeAttributes>
@@ -131,7 +110,8 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
                                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8lY-fX-FKm">
-                                                                        <rect key="frame" x="32" y="108" width="313" height="34"/>
+                                                                        <rect key="frame" x="32" y="100" width="313" height="34"/>
+                                                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
                                                                         <userDefinedRuntimeAttributes>
@@ -142,17 +122,24 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyU-vj-hdc">
-                                                                        <rect key="frame" x="32" y="162" width="313" height="20.333333333333343"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <rect key="frame" x="32" y="150" width="313" height="19.333333333333343"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
+                                                                                <integer key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="h56-DH-Wqj">
-                                                                        <rect key="frame" x="32" y="202.33333333333337" width="313" height="68.333333333333314"/>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <rect key="frame" x="32" y="185.33333333333331" width="313" height="88.333333333333314"/>
+                                                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="100" id="mE7-gF-69m"/>
+                                                                        </constraints>
                                                                         <color key="textColor" systemColor="labelColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -161,31 +148,41 @@
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
                                                                                 <real key="value" value="7"/>
                                                                             </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderRadius">
+                                                                                <integer key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="lastLineFillPercent">
+                                                                                <integer key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
+                                                                                <integer key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                                 <real key="value" value="7"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                                                <real key="value" value="0.5"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="EBO-Qm-1or">
-                                                                        <rect key="frame" x="32" y="290.66666666666663" width="313" height="34.333333333333314"/>
+                                                                        <rect key="frame" x="32" y="289.66666666666663" width="313" height="44.666666666666686"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of birth:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czt-kC-PfH">
-                                                                                <rect key="frame" x="0.0" y="6.9999999999999982" width="147" height="20.333333333333329"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <rect key="frame" x="0.0" y="12.666666666666741" width="147" height="19.333333333333329"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
+                                                                                        <integer key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
                                                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="8Vl-V4-lPr">
-                                                                                <rect key="frame" x="166" y="0.0" width="147" height="34.333333333333336"/>
+                                                                                <rect key="frame" x="166" y="0.0" width="147" height="44.666666666666664"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
@@ -220,7 +217,7 @@
                                                         <constraints>
                                                             <constraint firstItem="gKi-hR-eRx" firstAttribute="top" secondItem="rjF-w2-Qtq" secondAttribute="topMargin" id="6gs-ey-Hi2"/>
                                                             <constraint firstAttribute="trailingMargin" secondItem="gKi-hR-eRx" secondAttribute="trailing" id="vHD-lj-oLh"/>
-                                                            <constraint firstAttribute="height" constant="360" id="wkZ-3U-c8Q"/>
+                                                            <constraint firstAttribute="height" constant="400" id="wkZ-3U-c8Q"/>
                                                             <constraint firstAttribute="bottomMargin" secondItem="gKi-hR-eRx" secondAttribute="bottom" id="xwL-xf-7da"/>
                                                             <constraint firstItem="gKi-hR-eRx" firstAttribute="leading" secondItem="rjF-w2-Qtq" secondAttribute="leadingMargin" id="xzB-Kh-k5i"/>
                                                         </constraints>
@@ -229,7 +226,10 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="XEN-1D-a1F">
-                                                        <rect key="frame" x="0.0" y="575" width="393" height="240"/>
+                                                        <rect key="frame" x="0.0" y="584.33333333333337" width="393" height="387.66666666666663"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
                                                 <userDefinedRuntimeAttributes>
@@ -240,13 +240,9 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="oOF-Tr-7Ng" firstAttribute="leading" secondItem="pQq-PH-6c9" secondAttribute="leading" id="PYd-wt-OVp"/>
-                                            <constraint firstItem="oOF-Tr-7Ng" firstAttribute="top" secondItem="nLB-u9-Cuf" secondAttribute="bottom" constant="3.6666666666666572" id="XU7-hJ-T90"/>
-                                            <constraint firstItem="oOF-Tr-7Ng" firstAttribute="top" secondItem="pQq-PH-6c9" secondAttribute="top" constant="102" id="hSf-bJ-r0V"/>
+                                            <constraint firstItem="oOF-Tr-7Ng" firstAttribute="top" secondItem="pQq-PH-6c9" secondAttribute="top" constant="32" id="hSf-bJ-r0V"/>
                                             <constraint firstAttribute="bottom" secondItem="oOF-Tr-7Ng" secondAttribute="bottom" id="m0P-aa-bZC"/>
                                             <constraint firstAttribute="trailing" secondItem="oOF-Tr-7Ng" secondAttribute="trailing" id="ouv-6K-1kU"/>
-                                            <constraint firstItem="aCX-NH-WnY" firstAttribute="top" secondItem="pQq-PH-6c9" secondAttribute="top" constant="64" id="sC7-N5-2EH"/>
-                                            <constraint firstItem="nLB-u9-Cuf" firstAttribute="leading" secondItem="pQq-PH-6c9" secondAttribute="leading" constant="32" id="sck-bP-i9x"/>
-                                            <constraint firstAttribute="trailing" secondItem="aCX-NH-WnY" secondAttribute="trailing" constant="32" id="wLr-OF-Ptq"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -278,9 +274,25 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Edit profile" largeTitleDisplayMode="always" id="IW4-OR-02Q">
+                        <barButtonItem key="rightBarButtonItem" title="Save" image="checkmark" catalog="system" id="tee-rz-IWU">
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="Y6W-OH-hqX" id="s3k-RM-28w"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+<<<<<<< HEAD
                         <outlet property="bioTextView" destination="h56-DH-Wqj" id="TtY-ny-gDq"/>
+=======
+                        <outlet property="bioLabel" destination="dyU-vj-hdc" id="NLw-Ty-AWZ"/>
+                        <outlet property="bioTextView" destination="h56-DH-Wqj" id="5t2-qJ-Aak"/>
+>>>>>>> bcdbc1ee1aaf6175e3c5263a58de16a9da83d5f4
                         <outlet property="btnChooseImage" destination="jGs-Rv-4Nq" id="Oqa-qc-hIS"/>
+                        <outlet property="dateOfBirthLabel" destination="czt-kC-PfH" id="ZFN-QR-agn"/>
                         <outlet property="datePicker" destination="8Vl-V4-lPr" id="UGZ-uE-QyT"/>
                         <outlet property="emailTextField" destination="8lY-fX-FKm" id="j3a-fS-u3F"/>
                         <outlet property="imgProfile" destination="owP-QN-96W" id="HiZ-t4-AYo"/>
@@ -295,12 +307,17 @@
     </scenes>
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>
-        <image name="xmark.circle" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

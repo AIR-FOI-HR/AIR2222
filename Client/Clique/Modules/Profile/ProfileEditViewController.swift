@@ -18,6 +18,8 @@ class ProfileEditViewController: UIViewController {
     @IBOutlet private var surnameTextField: UITextField!
     @IBOutlet private var datePicker: UIDatePicker!
     @IBOutlet private var bioTextView: UITextView!
+    @IBOutlet private var bioLabel: UILabel!
+    @IBOutlet private var dateOfBirthLabel: UILabel!
     
     private let profileService = ProfileService()
     
@@ -26,31 +28,21 @@ class ProfileEditViewController: UIViewController {
         getUser()
         let allowedAgeDate = Calendar.current.date(byAdding: .year, value: -13, to: Date())
         datePicker.maximumDate = allowedAgeDate
-        imageProfile.layer.masksToBounds = false
-        imageProfile.isSkeletonable = true
-        imageProfile.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
         
-        emailTextField.layer.masksToBounds = false
-        emailTextField.isSkeletonable = true
-        emailTextField.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        imgProfile.circleImage()
         
-        nameTextfield.layer.masksToBounds = false
-        nameTextfield.isSkeletonable = true
-        nameTextfield.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        imgProfile.skeletonableView()
+        emailTextField.skeletonableView()
+        nameTextfield.skeletonableView()
+        surnameTextField.skeletonableView()
+        bioTextView.skeletonableView()
+        datePicker.skeletonableView()
+        bioLabel.skeletonableView()
+        dateOfBirthLabel.skeletonableView()
+        btnChooseImage.skeletonableView()
         
-        surnameTextField.layer.masksToBounds = false
-        surnameTextField.isSkeletonable = true
-        surnameTextField.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
-        
-        bioTextView.layer.masksToBounds = false
-        bioTextView.isSkeletonable = true
-        bioTextView.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
-        
-        datePicker.layer.masksToBounds = false
-        datePicker.isSkeletonable = true
-        datePicker.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
-        
-        SkeletonAppearance.default.skeletonCornerRadius = 100
+        bioTextView.layer.borderColor = UIColor.systemGray5.cgColor
+        bioTextView.layer.borderWidth = 1
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,6 +74,7 @@ class ProfileEditViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         guard let userProfileData = getProfileData() else {
             Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
             return
