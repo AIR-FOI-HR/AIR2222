@@ -19,7 +19,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3C6-8l-cVj">
                                 <rect key="frame" x="16" y="79" width="361" height="265"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write a short description of your event! (maximum 250 characters)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="de5-8h-W0O">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write a short description of your event! U have 250 characters remaining." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="de5-8h-W0O">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Hdf-DY-0ch"/>
@@ -64,6 +64,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="characterCountLabel" destination="de5-8h-W0O" id="XKz-ko-TFO"/>
                         <outlet property="shortDescriptionTextView" destination="CIF-SN-Lwv" id="5hv-y9-tJn"/>
                     </connections>
                 </viewController>
