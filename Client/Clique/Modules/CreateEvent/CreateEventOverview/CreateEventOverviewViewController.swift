@@ -18,7 +18,7 @@ class CreateEventOverviewViewController: UIViewController {
     @IBOutlet private var eventCostLabel: UILabel!
     @IBOutlet private var chosenDateTimeLabel: UILabel!
     @IBOutlet private var locationLabel: UILabel!
-    @IBOutlet private var shortDescriptionLabel: UILabel!
+    @IBOutlet private var shortDescriptionTextView: UITextView!
     @IBOutlet private var currencyLabel: UILabel!
     @IBOutlet private var postButton: UIButton!
 
@@ -33,7 +33,7 @@ class CreateEventOverviewViewController: UIViewController {
         eventCostLabel.text = createEventObject.cost
         chosenDateTimeLabel.text = createEventObject.eventTimeStampPrint
         locationLabel.text = "Proba"
-        shortDescriptionLabel.text = createEventObject.description
+        shortDescriptionTextView.text = createEventObject.description
         currencyLabel.text = createEventObject.currencyName
     }
     

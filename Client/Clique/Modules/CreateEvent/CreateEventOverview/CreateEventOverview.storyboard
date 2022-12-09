@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdE-Lk-x5f">
-                                <rect key="frame" x="16" y="429.33333333333331" width="361" height="44"/>
+                                <rect key="frame" x="16" y="510" width="361" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="QJx-fx-jgr"/>
                                 </constraints>
@@ -33,7 +33,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="1pX-he-aY4">
-                                <rect key="frame" x="16" y="29" width="361" height="350.33333333333331"/>
+                                <rect key="frame" x="16" y="29" width="361" height="431"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0j-cz-usX">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="24"/>
@@ -172,7 +172,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="2DB-3u-oHH">
-                                        <rect key="frame" x="0.0" y="293.66666666666669" width="361" height="56.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="293.66666666666669" width="361" height="137.33333333333331"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Short Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZiG-Mj-QDi">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="19.333333333333332"/>
@@ -180,12 +180,16 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNe-Ja-cyc">
-                                                <rect key="frame" x="0.0" y="37.333333333333314" width="361" height="19.333333333333329"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3EF-rB-db6">
+                                                <rect key="frame" x="0.0" y="37.333333333333314" width="361" height="100"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="ITy-vF-fJo"/>
+                                                </constraints>
+                                                <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -212,7 +216,7 @@
                         <outlet property="locationLabel" destination="iNb-ec-z5y" id="pWB-nY-eap"/>
                         <outlet property="participantNumberLabel" destination="4Zk-4g-tTk" id="A7N-Wb-oxY"/>
                         <outlet property="postButton" destination="zdE-Lk-x5f" id="gUO-4e-GGc"/>
-                        <outlet property="shortDescriptionLabel" destination="gNe-Ja-cyc" id="Jzp-AF-6tW"/>
+                        <outlet property="shortDescriptionTextView" destination="3EF-rB-db6" id="wYE-yP-YYk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziR-GW-S5p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -225,6 +229,9 @@
         <image name="dollarsign.circle.fill" catalog="system" width="128" height="123"/>
         <image name="mappin.and.ellipse" catalog="system" width="117" height="128"/>
         <image name="person.2.fill" catalog="system" width="128" height="81"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
