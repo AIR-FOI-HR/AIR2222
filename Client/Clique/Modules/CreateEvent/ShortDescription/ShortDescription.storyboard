@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Short Description View Controller-->
+        <!--Short Description-->
         <scene sceneID="ryC-8e-Qjg">
             <objects>
                 <viewController id="Nos-g2-iQU" customClass="ShortDescriptionViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,21 +16,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="3C6-8l-cVj">
-                                <rect key="frame" x="16" y="119" width="361" height="399"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3C6-8l-cVj">
+                                <rect key="frame" x="16" y="79" width="361" height="265"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write a short description of your event! (max 250 char.)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="de5-8h-W0O">
-                                        <rect key="frame" x="0.0" y="0.0" width="361" height="38.333333333333336"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write a short description of your event! (maximum 250 characters)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="de5-8h-W0O">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Hdf-DY-0ch"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CIF-SN-Lwv">
-                                        <rect key="frame" x="0.0" y="55.333333333333343" width="361" height="343.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="65" width="361" height="200"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="DFQ-AB-NMK"/>
+                                        </constraints>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
                                     </textView>
                                 </subviews>
                                 <constraints>
@@ -46,11 +52,10 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="3C6-8l-cVj" secondAttribute="trailing" constant="16" id="Jfg-9B-3hr"/>
                             <constraint firstItem="3C6-8l-cVj" firstAttribute="leading" secondItem="BXY-23-lan" secondAttribute="leading" constant="16" id="JzI-5A-fWd"/>
-                            <constraint firstItem="BXY-23-lan" firstAttribute="bottom" secondItem="3C6-8l-cVj" secondAttribute="bottom" constant="300" id="NFl-Qc-5XN"/>
-                            <constraint firstItem="3C6-8l-cVj" firstAttribute="top" secondItem="BXY-23-lan" secondAttribute="top" constant="60" id="Rw0-Zg-mWR"/>
+                            <constraint firstItem="3C6-8l-cVj" firstAttribute="top" secondItem="BXY-23-lan" secondAttribute="top" constant="20" id="Rw0-Zg-mWR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="WXE-CH-yGQ">
+                    <navigationItem key="navigationItem" title="Short Description" id="WXE-CH-yGQ">
                         <barButtonItem key="backBarButtonItem" title="Short Description" id="Ypa-sC-5Rg"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="mT0-lY-dma">
                             <connections>

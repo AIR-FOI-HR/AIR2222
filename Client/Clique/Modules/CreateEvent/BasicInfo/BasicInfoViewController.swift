@@ -5,15 +5,15 @@ import NVActivityIndicatorView
 
 class BasicInfoViewController: UIViewController {
   
-    @IBOutlet private weak var downButtonCategory: UIButton!
-    @IBOutlet private weak var downButtonCurrency: UIButton!
-    @IBOutlet private weak var categoryTextField: UITextField!
-    @IBOutlet private weak var currencyTextField: UITextField!
-    @IBOutlet private weak var nameTextField: UITextField!
-    @IBOutlet private weak var participantsTextField: UITextField!
-    @IBOutlet private weak var costTextField: UITextField!
-    @IBOutlet private weak var costSwitcher: UISwitch!
-    @IBOutlet private weak var amountLabel: UILabel!
+    @IBOutlet private var downButtonCategory: UIButton!
+    @IBOutlet private var downButtonCurrency: UIButton!
+    @IBOutlet private var categoryTextField: UITextField!
+    @IBOutlet private var currencyTextField: UITextField!
+    @IBOutlet private var nameTextField: UITextField!
+    @IBOutlet private var participantsTextField: UITextField!
+    @IBOutlet private var costTextField: UITextField!
+    @IBOutlet private var costSwitcher: UISwitch!
+    @IBOutlet private var amountLabel: UILabel!
     
     private let createEventService = CreateEventService()
     var createEventObject = CreateEventObject()
@@ -28,26 +28,7 @@ class BasicInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Basic info (1/5)"
-        costSwitcher.addTarget(self, action: #selector(costInputEnabled(switcher:)), for: .valueChanged)
-
-        categoryTextField.delegate = self
-        currencyTextField.delegate = self
-        costTextField.delegate = self
-        pickerViewCategory.delegate = self
-        pickerViewCategory.dataSource = self
-        pickerViewCurrency.delegate = self
-        pickerViewCurrency.dataSource = self
-        categoryTextField.inputView = pickerViewCategory
-        categoryTextField.tintColor = UIColor.clear
-        currencyTextField.inputView = pickerViewCurrency
-        currencyTextField.tintColor = UIColor.clear
-        costTextField.isHidden = true
-        currencyTextField.isHidden = true
-        downButtonCurrency.isHidden = true
-        amountLabel.isHidden = true
-        costTextField.text = "0"
-        
+        onLoadSettings()
         getCategories()
         getCurrencies()
     }
@@ -61,9 +42,8 @@ class BasicInfoViewController: UIViewController {
     }
     
     @IBAction func nextButtonPressed(_ sender: UIBarButtonItem) {
-        guard let viewContoller = UIStoryboard(name: "DateTime", bundle: nil).instantiateInitialViewController() as? DateTimeViewController else{
-            return
-        }
+        guard let viewContoller = UIStoryboard(name: "DateTime", bundle: nil).instantiateInitialViewController() as? DateTimeViewController
+        else { return }
         guard
             let categoryName = categoryTextField.text,
             let eventName = nameTextField.text,
@@ -71,9 +51,8 @@ class BasicInfoViewController: UIViewController {
             let cost = costTextField.text,
             let currencyName = currencyTextField.text,
             !categoryName.isEmpty && !eventName.isEmpty && !participantNumber.isEmpty
-            
-        else{
-            alert(fwdMessage: "Please fill all required information.")
+        else {
+            Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
             return
         }
         viewContoller.createEventObject.categoryName = categoryName
@@ -91,7 +70,7 @@ class BasicInfoViewController: UIViewController {
             switch result {
             case .success(let categories):
                 for category in categories{
-                    self.categories.append(category.category_name)
+                    self.categories.append(category.name)
                 }
             case .failure:
                 return
@@ -100,11 +79,11 @@ class BasicInfoViewController: UIViewController {
     }
     
     func getCurrencies() {
-        createEventService.getCurrencies{ result in
+        createEventService.getCurrencies { result in
             switch result {
             case .success(let currencies):
-                for currency in currencies{
-                    self.currencies.append(currency.currency_abbr)
+                for currency in currencies {
+                    self.currencies.append(currency.abbreviation)
                 }
             case .failure:
                 return
@@ -113,7 +92,7 @@ class BasicInfoViewController: UIViewController {
     }
     
     @objc func costInputEnabled (switcher: UISwitch) {
-        if(switcher.isOn){
+        if switcher.isOn {
             costTextField.isHidden = false
             currencyTextField.isHidden = false
             downButtonCurrency.isHidden = false
@@ -121,7 +100,7 @@ class BasicInfoViewController: UIViewController {
             currency = "1"
             currencyTextField.text = "EUR"
             costTextField.text = "1"
-        }else if(!switcher.isOn){
+        } else if !switcher.isOn {
             costTextField.isHidden = true
             currencyTextField.isHidden = true
             downButtonCurrency.isHidden = true
@@ -132,27 +111,24 @@ class BasicInfoViewController: UIViewController {
         }
     }
     
-    func alert(fwdMessage: String) {
-        let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(defaultAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
-    let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
-    private func startAnimation() {
-            loading.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(loading)
-            NSLayoutConstraint.activate([
-                loading.widthAnchor.constraint(equalToConstant: 40),
-                loading.heightAnchor.constraint(equalToConstant: 40),
-                loading.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 350),
-                loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ])
-            loading.startAnimating()
-    }
-    private func stopAnimation() {
-            loading.stopAnimating()
+    func onLoadSettings() {
+        costSwitcher.addTarget(self, action: #selector(costInputEnabled(switcher:)), for: .valueChanged)
+        categoryTextField.delegate = self
+        currencyTextField.delegate = self
+        costTextField.delegate = self
+        pickerViewCategory.delegate = self
+        pickerViewCategory.dataSource = self
+        pickerViewCurrency.delegate = self
+        pickerViewCurrency.dataSource = self
+        categoryTextField.inputView = pickerViewCategory
+        categoryTextField.tintColor = UIColor.clear
+        currencyTextField.inputView = pickerViewCurrency
+        currencyTextField.tintColor = UIColor.clear
+        costTextField.isHidden = true
+        currencyTextField.isHidden = true
+        downButtonCurrency.isHidden = true
+        amountLabel.isHidden = true
+        costTextField.text = "0"
     }
 }
 
@@ -162,37 +138,36 @@ extension BasicInfoViewController: UIPickerViewDelegate, UIPickerViewDataSource 
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if(pickerView == pickerViewCategory) {
+        if pickerView == pickerViewCategory {
             return categories.count
         }
-        else{
+        else {
             return currencies.count
         }
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if(pickerView == pickerViewCategory) {
+        if pickerView == pickerViewCategory {
             return categories[row]
         }
-        else{
+        else {
             return currencies[row]
         }
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if(pickerView == pickerViewCategory) {
+        if pickerView == pickerViewCategory {
             categoryTextField.text = categories[row]
             category = String((Int(row.description) ?? 0 ) + 1)
         }
-        else{
+        else {
             currencyTextField.text = currencies[row]
             currency = String((Int(row.description) ?? 0 ) + 1)
         }
     }
 }
 extension BasicInfoViewController: UITextFieldDelegate {
-
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if(textField == costTextField ) {
+        if textField == costTextField {
             guard let costCheck = costTextField.text, let range = Range(range, in: costCheck) else {
                 return false
             }

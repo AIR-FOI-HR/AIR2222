@@ -8,9 +8,15 @@
 import Foundation
 
 struct Category: Codable {
-    let category_id: Int
-    let category_name: String
-    let category_color: String
+    let id: Int
+    let name: String
+    let color: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "category_id"
+        case name = "category_name"
+        case color = "category_color"
+    }
 }
 
 

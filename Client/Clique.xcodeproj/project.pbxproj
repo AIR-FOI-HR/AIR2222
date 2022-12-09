@@ -37,6 +37,7 @@
 		42BA9E9A2940B777008CAA90 /* Location.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BA9E992940B777008CAA90 /* Location.storyboard */; };
 		42BA9E9E2940B7A9008CAA90 /* ShortDescription.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42BA9E9D2940B7A9008CAA90 /* ShortDescription.storyboard */; };
 		42BA9EA02942A3EA008CAA90 /* CreateEventObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BA9E9F2942A3EA008CAA90 /* CreateEventObject.swift */; };
+		42BA9EA32942BDE3008CAA90 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BA9EA22942BDE3008CAA90 /* Functions.swift */; };
 		42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D99DE2292835C700516EF9 /* RegisterService.swift */; };
 		42D99DE62928362300516EF9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 42D99DE52928362300516EF9 /* Alamofire */; };
 		42DB272C292656ED0027A00C /* LoginServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DB272B292656ED0027A00C /* LoginServices.swift */; };
@@ -75,6 +76,7 @@
 		42BA9E992940B777008CAA90 /* Location.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Location.storyboard; sourceTree = "<group>"; };
 		42BA9E9D2940B7A9008CAA90 /* ShortDescription.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShortDescription.storyboard; sourceTree = "<group>"; };
 		42BA9E9F2942A3EA008CAA90 /* CreateEventObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventObject.swift; sourceTree = "<group>"; };
+		42BA9EA22942BDE3008CAA90 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		42D99DE2292835C700516EF9 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		42DB272B292656ED0027A00C /* LoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
 		42DB2733292672970027A00C /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		420CDAAE290E55C90074ACFA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				42BA9EA12942BDD4008CAA90 /* Functions */,
 				42D99DE1292835AE00516EF9 /* Services */,
 				4237AC83292C20AA00095D47 /* Models */,
 				4254AD3D29297E16004D649D /* Constants */,
@@ -270,6 +273,14 @@
 				42BA9E972940B738008CAA90 /* CreateEventOverview.storyboard */,
 			);
 			path = CreateEventOverview;
+			sourceTree = "<group>";
+		};
+		42BA9EA12942BDD4008CAA90 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				42BA9EA22942BDE3008CAA90 /* Functions.swift */,
+			);
+			path = Functions;
 			sourceTree = "<group>";
 		};
 		42D99DE1292835AE00516EF9 /* Services */ = {
@@ -402,6 +413,7 @@
 				4237AC87292C215F00095D47 /* LoginResponse.swift in Sources */,
 				420CDA98290E54380074ACFA /* AppDelegate.swift in Sources */,
 				42BA9EA02942A3EA008CAA90 /* CreateEventObject.swift in Sources */,
+				42BA9EA32942BDE3008CAA90 /* Functions.swift in Sources */,
 				421487182933FC170053B344 /* BasicInfoViewController.swift in Sources */,
 				429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */,
 				425FAC182938131200486755 /* CreateEventEntries.swift in Sources */,

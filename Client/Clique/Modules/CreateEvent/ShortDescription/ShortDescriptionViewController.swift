@@ -8,33 +8,26 @@
 import UIKit
 import NVActivityIndicatorView
 
-protocol ShortDescriptionViewControllerDelegate {
-    func didInputShortDesc(description: String)
-}
-
 class ShortDescriptionViewController: UIViewController {
     
-    @IBOutlet private weak var shortDescriptionTextView: UITextView!
+    @IBOutlet private var shortDescriptionTextView: UITextView!
     var createEventObject = CreateEventObject()
- 
-    var delegate : ShortDescriptionViewControllerDelegate!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Short Description (4/5)"
         shortDescriptionTextView.layer.cornerRadius = 7
         shortDescriptionTextView.layer.masksToBounds = false
         shortDescriptionTextView.delegate = self
     }
     
     @IBAction func nextButtonPressed(_ sender: UIBarButtonItem) {
-        guard let viewContoller = UIStoryboard(name: "CreateEventOverview", bundle: nil).instantiateInitialViewController() as? CreateEventOverviewViewController else{
-            return
-        }
+        guard let viewContoller = UIStoryboard(name: "CreateEventOverview", bundle: nil).instantiateInitialViewController() as? CreateEventOverviewViewController
+        else { return }
         guard
-            let shortDescription = shortDescriptionTextView.text
+            let shortDescription = shortDescriptionTextView.text,
+            !shortDescription.isEmpty
         else {
-            alert(fwdMessage: "Please enter short description.")
+            Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterShortDescriptionMsg, viewController: self)
             return
         }
         createEventObject.description = shortDescription
@@ -42,31 +35,7 @@ class ShortDescriptionViewController: UIViewController {
         navigationController?.pushViewController(viewContoller, animated: true)
     }
     
-    let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
-    func startAnimation() {
-        loading.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(loading)
-        NSLayoutConstraint.activate([
-        loading.widthAnchor.constraint(equalToConstant: 40),
-        loading.heightAnchor.constraint(equalToConstant: 40),
-        loading.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 350),
-        loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
-        loading.startAnimating()
-    }
-    
-    func stopAnimation() {
-        loading.stopAnimating()
-    }
-    
-    func alert(fwdMessage: String) {
-        let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(defaultAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
 }
-
 extension ShortDescriptionViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let currentText = textView.text ?? ""

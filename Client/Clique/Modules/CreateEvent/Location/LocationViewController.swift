@@ -14,14 +14,11 @@ class LocationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Location (3/5)"
     }
     
     @IBAction func nextButtonPressed(_ sender: UIBarButtonItem) {
         guard let viewContoller = UIStoryboard(name: "ShortDescription", bundle: nil).instantiateInitialViewController() as? ShortDescriptionViewController
-        else{
-            return
-        }
+        else { return }
         viewContoller.createEventObject = createEventObject
         navigationController?.pushViewController(viewContoller, animated: true)
     }

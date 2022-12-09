@@ -8,12 +8,23 @@
 import Foundation
 
 struct CreateEventEntries: Codable {
-    let eventName: String
-    let eventLocation: String
-    let eventTimeStamp: String
-    let participantsNo: String
+    let name: String
+    let location: String
+    let timeStamp: String
+    let participantsNumber: String
     let cost: String
     let currency: String
     let category: String
     let description: String
+    
+    enum CodingKeys: String, CodingKey {
+        case name = "eventName"
+        case location = "eventLocation"
+        case timeStamp = "eventTimeStamp"
+        case participantsNumber = "participantsNo"
+        case cost = "cost"
+        case currency = "currency"
+        case category = "category"
+        case description = "description"
+    }
 }

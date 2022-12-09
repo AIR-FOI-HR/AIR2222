@@ -9,32 +9,31 @@ import Foundation
 import UIKit
 
 class DateTimeViewController: UIViewController {
-    @IBOutlet private weak var chosenDateTime: UIDatePicker!
+    
+    @IBOutlet private var chosenDateTime: UIDatePicker!
     
     var createEventObject = CreateEventObject()
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Date and Time (2/5)"
+        chosenDateTime.minimumDate = Date()
     }
     
     @IBAction func nextButtonPressed(_ sender: UIBarButtonItem) {
-        let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "yyyy-MM-dd HH:mm"
-        let chosenDatePrint = dateFormatterPrint.string(from: chosenDateTime.date)
         
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = Constants.DateFormats.dateFormatterPrint
+        let chosenDatePrint = dateFormatterPrint.string(from: chosenDateTime.date)
+
         let dateFormatterAPI = DateFormatter()
-        dateFormatterAPI.dateFormat = "yyyy-MM-dd'T'HH:mm:SS'Z'"
+        dateFormatterAPI.dateFormat = Constants.DateFormats.dateFormatterAPI
         let chosenDateAPI = dateFormatterAPI.string(from: chosenDateTime.date)
         
-        
-        guard let viewContoller = UIStoryboard(name: "Location", bundle: nil).instantiateInitialViewController() as? LocationViewController else{
-            return
-        }
+        guard let viewContoller = UIStoryboard(name: "Location", bundle: nil).instantiateInitialViewController() as? LocationViewController
+        else { return }
         createEventObject.eventTimeStampPrint = chosenDatePrint
         createEventObject.eventTimeStampAPI = chosenDateAPI
         viewContoller.createEventObject = createEventObject
         navigationController?.pushViewController(viewContoller, animated: true)
     }
-
 }
