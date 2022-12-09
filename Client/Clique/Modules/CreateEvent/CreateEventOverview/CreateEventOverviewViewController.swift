@@ -11,7 +11,7 @@ import NVActivityIndicatorView
 
 class CreateEventOverviewViewController: UIViewController {
     
-    
+    var createEventObject = CreateEventObject()
     @IBOutlet private weak var categoryLabel: UILabel!
     @IBOutlet private weak var eventNameLabel: UILabel!
     @IBOutlet private weak var participantNumberLabel: UILabel!
@@ -21,40 +21,28 @@ class CreateEventOverviewViewController: UIViewController {
     @IBOutlet private weak var shortDescriptionLabel: UILabel!
     @IBOutlet private weak var currencyLabel: UILabel!
     @IBOutlet private weak var postButton: UIButton!
-    
-    var selectedCategory: String = ""
-    var eventName: String = ""
-    var participantNumber: String = ""
-    var eventCost: String = ""
-    var chosenDateTime: String = ""
-    var location: String = ""
-    var shortDescription: String = ""
-    var currency: String = ""
-    
+
     private let createEventService = CreateEventService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Overview (5/5)"
-        categoryLabel.text = selectedCategory
-        eventNameLabel.text = eventName
-        participantNumberLabel.text = participantNumber
-        eventCostLabel.text = eventCost
-        chosenDateTimeLabel.text = chosenDateTime
-        locationLabel.text = location
-        shortDescriptionLabel.text = shortDescription
-        currencyLabel.text = currency
+        categoryLabel.text = createEventObject.categoryName
+        eventNameLabel.text = createEventObject.eventName
+        participantNumberLabel.text = createEventObject.participantsNumber
+        eventCostLabel.text = createEventObject.cost
+        chosenDateTimeLabel.text = createEventObject.eventTimeStampPrint
+        locationLabel.text = "Proba"
+        shortDescriptionLabel.text = createEventObject.description
+        currencyLabel.text = createEventObject.currencyName
         
     }
     
     @IBAction func postButtonPressed(_sender: UIButton){
-        guard let createEntries = getCreateEventEntries() else {
-            return
-        }
+        guard let createEntries = getCreateEventEntries() else { return }
         print(createEntries)
         startAnimation()
         createEvent(with: createEntries)
-        
     }
     
     func createEvent(with createEventEntries: CreateEventEntries) {
@@ -71,20 +59,18 @@ class CreateEventOverviewViewController: UIViewController {
     }
     
     func getCreateEventEntries() -> CreateEventEntries? {
-    
-        guard
-            let eventName = eventNameLabel.text,
-            let eventLocation = locationLabel.text,
-            let eventTimeStamp = chosenDateTimeLabel.text,
-            let participantsNo = participantNumberLabel.text,
-            let cost = eventCostLabel.text,
-            let currency = currencyLabel.text,
-            let category = categoryLabel.text,
-            let description = shortDescriptionLabel.text
-        else {
-            return nil
-        }
-        let entries = CreateEventEntries(eventName: eventName, eventLocation: eventLocation, eventTimeStamp: "2022-11-03T12:22:11Z", participantsNo: participantsNo, cost: "2", currency: "1", category: "1", description: description)
+//
+//        guard
+//            let eventName = eventNameLabel.text,
+//            let eventLocation = locationLabel.text,
+//            let participantsNo = participantNumberLabel.text,
+//            let cost = eventCostLabel.text,
+//            let category = categoryLabel.text,
+//            let description = shortDescriptionLabel.text
+//        else {
+//            return nil
+//        }
+        let entries = CreateEventEntries(eventName: createEventObject.eventName, eventLocation: "lokacija", eventTimeStamp: createEventObject.eventTimeStampAPI, participantsNo: createEventObject.participantsNumber, cost: createEventObject.cost, currency: createEventObject.currencyId, category: createEventObject.categoryId, description: createEventObject.description)
         return entries
 
     }
@@ -112,7 +98,6 @@ class CreateEventOverviewViewController: UIViewController {
     private func stopAnimation() {
             loading.stopAnimating()
         }
-    
 }
     
     

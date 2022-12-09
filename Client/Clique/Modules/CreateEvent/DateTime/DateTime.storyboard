@@ -16,17 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="1nR-17-34R">
-                                <rect key="frame" x="16" y="119" width="361" height="376"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="15s-hL-TJn">
+                                <rect key="frame" x="16" y="109" width="361" height="376"/>
                                 <color key="tintColor" systemColor="systemOrangeColor"/>
                             </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1nR-17-34R" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="Tfe-b8-tRM"/>
-                            <constraint firstAttribute="trailing" secondItem="1nR-17-34R" secondAttribute="trailing" constant="16" id="dEw-z9-UOR"/>
-                            <constraint firstItem="1nR-17-34R" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="16" id="j8b-MX-eXg"/>
+                            <constraint firstAttribute="trailing" secondItem="15s-hL-TJn" secondAttribute="trailing" constant="16" id="AIx-A0-04V"/>
+                            <constraint firstItem="15s-hL-TJn" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="dJI-Gp-O6T"/>
+                            <constraint firstItem="15s-hL-TJn" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="16" id="lrm-ff-991"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -38,6 +38,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="chosenDateTime" destination="15s-hL-TJn" id="mQD-f3-B3N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -16,6 +16,7 @@ class BasicInfoViewController: UIViewController {
     @IBOutlet private weak var amountLabel: UILabel!
     
     private let createEventService = CreateEventService()
+    var createEventObject = CreateEventObject()
     
     var categories = [String]()
     var currencies = [String]()
@@ -50,26 +51,7 @@ class BasicInfoViewController: UIViewController {
         getCategories()
         getCurrencies()
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard
-            var selectedCategory = categoryTextField.text,
-            var eventName = nameTextField.text,
-            var participantNumber = participantsTextField.text,
-            !selectedCategory.isEmpty && !eventName.isEmpty && !participantNumber.isEmpty
-        else{
-            alert(fwdMessage: "Please fill all required information.")
-            return
-        }
-        if segue.identifier == "sendInfo" {
-            let controller = segue.destination as! DateTimeViewController
-            controller.selectedCategory = categoryTextField.text!
-            controller.eventName = nameTextField.text!
-            controller.participantNumber = participantsTextField.text!
-            controller.eventCost = costTextField.text!
-            controller.currency = currencyTextField.text!
-            }
-        
-    }
+
     @IBAction func downButtonCategoryPressed(_ sender: UIButton) {
         categoryTextField.becomeFirstResponder()
     }
@@ -82,6 +64,25 @@ class BasicInfoViewController: UIViewController {
         guard let viewContoller = UIStoryboard(name: "DateTime", bundle: nil).instantiateInitialViewController() as? DateTimeViewController else{
             return
         }
+        guard
+            let categoryName = categoryTextField.text,
+            let eventName = nameTextField.text,
+            let participantNumber = participantsTextField.text,
+            let cost = costTextField.text,
+            let currencyName = currencyTextField.text,
+            !categoryName.isEmpty && !eventName.isEmpty && !participantNumber.isEmpty
+            
+        else{
+            alert(fwdMessage: "Please fill all required information.")
+            return
+        }
+        viewContoller.createEventObject.categoryName = categoryName
+        viewContoller.createEventObject.categoryId = category
+        viewContoller.createEventObject.eventName = eventName
+        viewContoller.createEventObject.participantsNumber = participantNumber
+        viewContoller.createEventObject.cost = cost
+        viewContoller.createEventObject.currencyName = currencyName
+        viewContoller.createEventObject.currencyId = currency
         navigationController?.pushViewController(viewContoller, animated: true)
     }
     

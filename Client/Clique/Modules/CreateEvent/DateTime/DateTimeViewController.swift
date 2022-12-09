@@ -11,40 +11,30 @@ import UIKit
 class DateTimeViewController: UIViewController {
     @IBOutlet private weak var chosenDateTime: UIDatePicker!
     
-    var selectedCategory: String = ""
-    var eventName: String = ""
-    var participantNumber: String = ""
-    var eventCost: String = ""
-    var currency: String = ""
-    
+    var createEventObject = CreateEventObject()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Date and Time (2/5)"
-        
-        
     }
     
     @IBAction func nextButtonPressed(_ sender: UIBarButtonItem) {
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "yyyy-MM-dd HH:mm"
+        let chosenDatePrint = dateFormatterPrint.string(from: chosenDateTime.date)
+        
+        let dateFormatterAPI = DateFormatter()
+        dateFormatterAPI.dateFormat = "yyyy-MM-dd'T'HH:mm:SS'Z'"
+        let chosenDateAPI = dateFormatterAPI.string(from: chosenDateTime.date)
+        
+        
         guard let viewContoller = UIStoryboard(name: "Location", bundle: nil).instantiateInitialViewController() as? LocationViewController else{
             return
         }
+        createEventObject.eventTimeStampPrint = chosenDatePrint
+        createEventObject.eventTimeStampAPI = chosenDateAPI
+        viewContoller.createEventObject = createEventObject
         navigationController?.pushViewController(viewContoller, animated: true)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        let chosenDate = dateFormatter.string(from: chosenDateTime.date)
-        
-        if segue.identifier == "sendDateTime" {
-            
-            let controller = segue.destination as! LocationViewController
-            controller.selectedCategory = selectedCategory
-            controller.eventName = eventName
-            controller.participantNumber = participantNumber
-            controller.eventCost = eventCost
-            controller.currency = currency
-            controller.chosenDateTime = chosenDate
-        }
-    }
+
 }

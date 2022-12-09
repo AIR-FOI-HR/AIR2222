@@ -15,15 +15,8 @@ protocol ShortDescriptionViewControllerDelegate {
 class ShortDescriptionViewController: UIViewController {
     
     @IBOutlet private weak var shortDescriptionTextView: UITextView!
-    
-    var selectedCategory: String = ""
-    var eventName: String = ""
-    var participantNumber: String = ""
-    var eventCost: String = ""
-    var currency: String = ""
-    var chosenDateTime: String = ""
-    var location: String = ""
-    
+    var createEventObject = CreateEventObject()
+ 
     var delegate : ShortDescriptionViewControllerDelegate!
 
     override func viewDidLoad() {
@@ -38,28 +31,15 @@ class ShortDescriptionViewController: UIViewController {
         guard let viewContoller = UIStoryboard(name: "CreateEventOverview", bundle: nil).instantiateInitialViewController() as? CreateEventOverviewViewController else{
             return
         }
-        navigationController?.pushViewController(viewContoller, animated: true)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
-            let shortDescription = shortDescriptionTextView.text,
-            !shortDescription.isEmpty
-        else{
+            let shortDescription = shortDescriptionTextView.text
+        else {
             alert(fwdMessage: "Please enter short description.")
             return
         }
-        if segue.identifier == "sendAll" {
-            let controller = segue.destination as! CreateEventOverviewViewController
-            controller.selectedCategory = selectedCategory
-            controller.eventName = eventName
-            controller.participantNumber = participantNumber
-            controller.eventCost = eventCost
-            controller.currency = currency
-            controller.chosenDateTime = chosenDateTime
-            controller.location = location
-            controller.shortDescription = shortDescriptionTextView.text
-        }
+        createEventObject.description = shortDescription
+        viewContoller.createEventObject = createEventObject
+        navigationController?.pushViewController(viewContoller, animated: true)
     }
     
     let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
