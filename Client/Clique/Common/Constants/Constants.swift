@@ -19,27 +19,30 @@ enum Constants {
         static let profileUpdateURL = baseURL.appending("User/UpdateUserData")
         static let passwordUpdateURL = baseURL.appending("User/UpdateUserPassword")
         
+        static func getToken() -> String {
+            guard let token = UserStorage.token else { return "" }
+            return token
+        }
+        
         static func authorizationHeader() -> HTTPHeaders {
-            var header: HTTPHeaders = [
+            let header: HTTPHeaders = [
                 "Authorization": "Bearer"
-                + " " + "\(UserStorage.token!)",
+                + " " + "\(getToken())",
                 "Accept": "application/json"
             ]
             return header
         }
     }
-    
-    enum Alerts {
-        static func alert(fwdMessage: String,viewController: UIViewController){
-            let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            viewController.present(alertController, animated: true, completion: nil)
+        enum Alerts {
+            static let successfullyUpdatedMsg = "Successfully updated."
+            static let pleaseEnterInfoMsg = "Please enter all required info."
+            static let successRegisterMsg = "Successfully registrated"
+            static let passwordDontMatchMsg = "Passwords don't match"
+            static let wrongInputMsg = "Wrong input"
         }
-        static let successfullyUpdatedMsg = "Successfully updated."
-        static let pleaseEnterInfoMsg = "Please enter all required info."
-        static let successRegisterMsg = "Successfully registrated"
-        static let passwordDontMatchMsg = "Password don't match"
-        static let wrongInputMsg = "Wrong input"
+        
+        enum Strings {
+            static let dateFormat = "yyyy-MM-dd"
+        }
     }
-}
+

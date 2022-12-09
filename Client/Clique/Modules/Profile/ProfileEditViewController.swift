@@ -11,13 +11,13 @@ import SkeletonView
 
 class ProfileEditViewController: UIViewController {
     
-    @IBOutlet private var imgProfile: UIImageView!
-    @IBOutlet private var btnChooseImage: UIButton!
+    @IBOutlet private var imageProfile: UIImageView!
+    @IBOutlet private var buttonChooseImage: UIButton!
     @IBOutlet private var emailTextField: UITextField!
     @IBOutlet private var nameTextfield: UITextField!
     @IBOutlet private var surnameTextField: UITextField!
     @IBOutlet private var datePicker: UIDatePicker!
-    @IBOutlet private var textViewBio: UITextView!
+    @IBOutlet private var bioTextView: UITextView!
     
     private let profileService = ProfileService()
     
@@ -26,9 +26,9 @@ class ProfileEditViewController: UIViewController {
         getUser()
         let allowedAgeDate = Calendar.current.date(byAdding: .year, value: -13, to: Date())
         datePicker.maximumDate = allowedAgeDate
-        imgProfile.layer.masksToBounds = false
-        imgProfile.isSkeletonable = true
-        imgProfile.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        imageProfile.layer.masksToBounds = false
+        imageProfile.isSkeletonable = true
+        imageProfile.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
         
         emailTextField.layer.masksToBounds = false
         emailTextField.isSkeletonable = true
@@ -42,9 +42,9 @@ class ProfileEditViewController: UIViewController {
         surnameTextField.isSkeletonable = true
         surnameTextField.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
         
-        textViewBio.layer.masksToBounds = false
-        textViewBio.isSkeletonable = true
-        textViewBio.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
+        bioTextView.layer.masksToBounds = false
+        bioTextView.isSkeletonable = true
+        bioTextView.showAnimatedSkeleton(usingColor: .clouds, transition: .crossDissolve(0.5))
         
         datePicker.layer.masksToBounds = false
         datePicker.isSkeletonable = true
@@ -65,12 +65,12 @@ class ProfileEditViewController: UIViewController {
                     self.nameTextfield.text = user.name
                     self.surnameTextField.text = user.surname
                     self.emailTextField.text = user.email
-                    self.textViewBio.text = user.bio
-                    self.imgProfile.stopSkeletonAnimation()
+                    self.bioTextView.text = user.bio
+                    self.imageProfile.stopSkeletonAnimation()
                     self.emailTextField.stopSkeletonAnimation()
                     self.nameTextfield.stopSkeletonAnimation()
                     self.surnameTextField.stopSkeletonAnimation()
-                    self.textViewBio.stopSkeletonAnimation()
+                    self.bioTextView.stopSkeletonAnimation()
                     self.datePicker.stopSkeletonAnimation()
                     
                     self.view.hideSkeleton(reloadDataAfter: true,
@@ -83,7 +83,7 @@ class ProfileEditViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         guard let userProfileData = getProfileData() else {
-            Constants.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
+            Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
             return
         }
         
@@ -93,30 +93,33 @@ class ProfileEditViewController: UIViewController {
     
     func updateUser(with userUpdateData: UserProfileUpdateData) {
         profileService.updateUser(with: userUpdateData) { (isSuccess) in
-            if isSuccess {
-                Constants.Alerts.alert(fwdMessage: Constants.Alerts.successfullyUpdatedMsg, viewController: self)
-            }else {
-                Constants.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
-            }
+            let message = isSuccess ? Constants.Alerts.successfullyUpdatedMsg : Constants.Alerts.pleaseEnterInfoMsg
+            Functions.Alerts.alert(fwdMessage: message, viewController: self)
         }
     }
     
     func getProfileData() -> UserProfileUpdateData? {
-        
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = Constants.Strings.dateFormat
         let selectedDate = dateFormatter.string(from: datePicker.date)
                 
         guard
             let name = nameTextfield.text,
             let surname = surnameTextField.text,
             let email = emailTextField.text,
-            let bio  = textViewBio.text,
-
-            !name.isEmpty && !surname.isEmpty && !email.isEmpty  && !bio.isEmpty
+            let bio  = bioTextView.text,
+            !name.isEmpty, !surname.isEmpty, !email.isEmpty, !bio.isEmpty
         else { return nil }
         
-        let profileData = UserProfileUpdateData(name: name, surname: surname, email: email, gender: "1", contact_no: "empty", birth_data: selectedDate, profile_pic: "empty", bio: bio)
+        let profileData = UserProfileUpdateData(
+                        name: name,
+                        surname: surname,
+                        email: email,
+                        contact_no: "empty",
+                        birth_data: selectedDate,
+                        profile_pic: "empty",
+                        bio: bio
+               )
         return profileData
     }
     
@@ -124,5 +127,3 @@ class ProfileEditViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 }
-
-

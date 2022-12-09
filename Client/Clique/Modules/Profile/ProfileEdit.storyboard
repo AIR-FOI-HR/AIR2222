@@ -279,13 +279,13 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="bioTextView" destination="h56-DH-Wqj" id="TtY-ny-gDq"/>
                         <outlet property="btnChooseImage" destination="jGs-Rv-4Nq" id="Oqa-qc-hIS"/>
                         <outlet property="datePicker" destination="8Vl-V4-lPr" id="UGZ-uE-QyT"/>
                         <outlet property="emailTextField" destination="8lY-fX-FKm" id="j3a-fS-u3F"/>
                         <outlet property="imgProfile" destination="owP-QN-96W" id="HiZ-t4-AYo"/>
                         <outlet property="nameTextfield" destination="5AW-bb-TzC" id="uuL-tI-hqL"/>
                         <outlet property="surnameTextField" destination="vhZ-6n-GHe" id="uFG-VY-HKn"/>
-                        <outlet property="textViewBio" destination="h56-DH-Wqj" id="qHj-zV-Sa4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

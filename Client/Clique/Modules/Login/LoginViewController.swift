@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
         
         startAnimation()
         guard let credentails = getLoginCredentials() else {
-            Constants.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg,
+            Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg,
                                    viewController: self)
             stopAnimation()
             return
@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
                 }
                 self.stopAnimation()
             case .failure:
-                Constants.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
+                Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
                 self.stopAnimation()
             }
         }

@@ -9,7 +9,7 @@ import IQKeyboardManagerSwift
 
 class RegisterViewController: UIViewController {
 
-    var returnKeyHandler = IQKeyboardReturnKeyHandler()
+    
     @IBOutlet private var txtName: UITextField!
     @IBOutlet private var txtSurname: UITextField!
     @IBOutlet private var txtEmail: UITextField!
@@ -26,16 +26,17 @@ class RegisterViewController: UIViewController {
     let buttonRePasswordShow = UIButton(type: .custom)
     
     private let registerService = RegisterService()
+    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         
         guard let registerEntries = getRegisterEntries() else {
-            Constants.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
+            Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
             return
         }
         
         guard checkPasswords() else{
-            Constants.Alerts.alert(fwdMessage: Constants.Alerts.passwordDontMatchMsg, viewController: self)
+            Functions.Alerts.alert(fwdMessage: Constants.Alerts.passwordDontMatchMsg, viewController: self)
             return
         }
         startAnimation()
@@ -44,10 +45,10 @@ class RegisterViewController: UIViewController {
         func register(with registerEntries: RegisterEntries) {
             registerService.register(with: registerEntries) { (isSuccess) in
                 if isSuccess{
-                    Constants.Alerts.alert(fwdMessage: Constants.Alerts.successRegisterMsg, viewController: self)
+                    Functions.Alerts.alert(fwdMessage: Constants.Alerts.successRegisterMsg, viewController: self)
                     self.stopAnimation()
                 }else{
-                    Constants.Alerts.alert(fwdMessage: Constants.Alerts.wrongInputMsg, viewController: self)
+                    Functions.Alerts.alert(fwdMessage: Constants.Alerts.wrongInputMsg, viewController: self)
                     self.stopAnimation()
                 }
         }

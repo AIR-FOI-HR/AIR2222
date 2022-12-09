@@ -66,13 +66,6 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-
-    private func showDropdown() {
-        eventsButtons.forEach { button in
-            button.isHidden = !button.isHidden
-            self.view.layoutIfNeeded()
-        }
-    }
     
     @IBAction func editButtonPressed(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "ProfileEdit" , bundle:nil)
@@ -91,7 +84,10 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func selectMyEvents(_ sender: Any) {
-        showDropdown()
+        eventsButtons.forEach { button in
+            button.isHidden = !button.isHidden
+            self.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func joinedEventsButtonPressed(_ sender: UIButton) {

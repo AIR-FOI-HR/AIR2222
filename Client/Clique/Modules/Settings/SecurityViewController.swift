@@ -50,17 +50,17 @@ class SecurityViewController: UIViewController {
     func updatePasswordUser(with userPasswords: PasswordData) {
         settingsService.changePassword(with: userPasswords) { (isSuccess) in
             if isSuccess{
-                Constants.Alerts.alert(fwdMessage: Constants.Alerts.successfullyUpdatedMsg, viewController: self)
+                Functions.Alerts.alert(fwdMessage: Constants.Alerts.successfullyUpdatedMsg, viewController: self)
                 self.dismiss(animated: true, completion: nil)
-            }else{
-                Constants.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
+            } else {
+                Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
             }
         }
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         guard let getPasswordData = getPasswordData() else {
-            Constants.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
+            Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
             return
         }
         
@@ -68,34 +68,28 @@ class SecurityViewController: UIViewController {
     }
     
     func checkPasswords() -> Bool {
-        
         if newPasswordTextField.text?.count ?? 0>=8 &&
             newPasswordTextField.text == repeatNewPasswordTextField.text {
-                return true
-        }
-        else {
+            return true
+        } else {
             return false
         }
     }
 
     @objc func checkAndDisplayError(textfield: UITextField) {
-        
         if textfield.text?.count ?? 0>=8 {
             passwordCheckLabel.text = ""
             passwordCheckLabel.isHidden = true
-        }
-        else {
+        } else {
             passwordCheckLabel.isHidden = false
             passwordCheckLabel.text = "Enter at least 8 characters."
         }
     }
 
     @objc func compareAndDisplay(textfield: UITextField) {
-
         if textfield.text == newPasswordTextField.text {
             matchingPasswordsLabel.isHidden = true
-        }
-        else {
+        } else {
             matchingPasswordsLabel.text = "Passwords don't match."
             matchingPasswordsLabel.isHidden = false
         }
@@ -132,8 +126,7 @@ class SecurityViewController: UIViewController {
             oldPasswordTextField.isSecureTextEntry = true
             oldPasswordShowButton.tintColor = UIColor.orange
             oldPasswordShowButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
-        }
-        else {
+        } else {
             oldPasswordTextField.isSecureTextEntry = false
             oldPasswordShowButton.tintColor = UIColor.orange
             oldPasswordShowButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
@@ -146,8 +139,7 @@ class SecurityViewController: UIViewController {
             newPasswordTextField.isSecureTextEntry = true
             newPasswordShowButton.tintColor = UIColor.orange
             newPasswordShowButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
-        }
-        else {
+        } else {
             newPasswordTextField.isSecureTextEntry = false
             newPasswordShowButton.tintColor = UIColor.orange
             newPasswordShowButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
@@ -160,8 +152,7 @@ class SecurityViewController: UIViewController {
             repeatNewPasswordTextField.isSecureTextEntry = true
             repeatNewPasswordShowButton.tintColor = UIColor.orange
             repeatNewPasswordShowButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
-        }
-        else {
+        } else {
             repeatNewPasswordTextField.isSecureTextEntry = false
             repeatNewPasswordShowButton.tintColor = UIColor.orange
             repeatNewPasswordShowButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)

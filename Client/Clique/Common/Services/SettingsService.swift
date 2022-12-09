@@ -10,17 +10,17 @@ import Alamofire
 
 final class SettingsService {
     
-    func changePassword (
+    func changePassword(
         with entries: PasswordData,
-        completionHandler: @escaping(Bool)->()){
+        completionHandler: @escaping(Bool)->()) {
             AF.request(Constants.Service.passwordUpdateURL,
                        method: .post,
                        parameters : entries,
-                       encoder: JSONParameterEncoder.default, headers: Constants.Service.authorizationHeader()
-            ).validate(statusCode: 200..<300)
-                .response{
+                       encoder: JSONParameterEncoder.default,
+                       headers: Constants.Service.authorizationHeader())
+            .validate(statusCode: 200..<300)
+            .response{
                 response in
-                debugPrint(response)
                 switch response.result {
                 case .success(_):
                     completionHandler(true)
