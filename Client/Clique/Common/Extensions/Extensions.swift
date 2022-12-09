@@ -10,7 +10,7 @@ import SkeletonView
 
 extension UIImageView {
     
-    func circleImage() {
+    func rounded() {
         layer.borderWidth = 1
         layer.masksToBounds = false
         layer.borderColor = UIColor.systemGray5.cgColor

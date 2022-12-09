@@ -8,6 +8,11 @@
 import Foundation
 
 struct PasswordData: Codable {
-    let OldPassword: String
-    let NewPassword: String
+    let oldPassword: String
+    let newPassword: String
+    
+    enum CodingKeys: String, CodingKey {
+        case oldPassword = "OldPassword"
+        case newPassword = "NewPassword"
+    }
 }

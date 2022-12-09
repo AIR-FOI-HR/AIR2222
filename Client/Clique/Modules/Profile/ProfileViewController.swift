@@ -22,33 +22,31 @@ class ProfileViewController: UIViewController {
     
     private let profileService = ProfileService()
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        profileImage.circleImage()
-//        getUser()
-//        profileImage.layer.masksToBounds = false
-//        labelProfileName.layer.masksToBounds = false
-//        textViewBio.layer.masksToBounds = false
-//
-//        profileImage.isSkeletonable = true
-//        profileImage.showAnimatedSkeleton(usingColor: .clouds,
-//                                          transition: .crossDissolve(0.5))
-//
-//        labelProfileName.isSkeletonable = true
-//        labelProfileName.showAnimatedSkeleton(usingColor: .clouds,
-//                                              transition: .crossDissolve(0.5))
-//
-//        textViewBio.isSkeletonable = true
-//        textViewBio.showAnimatedSkeleton(usingColor: .clouds,
-//                                         transition: .crossDissolve(0.5))
-//    }
-//    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        profileImage.rounded()
+        getUser()
+        profileImage.layer.masksToBounds = false
+        labelProfileName.layer.masksToBounds = false
+        bioTextView.layer.masksToBounds = false
+
+        profileImage.isSkeletonable = true
+        profileImage.showAnimatedSkeleton(usingColor: .clouds,
+                                          transition: .crossDissolve(0.5))
+
+        labelProfileName.isSkeletonable = true
+        labelProfileName.showAnimatedSkeleton(usingColor: .clouds,
+                                              transition: .crossDissolve(0.5))
+
+        bioTextView.isSkeletonable = true
+        bioTextView.showAnimatedSkeleton(usingColor: .clouds,
+                                         transition: .crossDissolve(0.5))
+    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
         getUser()
-        
-        profileImage.circleImage()
+        profileImage.rounded()
         profileImage.skeletonableView()
         labelProfileName.skeletonableView()
         bioTextView.skeletonableView()
@@ -64,15 +62,14 @@ class ProfileViewController: UIViewController {
         profileService.getUser { result in
             switch result {
             case .success(let user):
-                    self.profileImage.stopSkeletonAnimation()
-                    self.labelProfileName.stopSkeletonAnimation()
-                    self.bioTextView.stopSkeletonAnimation()
-                    self.myEventsButton.stopSkeletonAnimation()
-                    self.view.hideSkeleton(reloadDataAfter: true,
-                                           transition: .crossDissolve(0.5))
-                    
-                    self.labelProfileName.text = user.name + " " + user.surname
-                    self.bioTextView.text = user.bio
+                self.profileImage.stopSkeletonAnimation()
+                self.labelProfileName.stopSkeletonAnimation()
+                self.bioTextView.stopSkeletonAnimation()
+                self.myEventsButton.stopSkeletonAnimation()
+                self.view.hideSkeleton(reloadDataAfter: true,
+                                       transition: .crossDissolve(0.5))
+                self.labelProfileName.text = user.name + " " + user.surname
+                self.bioTextView.text = user.bio
             case .failure:
                 return
             }

@@ -45,6 +45,7 @@
 		429861B729392CA4001CF447 /* PasswordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429861B629392CA4001CF447 /* PasswordData.swift */; };
 		429861B929392D45001CF447 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429861B829392D45001CF447 /* SettingsService.swift */; };
 		429861C12942A89D001CF447 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429861C02942A89D001CF447 /* Functions.swift */; };
+		429861C3294379BA001CF447 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429861C2294379BA001CF447 /* UIViewController+Extension.swift */; };
 		429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429AC2692926ADF60029498B /* RegisterViewController.swift */; };
 		429FCA292933F2F200269AC5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FCA282933F2F200269AC5 /* Extensions.swift */; };
 		42D904382938263200831199 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 42D904372938263200831199 /* SkeletonView */; };
@@ -93,6 +94,7 @@
 		429861B629392CA4001CF447 /* PasswordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordData.swift; sourceTree = "<group>"; };
 		429861B829392D45001CF447 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		429861C02942A89D001CF447 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		429861C2294379BA001CF447 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		429AC2692926ADF60029498B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		429FCA282933F2F200269AC5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		42D99DE2292835C700516EF9 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				429FCA282933F2F200269AC5 /* Extensions.swift */,
+				429861C2294379BA001CF447 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				4272BF1429340FAB00797045 /* JoinedEventsViewController.swift in Sources */,
 				42464B01292F7ADA009FDE1D /* SceneDelegate.swift in Sources */,
 				425B8D142935866000907BD9 /* UserProfile.swift in Sources */,
+				429861C3294379BA001CF447 /* UIViewController+Extension.swift in Sources */,
 				4237AC85292C20C700095D47 /* LoginCredentials.swift in Sources */,
 				429861C12942A89D001CF447 /* Functions.swift in Sources */,
 				428ADAA529264FF100417940 /* LoginViewController.swift in Sources */,

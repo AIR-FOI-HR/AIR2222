@@ -29,7 +29,7 @@ class ProfileEditViewController: UIViewController {
         let allowedAgeDate = Calendar.current.date(byAdding: .year, value: -13, to: Date())
         datePicker.maximumDate = allowedAgeDate
         
-        imageProfile.circleImage()
+        imageProfile.rounded()
         
         imageProfile.skeletonableView()
         emailTextField.skeletonableView()
@@ -73,47 +73,51 @@ class ProfileEditViewController: UIViewController {
         }
     }
     
-        @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-            guard let userProfileData = getProfileData() else {
-                Functions.Alerts.alert(alertMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
-                return
-            }
-            
-            updateUser(with: userProfileData)
-            dismiss(animated: true, completion: nil)
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+        guard let userProfileData = getProfileData() else {
+            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
+            return
         }
-        
-        func updateUser(with userUpdateData: UserProfileUpdateData) {
-            profileService.updateUser(with: userUpdateData) { (isSuccess) in
-                let message = isSuccess ? Constants.Alerts.successfullyUpdatedMsg : Constants.Alerts.pleaseEnterInfoMsg
-                Functions.Alerts.alert(alertMessage: message, viewController: self)
-            }
-        }
-        
-        func getProfileData() -> UserProfileUpdateData? {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = Constants.Strings.dateFormat
-            let selectedDate = dateFormatter.string(from: datePicker.date)
             
-            guard
-                let name = nameTextfield.text,
-                let surname = surnameTextField.text,
-                let email = emailTextField.text,
-                let bio  = bioTextView.text,
-                !name.isEmpty, !surname.isEmpty, !email.isEmpty
-            else { return nil }
-            
-            let profileData = UserProfileUpdateData(
-                name: name,
-                surname: surname,
-                email: email,
-                contact_no: "empty",
-                birth_data: selectedDate,
-                profile_pic: "empty",
-                bio: bio
-            )
-            return profileData
-        }
-        
+        updateUser(with: userProfileData)
+        navigationController?.popViewController(animated: true)
     }
+        
+    func updateUser(with userUpdateData: UserProfileUpdateData) {
+        profileService.updateUser(with: userUpdateData) { result in
+            switch result {
+            case .success():
+                self.sendOkAlert(message: Constants.Alerts.successfullyUpdatedMessage)
+            case .failure:
+                self.sendOkAlert(message: Constants.Alerts.wrongInputMessage)
+            }
+        }
+    }
+        
+    func getProfileData() -> UserProfileUpdateData? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Constants.Strings.dateFormatDateOfBirth
+        let selectedDate = dateFormatter.string(from: datePicker.date)
+            
+        guard
+            let name = nameTextfield.text,
+            let surname = surnameTextField.text,
+            let email = emailTextField.text,
+            let bio  = bioTextView.text,
+            !name.isEmpty, !surname.isEmpty, !email.isEmpty, !bio.isEmpty
+        else { return nil }
+            
+        let profileData = UserProfileUpdateData(
+            name: name,
+            surname: surname,
+            email: email,
+            contact_no: "empty",
+            birth_data: selectedDate,
+            gender: "1",
+            profile_pic: "empty",
+            bio: bio
+        )
+        return profileData
+    }
+}
 

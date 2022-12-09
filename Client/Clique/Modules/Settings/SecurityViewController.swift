@@ -39,28 +39,29 @@ class SecurityViewController: UIViewController {
             !oldPassword.isEmpty && !newPassword.isEmpty
         else { return nil }
         
-        let newPasswordData = PasswordData(OldPassword: oldPassword, NewPassword: newPassword)
+        let newPasswordData = PasswordData(oldPassword: oldPassword, newPassword: newPassword)
         return newPasswordData
     }
         
     func updatePasswordUser(with userPasswords: PasswordData) {
-        settingsService.changePassword(with: userPasswords) { (isSuccess) in
-            if isSuccess{
-                Functions.Alerts.alert(alertMessage: Constants.Alerts.successfullyUpdatedMsg, viewController: self)
-                self.dismiss(animated: true, completion: nil)
-            } else {
-                Functions.Alerts.alert(alertMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
+        settingsService.changePassword(with: userPasswords) { result in
+            switch result {
+            case .success():
+                self.sendOkAlert(message: Constants.Alerts.successfullyUpdatedMessage)
+            case .failure:
+                self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             }
         }
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         guard let getPasswordData = getPasswordData() else {
-            Functions.Alerts.alert(alertMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
+            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             return
         }
         
         updatePasswordUser(with: getPasswordData)
+        navigationController?.popViewController(animated: true)
     }
     
     func checkPasswords() -> Bool {

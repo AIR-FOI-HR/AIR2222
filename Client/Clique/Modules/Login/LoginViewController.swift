@@ -22,11 +22,9 @@ class LoginViewController: UIViewController {
     let buttonPasswordShow = UIButton(type: .custom)
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        
         startAnimation()
         guard let credentails = getLoginCredentials() else {
-            Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg,
-                                   viewController: self)
+            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             stopAnimation()
             return
         }
@@ -52,13 +50,12 @@ class LoginViewController: UIViewController {
             case .success(let token):
                 UserStorage.token = token.token
                 let storyboard = UIStoryboard(name: "Profile" , bundle: nil)
-                if let viewController = storyboard.instantiateInitialViewController() {
+                guard let viewController = storyboard.instantiateInitialViewController() else { return }
                     viewController.modalPresentationStyle = .fullScreen
                     self.present(viewController, animated: true)
-                }
                 self.stopAnimation()
             case .failure:
-                Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
+                self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
                 self.stopAnimation()
             }
         }

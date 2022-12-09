@@ -35,6 +35,7 @@ struct UserProfileUpdateData: Codable {
     let email: String
     let contact_no: String
     let birth_data: String
+    let gender: String
     let profile_pic: String
     let bio: String
 }

@@ -36,6 +36,7 @@ final class ProfileService {
             ).validate(statusCode: 200..<300)
             .response {
                 response in
+                debugPrint(response)
                 switch response.result {
                 case .success(_):
                     completion(.success(()))

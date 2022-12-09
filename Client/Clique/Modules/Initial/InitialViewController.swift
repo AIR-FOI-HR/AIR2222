@@ -7,17 +7,15 @@ class InitialViewController: UIViewController {
     
     @IBAction func loginButtonPressed( sender: UIButton) {
         let storyboard = UIStoryboard(name: "Login" , bundle:nil)
-        if let viewController = storyboard.instantiateInitialViewController() {
+        guard let viewController = storyboard.instantiateInitialViewController() else { return }
             viewController.modalPresentationStyle = .fullScreen
             present(viewController, animated: true)
-        }
     }
     
     @IBAction func registerButtonPressed( sender: UIButton) {
         let storyboard = UIStoryboard(name: "Register" , bundle:nil)
-        if let viewController = storyboard.instantiateInitialViewController() {
-            viewController.modalPresentationStyle = .fullScreen
-            present(viewController, animated: true)
-        }
+        guard let viewController = storyboard.instantiateInitialViewController() else { return }
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true)
     }
 }

@@ -16,10 +16,9 @@ class SettingsViewController: UIViewController {
     @IBAction func logOutButtonPressed(_ sender: UIButton) {
         UserStorage.token = nil
         let storyboard = UIStoryboard(name: "Initial" , bundle:nil)
-        if let viewController = storyboard.instantiateInitialViewController() {
+        guard let viewController = storyboard.instantiateInitialViewController() else { return }
             viewController.modalPresentationStyle = .fullScreen
             present(viewController, animated: true)
-        }
     }
     
     @IBAction func securityButtonPressed(_ sender: UIBarButtonItem) {
