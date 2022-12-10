@@ -80,7 +80,7 @@ class ProfileEditViewController: UIViewController {
         }
             
         updateUser(with: userProfileData)
-        navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
     }
         
     func updateUser(with userUpdateData: UserProfileUpdateData) {
@@ -88,6 +88,7 @@ class ProfileEditViewController: UIViewController {
             switch result {
             case .success():
                 self.sendOkAlert(message: Constants.Alerts.successfullyUpdatedMessage)
+//                self.navigationController?.popViewController(animated: true)
             case .failure:
                 self.sendOkAlert(message: Constants.Alerts.wrongInputMessage)
             }
