@@ -9,7 +9,6 @@ import IQKeyboardManagerSwift
 
 class RegisterViewController: UIViewController {
 
-    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     @IBOutlet private var txtName: UITextField!
     @IBOutlet private var txtSurname: UITextField!
     @IBOutlet private var txtEmail: UITextField!
@@ -21,6 +20,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet private var ageSwitcher: UISwitch!
     @IBOutlet private var backButton: UIButton!
     
+    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
     var iconClick = false
     let buttonPasswordShow = UIButton(type: .custom)
@@ -32,12 +32,12 @@ class RegisterViewController: UIViewController {
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         
         guard let registerEntries = getRegisterEntries() else {
-            Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
+            Functions.Alerts.alert(message: Constants.Alerts.pleaseEnterInfoMessasge, viewController: self)
             return
         }
         
         guard checkPasswords() else{
-            Functions.Alerts.alert(fwdMessage: Constants.Alerts.passwordsDontMatchMsg, viewController: self)
+            Functions.Alerts.alert(message: Constants.Alerts.passwordsDontMatchMessasge, viewController: self)
             return
         }
         Functions.Animations.startAnimation(loading: loading, view: view)
@@ -50,7 +50,7 @@ class RegisterViewController: UIViewController {
                 self.alertShowLogin(fwdMessage: "Successfully registrated!")
                 Functions.Animations.stopAnimation(loading: self.loading)
             } else {
-                Functions.Alerts.alert(fwdMessage: Constants.Alerts.wrongInputMsg, viewController: self)
+                Functions.Alerts.alert(message: Constants.Alerts.wrongInputMessasge, viewController: self)
                 Functions.Animations.stopAnimation(loading: self.loading)
             }
         }

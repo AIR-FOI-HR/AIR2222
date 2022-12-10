@@ -20,16 +20,16 @@ class DateTimeViewController: UIViewController {
     @IBAction func nextButtonPressed(_ sender: UIBarButtonItem) {
         
         let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = Constants.DateFormats.dateFormatterPrint
-        let chosenDatePrint = dateFormatterPrint.string(from: chosenDateTime.date)
+        dateFormatterPrint.dateFormat = Constants.DateFormats.dateFormatClient
+        let chosenDateClient = dateFormatterPrint.string(from: chosenDateTime.date)
 
         let dateFormatterAPI = DateFormatter()
-        dateFormatterAPI.dateFormat = Constants.DateFormats.dateFormatterAPI
+        dateFormatterAPI.dateFormat = Constants.DateFormats.dateFormatAPI
         let chosenDateAPI = dateFormatterAPI.string(from: chosenDateTime.date)
         
         guard let viewContoller = UIStoryboard(name: "Location", bundle: nil).instantiateInitialViewController() as? LocationViewController
         else { return }
-        createEventObject.eventTimeStampPrint = chosenDatePrint
+        createEventObject.eventTimeStampPrint = chosenDateClient
         createEventObject.eventTimeStampAPI = chosenDateAPI
         viewContoller.createEventObject = createEventObject
         navigationController?.pushViewController(viewContoller, animated: true)

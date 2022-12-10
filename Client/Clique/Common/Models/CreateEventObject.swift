@@ -12,7 +12,7 @@ struct CreateEventObject {
     var eventLocation = ""
     var eventTimeStampAPI = ""
     var eventTimeStampPrint = ""
-    var participantsNumber = ""
+    var participantsCount = ""
     var cost = ""
     var currencyName = ""
     var currencyId = ""

@@ -5,7 +5,6 @@ import IQKeyboardManagerSwift
 
 class BasicInfoViewController: UIViewController {
   
-    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     @IBOutlet private var downButtonCategory: UIButton!
     @IBOutlet private var downButtonCurrency: UIButton!
     @IBOutlet private var categoryTextField: UITextField!
@@ -17,10 +16,11 @@ class BasicInfoViewController: UIViewController {
     @IBOutlet private var amountLabel: UILabel!
     
     private let createEventService = CreateEventService()
+    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     var createEventObject = CreateEventObject()
     
-    var categories = [String]()
-    var currencies = [String]()
+    var categories = [Category]()
+    var currencies = [Currency]()
     var pickerViewCategory = UIPickerView()
     var pickerViewCurrency = UIPickerView()
     var category = ""
@@ -49,18 +49,18 @@ class BasicInfoViewController: UIViewController {
         guard
             let categoryName = categoryTextField.text,
             let eventName = nameTextField.text,
-            let participantNumber = participantsTextField.text,
+            let participantsCount = participantsTextField.text,
             let cost = costTextField.text,
             let currencyName = currencyTextField.text,
-            !categoryName.isEmpty && !eventName.isEmpty && !participantNumber.isEmpty
+            !categoryName.isEmpty && !eventName.isEmpty && !participantsCount.isEmpty
         else {
-            Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterInfoMsg, viewController: self)
+            Functions.Alerts.alert(message: Constants.Alerts.pleaseEnterInfoMessasge, viewController: self)
             return
         }
         viewContoller.createEventObject.categoryName = categoryName
         viewContoller.createEventObject.categoryId = category
         viewContoller.createEventObject.eventName = eventName
-        viewContoller.createEventObject.participantsNumber = participantNumber
+        viewContoller.createEventObject.participantsCount = participantsCount
         viewContoller.createEventObject.cost = cost
         viewContoller.createEventObject.currencyName = currencyName
         viewContoller.createEventObject.currencyId = currency
@@ -72,7 +72,7 @@ class BasicInfoViewController: UIViewController {
             switch result {
             case .success(let categories):
                 for category in categories{
-                    self.categories.append(category.name)
+                    self.categories.append(category)
                 }
             case .failure:
                 return
@@ -85,7 +85,7 @@ class BasicInfoViewController: UIViewController {
             switch result {
             case .success(let currencies):
                 for currency in currencies {
-                    self.currencies.append(currency.abbreviation)
+                    self.currencies.append(currency)
                 }
             case .failure:
                 return
@@ -149,20 +149,20 @@ extension BasicInfoViewController: UIPickerViewDelegate, UIPickerViewDataSource 
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == pickerViewCategory {
-            return categories[row]
+            return categories[row].name
         }
         else {
-            return currencies[row]
+            return currencies[row].abbreviation
         }
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == pickerViewCategory {
-            categoryTextField.text = categories[row]
-            category = String((Int(row.description) ?? 0 ) + 1)
+            categoryTextField.text = categories[row].name
+//            category = String((Int(row.description) ?? 0 ) + 1)
         }
         else {
-            currencyTextField.text = currencies[row]
-            currency = String((Int(row.description) ?? 0 ) + 1)
+            currencyTextField.text = currencies[row].abbreviation
+//            currency = String((Int(row.description) ?? 0 ) + 1)
         }
     }
 }

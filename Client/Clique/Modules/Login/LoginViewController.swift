@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
         
         Functions.Animations.startAnimation(loading: loading, view: view)
         guard let credentails = getLoginCredentials() else {
-            alert(fwdMessage: "Please enter email and password")
+            Functions.Alerts.alert(message: Constants.Alerts.pleaseEnterInfoMessasge, viewController: self)
             Functions.Animations.stopAnimation(loading: self.loading)
             return
         }
@@ -57,19 +57,12 @@ class LoginViewController: UIViewController {
                 }
                 Functions.Animations.stopAnimation(loading: self.loading)
             case .failure:
-                self.alert(fwdMessage: "Please enter your login info")
+                Functions.Alerts.alert(message: Constants.Alerts.pleaseEnterInfoMessasge, viewController: self)
                 Functions.Animations.stopAnimation(loading: self.loading)
             }
         }
     }
-    
-    func alert(fwdMessage: String){
-        let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(defaultAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)

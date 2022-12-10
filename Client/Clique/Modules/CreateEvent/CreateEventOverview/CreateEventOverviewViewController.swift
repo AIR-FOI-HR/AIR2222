@@ -10,7 +10,6 @@ import IQKeyboardManagerSwift
 
 class CreateEventOverviewViewController: UIViewController {
     
-    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     @IBOutlet private var categoryLabel: UILabel!
     @IBOutlet private var eventNameLabel: UILabel!
     @IBOutlet private var participantNumberLabel: UILabel!
@@ -22,6 +21,7 @@ class CreateEventOverviewViewController: UIViewController {
     @IBOutlet private var postButton: UIButton!
 
     private let createEventService = CreateEventService()
+    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     var createEventObject = CreateEventObject()
     let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
 
@@ -30,7 +30,7 @@ class CreateEventOverviewViewController: UIViewController {
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
         categoryLabel.text = createEventObject.categoryName
         eventNameLabel.text = createEventObject.eventName
-        participantNumberLabel.text = createEventObject.participantsNumber
+        participantNumberLabel.text = createEventObject.participantsCount
         eventCostLabel.text = createEventObject.cost
         chosenDateTimeLabel.text = createEventObject.eventTimeStampPrint
         locationLabel.text = "Proba"
@@ -47,8 +47,8 @@ class CreateEventOverviewViewController: UIViewController {
     func createEvent(with createEventEntries: CreateEventEntries) {
         createEventService.createEvent(with: createEventEntries) {
             (isSuccess) in
-            let message = isSuccess ? Constants.Alerts.successfullyCreatedEventMsg : Constants.Alerts.wrongInputMsg
-            Functions.Alerts.alert(fwdMessage: message, viewController: self)
+            let message = isSuccess ? Constants.Alerts.successfullyCreatedEventMessasge : Constants.Alerts.wrongInputMessasge
+            Functions.Alerts.alert(message: message, viewController: self)
             Functions.Animations.stopAnimation(loading: self.loading)
         }
     }
@@ -59,7 +59,7 @@ class CreateEventOverviewViewController: UIViewController {
             name: createEventObject.eventName,
             location: "lokacija",
             timeStamp: createEventObject.eventTimeStampAPI,
-            participantsNumber: createEventObject.participantsNumber,
+            participantsCount: createEventObject.participantsCount,
             cost: createEventObject.cost,
             currency: createEventObject.currencyId,
             category: createEventObject.categoryId,

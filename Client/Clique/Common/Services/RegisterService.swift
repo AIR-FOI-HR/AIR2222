@@ -5,7 +5,7 @@ final class RegisterService {
     
     func register(
         with entries: RegisterEntries,
-        completionHandler: @escaping(Bool)->()) {
+        completion: @escaping(Result<Void, Error>) -> Void) {
             AF
             .request(Constants.Service.registerURL,
                        method: .post,
@@ -15,9 +15,9 @@ final class RegisterService {
                 response in
                 switch response.result {
                 case .success(_):
-                    completionHandler(true)
-                case .failure(_):
-                    completionHandler(false)
+                    completion(.success(()))
+                case .failure(let error):
+                    completion(.failure(error))
                 }
             }
         }

@@ -9,11 +9,11 @@ import NVActivityIndicatorView
 import IQKeyboardManagerSwift
 
 class ShortDescriptionViewController: UIViewController {
-    
-    var returnKeyHandler = IQKeyboardReturnKeyHandler()
+
     @IBOutlet private var shortDescriptionTextView: UITextView!
     @IBOutlet private var characterCountLabel: UILabel!
     var createEventObject = CreateEventObject()
+    var returnKeyHandler = IQKeyboardReturnKeyHandler()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class ShortDescriptionViewController: UIViewController {
             let shortDescription = shortDescriptionTextView.text,
             !shortDescription.isEmpty
         else {
-            Functions.Alerts.alert(fwdMessage: Constants.Alerts.pleaseEnterShortDescriptionMsg, viewController: self)
+            Functions.Alerts.alert(message: Constants.Alerts.pleaseEnterShortDescriptionMessasge, viewController: self)
             return
         }
         createEventObject.description = shortDescription
@@ -43,7 +43,7 @@ extension ShortDescriptionViewController: UITextViewDelegate {
         let currentText = textView.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
-        var countdown = 251 - updatedText.count
+        let countdown = 251 - updatedText.count
         let text = "Write a short description of your event! U have" + " \(countdown) " + "characters remaining."
         let range = (text as NSString).range(of: "\(countdown)")
         let attributedString = NSMutableAttributedString(string:text)
