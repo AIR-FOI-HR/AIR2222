@@ -17,10 +17,10 @@ namespace CliqueWebService.Helpers
                 surname = reader.GetString(2),
                 email = reader.GetString(3),
                 gender = (reader.GetValue(4) != DBNull.Value) ? reader.GetString(4).Trim() : null,
-                contact_no = (reader.GetValue(5) != DBNull.Value) ? reader.GetString(5).Trim() : null,
+                contact_no = (reader.GetValue(5) != DBNull.Value) ? reader.GetString(5).Trim() : "",
                 birth_data = (reader.GetValue(6) != DBNull.Value) ? reader.GetDateTime(6) : null,
-                profile_pic = (reader.GetValue(7) != DBNull.Value) ? reader.GetString(7) : null,
-                bio = (reader.GetValue(8) != DBNull.Value) ? reader.GetString(8) : null
+                profile_pic = (reader.GetValue(7) != DBNull.Value) ? reader.GetString(7) : "",
+                bio = (reader.GetValue(8) != DBNull.Value) ? reader.GetString(8) : ""
             };
             return user;
         }
@@ -45,7 +45,7 @@ namespace CliqueWebService.Helpers
                     gender = (reader.GetValue(16) != DBNull.Value) ? reader.GetString(16).Trim() : null
                 },
                 category = reader.GetString(15),
-                description = (reader.GetValue(10) != DBNull.Value) ? reader.GetString(10) : null
+                description = (reader.GetValue(10) != DBNull.Value) ? reader.GetString(10) : ""
             };
             return ev;
         }
