@@ -28,8 +28,11 @@ class SecurityViewController: UIViewController {
 
         self.showButton()
         
-        newPasswordTextField.addTarget(self, action: #selector(checkAndDisplayError(textfield:)), for: .editingChanged)
-        repeatNewPasswordTextField.addTarget(self, action: #selector(compareAndDisplay(textfield:)), for: .editingChanged)
+        newPasswordTextField.addTarget(self, action: #selector(checkAndDisplayError(textfield:)),
+                                       for: .editingChanged)
+        repeatNewPasswordTextField.addTarget(self,
+                                             action:#selector(compareAndDisplay(textfield:)),
+                                             for: .editingChanged)
     }
     
     func getPasswordData() -> PasswordData? {
@@ -44,10 +47,13 @@ class SecurityViewController: UIViewController {
     }
         
     func updatePasswordUser(with userPasswords: PasswordData) {
+        let defaultAction = UIAlertAction(title: Constants.Alerts.defaultActionTitle, style: .default, handler: {_ -> Void in
+            self.navigationController?.popViewController(animated: true)
+        })
         settingsService.changePassword(with: userPasswords) { result in
             switch result {
             case .success():
-                self.sendOkAlert(message: Constants.Alerts.successfullyUpdatedMessage)
+                self.sendAlert(message: Constants.Alerts.successfullyUpdatedMessage, action: defaultAction)
             case .failure:
                 self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             }
@@ -61,7 +67,6 @@ class SecurityViewController: UIViewController {
         }
         
         updatePasswordUser(with: getPasswordData)
-        navigationController?.popViewController(animated: true)
     }
     
     func checkPasswords() -> Bool {
@@ -157,4 +162,3 @@ class SecurityViewController: UIViewController {
         iconClick = !iconClick
     }
 }
-

@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 
 final class ProfileService {
+    
     func getUser(completion: @escaping(Result<UserProfile, Error>) -> Void) {
         AF.request(Constants.Service.profileGetUserURL,
                    method: .get,
@@ -36,7 +37,6 @@ final class ProfileService {
             ).validate(statusCode: 200..<300)
             .response {
                 response in
-                debugPrint(response)
                 switch response.result {
                 case .success(_):
                     completion(.success(()))

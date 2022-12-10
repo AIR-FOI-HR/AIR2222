@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController {
     
     private let profileService = ProfileService()
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         profileImage.rounded()
         getUser()
@@ -43,20 +43,20 @@ class ProfileViewController: UIViewController {
                                          transition: .crossDissolve(0.5))
     }
    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        getUser()
-        profileImage.rounded()
-        profileImage.skeletonableView()
-        labelProfileName.skeletonableView()
-        bioTextView.skeletonableView()
-        myEventsButton.skeletonableView()
-        
-        labelProfileName.skeletonTextLineHeight = .relativeToFont
-        
-        bioTextView.layer.borderColor = UIColor.systemGray6.cgColor
-        bioTextView.layer.borderWidth = 1
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        getUser()
+//        profileImage.rounded()
+//        profileImage.skeletonableView()
+//        labelProfileName.skeletonableView()
+//        bioTextView.skeletonableView()
+//        myEventsButton.skeletonableView()
+//        
+//        labelProfileName.skeletonTextLineHeight = .relativeToFont
+//        
+//        bioTextView.layer.borderColor = UIColor.systemGray6.cgColor
+//        bioTextView.layer.borderWidth = 1
+//    }
     
     private func getUser() {
         profileService.getUser { result in

@@ -31,17 +31,18 @@ enum Constants {
             return headers
         }
     }
-        enum Alerts {
-            static let successfullyUpdatedMessage = "Successfully updated."
-            static let pleaseEnterInfoMessage = "Please enter all required info."
-            static let successRegisterMessage = "Successfully registrated"
-            static let passwordDontMatchMessage = "Passwords don't match"
-            static let wrongInputMessage = "Wrong input"
-            static let defaultActionTitle = "OK"
-        }
-        
-        enum Strings {
-            static let dateFormatDateOfBirth = "yyyy-MM-dd"
-        }
+    enum Alerts {
+        static let successfullyUpdatedMessage = "Successfully updated."
+        static let pleaseEnterInfoMessage = "Please enter all required info."
+        static let successRegisterMessage = "Successfully registrated"
+        static let passwordDontMatchMessage = "Passwords don't match"
+        static let wrongInputMessage = "Wrong input"
+        static let defaultActionTitle = "OK"
+        static let wantToLogOutMessage = "Are you sure you want to log out?"
     }
+        
+    enum Strings {
+        static let dateFormatDateOfBirth = "yyyy-MM-dd"
+    }
+}
 

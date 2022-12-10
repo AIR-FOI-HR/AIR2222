@@ -23,29 +23,29 @@ class ProfileEditViewController: UIViewController {
     
     private let profileService = ProfileService()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        getUser()
-        let allowedAgeDate = Calendar.current.date(byAdding: .year, value: -13, to: Date())
-        datePicker.maximumDate = allowedAgeDate
-        
-        imageProfile.rounded()
-        
-        imageProfile.skeletonableView()
-        emailTextField.skeletonableView()
-        nameTextfield.skeletonableView()
-        surnameTextField.skeletonableView()
-        bioTextView.skeletonableView()
-        datePicker.skeletonableView()
-        bioLabel.skeletonableView()
-        dateOfBirthLabel.skeletonableView()
-        buttonChooseImage.skeletonableView()
-        
-        bioTextView.layer.borderColor = UIColor.systemGray5.cgColor
-        bioTextView.layer.borderWidth = 1
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        getUser()
+//        let allowedAgeDate = Calendar.current.date(byAdding: .year, value: -13, to: Date())
+//        datePicker.maximumDate = allowedAgeDate
+//
+//        imageProfile.rounded()
+//
+//        imageProfile.skeletonableView()
+//        emailTextField.skeletonableView()
+//        nameTextfield.skeletonableView()
+//        surnameTextField.skeletonableView()
+//        bioTextView.skeletonableView()
+//        datePicker.skeletonableView()
+//        bioLabel.skeletonableView()
+//        dateOfBirthLabel.skeletonableView()
+//        buttonChooseImage.skeletonableView()
+//
+//        bioTextView.layer.borderColor = UIColor.systemGray5.cgColor
+//        bioTextView.layer.borderWidth = 1
+//    }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getUser()
     }
@@ -80,15 +80,16 @@ class ProfileEditViewController: UIViewController {
         }
             
         updateUser(with: userProfileData)
-//        navigationController?.popViewController(animated: true)
     }
         
     func updateUser(with userUpdateData: UserProfileUpdateData) {
+        let defaultAction = UIAlertAction(title: Constants.Alerts.defaultActionTitle, style: .default, handler: {_ -> Void in
+            self.navigationController?.popViewController(animated: true)
+        })
         profileService.updateUser(with: userUpdateData) { result in
             switch result {
             case .success():
-                self.sendOkAlert(message: Constants.Alerts.successfullyUpdatedMessage)
-//                self.navigationController?.popViewController(animated: true)
+                self.sendAlert(message: Constants.Alerts.successfullyUpdatedMessage, action: defaultAction)
             case .failure:
                 self.sendOkAlert(message: Constants.Alerts.wrongInputMessage)
             }
