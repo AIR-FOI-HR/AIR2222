@@ -54,7 +54,7 @@ class BasicInfoViewController: UIViewController {
             let currencyName = currencyTextField.text,
             !categoryName.isEmpty && !eventName.isEmpty && !participantsCount.isEmpty
         else {
-            Functions.Alerts.alert(message: Constants.Alerts.pleaseEnterInfoMessasge, viewController: self)
+            self.sendOkAlert(message: Constants.Alerts.wrongInputMessasge)
             return
         }
         viewContoller.createEventObject.categoryName = categoryName

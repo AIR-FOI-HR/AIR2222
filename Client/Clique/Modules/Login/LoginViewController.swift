@@ -24,10 +24,10 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         
-        Functions.Animations.startAnimation(loading: loading, view: view)
+        self.startAnimation(loading: loading, view: view)
         guard let credentails = getLoginCredentials() else {
-            Functions.Alerts.alert(message: Constants.Alerts.pleaseEnterInfoMessasge, viewController: self)
-            Functions.Animations.stopAnimation(loading: self.loading)
+            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessasge)
+            self.startAnimation(loading: loading, view: view)
             return
         }
         login(with: credentails)
@@ -55,10 +55,10 @@ class LoginViewController: UIViewController {
                     viewContoller.modalPresentationStyle = .fullScreen
                     self.present(viewContoller, animated: true)
                 }
-                Functions.Animations.stopAnimation(loading: self.loading)
+                self.stopAnimation(loading: self.loading)
             case .failure:
-                Functions.Alerts.alert(message: Constants.Alerts.pleaseEnterInfoMessasge, viewController: self)
-                Functions.Animations.stopAnimation(loading: self.loading)
+                self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessasge)
+                self.stopAnimation(loading: self.loading)
             }
         }
     }
@@ -91,9 +91,5 @@ class LoginViewController: UIViewController {
             buttonPasswordShow.setImage(UIImage(systemName: "eye.fill"), for: .normal)
         }
         iconClick = !iconClick
-    }
-    
-    @IBAction func closeLoginViewController(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
     }
 }

@@ -32,42 +32,38 @@ class RegisterViewController: UIViewController {
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         
         guard let registerEntries = getRegisterEntries() else {
-            Functions.Alerts.alert(message: Constants.Alerts.pleaseEnterInfoMessasge, viewController: self)
+            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessasge)
             return
         }
         
         guard checkPasswords() else{
-            Functions.Alerts.alert(message: Constants.Alerts.passwordsDontMatchMessasge, viewController: self)
+            self.sendOkAlert(message: Constants.Alerts.passwordsDontMatchMessasge)
             return
         }
-        Functions.Animations.startAnimation(loading: loading, view: view)
+        self.startAnimation(loading: loading, view: view)
         register(with: registerEntries)
     }
     
     func register(with registerEntries: RegisterEntries) {
-        registerService.register(with: registerEntries) { (isSuccess) in
-            if isSuccess{
-                self.alertShowLogin(fwdMessage: "Successfully registrated!")
-                Functions.Animations.stopAnimation(loading: self.loading)
-            } else {
-                Functions.Alerts.alert(message: Constants.Alerts.wrongInputMessasge, viewController: self)
-                Functions.Animations.stopAnimation(loading: self.loading)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: {_ -> Void in
+            let storyboard = UIStoryboard(name: "Login" , bundle:nil)
+            if let viewController = storyboard.instantiateInitialViewController() {
+                viewController.modalPresentationStyle = .fullScreen
+                self.present(viewController, animated: true)
+            }
+        })
+        registerService.register(with: registerEntries) { result in
+            switch result {
+            case .success() :
+                self.sendAlert(message: Constants.Alerts.successRegisterMessasge, action: defaultAction)
+                self.stopAnimation(loading: self.loading)
+            case .failure :
+                self.sendOkAlert(message: Constants.Alerts.wrongInputMessasge)
+                self.stopAnimation(loading: self.loading)
             }
         }
     }
 
-    func alertShowLogin(fwdMessage: String) {
-        let alertController = UIAlertController(title: "", message: fwdMessage , preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: {_ -> Void in
-            let storyboard = UIStoryboard(name: "Login" , bundle:nil)
-            if let viewController = storyboard.instantiateInitialViewController() {
-                self.present(viewController, animated: true)
-            }
-        })
-        alertController.addAction(defaultAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordCheckLabel.isHidden = true
@@ -187,11 +183,6 @@ class RegisterViewController: UIViewController {
         }
         iconClick = !iconClick
     }
-    
-    @IBAction func closeRegisterViewController(_ sender: UIButton) {
-            dismiss(animated: true, completion: nil)
-    }
-    
 }
 
 

@@ -40,16 +40,20 @@ class CreateEventOverviewViewController: UIViewController {
     
     @IBAction func postButtonPressed(_sender: UIButton){
         guard let createEntries = getCreateEventEntries() else { return }
-        Functions.Animations.startAnimation(loading: loading, view: view)
+        self.startAnimation(loading: loading, view: view)
         createEvent(with: createEntries)
     }
     
     func createEvent(with createEventEntries: CreateEventEntries) {
-        createEventService.createEvent(with: createEventEntries) {
-            (isSuccess) in
-            let message = isSuccess ? Constants.Alerts.successfullyCreatedEventMessasge : Constants.Alerts.wrongInputMessasge
-            Functions.Alerts.alert(message: message, viewController: self)
-            Functions.Animations.stopAnimation(loading: self.loading)
+        createEventService.createEvent(with: createEventEntries) { result in
+            switch result {
+            case .success() :
+                self.sendOkAlert(message: Constants.Alerts.successfullyCreatedEventMessasge)
+                self.stopAnimation(loading: self.loading)
+            case .failure :
+                self.sendOkAlert(message: Constants.Alerts.wrongInputMessasge)
+                self.stopAnimation(loading: self.loading)
+            }
         }
     }
     
