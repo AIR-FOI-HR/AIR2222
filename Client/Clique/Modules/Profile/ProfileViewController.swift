@@ -26,21 +26,17 @@ class ProfileViewController: UIViewController {
         super.viewDidAppear(animated)
         profileImage.rounded()
         getUser()
-        profileImage.layer.masksToBounds = false
-        labelProfileName.layer.masksToBounds = false
-        bioTextView.layer.masksToBounds = false
-
-        profileImage.isSkeletonable = true
-        profileImage.showAnimatedSkeleton(usingColor: .clouds,
-                                          transition: .crossDissolve(0.5))
-
-        labelProfileName.isSkeletonable = true
-        labelProfileName.showAnimatedSkeleton(usingColor: .clouds,
-                                              transition: .crossDissolve(0.5))
-
-        bioTextView.isSkeletonable = true
-        bioTextView.showAnimatedSkeleton(usingColor: .clouds,
-                                         transition: .crossDissolve(0.5))
+        
+        profileImage.skeletonableView()
+        labelProfileName.skeletonableView()
+        bioTextView.skeletonableView()
+        myEventsButton.skeletonableView()
+        
+        labelProfileName.skeletonTextLineHeight = .relativeToFont
+        labelProfileName.skeletonPaddingInsets = UIEdgeInsets(top: 10, left: 105, bottom: 5, right: 50)
+        
+        bioTextView.layer.borderColor = UIColor.systemGray6.cgColor
+        bioTextView.layer.borderWidth = 1
     }
    
 //    override func viewDidLoad() {

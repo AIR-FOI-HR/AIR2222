@@ -15,6 +15,7 @@
 		420EB35D2942A3D1008263B7 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420EB35C2942A3D1008263B7 /* TabBar.storyboard */; };
 		420EB35F2942A3E5008263B7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420EB35E2942A3E5008263B7 /* TabBarViewController.swift */; };
 		4213719129262F1B0082F1C7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4213719029262F1B0082F1C7 /* Login.storyboard */; };
+		4229A3A62947D3710083494E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4229A3A52947D3710083494E /* UIView+Extension.swift */; };
 		4237AC85292C20C700095D47 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237AC84292C20C700095D47 /* LoginCredentials.swift */; };
 		4237AC87292C215F00095D47 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4237AC86292C215F00095D47 /* LoginResponse.swift */; };
 		42464B01292F7ADA009FDE1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CDA99290E54380074ACFA /* SceneDelegate.swift */; };
@@ -67,6 +68,7 @@
 		420EB35C2942A3D1008263B7 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		420EB35E2942A3E5008263B7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4213719029262F1B0082F1C7 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		4229A3A52947D3710083494E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		4237AC84292C20C700095D47 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		4237AC86292C215F00095D47 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		4253AE862933AAC80054DC2B /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			children = (
 				429FCA282933F2F200269AC5 /* Extensions.swift */,
 				429861C2294379BA001CF447 /* UIViewController+Extension.swift */,
+				4229A3A52947D3710083494E /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				4253AE8E2933BF6D0054DC2B /* SettingsViewController.swift in Sources */,
 				429FCA292933F2F200269AC5 /* Extensions.swift in Sources */,
 				4272BF1B2934136C00797045 /* PastCreatedEventsViewController.swift in Sources */,
+				4229A3A62947D3710083494E /* UIView+Extension.swift in Sources */,
 				42DB2734292672970027A00C /* UserStorage.swift in Sources */,
 				4253AE892933AD2B0054DC2B /* ProfileViewController.swift in Sources */,
 				425B8D1A29359BB900907BD9 /* ProfileEditViewController.swift in Sources */,
