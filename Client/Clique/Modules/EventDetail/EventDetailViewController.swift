@@ -27,6 +27,7 @@ class EventDetailViewController: UIViewController {
     private var _status = 0
     private var _event_Id = "0"
     private var _alertMessage = ""
+    private var _didItEnd = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +55,18 @@ private extension EventDetailViewController {
         }
         _eventCategory.text = _event.category
         _buttonJoinEvent.addTarget(self, action: #selector(_registerOnEvent), for: .touchUpInside)
+        if(_stringToTimeStamp(timeString: _event.timestamp) < NSDate().timeIntervalSince1970){
+            _didItEnd = true
+        }
         _checkUserStatusOnEvent()
+    }
+    
+    func _stringToTimeStamp(timeString: String) -> TimeInterval {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "dd/MM/yyyy HH:mm:ss"
+        let date = dateFormatterGet.date(from: timeString)
+        print(date!.timeIntervalSince1970)
+        return date!.timeIntervalSince1970
     }
     
     func _checkUserStatusOnEvent(){
@@ -71,14 +83,18 @@ private extension EventDetailViewController {
     }
     
     func _activateButton(){
-        if(_status == 1 || _status == 3){
-            _buttonJoinEvent.setTitle("Join", for: .normal)
-            _alertMessage = "Are you sure you want to join this event?"
-            _buttonJoinEvent.isHidden = false
-        } else if(_status == 2) {
-            _buttonJoinEvent.setTitle("Cancel", for: .normal)
-            _buttonJoinEvent.isHidden = false
-            _alertMessage = "Are you sure you want to cancel this event?"
+        if(!_didItEnd){
+            if(_status == 1 || _status == 3){
+                        _buttonJoinEvent.setTitle("Join", for: .normal)
+                        _buttonJoinEvent.isHidden = false
+                        _alertMessage = "Are you sure you want to join this event?"
+                    } else if(_status == 2) {
+                        _buttonJoinEvent.setTitle("Cancel", for: .normal)
+                        _buttonJoinEvent.isHidden = false
+                        _alertMessage = "Are you sure you want to cancel this event?"
+                    }
+        } else if(_didItEnd && _status == 2) {
+            print("Ovdje bi trebalo ici ocjenjivanje")
         } else {
             _buttonJoinEvent.isHidden = true
         }
@@ -95,18 +111,6 @@ private extension EventDetailViewController {
         }))
 
         present(refreshAlert, animated: true, completion: nil)
-        /*if(_status < 4) {
-            _eventServices.registerOnEvent(event_id: _event_Id, status: _status){ [weak self] result in
-                guard let _self = self else { return }
-                switch result{
-                case .success(let success):
-                    print(success)
-                    _self._activateButton()
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }*/
     }
     
     func reg(){
