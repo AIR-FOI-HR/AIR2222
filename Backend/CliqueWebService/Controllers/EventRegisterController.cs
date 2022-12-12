@@ -2,7 +2,7 @@
 using DataAccess;
 using CliqueWebService.Helpers;
 using CliqueWebService.Helpers.Models;
-
+using System.Text.Json;
 
 namespace CliqueWebService.Controllers
 {
@@ -51,7 +51,7 @@ namespace CliqueWebService.Controllers
                 var reader = _db.ExecuteQuery(query);
                 if (!reader.HasRows)
                 {
-                    return BadRequest("User isn't signed to event!");
+                    return Ok(1);
                 }
                 int status_id = 0;
                 while (reader.Read())
@@ -74,7 +74,7 @@ namespace CliqueWebService.Controllers
 
         [HttpPost]
         [Route("RegisterOnEvent")]
-        public ActionResult RegisterOnEvent([FromBody] string event_id)
+        public ActionResult RegisterOnEvent([FromBody] JsonElement json)
         {
             try
             {
@@ -99,68 +99,29 @@ namespace CliqueWebService.Controllers
                 return Unauthorized();
             }
 
-            /*if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage));
-            }
-            }*/
-
             _db.BeginTransaction();
             try
             {
-                string query = $"INSERT INTO signs_up_for VALUES ({int.Parse(event_id)}, {id}, 2)";
-                _db.ExecuteNonQuery(query);
-                _db.CommitTransaction();
-                return Ok("User is successfully registered to event.");
-            }
-            catch
-            {
-                _db.RollbackTransaction();
-                _db.CommitTransaction();
-                return StatusCode(StatusCodes.Status500InternalServerError, "Server error");
-            }
-        }
-
-        [HttpPost]
-        [Route("CancelEvent")]
-        public ActionResult CancelEvent([FromBody] string event_id)
-        {
-            try
-            {
-                _db.Connect();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Server error");
-            }
-
-            string id = "0";
-            if (Request.Headers.Keys.Contains("Authorization"))
-            {
-                string token = Request.Headers["Authorization"];
-                if (_businessLogic.isJWTValid(token.Replace("Bearer ", "")))
+                string event_id = json.GetProperty("event_id").ToString();
+                int status = int.Parse(json.GetProperty("status").ToString());
+                string query = "";
+                if(status < 2)
                 {
-                    id = User.Claims.FirstOrDefault(i => i.Type.Contains("UserId")).Value;
+                    query = $"INSERT INTO signs_up_for VALUES ({int.Parse(event_id)}, {id},2)";
+                    status = 2;
                 }
-            }
-            if (id == "0")
-            {
-                return Unauthorized();
-            }
-
-            /*if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage));
-            }
-            }*/
-
-            _db.BeginTransaction();
-            try
-            {
-                string query = $"UPDATE signs_up_for SET status_id = 3 WHERE event_id = {int.Parse(event_id)} AND user_id = {id}";
+                else if (status == 2)
+                {
+                    query = $"UPDATE signs_up_for SET status_id = 3 WHERE event_id = {int.Parse(event_id)} AND user_id = {id}";
+                    status = 3;
+                } else if(status == 3)
+                {
+                    query = $"UPDATE signs_up_for SET status_id = 2 WHERE event_id = {int.Parse(event_id)} AND user_id = {id}";
+                    status = 2;
+                }
                 _db.ExecuteNonQuery(query);
                 _db.CommitTransaction();
-                return Ok("User successfully cancelled event.");
+                return Ok(status);
             }
             catch
             {
@@ -169,6 +130,5 @@ namespace CliqueWebService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Server error");
             }
         }
-
     }
 }
