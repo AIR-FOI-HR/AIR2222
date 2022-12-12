@@ -179,7 +179,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Jn-9o-Qj1">
                                                         <rect key="frame" x="0.0" y="550" width="390" height="128"/>
                                                         <subviews>
-                                                            <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSh-sD-bBw">
+                                                            <button hidden="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSh-sD-bBw">
                                                                 <rect key="frame" x="16" y="46" width="358" height="34.333333333333371"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="tintColor" red="1" green="0.60002936200000001" blue="0.34990315100000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -219,6 +219,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="_buttonJoinEvent" destination="DSh-sD-bBw" id="XMc-nw-fuW"/>
                         <outlet property="_eventCategory" destination="d16-NA-xYv" id="2ZX-Qf-m77"/>
                         <outlet property="_eventCost" destination="KSC-Kx-yHt" id="9Ga-XX-pyW"/>
                         <outlet property="_eventCreator" destination="Ugm-yv-jJ6" id="4ZN-1B-wTu"/>

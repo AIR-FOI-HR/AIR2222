@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		420C23AE2938D670007D612C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CDA97290E54380074ACFA /* AppDelegate.swift */; };
-		420C23B1293F5D7E007D612C /* EventFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420C23B0293F5D7E007D612C /* EventFilter.storyboard */; };
-		420C23B3293F5D8C007D612C /* EventFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420C23B2293F5D8C007D612C /* EventFilterViewController.swift */; };
 		420C5D90292C586C001E650D /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 420C5D8F292C586C001E650D /* NVActivityIndicatorView */; };
 		420C5D92292C586C001E650D /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 420C5D91292C586C001E650D /* NVActivityIndicatorViewExtended */; };
 		420CDAA1290E543A0074ACFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 420CDAA0290E543A0074ACFA /* Assets.xcassets */; };
@@ -46,8 +44,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		420C23B0293F5D7E007D612C /* EventFilter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventFilter.storyboard; sourceTree = "<group>"; };
-		420C23B2293F5D8C007D612C /* EventFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFilterViewController.swift; sourceTree = "<group>"; };
 		420CDA94290E54380074ACFA /* Clique.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clique.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		420CDA97290E54380074ACFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		420CDA99290E54380074ACFA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,15 +93,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		420C23AF293F5D68007D612C /* EventFilter */ = {
-			isa = PBXGroup;
-			children = (
-				420C23B0293F5D7E007D612C /* EventFilter.storyboard */,
-				420C23B2293F5D8C007D612C /* EventFilterViewController.swift */,
-			);
-			path = EventFilter;
-			sourceTree = "<group>";
-		};
 		420CDA8B290E54380074ACFA = {
 			isa = PBXGroup;
 			children = (
@@ -146,7 +133,6 @@
 		420CDAAD290E55C00074ACFA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				420C23AF293F5D68007D612C /* EventFilter */,
 				427F188A2927BB24009284DA /* EventDetail */,
 				427F18752923F681009284DA /* EventList */,
 				42EA63272932BB49007417D0 /* Initial */,
@@ -355,7 +341,6 @@
 			files = (
 				4213719129262F1B0082F1C7 /* Login.storyboard in Resources */,
 				420CDAA4290E543A0074ACFA /* LaunchScreen.storyboard in Resources */,
-				420C23B1293F5D7E007D612C /* EventFilter.storyboard in Resources */,
 				427F18772923F6D9009284DA /* EventList.storyboard in Resources */,
 				420CDAA1290E543A0074ACFA /* Assets.xcassets in Resources */,
 				42DD304E292A9C8D0054B088 /* EventDetail.storyboard in Resources */,
@@ -372,7 +357,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				420C23B3293F5D8C007D612C /* EventFilterViewController.swift in Sources */,
 				420C23AE2938D670007D612C /* AppDelegate.swift in Sources */,
 				42DD305429310FFB0054B088 /* EventServices.swift in Sources */,
 				427F188029240924009284DA /* EventListTableViewCell.swift in Sources */,

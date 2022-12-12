@@ -22,4 +22,42 @@ final class EventServices {
                 }
             }
     }
+    func checkUserStatusOnEvent(event_id: String,
+                                completion: @escaping(Result<Int, Error>) -> Void) {
+        AF.request(Constants.Service.userRegisteredOnEventURL + event_id,
+                   method: .get,
+                   headers: Constants.Service.requestHeaders()
+                   )
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: Int.self) { response in
+                switch response.result {
+                case .success(let status):
+                    completion(.success(status))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+    
+    func registerOnEvent(event_id: String, status: Int,
+        completion: @escaping(Result<Int, Error>) -> Void) {
+        AF.request(Constants.Service.registerOnEventURL,
+                   method: .post,
+                   parameters: ["event_id": event_id,
+                                "status": status],
+                   encoding: JSONEncoding.default,
+                   headers: Constants.Service.requestHeaders()
+                   )
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: Int.self) { response in
+                switch response.result {
+                case .success(let status):
+                    completion(.success(status))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+    
+    
 }

@@ -20,9 +20,17 @@ class EventDetailViewController: UIViewController {
     @IBOutlet private var _eventParticipantsNum: UILabel!
     @IBOutlet private var _eventCost: UILabel!
     @IBOutlet private var _eventCategory: UILabel!
+    @IBOutlet private var _buttonJoinEvent: UIButton!
+    
+    
+    private var _eventServices = EventServices()
+    private var _status = 0
+    private var _event_Id = "0"
+    private var _alertMessage = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        _checkUserStatusOnEvent()
         _setupUI()
     }
 }
@@ -31,8 +39,7 @@ private extension EventDetailViewController {
     
     func _setupUI() {
         guard let _event = self.event else { return }
-        
-        
+        _event_Id = String(_event.id)
         _eventName.text = _event.name
         _eventDescription.text = _event.description
         _eventCreator.text = _event.creator.name + " " + _event.creator.surname
@@ -45,7 +52,74 @@ private extension EventDetailViewController {
         } else {
             _eventCost.text = Constants.Labels.labelFree
         }
-        
         _eventCategory.text = _event.category
+        _buttonJoinEvent.addTarget(self, action: #selector(_registerOnEvent), for: .touchUpInside)
+        _checkUserStatusOnEvent()
+    }
+    
+    func _checkUserStatusOnEvent(){
+        _eventServices.checkUserStatusOnEvent(event_id: _event_Id){ [weak self] result in
+            guard let _self = self else { return }
+            switch result{
+            case .success(let status):
+                _self._status = status
+                _self._activateButton()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func _activateButton(){
+        if(_status == 1 || _status == 3){
+            _buttonJoinEvent.setTitle("Join", for: .normal)
+            _alertMessage = "Are you sure you want to join this event?"
+            _buttonJoinEvent.isHidden = false
+        } else if(_status == 2) {
+            _buttonJoinEvent.setTitle("Cancel", for: .normal)
+            _buttonJoinEvent.isHidden = false
+            _alertMessage = "Are you sure you want to cancel this event?"
+        } else {
+            _buttonJoinEvent.isHidden = true
+        }
+    }
+    
+    @objc func _registerOnEvent(){
+        let refreshAlert = UIAlertController(title: "Confirmation", message: _alertMessage, preferredStyle: UIAlertController.Style.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in self.reg()
+        }))
+
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+              print("Handle Cancel Logic here")
+        }))
+
+        present(refreshAlert, animated: true, completion: nil)
+        /*if(_status < 4) {
+            _eventServices.registerOnEvent(event_id: _event_Id, status: _status){ [weak self] result in
+                guard let _self = self else { return }
+                switch result{
+                case .success(let success):
+                    print(success)
+                    _self._activateButton()
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }*/
+    }
+    
+    func reg(){
+        _eventServices.registerOnEvent(event_id: _event_Id, status: _status){ [weak self] result in
+            guard let _self = self else { return }
+            switch result{
+            case .success(let success):
+                print(success)
+                _self._status = success
+                _self._activateButton()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
