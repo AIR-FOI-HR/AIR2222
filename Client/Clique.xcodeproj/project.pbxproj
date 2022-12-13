@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4207BBC929452F6000169EB9 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 4207BBC829452F6000169EB9 /* FloatingPanel */; };
 		420C5D90292C586C001E650D /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 420C5D8F292C586C001E650D /* NVActivityIndicatorView */; };
 		420C5D92292C586C001E650D /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = 420C5D91292C586C001E650D /* NVActivityIndicatorViewExtended */; };
 		420CDA98290E54380074ACFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420CDA97290E54380074ACFA /* AppDelegate.swift */; };
@@ -93,6 +94,7 @@
 				42496D10293033AA00D972C9 /* IQKeyboardManagerSwift in Frameworks */,
 				42496D0C29301C9A00D972C9 /* KeychainAccess in Frameworks */,
 				420C5D92292C586C001E650D /* NVActivityIndicatorViewExtended in Frameworks */,
+				4207BBC929452F6000169EB9 /* FloatingPanel in Frameworks */,
 				420C5D90292C586C001E650D /* NVActivityIndicatorView in Frameworks */,
 				42D99DE62928362300516EF9 /* Alamofire in Frameworks */,
 			);
@@ -332,6 +334,7 @@
 				420C5D91292C586C001E650D /* NVActivityIndicatorViewExtended */,
 				42496D0B29301C9A00D972C9 /* KeychainAccess */,
 				42496D0F293033AA00D972C9 /* IQKeyboardManagerSwift */,
+				4207BBC829452F6000169EB9 /* FloatingPanel */,
 			);
 			productName = Clique;
 			productReference = 420CDA94290E54380074ACFA /* Clique.app */;
@@ -366,6 +369,7 @@
 				420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				4207BBC729452F6000169EB9 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = 420CDA95290E54380074ACFA /* Products */;
 			projectDirPath = "";
@@ -633,6 +637,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4207BBC729452F6000169EB9 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SCENEE/FloatingPanel.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
@@ -668,6 +680,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4207BBC829452F6000169EB9 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4207BBC729452F6000169EB9 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
 		420C5D8F292C586C001E650D /* NVActivityIndicatorView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;

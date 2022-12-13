@@ -48,6 +48,7 @@ final class CreateEventService {
         .validate(statusCode: 200..<300)
         .response{
             response in
+            print(response)
             switch response .result {
             case.success(_):
                 completion(.success(()))

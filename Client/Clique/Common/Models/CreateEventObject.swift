@@ -8,15 +8,13 @@
 import Foundation
 
 struct CreateEventObject {
-    var eventName = ""
-    var eventLocation = ""
-    var eventTimeStampAPI = ""
-    var eventTimeStampPrint = ""
-    var participantsCount = ""
-    var cost = ""
-    var currencyName = ""
-    var currencyId = ""
-    var categoryName = ""
-    var categoryId = ""
-    var description = ""
+    var eventName : String?
+    var eventLocation : String?
+    var eventTimeStampAPI : String?
+    var eventTimeStampPrint : String?
+    var participantsCount : String?
+    var cost : String?
+    var currency : Currency?
+    var category : Category?
+    var description : String?
 }

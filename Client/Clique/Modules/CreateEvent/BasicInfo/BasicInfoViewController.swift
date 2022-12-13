@@ -19,12 +19,12 @@ class BasicInfoViewController: UIViewController {
     var returnKeyHandler = IQKeyboardReturnKeyHandler()
     var createEventObject = CreateEventObject()
     
+    var selectedCategory : Category?
+    var selectedCurrency : Currency?
     var categories = [Category]()
     var currencies = [Currency]()
     var pickerViewCategory = UIPickerView()
     var pickerViewCurrency = UIPickerView()
-    var category = ""
-    var currency = ""
     var cost = 0
     
     override func viewDidLoad() {
@@ -51,28 +51,25 @@ class BasicInfoViewController: UIViewController {
             let eventName = nameTextField.text,
             let participantsCount = participantsTextField.text,
             let cost = costTextField.text,
-            let currencyName = currencyTextField.text,
             !categoryName.isEmpty && !eventName.isEmpty && !participantsCount.isEmpty
         else {
-            self.sendOkAlert(message: Constants.Alerts.wrongInputMessasge)
+            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessasge)
             return
         }
-        viewContoller.createEventObject.categoryName = categoryName
-        viewContoller.createEventObject.categoryId = category
+        viewContoller.createEventObject.category = selectedCategory
         viewContoller.createEventObject.eventName = eventName
         viewContoller.createEventObject.participantsCount = participantsCount
         viewContoller.createEventObject.cost = cost
-        viewContoller.createEventObject.currencyName = currencyName
-        viewContoller.createEventObject.currencyId = currency
+        viewContoller.createEventObject.currency = selectedCurrency
         navigationController?.pushViewController(viewContoller, animated: true)
     }
     
     func getCategories() {
-        createEventService.getCategories{ result in
+        createEventService.getCategories{ [weak self] result in
             switch result {
             case .success(let categories):
                 for category in categories{
-                    self.categories.append(category)
+                    self?.categories.append(category)
                 }
             case .failure:
                 return
@@ -81,11 +78,11 @@ class BasicInfoViewController: UIViewController {
     }
     
     func getCurrencies() {
-        createEventService.getCurrencies { result in
+        createEventService.getCurrencies { [weak self] result in
             switch result {
             case .success(let currencies):
                 for currency in currencies {
-                    self.currencies.append(currency)
+                    self?.currencies.append(currency)
                 }
             case .failure:
                 return
@@ -95,11 +92,11 @@ class BasicInfoViewController: UIViewController {
     
     @objc func costInputEnabled (switcher: UISwitch) {
         if switcher.isOn {
+            selectedCurrency = Currency(id: 1, name: "EURO", abbreviation: "EUR")
             costTextField.isHidden = false
             currencyTextField.isHidden = false
             downButtonCurrency.isHidden = false
             amountLabel.isHidden = false
-            currency = "1"
             currencyTextField.text = "EUR"
             costTextField.text = "1"
         } else if !switcher.isOn {
@@ -108,7 +105,7 @@ class BasicInfoViewController: UIViewController {
             downButtonCurrency.isHidden = true
             amountLabel.isHidden = true
             costTextField.text = "0"
-            currency = ""
+            selectedCurrency = nil
             currencyTextField.text = ""
         }
     }
@@ -158,11 +155,11 @@ extension BasicInfoViewController: UIPickerViewDelegate, UIPickerViewDataSource 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == pickerViewCategory {
             categoryTextField.text = categories[row].name
-//            category = String((Int(row.description) ?? 0 ) + 1)
+            selectedCategory = categories[row]
         }
         else {
             currencyTextField.text = currencies[row].abbreviation
-//            currency = String((Int(row.description) ?? 0 ) + 1)
+            selectedCurrency = currencies[row]
         }
     }
 }

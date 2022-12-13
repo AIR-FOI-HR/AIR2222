@@ -28,20 +28,21 @@ class CreateEventOverviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
-        categoryLabel.text = createEventObject.categoryName
+        categoryLabel.text = createEventObject.category?.name
         eventNameLabel.text = createEventObject.eventName
         participantNumberLabel.text = createEventObject.participantsCount
         eventCostLabel.text = createEventObject.cost
         chosenDateTimeLabel.text = createEventObject.eventTimeStampPrint
         locationLabel.text = "Proba"
         shortDescriptionTextView.text = createEventObject.description
-        currencyLabel.text = createEventObject.currencyName
+        currencyLabel.text = createEventObject.currency?.abbreviation
     }
     
     @IBAction func postButtonPressed(_sender: UIButton){
         guard let createEntries = getCreateEventEntries() else { return }
         self.startAnimation(loading: loading, view: view)
         createEvent(with: createEntries)
+        print(createEntries)
     }
     
     func createEvent(with createEventEntries: CreateEventEntries) {
@@ -58,16 +59,25 @@ class CreateEventOverviewViewController: UIViewController {
     }
     
     func getCreateEventEntries() -> CreateEventEntries? {
-
+        guard
+            let category = createEventObject.category?.id.description,
+            let name = createEventObject.eventName,
+//            let location = "lokacija",
+            let timeStamp = createEventObject.eventTimeStampAPI,
+            let participantsCount = createEventObject.participantsCount,
+            let cost = createEventObject.cost,
+            let description = createEventObject.description
+        else { return nil }
+        
         let entries = CreateEventEntries(
-            name: createEventObject.eventName,
+            name: name,
             location: "lokacija",
-            timeStamp: createEventObject.eventTimeStampAPI,
-            participantsCount: createEventObject.participantsCount,
-            cost: createEventObject.cost,
-            currency: createEventObject.currencyId,
-            category: createEventObject.categoryId,
-            description: createEventObject.description
+            timeStamp: timeStamp,
+            participantsCount: participantsCount,
+            cost: cost,
+            currency: createEventObject.currency?.id.description ?? "",
+            category: category,
+            description: description
         )
         return entries
     }
