@@ -23,7 +23,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="700"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bRW-2o-E43">
-                                                <rect key="frame" x="32" y="32" width="329" height="618"/>
+                                                <rect key="frame" x="32" y="32" width="329" height="658"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vV2-20-6QK">
                                                         <rect key="frame" x="0.0" y="0.0" width="329" height="150"/>
@@ -68,9 +68,6 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="btnChooseImageOnClick:" destination="yq6-fd-NwP" eventType="primaryActionTriggered" id="bc9-8N-d9L"/>
-                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -85,7 +82,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fb3-rS-O35">
-                                                        <rect key="frame" x="0.0" y="232" width="329" height="320"/>
+                                                        <rect key="frame" x="0.0" y="232" width="329" height="360"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Sae-EX-MQc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="329" height="134"/>
@@ -132,10 +129,10 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="I9L-VX-v2J">
-                                                                <rect key="frame" x="0.0" y="150" width="329" height="145.33333333333337"/>
+                                                                <rect key="frame" x="0.0" y="150" width="329" height="185.33333333333337"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfB-4e-TId">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="20.333333333333332"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write a short bio. You have 250 characters remaining." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ec-vP-MSg">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="40.666666666666664"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -144,7 +141,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="im9-O5-Okd">
-                                                                        <rect key="frame" x="0.0" y="36.333333333333314" width="329" height="109"/>
+                                                                        <rect key="frame" x="0.0" y="56.666666666666629" width="329" height="128.66666666666666"/>
                                                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                                         <color key="textColor" systemColor="labelColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -164,10 +161,10 @@
                                                                     </textView>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstItem="SfB-4e-TId" firstAttribute="leading" secondItem="I9L-VX-v2J" secondAttribute="leading" id="Ec1-wO-n5U"/>
                                                                     <constraint firstAttribute="trailing" secondItem="im9-O5-Okd" secondAttribute="trailing" id="X9k-Hp-dx9"/>
+                                                                    <constraint firstItem="9ec-vP-MSg" firstAttribute="leading" secondItem="I9L-VX-v2J" secondAttribute="leading" id="YCk-JF-FWG"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="9ec-vP-MSg" secondAttribute="trailing" id="bqe-gR-GYj"/>
                                                                     <constraint firstItem="im9-O5-Okd" firstAttribute="leading" secondItem="I9L-VX-v2J" secondAttribute="leading" id="fYu-XO-OhR"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="SfB-4e-TId" secondAttribute="trailing" id="h2e-nT-nUV"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -179,7 +176,7 @@
                                                             <constraint firstAttribute="trailing" secondItem="Sae-EX-MQc" secondAttribute="trailing" id="DOz-Vy-SNy"/>
                                                             <constraint firstItem="Sae-EX-MQc" firstAttribute="top" secondItem="Fb3-rS-O35" secondAttribute="top" id="TaL-Da-lay"/>
                                                             <constraint firstAttribute="trailing" secondItem="I9L-VX-v2J" secondAttribute="trailing" id="aus-aZ-Ydi"/>
-                                                            <constraint firstAttribute="height" constant="320" id="bXp-ff-ZKW"/>
+                                                            <constraint firstAttribute="height" constant="360" id="bXp-ff-ZKW"/>
                                                             <constraint firstItem="I9L-VX-v2J" firstAttribute="leading" secondItem="Fb3-rS-O35" secondAttribute="leading" id="cKc-Cs-L4w"/>
                                                             <constraint firstItem="Sae-EX-MQc" firstAttribute="leading" secondItem="Fb3-rS-O35" secondAttribute="leading" id="k0G-5b-JJI"/>
                                                             <constraint firstAttribute="bottom" secondItem="I9L-VX-v2J" secondAttribute="bottom" constant="24.666666666666686" id="sDg-Ua-MyQ"/>
@@ -190,7 +187,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Nj-k2-8Xg">
-                                                        <rect key="frame" x="0.0" y="568" width="329" height="50"/>
+                                                        <rect key="frame" x="0.0" y="608" width="329" height="50"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="l7r-Oe-qtA">
                                                                 <rect key="frame" x="0.0" y="0.0" width="329" height="50"/>
@@ -289,9 +286,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bioLabel" destination="SfB-4e-TId" id="w0p-PL-gPn"/>
                         <outlet property="bioTextView" destination="im9-O5-Okd" id="xV2-9L-q4y"/>
                         <outlet property="buttonChooseImage" destination="H2u-to-xmF" id="qrF-s2-Pyd"/>
+                        <outlet property="characterCountLabel" destination="9ec-vP-MSg" id="Rie-fH-5dP"/>
                         <outlet property="dateOfBirthLabel" destination="lpo-TR-w1R" id="a1E-GJ-LdZ"/>
                         <outlet property="datePicker" destination="fgb-48-2qu" id="CVs-CG-Pxf"/>
                         <outlet property="emailTextField" destination="Has-H6-90U" id="VyH-A0-Yza"/>
