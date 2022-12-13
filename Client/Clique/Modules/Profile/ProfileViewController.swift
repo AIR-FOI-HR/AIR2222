@@ -27,34 +27,29 @@ class ProfileViewController: UIViewController {
         profileImage.rounded()
         getUser()
         
-//        profileImage.skeletonableView()
-//        labelProfileName.skeletonableView()
-//        bioTextView.skeletonableView()
-//        myEventsButton.skeletonableView()
-//        
-//        labelProfileName.skeletonTextLineHeight = .relativeToFont
-//        labelProfileName.skeletonPaddingInsets = UIEdgeInsets(top: 10, left: 105, bottom: 5, right: 50)
-//        
-//        bioTextView.layer.borderColor = UIColor.systemGray6.cgColor
-//        bioTextView.layer.borderWidth = 1
+        profileImage.skeletonableView()
+        labelProfileName.skeletonableView()
+        bioTextView.skeletonableView()
+        myEventsButton.skeletonableView()
+        
+        labelProfileName.skeletonTextNumberOfLines = 1
+        labelProfileName.skeletonTextLineHeight = .relativeToFont
+        labelProfileName.skeletonPaddingInsets = UIEdgeInsets(top: 0, left: 70, bottom: 0, right: 0)
+        
+        bioTextView.layer.borderColor = UIColor.systemGray6.cgColor
+        bioTextView.layer.borderWidth = 1
     }
-    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        profileImage.rounded()
-//        getUser()
-//    }
     
     private func getUser() {
         profileService.getUser { [weak self] result in
             switch result {
             case .success(let user):
-//                self.profileImage.stopSkeletonAnimation()
-//                self.labelProfileName.stopSkeletonAnimation()
-//                self.bioTextView.stopSkeletonAnimation()
-//                self.myEventsButton.stopSkeletonAnimation()
-//                self.view.hideSkeleton(reloadDataAfter: true,
-//                                       transition: .crossDissolve(0.5))
+                self?.profileImage.stopSkeletonAnimation()
+                self?.labelProfileName.stopSkeletonAnimation()
+                self?.bioTextView.stopSkeletonAnimation()
+                self?.myEventsButton.stopSkeletonAnimation()
+                self?.view.hideSkeleton(reloadDataAfter: true,
+                                       transition: .crossDissolve(0.5))
                 self?.labelProfileName.text = user.name + " " + user.surname
                 self?.bioTextView.text = user.bio
             case .failure:
