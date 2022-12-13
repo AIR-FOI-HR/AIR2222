@@ -61,6 +61,9 @@
                                                                                 <real key="value" value="5"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="btnChooseImageOnClick:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="Cw4-et-xkj"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <userDefinedRuntimeAttributes>

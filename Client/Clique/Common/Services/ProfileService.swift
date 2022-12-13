@@ -27,7 +27,7 @@ final class ProfileService {
         }
     
     func updateUser(
-        with entries: UserProfileUpdateData,
+        with entries: UserProfile,
         completion: @escaping(Result<Void, Error>) -> Void) {
             AF.request(Constants.Service.profileUpdateURL,
                        method: .post,
