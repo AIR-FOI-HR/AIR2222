@@ -45,9 +45,19 @@ namespace CliqueWebService.Helpers
                     gender = (reader.GetValue(16) != DBNull.Value) ? reader.GetString(16).Trim() : null
                 },
                 category = reader.GetString(15),
-                description = (reader.GetValue(10) != DBNull.Value) ? reader.GetString(10) : null
+                description = (reader.GetValue(10) != DBNull.Value) ? reader.GetString(10) : null,
             };
             return ev;
+        }
+
+        public Participants FillParticipants(SqlDataReader reader)
+        {
+            Participants participants = new Participants
+            {
+                Participant = GetUsers(reader),
+                Status = reader.GetInt32(9)
+            };
+            return participants;
         }
         public string ConvertToSHA256(string pass)
         {
