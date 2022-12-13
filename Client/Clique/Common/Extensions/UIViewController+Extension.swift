@@ -15,7 +15,7 @@ extension UIViewController {
     ) {
         let alertController = UIAlertController(title: title, message: message ,
                                                 preferredStyle: .alert)
-        let okAction = UIAlertAction(title: Constants.Alerts.defaultActionTitle,
+        let okAction = UIAlertAction(title: Constants.Alerts.defaultOKActionTitle,
                                      style: .cancel)
         alertController.addAction(okAction)
         present(alertController, animated: true)
@@ -29,6 +29,17 @@ extension UIViewController {
         let alertController = UIAlertController(title: title, message: message,
                                                 preferredStyle: .alert)
         alertController.addAction(action)
+        present(alertController, animated: true)
+    }
+    
+    func sendOKCancelAlert(
+        with title: String = "",
+        message: String,
+        actions: [UIAlertAction]
+    ) {
+        let alertController = UIAlertController(title: title, message: message,
+                                                preferredStyle: .alert)
+        actions.forEach { alertController.addAction($0) }
         present(alertController, animated: true)
     }
 }

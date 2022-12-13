@@ -8,8 +8,8 @@ class InitialViewController: UIViewController {
     @IBAction func loginButtonPressed( sender: UIButton) {
         let storyboard = UIStoryboard(name: "Login" , bundle:nil)
         guard let viewController = storyboard.instantiateInitialViewController() else { return }
-            viewController.modalPresentationStyle = .fullScreen
-            present(viewController, animated: true)
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true)
     }
     
     @IBAction func registerButtonPressed( sender: UIButton) {

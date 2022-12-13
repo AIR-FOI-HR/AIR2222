@@ -23,11 +23,9 @@ class ProfileEditViewController: UIViewController {
     
     private let profileService = ProfileService()
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        getUser()
-//        let allowedAgeDate = Calendar.current.date(byAdding: .year, value: -13, to: Date())
-//        datePicker.maximumDate = allowedAgeDate
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getUser()
 //
 //        imageProfile.rounded()
 //
@@ -43,29 +41,24 @@ class ProfileEditViewController: UIViewController {
 //
 //        bioTextView.layer.borderColor = UIColor.systemGray5.cgColor
 //        bioTextView.layer.borderWidth = 1
-//    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        getUser()
     }
     
     private func getUser() {
-        profileService.getUser { result in
+        profileService.getUser { [weak self] result in
             switch result {
             case .success(let user):
-                self.nameTextfield.text = user.name
-                self.surnameTextField.text = user.surname
-                self.emailTextField.text = user.email
-                self.bioTextView.text = user.bio
-                self.imageProfile.stopSkeletonAnimation()
-                self.emailTextField.stopSkeletonAnimation()
-                self.nameTextfield.stopSkeletonAnimation()
-                self.surnameTextField.stopSkeletonAnimation()
-                self.bioTextView.stopSkeletonAnimation()
-                self.datePicker.stopSkeletonAnimation()
+                self?.nameTextfield.text = user.name
+                self?.surnameTextField.text = user.surname
+                self?.emailTextField.text = user.email
+                self?.bioTextView.text = user.bio
+//                self.imageProfile.stopSkeletonAnimation()
+//                self.emailTextField.stopSkeletonAnimation()
+//                self.nameTextfield.stopSkeletonAnimation()
+//                self.surnameTextField.stopSkeletonAnimation()
+//                self.bioTextView.stopSkeletonAnimation()
+//                self.datePicker.stopSkeletonAnimation()
                 
-                self.view.hideSkeleton(reloadDataAfter: true,
+                self?.view.hideSkeleton(reloadDataAfter: true,
                                        transition: .crossDissolve(0.5))
             case .failure:
                 return
@@ -83,7 +76,7 @@ class ProfileEditViewController: UIViewController {
     }
         
     func updateUser(with userUpdateData: UserProfileUpdateData) {
-        let defaultAction = UIAlertAction(title: Constants.Alerts.defaultActionTitle, style: .default, handler: {_ -> Void in
+        let defaultAction = UIAlertAction(title: Constants.Alerts.defaultOKActionTitle, style: .default, handler: {_ -> Void in
             self.navigationController?.popViewController(animated: true)
         })
         profileService.updateUser(with: userUpdateData) { result in
@@ -115,7 +108,6 @@ class ProfileEditViewController: UIViewController {
             email: email,
             contact_no: "empty",
             birth_data: selectedDate,
-            gender: "1",
             profile_pic: "empty",
             bio: bio
         )

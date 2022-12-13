@@ -21,6 +21,10 @@ class LoginViewController: UIViewController {
     var iconClick = false
     let buttonPasswordShow = UIButton(type: .custom)
     
+    override func viewDidLoad() {
+        self.showButton()
+    }
+    
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         startAnimation()
         guard let credentails = getLoginCredentials() else {
@@ -55,7 +59,7 @@ class LoginViewController: UIViewController {
                     self.present(viewController, animated: true)
                 self.stopAnimation()
             case .failure:
-                self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
+                self.sendOkAlert(message: Constants.Alerts.wrongCredentialsMessage)
                 self.stopAnimation()
             }
         }

@@ -47,15 +47,15 @@ class SecurityViewController: UIViewController {
     }
         
     func updatePasswordUser(with userPasswords: PasswordData) {
-        let defaultAction = UIAlertAction(title: Constants.Alerts.defaultActionTitle, style: .default, handler: {_ -> Void in
+        let defaultAction = UIAlertAction(title: Constants.Alerts.defaultOKActionTitle, style: .default, handler: {_ -> Void in
             self.navigationController?.popViewController(animated: true)
         })
-        settingsService.changePassword(with: userPasswords) { result in
+        settingsService.changePassword(with: userPasswords) { [weak self] result in
             switch result {
             case .success():
-                self.sendAlert(message: Constants.Alerts.successfullyUpdatedMessage, action: defaultAction)
+                self?.sendAlert(message: Constants.Alerts.successfullyUpdatedMessage, action: defaultAction)
             case .failure:
-                self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
+                self?.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             }
         }
     }

@@ -6,19 +6,23 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet private var logOutButton: UIButton!
     @IBOutlet private var securityButton: UIButton!
-    
-    private var userStorage = UserStorage()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func logOutButtonPressed(_ sender: UIButton) {
-        UserStorage.token = nil
-        let storyboard = UIStoryboard(name: "Initial" , bundle:nil)
-        guard let viewController = storyboard.instantiateInitialViewController() else { return }
+        let okAction = UIAlertAction(title: Constants.Alerts.defaultOKActionTitle, style: .default, handler: {_ -> Void in
+            let storyboard = UIStoryboard(name: "Initial" , bundle:nil)
+            guard let viewController = storyboard.instantiateInitialViewController()
+            else { return }
+            UserStorage.token = nil
             viewController.modalPresentationStyle = .fullScreen
-            present(viewController, animated: true)
+            self.present(viewController, animated: true)
+        })
+        let cancelAction = UIAlertAction(title: Constants.Alerts.defaultCancelActionTitle, style: .destructive)
+
+        sendOKCancelAlert(message: Constants.Alerts.wantToLogOutMessage, actions: [okAction,cancelAction])
     }
     
     @IBAction func securityButtonPressed(_ sender: UIBarButtonItem) {

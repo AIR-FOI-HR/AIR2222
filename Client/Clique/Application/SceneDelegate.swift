@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window = UIWindow(windowScene: windowScene)
             window?.rootViewController = viewController
             window?.makeKeyAndVisible()
-        }else if UserStorage.token == nil {
+        } else if UserStorage.token == nil {
             let storyboard = UIStoryboard(name: "Initial" , bundle:nil)
             let viewController = storyboard.instantiateInitialViewController()
 

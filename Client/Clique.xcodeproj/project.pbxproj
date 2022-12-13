@@ -47,7 +47,7 @@
 		429861B929392D45001CF447 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429861B829392D45001CF447 /* SettingsService.swift */; };
 		429861C3294379BA001CF447 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429861C2294379BA001CF447 /* UIViewController+Extension.swift */; };
 		429AC26A2926ADF60029498B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429AC2692926ADF60029498B /* RegisterViewController.swift */; };
-		429FCA292933F2F200269AC5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FCA282933F2F200269AC5 /* Extensions.swift */; };
+		429FCA292933F2F200269AC5 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FCA282933F2F200269AC5 /* UIImageView+Extension.swift */; };
 		42D904382938263200831199 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 42D904372938263200831199 /* SkeletonView */; };
 		42D99DE3292835C700516EF9 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D99DE2292835C700516EF9 /* RegisterService.swift */; };
 		42D99DE62928362300516EF9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 42D99DE52928362300516EF9 /* Alamofire */; };
@@ -96,7 +96,7 @@
 		429861B829392D45001CF447 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		429861C2294379BA001CF447 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		429AC2692926ADF60029498B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		429FCA282933F2F200269AC5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		429FCA282933F2F200269AC5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		42D99DE2292835C700516EF9 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		42DB272B292656ED0027A00C /* LoginServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServices.swift; sourceTree = "<group>"; };
 		42DB2733292672970027A00C /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
@@ -314,7 +314,7 @@
 		429FCA272933F2E600269AC5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				429FCA282933F2F200269AC5 /* Extensions.swift */,
+				429FCA282933F2F200269AC5 /* UIImageView+Extension.swift */,
 				429861C2294379BA001CF447 /* UIViewController+Extension.swift */,
 				4229A3A52947D3710083494E /* UIView+Extension.swift */,
 			);
@@ -468,7 +468,7 @@
 				42EA63232932AADB007417D0 /* RegisterEntries.swift in Sources */,
 				4272BF27293413D400797045 /* PastJoinedEventsViewController.swift in Sources */,
 				4253AE8E2933BF6D0054DC2B /* SettingsViewController.swift in Sources */,
-				429FCA292933F2F200269AC5 /* Extensions.swift in Sources */,
+				429FCA292933F2F200269AC5 /* UIImageView+Extension.swift in Sources */,
 				4272BF1B2934136C00797045 /* PastCreatedEventsViewController.swift in Sources */,
 				4229A3A62947D3710083494E /* UIView+Extension.swift in Sources */,
 				42DB2734292672970027A00C /* UserStorage.swift in Sources */,

@@ -3,7 +3,7 @@ import KeychainAccess
 
 
 enum UserStorageValues: String {
-    case token = "token"
+    case token
 }
 
 let keychain = Keychain(service: "token")
@@ -23,12 +23,14 @@ class UserStorage {
     }
 
     private static func setKey(value: String?, key: UserStorageValues) {
+        guard let value = value else {
+            try? keychain.remove(key.rawValue)
+            return
+        }
         do {
-            if let newValue = value {
-                try keychain.set(newValue, key: key.rawValue)
-            }
+            try keychain.set(value, key: key.rawValue)
         } catch let error {
-            print("error: \(error)")
+            print("error \(error)")
         }
     }
 }
