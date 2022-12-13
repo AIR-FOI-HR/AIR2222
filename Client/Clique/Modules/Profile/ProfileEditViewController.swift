@@ -29,40 +29,39 @@ class ProfileEditViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getUser()
-//
-//        imageProfile.rounded()
-//
-//        imageProfile.skeletonableView()
-//        emailTextField.skeletonableView()
-//        nameTextfield.skeletonableView()
-//        surnameTextField.skeletonableView()
-//        bioTextView.skeletonableView()
-//        datePicker.skeletonableView()
-//        bioLabel.skeletonableView()
-//        dateOfBirthLabel.skeletonableView()
-//        buttonChooseImage.skeletonableView()
-//
-//        bioTextView.layer.borderColor = UIColor.systemGray5.cgColor
-//        bioTextView.layer.borderWidth = 1
+        imageProfile.rounded()
+
+        imageProfile.skeletonableView()
+        emailTextField.skeletonableView()
+        nameTextfield.skeletonableView()
+        surnameTextField.skeletonableView()
+        bioTextView.skeletonableView()
+        datePicker.skeletonableView()
+        bioLabel.skeletonableView()
+        dateOfBirthLabel.skeletonableView()
+        buttonChooseImage.skeletonableView()
+
+        bioTextView.layer.borderColor = UIColor.systemGray5.cgColor
+        bioTextView.layer.borderWidth = 1
     }
     
     private func getUser() {
         profileService.getUser { [weak self] result in
             switch result {
             case .success(let user):
+                self?.imageProfile.stopSkeletonAnimation()
+                self?.emailTextField.stopSkeletonAnimation()
+                self?.nameTextfield.stopSkeletonAnimation()
+                self?.surnameTextField.stopSkeletonAnimation()
+                self?.bioTextView.stopSkeletonAnimation()
+                self?.datePicker.stopSkeletonAnimation()
+                self?.view.hideSkeleton(reloadDataAfter: true,
+                                       transition: .crossDissolve(0.5))
+                
                 self?.nameTextfield.text = user.name
                 self?.surnameTextField.text = user.surname
                 self?.emailTextField.text = user.email
                 self?.bioTextView.text = user.bio
-//                self.imageProfile.stopSkeletonAnimation()
-//                self.emailTextField.stopSkeletonAnimation()
-//                self.nameTextfield.stopSkeletonAnimation()
-//                self.surnameTextField.stopSkeletonAnimation()
-//                self.bioTextView.stopSkeletonAnimation()
-//                self.datePicker.stopSkeletonAnimation()
-                
-                self?.view.hideSkeleton(reloadDataAfter: true,
-                                       transition: .crossDissolve(0.5))
             case .failure:
                 return
             }
