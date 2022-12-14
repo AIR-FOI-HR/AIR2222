@@ -102,21 +102,21 @@ namespace CliqueWebService.Controllers
             _db.BeginTransaction();
             try
             {
-                string event_id = json.GetProperty("event_id").ToString();
+                int event_id = int.Parse(json.GetProperty("event_id").ToString());
                 int status = int.Parse(json.GetProperty("status").ToString());
                 string query = "";
                 if(status < 2)
                 {
-                    query = $"INSERT INTO signs_up_for VALUES ({int.Parse(event_id)}, {id},2)";
+                    query = $"INSERT INTO signs_up_for VALUES ({event_id}, {id},2)";
                     status = 2;
                 }
                 else if (status == 2)
                 {
-                    query = $"UPDATE signs_up_for SET status_id = 3 WHERE event_id = {int.Parse(event_id)} AND user_id = {id}";
+                    query = $"UPDATE signs_up_for SET status_id = 3 WHERE event_id = {event_id} AND user_id = {id}";
                     status = 3;
                 } else if(status == 3)
                 {
-                    query = $"UPDATE signs_up_for SET status_id = 2 WHERE event_id = {int.Parse(event_id)} AND user_id = {id}";
+                    query = $"UPDATE signs_up_for SET status_id = 2 WHERE event_id = {event_id} AND user_id = {id}";
                     status = 2;
                 }
                 _db.ExecuteNonQuery(query);
