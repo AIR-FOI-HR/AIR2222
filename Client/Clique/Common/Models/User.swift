@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct UserProfile: Codable {
+struct User: Codable {
     let id: Int?
     let name: String
     let surname: String
     let email: String
     let contact: String
-    let birth_data: String
-    let profile_pic: String
+    let birthDate : String
+    let profilePicture: String
     let bio: String
     
     enum CodingKeys: String, CodingKey {
@@ -23,19 +23,8 @@ struct UserProfile: Codable {
         case surname = "surname"
         case email = "email"
         case contact = "contact_no"
-        case birth_data = "birth_data"
-        case profile_pic = "profile_pic"
+        case birthDate = "birth_data"
+        case profilePicture = "profile_pic"
         case bio = "bio"
     }
 }
-
-struct UserProfileUpdateData: Codable {
-    let name: String
-    let surname: String
-    let email: String
-    let contact_no: String
-    let birth_data: String
-    let profile_pic: String
-    let bio: String
-}
-
