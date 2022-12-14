@@ -13,14 +13,18 @@ import IQKeyboardManagerSwift
 class LoginViewController: UIViewController {
     
     var returnKeyHandler = IQKeyboardReturnKeyHandler()
-    @IBOutlet private weak var emailTextField: UITextField!
-    @IBOutlet private weak var passwordTextField: UITextField!
-    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private var emailTextField: UITextField!
+    @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var loginButton: UIButton!
     
     private let loginService = LoginService()
     let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
     var iconClick = false
     let buttonPasswordShow = UIButton(type: .custom)
+    
+    override func viewDidLoad() {
+        self.showButton()
+    }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         
@@ -38,9 +42,7 @@ class LoginViewController: UIViewController {
             let email = emailTextField.text,
             let password = passwordTextField.text,
             !email.isEmpty && !password.isEmpty
-        else {
-            return nil
-        }
+        else { return nil }
         let credentials = LoginCredentials(email: email, password: password)
         return credentials
     }
@@ -50,23 +52,17 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let token):
                 UserStorage.token = token.token
-                let storyboard = UIStoryboard(name: "BasicInfo", bundle: nil)
-                if let viewContoller = storyboard.instantiateInitialViewController() {
-                    viewContoller.modalPresentationStyle = .fullScreen
-                    self.present(viewContoller, animated: true)
-                }
-                self.stopAnimation(loading: self.loading)
+                let storyboard = UIStoryboard(name: "Profile" , bundle: nil)
+                guard let viewController = storyboard.instantiateInitialViewController()
+                else { return }
+                viewController.modalPresentationStyle = .fullScreen
+                self.present(viewController, animated: true)
+                self.stopAnimation()
             case .failure:
-                self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessasge)
-                self.stopAnimation(loading: self.loading)
+                self.sendOkAlert(message: Constants.Alerts.wrongCredentialsMessage)
+                self.stopAnimation()
             }
         }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
-        self.showButton()
     }
     
     private func showButton() {
@@ -91,5 +87,9 @@ class LoginViewController: UIViewController {
             buttonPasswordShow.setImage(UIImage(systemName: "eye.fill"), for: .normal)
         }
         iconClick = !iconClick
+    }
+    
+    @IBAction func closeLoginViewController(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 }

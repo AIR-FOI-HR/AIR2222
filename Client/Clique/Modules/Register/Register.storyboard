@@ -11,7 +11,7 @@
         <!--view-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController title="view" id="Y6W-OH-hqX" customClass="RegisterViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Register" title="view" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="RegisterViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,7 +130,7 @@
                         <constraints>
                             <constraint firstItem="exA-DB-e6H" firstAttribute="centerX" secondItem="nqM-l5-CuN" secondAttribute="centerX" id="0qI-3c-hVY"/>
                             <constraint firstAttribute="trailing" secondItem="Tx3-XF-Wdl" secondAttribute="trailing" id="2Pt-Qt-Sy2"/>
-                            <constraint firstItem="TBc-iq-1gB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="14" id="DeB-Lt-xws"/>
+                            <constraint firstItem="TBc-iq-1gB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="DeB-Lt-xws"/>
                             <constraint firstItem="qyc-A5-9Pd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="DvW-Dk-XrQ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TBc-iq-1gB" secondAttribute="trailing" constant="345" id="Iso-lo-6II"/>
                             <constraint firstItem="Tx3-XF-Wdl" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Qqm-WV-C1c"/>
@@ -166,8 +166,8 @@
     </scenes>
     <resources>
         <image name="aaaaaaaaaaaa_1" width="884" height="923"/>
-        <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="denoise_background" width="736" height="1353"/>
+        <image name="xmark.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

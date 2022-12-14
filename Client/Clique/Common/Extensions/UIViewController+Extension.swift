@@ -14,12 +14,26 @@ extension UIViewController {
         with title: String = "",
         message: String
     ) {
-        let alertController = UIAlertController(title: title, message: message , preferredStyle: .alert)
-        let okAction = UIAlertAction(title: Constants.Alerts.deafultActionTitle, style: .cancel)
+        let alertController = UIAlertController(title: title,
+                                                message: message ,
+                                                preferredStyle: .alert)
+        let okAction = UIAlertAction(title: Constants.Alerts.defaultOKActionTitle,
+                                     style: .cancel)
         alertController.addAction(okAction)
         present(alertController, animated: true)
     }
     
+    func sendOKCancelAlert(
+        with title: String = "",
+        message: String,
+        actions: [UIAlertAction]
+    ) {
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+        actions.forEach { alertController.addAction($0) }
+        present(alertController, animated: true)
+    }
     func sendAlert(
         with title: String = "",
         message: String,
