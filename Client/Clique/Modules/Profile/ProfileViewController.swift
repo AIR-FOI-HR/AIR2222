@@ -34,7 +34,10 @@ class ProfileViewController: UIViewController {
         
         labelProfileName.skeletonTextNumberOfLines = 1
         labelProfileName.skeletonTextLineHeight = .relativeToFont
-        labelProfileName.skeletonPaddingInsets = UIEdgeInsets(top: 0, left: 70, bottom: 0, right: 0)
+        labelProfileName.skeletonPaddingInsets = UIEdgeInsets(top: 0,
+                                                              left: 70,
+                                                              bottom: 0,
+                                                              right: 0)
         
         bioTextView.layer.borderColor = UIColor.systemGray6.cgColor
         bioTextView.layer.borderWidth = 1

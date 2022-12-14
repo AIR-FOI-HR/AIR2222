@@ -74,21 +74,22 @@ class ProfileEditViewController: UIViewController {
         updateUser(with: userProfileData)
     }
         
-    func updateUser(with userUpdateData: UserProfile) {
+    func updateUser(with userUpdateData: User) {
         let defaultAction = UIAlertAction(title: Constants.Alerts.defaultOKActionTitle, style: .default, handler: {_ -> Void in
             self.navigationController?.popViewController(animated: true)
         })
         profileService.updateUser(with: userUpdateData) { result in
             switch result {
             case .success():
-                self.sendAlert(message: Constants.Alerts.successfullyUpdatedMessage, action: defaultAction)
+                self.sendOKCancelAlert(message: Constants.Alerts.successfullyUpdatedMessage,
+                                        actions: [defaultAction])
             case .failure:
                 self.sendOkAlert(message: Constants.Alerts.wrongInputMessage)
             }
         }
     }
         
-    func getProfileData() -> UserProfile? {
+    func getProfileData() -> User? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = Constants.Strings.dateFormatDateOfBirth
         let selectedDate = dateFormatter.string(from: datePicker.date)
@@ -101,14 +102,14 @@ class ProfileEditViewController: UIViewController {
             !name.isEmpty, !surname.isEmpty, !email.isEmpty, !bio.isEmpty
         else { return nil }
             
-        let profileData = UserProfile(
+        let profileData = User(
             id: nil,
             name: name,
             surname: surname,
             email: email,
             contact: "empty",
-            birth_data: selectedDate,
-            profile_pic: "empty",
+            birthDate: selectedDate,
+            profilePicture: "empty",
             bio: bio
         )
         return profileData
@@ -120,16 +121,19 @@ extension ProfileEditViewController: UITextViewDelegate {
         let currentText = textView.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
-        let countdown = 251 - updatedText.count
-        let text = "Write a short bio. You have" + " \(countdown) " + "characters remaining."
+        let countdown = (251 - bioTextView.text.count) - updatedText.count
+        let text = "Write a short bio. You have \(countdown) characters remaining."
         let range = (text as NSString).range(of: "\(countdown)")
         let attributedString = NSMutableAttributedString(string:text)
         if countdown == 0 {
-            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.systemRed, range: range)
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                          value: UIColor.systemRed, range: range)
         } else if countdown > 0 && countdown < 11 {
-            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.systemYellow , range: range)
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                          value: UIColor.systemYellow , range: range)
         } else {
-            attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.systemGreen , range: range)
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                          value: UIColor.systemGreen , range: range)
         }
         characterCountLabel.attributedText = attributedString
         return updatedText.count <= 250

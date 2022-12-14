@@ -13,6 +13,6 @@ extension UIView {
     func skeletonableView() {
         self.isSkeletonable = true
         self.showAnimatedSkeleton(usingColor: .clouds,
-                                          transition: .crossDissolve(0.5))
+                                  transition: .crossDissolve(0.5))
     }
 }

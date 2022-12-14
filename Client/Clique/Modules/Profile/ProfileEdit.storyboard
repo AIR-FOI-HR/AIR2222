@@ -131,8 +131,8 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="I9L-VX-v2J">
                                                                 <rect key="frame" x="0.0" y="150" width="329" height="185.33333333333337"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write a short bio. You have 250 characters remaining." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ec-vP-MSg">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="40.666666666666664"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write a short bio." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ec-vP-MSg">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="20.333333333333332"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -141,7 +141,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="im9-O5-Okd">
-                                                                        <rect key="frame" x="0.0" y="56.666666666666629" width="329" height="128.66666666666666"/>
+                                                                        <rect key="frame" x="0.0" y="36.333333333333314" width="329" height="149"/>
                                                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                                         <color key="textColor" systemColor="labelColor"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>

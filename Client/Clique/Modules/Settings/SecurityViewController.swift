@@ -30,8 +30,7 @@ class SecurityViewController: UIViewController {
         
         newPasswordTextField.addTarget(self, action: #selector(checkAndDisplayError(textfield:)),
                                        for: .editingChanged)
-        repeatNewPasswordTextField.addTarget(self,
-                                             action:#selector(compareAndDisplay(textfield:)),
+        repeatNewPasswordTextField.addTarget(self, action:#selector(compareAndDisplay(textfield:)),
                                              for: .editingChanged)
     }
     
@@ -53,7 +52,7 @@ class SecurityViewController: UIViewController {
         settingsService.changePassword(with: userPasswords) { [weak self] result in
             switch result {
             case .success():
-                self?.sendAlert(message: Constants.Alerts.successfullyUpdatedMessage, action: defaultAction)
+                self?.sendOKCancelAlert(message: Constants.Alerts.successfullyUpdatedMessage, actions: [defaultAction])
             case .failure:
                 self?.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             }

@@ -12,7 +12,8 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func logOutButtonPressed(_ sender: UIButton) {
-        let okAction = UIAlertAction(title: Constants.Alerts.defaultOKActionTitle, style: .default, handler: {_ -> Void in
+        let okAction = UIAlertAction(title: Constants.Alerts.defaultOKActionTitle,
+                                     style: .default, handler: {_ -> Void in
             let storyboard = UIStoryboard(name: "Initial" , bundle:nil)
             guard let viewController = storyboard.instantiateInitialViewController()
             else { return }
@@ -20,7 +21,8 @@ class SettingsViewController: UIViewController {
             viewController.modalPresentationStyle = .fullScreen
             self.present(viewController, animated: true)
         })
-        let cancelAction = UIAlertAction(title: Constants.Alerts.defaultCancelActionTitle, style: .destructive)
+        let cancelAction = UIAlertAction(title: Constants.Alerts.defaultCancelActionTitle,
+                                         style: .destructive)
 
         sendOKCancelAlert(message: Constants.Alerts.wantToLogOutMessage, actions: [okAction,cancelAction])
     }

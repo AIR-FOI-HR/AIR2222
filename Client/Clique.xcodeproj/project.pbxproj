@@ -30,7 +30,7 @@
 		425992F929383C2800DEFA34 /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425992F829383C2800DEFA34 /* SecurityViewController.swift */; };
 		425992FB29383C3400DEFA34 /* Security.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425992FA29383C3400DEFA34 /* Security.storyboard */; };
 		425B8D12293585F500907BD9 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8D11293585F500907BD9 /* ProfileService.swift */; };
-		425B8D142935866000907BD9 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8D132935866000907BD9 /* UserProfile.swift */; };
+		425B8D142935866000907BD9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8D132935866000907BD9 /* User.swift */; };
 		425B8D1829359BA100907BD9 /* ProfileEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425B8D1729359BA100907BD9 /* ProfileEdit.storyboard */; };
 		425B8D1A29359BB900907BD9 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B8D1929359BB900907BD9 /* ProfileEditViewController.swift */; };
 		4272BF1429340FAB00797045 /* JoinedEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4272BF1329340FAB00797045 /* JoinedEventsViewController.swift */; };
@@ -79,7 +79,7 @@
 		425992F829383C2800DEFA34 /* SecurityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityViewController.swift; sourceTree = "<group>"; };
 		425992FA29383C3400DEFA34 /* Security.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Security.storyboard; sourceTree = "<group>"; };
 		425B8D11293585F500907BD9 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
-		425B8D132935866000907BD9 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		425B8D132935866000907BD9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		425B8D1729359BA100907BD9 /* ProfileEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileEdit.storyboard; sourceTree = "<group>"; };
 		425B8D1929359BB900907BD9 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		4272BF1329340FAB00797045 /* JoinedEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedEventsViewController.swift; sourceTree = "<group>"; };
@@ -230,7 +230,7 @@
 				4237AC84292C20C700095D47 /* LoginCredentials.swift */,
 				4237AC86292C215F00095D47 /* LoginResponse.swift */,
 				42EA63222932AADB007417D0 /* RegisterEntries.swift */,
-				425B8D132935866000907BD9 /* UserProfile.swift */,
+				425B8D132935866000907BD9 /* User.swift */,
 				429861B629392CA4001CF447 /* PasswordData.swift */,
 			);
 			path = Models;
@@ -451,7 +451,7 @@
 				429861B929392D45001CF447 /* SettingsService.swift in Sources */,
 				4272BF1429340FAB00797045 /* JoinedEventsViewController.swift in Sources */,
 				42464B01292F7ADA009FDE1D /* SceneDelegate.swift in Sources */,
-				425B8D142935866000907BD9 /* UserProfile.swift in Sources */,
+				425B8D142935866000907BD9 /* User.swift in Sources */,
 				429861C3294379BA001CF447 /* UIViewController+Extension.swift in Sources */,
 				4237AC85292C20C700095D47 /* LoginCredentials.swift in Sources */,
 				428ADAA529264FF100417940 /* LoginViewController.swift in Sources */,

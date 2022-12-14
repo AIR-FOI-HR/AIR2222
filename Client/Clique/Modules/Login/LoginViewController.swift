@@ -41,9 +41,7 @@ class LoginViewController: UIViewController {
             let email = emailTextField.text,
             let password = passwordTextField.text,
             !email.isEmpty && !password.isEmpty
-        else {
-            return nil
-        }
+        else { return nil }
         let credentials = LoginCredentials(email: email, password: password)
         return credentials
     }
@@ -54,7 +52,8 @@ class LoginViewController: UIViewController {
             case .success(let token):
                 UserStorage.token = token.token
                 let storyboard = UIStoryboard(name: "Profile" , bundle: nil)
-                guard let viewController = storyboard.instantiateInitialViewController() else { return }
+                guard let viewController = storyboard.instantiateInitialViewController()
+                else { return }
                     viewController.modalPresentationStyle = .fullScreen
                     self.present(viewController, animated: true)
                 self.stopAnimation()
@@ -97,7 +96,8 @@ class LoginViewController: UIViewController {
                 NSLayoutConstraint.activate([
                     loading.widthAnchor.constraint(equalToConstant: 40),
                     loading.heightAnchor.constraint(equalToConstant: 40),
-                    loading.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100),
+                    loading.centerYAnchor.constraint(equalTo: view.centerYAnchor,
+                                                     constant: 100),
                     loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
                 ])
                 loading.startAnimating()
