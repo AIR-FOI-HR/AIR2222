@@ -33,8 +33,8 @@ final class ProfileService {
                        method: .post,
                        parameters : entries,
                        encoder: JSONParameterEncoder.default,
-                       headers: Constants.Service.requestHeaders()
-            ).validate(statusCode: 200..<300)
+                       headers: Constants.Service.requestHeaders())
+            .validate(statusCode: 200..<300)
             .response {
                 response in
                 debugPrint(response)

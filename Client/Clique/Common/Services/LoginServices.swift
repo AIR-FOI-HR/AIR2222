@@ -27,4 +27,4 @@ final class LoginService {
                 }
             }
         }
-    }
+}

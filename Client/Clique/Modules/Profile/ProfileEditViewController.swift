@@ -16,7 +16,6 @@ class ProfileEditViewController: UIViewController {
     @IBOutlet private var emailTextField: UITextField!
     @IBOutlet private var nameTextfield: UITextField!
     @IBOutlet private var surnameTextField: UITextField!
-    @IBOutlet private var datePicker: UIDatePicker!
     @IBOutlet private var dateOfBirthLabel: UILabel!
     @IBOutlet private var bioTextView: UITextView!
     @IBOutlet private var characterCountLabel: UILabel!
@@ -33,8 +32,6 @@ class ProfileEditViewController: UIViewController {
         nameTextfield.skeletonableView()
         surnameTextField.skeletonableView()
         bioTextView.skeletonableView()
-        datePicker.skeletonableView()
-        dateOfBirthLabel.skeletonableView()
         buttonChooseImage.skeletonableView()
         
         bioTextView.delegate = self
@@ -51,7 +48,6 @@ class ProfileEditViewController: UIViewController {
                 self?.nameTextfield.stopSkeletonAnimation()
                 self?.surnameTextField.stopSkeletonAnimation()
                 self?.bioTextView.stopSkeletonAnimation()
-                self?.datePicker.stopSkeletonAnimation()
                 self?.view.hideSkeleton(reloadDataAfter: true,
                                        transition: .crossDissolve(0.5))
                 
@@ -90,10 +86,7 @@ class ProfileEditViewController: UIViewController {
     }
         
     func getProfileData() -> User? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = Constants.Strings.dateFormatDateOfBirth
-        let selectedDate = dateFormatter.string(from: datePicker.date)
-            
+        
         guard
             let name = nameTextfield.text,
             let surname = surnameTextField.text,
@@ -108,7 +101,7 @@ class ProfileEditViewController: UIViewController {
             surname: surname,
             email: email,
             contact: "empty",
-            birthDate: selectedDate,
+            birthDate: "2000-12-12",
             profilePicture: "empty",
             bio: bio
         )
