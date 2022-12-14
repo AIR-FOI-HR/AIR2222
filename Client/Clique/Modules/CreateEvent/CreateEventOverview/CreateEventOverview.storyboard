@@ -11,7 +11,7 @@
         <!--Create Event Overview View Controller-->
         <scene sceneID="Iuw-uH-miJ">
             <objects>
-                <viewController id="Jro-T9-4dQ" customClass="CreateEventOverviewViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Jro-T9-4dQ" customClass="CreateEventOverviewViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YZ1-Uz-dOd">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -11,13 +11,13 @@
         <!--Date and Time-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="DateTimeViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="DateTimeViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="15s-hL-TJn">
-                                <rect key="frame" x="16" y="109" width="361" height="376"/>
+                                <rect key="frame" x="16" y="108.99999999999997" width="361" height="376.33333333333326"/>
                                 <color key="tintColor" systemColor="systemOrangeColor"/>
                             </datePicker>
                         </subviews>

@@ -38,6 +38,7 @@ class LocationViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
                     span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)), animated: true)
             }
         }
+        
     }
     
     @IBAction func chooseMyLocationButtonPressed(_ sender: UIButton) {

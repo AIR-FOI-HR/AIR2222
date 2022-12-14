@@ -49,15 +49,22 @@ class CreateEventOverviewViewController: UIViewController {
         createEventService.createEvent(with: createEventEntries) { result in
             switch result {
             case .success() :
-                self.sendOkAlert(message: Constants.Alerts.successfullyCreatedEventMessasge)
+                let defaultAction = UIAlertAction(title: "OK", style: .default, handler: {_ -> Void in
+                    let storyboard = UIStoryboard(name: "TabBar" , bundle: nil)
+                    if let viewController = storyboard.instantiateInitialViewController() {
+                        viewController.modalPresentationStyle = .fullScreen
+                        self.present(viewController, animated: true)
+                    }
+                })
                 self.stopAnimation(loading: self.loading)
+                self.sendAlert(message: Constants.Alerts.successfullyCreatedEventMessasge, action: defaultAction)
             case .failure :
-                self.sendOkAlert(message: Constants.Alerts.wrongInputMessasge)
+                self.sendOkAlert(message: Constants.Alerts.wrongInputMessage)
                 self.stopAnimation(loading: self.loading)
             }
         }
     }
-    
+
     func getCreateEventEntries() -> CreateEventEntries? {
         guard
             let category = createEventObject.category?.id.description,

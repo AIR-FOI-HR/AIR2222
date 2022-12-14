@@ -11,7 +11,7 @@
         <!--Edit Profile-->
         <scene sceneID="6IZ-fZ-5B8">
             <objects>
-                <viewController storyboardIdentifier="ProfileEdit" title="Edit Profile" id="yq6-fd-NwP" customClass="ProfileEditViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileEdit" title="Edit Profile" hidesBottomBarWhenPushed="YES" id="yq6-fd-NwP" customClass="ProfileEditViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VFC-wO-SpX">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -20,6 +20,8 @@
                         <color key="selectedImageTintColor" systemColor="systemOrangeColor"/>
                     </tabBar>
                     <connections>
+                        <segue destination="54b-Rn-1kS" kind="relationship" relationship="viewControllers" id="3k1-TT-I3W"/>
+                        <segue destination="15c-UJ-sLS" kind="relationship" relationship="viewControllers" id="1Nt-eA-VDF"/>
                         <segue destination="Arb-Ay-nEU" kind="relationship" relationship="viewControllers" id="M1g-1k-1Pq"/>
                     </connections>
                 </tabBarController>
@@ -35,11 +37,37 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXB-jf-4e5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="958" y="-250"/>
+            <point key="canvasLocation" x="945" y="-114"/>
+        </scene>
+        <!--BasicInfo-->
+        <scene sceneID="7Tf-VI-PJ3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BasicInfo" id="15c-UJ-sLS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Create" image="plus.app.fill" catalog="system" id="YiI-rv-EYN">
+                        <color key="badgeColor" systemColor="systemOrangeColor"/>
+                    </tabBarItem>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zAp-bS-qnP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="-220"/>
+        </scene>
+        <!--EventList-->
+        <scene sceneID="eUM-4x-XAw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventList" id="54b-Rn-1kS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="house.fill" catalog="system" id="dpo-Tg-op3">
+                        <color key="badgeColor" systemColor="systemOrangeColor"/>
+                    </tabBarItem>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vlQ-Fv-ZUG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="767" y="-277"/>
         </scene>
     </scenes>
     <resources>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="plus.app.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

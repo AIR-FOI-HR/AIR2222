@@ -75,6 +75,7 @@
                         <constraints>
                             <constraint firstItem="CU1-Bu-ePP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="74M-ez-4w5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CU1-Bu-ePP" secondAttribute="trailing" constant="32" id="AJQ-e5-VFI"/>
+                            <constraint firstItem="fPN-lV-c9v" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="C6s-Ep-JjN"/>
                             <constraint firstItem="CU1-Bu-ePP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="E8m-eN-g3U"/>
                             <constraint firstItem="Rql-Vg-o77" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Vvu-FR-01c"/>
                             <constraint firstItem="fPN-lV-c9v" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="Wre-gp-MRL"/>

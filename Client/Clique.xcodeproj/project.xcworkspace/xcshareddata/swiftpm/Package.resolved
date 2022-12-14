@@ -3,19 +3,13 @@
     {
       "identity" : "alamofire",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Alamofire/Alamofire",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
         "revision" : "78424be314842833c04bc3bef5b72e85fff99204",
         "version" : "5.6.4"
       }
     },
     {
-      "identity" : "hero",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/HeroTransitions/Hero",
-      "state" : {
-        "revision" : "66a554b21116fccf61b3aa2205a86f6b0cdc9766",
-        "version" : "1.6.2"
       "identity" : "alamofireimage",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/AlamofireImage",
@@ -31,6 +25,15 @@
       "state" : {
         "revision" : "684ea6db362feaefdfcff89356e446bec8bcde3d",
         "version" : "7.2.0"
+      }
+    },
+    {
+      "identity" : "hero",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/HeroTransitions/Hero",
+      "state" : {
+        "revision" : "66a554b21116fccf61b3aa2205a86f6b0cdc9766",
+        "version" : "1.6.2"
       }
     },
     {
@@ -54,7 +57,7 @@
     {
       "identity" : "nvactivityindicatorview",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ninjaprox/NVActivityIndicatorView.git",
+      "location" : "https://github.com/ninjaprox/NVActivityIndicatorView",
       "state" : {
         "revision" : "bcb52371f2259254bac6690f92bb474a61768c47",
         "version" : "5.1.1"

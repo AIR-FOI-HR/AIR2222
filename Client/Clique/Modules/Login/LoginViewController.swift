@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
         
         self.startAnimation(loading: loading, view: view)
         guard let credentails = getLoginCredentials() else {
-            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessasge)
+            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             self.startAnimation(loading: loading, view: view)
             return
         }
@@ -52,15 +52,15 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let token):
                 UserStorage.token = token.token
-                let storyboard = UIStoryboard(name: "Profile" , bundle: nil)
+                let storyboard = UIStoryboard(name: "TabBar" , bundle: nil)
                 guard let viewController = storyboard.instantiateInitialViewController()
                 else { return }
                 viewController.modalPresentationStyle = .fullScreen
                 self.present(viewController, animated: true)
-                self.stopAnimation()
+                self.stopAnimation(loading: self.loading)
             case .failure:
                 self.sendOkAlert(message: Constants.Alerts.wrongCredentialsMessage)
-                self.stopAnimation()
+                self.stopAnimation(loading: self.loading)
             }
         }
     }

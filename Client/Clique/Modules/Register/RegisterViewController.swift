@@ -18,7 +18,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet private var passwordCheckLabel: UILabel!
     @IBOutlet private var matchingPasswordsLabel: UILabel!
     @IBOutlet private var ageSwitcher: UISwitch!
-    @IBOutlet private var backButton: UIButton!
+    @IBOutlet private var closeButton: UIButton!
     
     var returnKeyHandler = IQKeyboardReturnKeyHandler()
     let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
@@ -32,12 +32,12 @@ class RegisterViewController: UIViewController {
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         
         guard let registerEntries = getRegisterEntries() else {
-            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessasge)
+            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             return
         }
         
         guard checkPasswords() else{
-            self.sendOkAlert(message: Constants.Alerts.passwordsDontMatchMessasge)
+            self.sendOkAlert(message: Constants.Alerts.passwordsDontMatchMessage)
             return
         }
         self.startAnimation(loading: loading, view: view)
@@ -55,10 +55,10 @@ class RegisterViewController: UIViewController {
         registerService.register(with: registerEntries) { result in
             switch result {
             case .success() :
-                self.sendAlert(message: Constants.Alerts.successRegisterMessasge, action: defaultAction)
+                self.sendAlert(message: Constants.Alerts.successRegisterMessage, action: defaultAction)
                 self.stopAnimation(loading: self.loading)
             case .failure :
-                self.sendOkAlert(message: Constants.Alerts.wrongInputMessasge)
+                self.sendOkAlert(message: Constants.Alerts.wrongInputMessage)
                 self.stopAnimation(loading: self.loading)
             }
         }
@@ -182,6 +182,10 @@ class RegisterViewController: UIViewController {
             buttonRePasswordShow.setImage(UIImage(systemName: "eye.fill"), for: .normal)
         }
         iconClick = !iconClick
+    }
+    
+    @IBAction func closeRegisterViewController(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 }
 

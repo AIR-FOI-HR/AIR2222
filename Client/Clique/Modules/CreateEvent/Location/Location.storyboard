@@ -12,13 +12,13 @@
         <!--Location-->
         <scene sceneID="Kn8-Vj-mFB">
             <objects>
-                <viewController id="U92-fw-6b0" customClass="LocationViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="U92-fw-6b0" customClass="LocationViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VQb-g2-U6x" customClass="lo">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="56j-qH-hgP">
-                                <rect key="frame" x="0.0" y="141" width="393" height="711"/>
+                                <rect key="frame" x="0.0" y="141" width="393" height="760"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tvk-q3-bvV">
@@ -98,7 +98,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="chooseMyLocationButton" destination="9oz-nR-9f9" id="PBv-lg-02o"/>
                         <outlet property="chosenLocationTextField" destination="gj9-k4-S04" id="Dp5-6s-NLs"/>

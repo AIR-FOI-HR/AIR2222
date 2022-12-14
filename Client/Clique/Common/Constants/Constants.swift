@@ -40,7 +40,7 @@ enum Constants {
         static let pleaseEnterInfoMessage = "Please enter all required information."
         static let successRegisterMessage = "Successfully registrated."
         static let passwordsDontMatchMessage = "Passwords don't match."
-        static let wrongInputMessage = "Wrong input/"
+        static let wrongInputMessage = "Wrong input."
         static let defaultOKActionTitle = "OK"
         static let defaultCancelActionTitle = "Cancel"
         static let wantToLogOutMessage = "Are you sure you want to log out?"
