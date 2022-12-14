@@ -22,7 +22,7 @@ final class EventServices {
                 }
             }
     }
-    func checkUserStatusOnEvent(event_id: String,
+    /*func checkUserStatusOnEvent(event_id: String,
                                 completion: @escaping(Result<Int, Error>) -> Void) {
         AF.request(Constants.Service.userRegisteredOnEventURL + event_id,
                    method: .get,
@@ -37,11 +37,11 @@ final class EventServices {
                     completion(.failure(error))
                 }
             }
-    }
+    }*/
     
-    func registerOnEvent(event_id: String, status: Int,
+    func registerToEvent(event_id: String, status: Int,
         completion: @escaping(Result<Int, Error>) -> Void) {
-        AF.request(Constants.Service.registerOnEventURL,
+        AF.request(Constants.Service.eventRegistrationURL,
                    method: .post,
                    parameters: ["event_id": event_id,
                                 "status": status],

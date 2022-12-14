@@ -18,6 +18,7 @@ struct Event: Codable {
     let creator: User
     let category: String
     let description: String?
+    let participants: [Participant?]
     
     enum CodingKeys: String, CodingKey {
             case id = "event_id"
@@ -30,5 +31,12 @@ struct Event: Codable {
             case creator = "creator"
             case category = "category"
             case description = "description"
-    }  
+            case participants = "participants"
+    }
+    
+    enum didItEnd: String {
+        case pending
+        case inProgress
+        case done
+    }
 }

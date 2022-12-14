@@ -31,7 +31,6 @@ class EventDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        _checkUserStatusOnEvent()
         _setupUI()
     }
 }
@@ -70,7 +69,7 @@ private extension EventDetailViewController {
     }
     
     func _checkUserStatusOnEvent(){
-        _eventServices.checkUserStatusOnEvent(event_id: _event_Id){ [weak self] result in
+        /*_eventServices.checkUserStatusOnEvent(event_id: _event_Id){ [weak self] result in
             guard let _self = self else { return }
             switch result{
             case .success(let status):
@@ -79,7 +78,7 @@ private extension EventDetailViewController {
             case .failure(let error):
                 print(error)
             }
-        }
+        }*/
     }
     
     func _activateButton(){
@@ -114,7 +113,7 @@ private extension EventDetailViewController {
     }
     
     func reg(){
-        _eventServices.registerOnEvent(event_id: _event_Id, status: _status){ [weak self] result in
+        _eventServices.registerToEvent(event_id: _event_Id, status: _status){ [weak self] result in
             guard let _self = self else { return }
             switch result{
             case .success(let success):
