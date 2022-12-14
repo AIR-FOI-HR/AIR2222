@@ -19,6 +19,7 @@
 		42496D0C29301C9A00D972C9 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 42496D0B29301C9A00D972C9 /* KeychainAccess */; };
 		42496D10293033AA00D972C9 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 42496D0F293033AA00D972C9 /* IQKeyboardManagerSwift */; };
 		4254AD3F29297E2A004D649D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4254AD3E29297E2A004D649D /* Constants.swift */; };
+		425BF017294A639500FBD220 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 425BF016294A639500FBD220 /* JWTDecode */; };
 		42740C3F2926468900CD1DFC /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42740C3E2926468900CD1DFC /* Register.storyboard */; };
 		427F18772923F6D9009284DA /* EventList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427F18762923F6D9009284DA /* EventList.storyboard */; };
 		427F18792923F6FB009284DA /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427F18782923F6FB009284DA /* EventListViewController.swift */; };
@@ -84,6 +85,7 @@
 			files = (
 				427F188329263D9A009284DA /* Alamofire in Frameworks */,
 				427F188929264468009284DA /* AlamofireImage in Frameworks */,
+				425BF017294A639500FBD220 /* JWTDecode in Frameworks */,
 				42496D10293033AA00D972C9 /* IQKeyboardManagerSwift in Frameworks */,
 				42496D0C29301C9A00D972C9 /* KeychainAccess in Frameworks */,
 				420C5D92292C586C001E650D /* NVActivityIndicatorViewExtended in Frameworks */,
@@ -291,6 +293,7 @@
 				420C5D91292C586C001E650D /* NVActivityIndicatorViewExtended */,
 				42496D0B29301C9A00D972C9 /* KeychainAccess */,
 				42496D0F293033AA00D972C9 /* IQKeyboardManagerSwift */,
+				425BF016294A639500FBD220 /* JWTDecode */,
 			);
 			productName = Clique;
 			productReference = 420CDA94290E54380074ACFA /* Clique.app */;
@@ -327,6 +330,7 @@
 				420C5D8E292C586C001E650D /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				42496D0A29301C9A00D972C9 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				425BF015294A639500FBD220 /* XCRemoteSwiftPackageReference "JWTDecode" */,
 			);
 			productRefGroup = 420CDA95290E54380074ACFA /* Products */;
 			projectDirPath = "";
@@ -613,6 +617,14 @@
 				kind = branch;
 			};
 		};
+		425BF015294A639500FBD220 /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		427F188129263D9A009284DA /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -659,6 +671,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 42496D0E293033AA00D972C9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		425BF016294A639500FBD220 /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 425BF015294A639500FBD220 /* XCRemoteSwiftPackageReference "JWTDecode" */;
+			productName = JWTDecode;
 		};
 		427F188229263D9A009284DA /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

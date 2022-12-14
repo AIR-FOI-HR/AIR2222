@@ -39,7 +39,7 @@ final class EventServices {
             }
     }*/
     
-    func registerToEvent(event_id: String, status: Int,
+    func registerToEvent(event_id: Int, status: Int,
         completion: @escaping(Result<Int, Error>) -> Void) {
         AF.request(Constants.Service.eventRegistrationURL,
                    method: .post,

@@ -7,9 +7,10 @@
 
 import Foundation
 import UIKit
+import JWTDecode
 
 class EventDetailViewController: UIViewController {
-    var event : Event?
+    public var event : Event!
     
     @IBOutlet private var _eventDescription: UILabel!
     @IBOutlet private var _eventName: UILabel!
@@ -23,9 +24,9 @@ class EventDetailViewController: UIViewController {
     @IBOutlet private var _buttonJoinEvent: UIButton!
     
     
-    private var _eventServices = EventServices()
-    private var _status = 0
-    private var _event_Id = "0"
+    private var eventServices = EventServices()
+    private var status = 0
+//    private var _event_Id = "0"
     private var _alertMessage = ""
     private var _didItEnd = false
     
@@ -33,13 +34,22 @@ class EventDetailViewController: UIViewController {
         super.viewDidLoad()
         _setupUI()
     }
+    
+    static func initializeDetailsViewController(with event: Event) -> UIViewController? {
+        let storyboard = UIStoryboard(name: String(describing: "EventDetail"), bundle: nil)
+        let viewController = storyboard.instantiateInitialViewController() as? EventDetailViewController
+        viewController?.event = event
+        return viewController
+    }
 }
+
+
 
 private extension EventDetailViewController {
     
     func _setupUI() {
         guard let _event = self.event else { return }
-        _event_Id = String(_event.id)
+//        _event_Id = String(_event.id)
         _eventName.text = _event.name
         _eventDescription.text = _event.description
         _eventCreator.text = _event.creator.name + " " + _event.creator.surname
@@ -53,11 +63,11 @@ private extension EventDetailViewController {
             _eventCost.text = Constants.Labels.labelFree
         }
         _eventCategory.text = _event.category
-        _buttonJoinEvent.addTarget(self, action: #selector(_registerOnEvent), for: .touchUpInside)
+        _buttonJoinEvent.addTarget(self, action: #selector(_registerToEvent), for: .touchUpInside)
         if(_stringToTimeStamp(timeString: _event.timestamp) < NSDate().timeIntervalSince1970){
             _didItEnd = true
         }
-        _checkUserStatusOnEvent()
+        _checkUserStatusOnEvent(participants: _event.participants)
     }
     
     func _stringToTimeStamp(timeString: String) -> TimeInterval {
@@ -68,7 +78,23 @@ private extension EventDetailViewController {
         return date!.timeIntervalSince1970
     }
     
-    func _checkUserStatusOnEvent(){
+    func _checkUserStatusOnEvent(participants: [Participant?]){
+        var id = 0
+        do{
+            let jwt = try decode (jwt: "")
+            if let userId = jwt["UserId"].string {
+                id = Int(userId) ?? 0
+            }
+        }catch{
+            return
+        }
+        participants.forEach{participant in
+            if(participant?.user.id  == id) {
+                status = participant?.status ?? 0
+                _activateButton()
+                return
+            }
+        }
         /*_eventServices.checkUserStatusOnEvent(event_id: _event_Id){ [weak self] result in
             guard let _self = self else { return }
             switch result{
@@ -83,26 +109,26 @@ private extension EventDetailViewController {
     
     func _activateButton(){
         if(!_didItEnd){
-            if(_status == 1 || _status == 3){
+            if(status == 1 || status == 3){
                         _buttonJoinEvent.setTitle("Join", for: .normal)
                         _buttonJoinEvent.isHidden = false
                         _alertMessage = "Are you sure you want to join this event?"
-                    } else if(_status == 2) {
+                    } else if(status == 2) {
                         _buttonJoinEvent.setTitle("Cancel", for: .normal)
                         _buttonJoinEvent.isHidden = false
                         _alertMessage = "Are you sure you want to cancel this event?"
                     }
-        } else if(_didItEnd && _status == 2) {
+        } else if(_didItEnd && status == 2) {
             print("Ovdje bi trebalo ici ocjenjivanje")
         } else {
             _buttonJoinEvent.isHidden = true
         }
     }
     
-    @objc func _registerOnEvent(){
+    @objc func _registerToEvent(){
         let refreshAlert = UIAlertController(title: "Confirmation", message: _alertMessage, preferredStyle: UIAlertController.Style.alert)
 
-        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in self.reg()
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in self.callRegisterToEventService()
         }))
 
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -112,13 +138,13 @@ private extension EventDetailViewController {
         present(refreshAlert, animated: true, completion: nil)
     }
     
-    func reg(){
-        _eventServices.registerToEvent(event_id: _event_Id, status: _status){ [weak self] result in
+    func callRegisterToEventService(){
+        eventServices.registerToEvent(event_id: event.id, status: status){ [weak self] result in
             guard let _self = self else { return }
             switch result{
             case .success(let success):
                 print(success)
-                _self._status = success
+                _self.status = success
                 _self._activateButton()
             case .failure(let error):
                 print(error)

@@ -33,10 +33,12 @@ struct Event: Codable {
             case description = "description"
             case participants = "participants"
     }
-    
-    enum didItEnd: String {
-        case pending
-        case inProgress
-        case done
-    }
 }
+
+//extension Event {
+//    enum didItEnd: String {
+//        case pending
+//        case inProgress
+//        case done
+//    }
+//}
