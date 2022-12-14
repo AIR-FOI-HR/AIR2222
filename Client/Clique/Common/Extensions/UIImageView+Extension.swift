@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 extension UIImageView {
     
@@ -15,5 +17,14 @@ extension UIImageView {
         layer.borderColor = UIColor.systemGray5.cgColor
         layer.cornerRadius = self.frame.height / 2
         clipsToBounds = true
+    }
+    func setup(with url: String?) {
+        guard let _url = url else { return }
+        AF.request(_url)
+            .responseImage { [weak self] response in
+            if case .success(let image) = response.result {
+                self?.image = image
+            }
+        }
     }
 }

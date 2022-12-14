@@ -9,7 +9,6 @@ import IQKeyboardManagerSwift
 
 class RegisterViewController: UIViewController {
 
-    
     @IBOutlet private var txtName: UITextField!
     @IBOutlet private var txtSurname: UITextField!
     @IBOutlet private var txtEmail: UITextField!
@@ -21,119 +20,124 @@ class RegisterViewController: UIViewController {
     @IBOutlet private var ageSwitcher: UISwitch!
     @IBOutlet private var backButton: UIButton!
     
+    var returnKeyHandler = IQKeyboardReturnKeyHandler()
+    let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
     var iconClick = false
     let buttonPasswordShow = UIButton(type: .custom)
     let buttonRePasswordShow = UIButton(type: .custom)
     
     private let registerService = RegisterService()
-    var returnKeyHandler = IQKeyboardReturnKeyHandler()
+    private let loginViewController = LoginViewController()
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         
         guard let registerEntries = getRegisterEntries() else {
-            self.sendOkAlert(message: Constants.Alerts.wrongInputMessage)
+            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessasge)
             return
         }
         
         guard checkPasswords() else{
-            self.sendOkAlert(message: Constants.Alerts.passwordDontMatchMessage)
+            self.sendOkAlert(message: Constants.Alerts.passwordsDontMatchMessasge)
             return
         }
-        startAnimation()
+        self.startAnimation(loading: loading, view: view)
         register(with: registerEntries)
     }
-        func register(with registerEntries: RegisterEntries) {
-            registerService.register(with: registerEntries) { (isSuccess) in
-                if isSuccess{
-                    self.sendOkAlert(message: Constants.Alerts.successRegisterMessage)
-                    self.stopAnimation()
-                }else{
-                    self.sendOkAlert(message: Constants.Alerts.wrongInputMessage)
-                    self.stopAnimation()
-                }
+    
+    func register(with registerEntries: RegisterEntries) {
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: {_ -> Void in
+            let storyboard = UIStoryboard(name: "Login" , bundle:nil)
+            if let viewController = storyboard.instantiateInitialViewController() {
+                viewController.modalPresentationStyle = .fullScreen
+                self.present(viewController, animated: true)
+            }
+        })
+        registerService.register(with: registerEntries) { result in
+            switch result {
+            case .success() :
+                self.sendAlert(message: Constants.Alerts.successRegisterMessasge, action: defaultAction)
+                self.stopAnimation(loading: self.loading)
+            case .failure :
+                self.sendOkAlert(message: Constants.Alerts.wrongInputMessasge)
+                self.stopAnimation(loading: self.loading)
+            }
         }
     }
 
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            passwordCheckLabel.isHidden = true
-            matchingPasswordsLabel.isHidden = true
-            txtPassword.isSecureTextEntry = true
-            txtRePassword.isSecureTextEntry = true
-            registerButton.isEnabled = false
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        passwordCheckLabel.isHidden = true
+        matchingPasswordsLabel.isHidden = true
+        txtPassword.isSecureTextEntry = true
+        txtRePassword.isSecureTextEntry = true
+        registerButton.isEnabled = false
             
-            self.showButton()
-        
-            returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
+        self.showButton()
+        returnKeyHandler = IQKeyboardReturnKeyHandler(controller: self)
             
-            txtPassword.addTarget(self, action: #selector(checkAndDisplayError(textfield:)), for: .editingChanged)
-            txtRePassword.addTarget(self, action: #selector(compareAndDisplay(textfield:)), for: .editingChanged)
-            ageSwitcher.addTarget(self, action:
-                #selector(registerButtonEnabled(switcher:)), for: .valueChanged)
-
-        }
+        txtPassword.addTarget(self, action: #selector(checkAndDisplayError(textfield:)), for: .editingChanged)
+        txtRePassword.addTarget(self, action: #selector(compareAndDisplay(textfield:)), for: .editingChanged)
+        ageSwitcher.addTarget(self, action:
+        #selector(registerButtonEnabled(switcher:)), for: .valueChanged)
+    }
     
-        func getRegisterEntries() -> RegisterEntries? {
-        
-            guard
-                let name = txtName.text,
-                let surname = txtSurname.text,
-                let email = txtEmail.text,
-                let password = txtPassword.text,
-                let rePassword = txtRePassword.text,
-
+    func getRegisterEntries() -> RegisterEntries? {
+        guard
+            let name = txtName.text,
+            let surname = txtSurname.text,
+            let email = txtEmail.text,
+            let password = txtPassword.text,
+            let rePassword = txtRePassword.text,
             !name.isEmpty && !surname.isEmpty && !email.isEmpty && !password.isEmpty && !rePassword.isEmpty
-                    
-            else {
-                return nil
-            }
-            let entries = RegisterEntries(email: email,password: password, name: name, surname: surname)
-            return entries
-
-        }
-
-        func checkPasswords() -> Bool {
-            var check = false
-
-            if(txtPassword.text?.count ?? 0>=8 && txtPassword.text == txtRePassword.text){
-                    check = true
-            }else{
-                check = false
-            }
-            return check
-        }
-
-        @objc func checkAndDisplayError (textfield: UITextField) {
-
-            if (textfield.text?.count ?? 0>=8){
-                passwordCheckLabel.text = ""
-                passwordCheckLabel.isHidden = true
-            }
-            else{
-                passwordCheckLabel.isHidden = false
-                passwordCheckLabel.text = "Enter at least 8 characters."
-            }
-        }
-
-        @objc func compareAndDisplay (textfield: UITextField) {
-
-            if (textfield.text == txtPassword.text ){
-                matchingPasswordsLabel.isHidden = true
-            }
-            else{
-                matchingPasswordsLabel.text = "Passwords don't match."
-                matchingPasswordsLabel.isHidden = false
-            }
-        }
-    
-        @objc func registerButtonEnabled (switcher: UISwitch) {
-            if(switcher.isOn){
-                registerButton.isEnabled = true
-            }else if(!switcher.isOn){
-                registerButton.isEnabled = false
-            }
+            else { return nil }
         
+            let entries = RegisterEntries(
+                email: email,
+                password: password,
+                name: name,
+                surname: surname
+            )
+            return entries
+    }
+
+    func checkPasswords() -> Bool {
+        var check = false
+        if txtPassword.text?.count ?? 0>=8 && txtPassword.text == txtRePassword.text {
+            check = true
+        } else {
+            check = false
         }
+        return check
+    }
+
+    @objc func checkAndDisplayError (textfield: UITextField) {
+        if textfield.text?.count ?? 0>=8 {
+            passwordCheckLabel.text = ""
+            passwordCheckLabel.isHidden = true
+        }
+        else {
+            passwordCheckLabel.isHidden = false
+            passwordCheckLabel.text = "Enter at least 8 characters."
+        }
+    }
+
+    @objc func compareAndDisplay (textfield: UITextField) {
+        if textfield.text == txtPassword.text {
+            matchingPasswordsLabel.isHidden = true
+        }
+        else {
+            matchingPasswordsLabel.text = "Passwords don't match."
+            matchingPasswordsLabel.isHidden = false
+        }
+    }
+    
+    @objc func registerButtonEnabled (switcher: UISwitch) {
+        if switcher.isOn {
+            registerButton.isEnabled = true
+        } else if !switcher.isOn {
+            registerButton.isEnabled = false
+        }
+    }
     
     private func showButton() {
         buttonPasswordShow.tintColor = UIColor.orange
@@ -179,27 +183,6 @@ class RegisterViewController: UIViewController {
         }
         iconClick = !iconClick
     }
-    
-    let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
-    private func startAnimation() {
-            loading.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(loading)
-            NSLayoutConstraint.activate([
-                loading.widthAnchor.constraint(equalToConstant: 40),
-                loading.heightAnchor.constraint(equalToConstant: 40),
-                loading.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 350),
-                loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ])
-            loading.startAnimating()
-        }
-    private func stopAnimation() {
-            loading.stopAnimating()
-        }
-    
-    @IBAction func closeRegisterViewController(_ sender: UIButton){
-            dismiss(animated: true, completion: nil)
-    }
-    
 }
 
 

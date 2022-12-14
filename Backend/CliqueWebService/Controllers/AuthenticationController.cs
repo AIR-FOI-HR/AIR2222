@@ -4,7 +4,6 @@ using CliqueWebService.Helpers;
 using CliqueWebService.Helpers.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Cryptography;
 using System.Text;
 using System.Security.Claims;
 
@@ -45,14 +44,13 @@ namespace CliqueWebService.Controllers
                 User user = new User();
                 user = null;
                 try
-
                 {
-                    List<User> userList = new List<User>();
                     var hash = _businessLogic.ConvertToSHA256(password);
-                    string query = $"SELECT user_id, name, surname, email, gender_name, hash_password FROM Users, Gender WHERE email LIKE '{email}' AND hash_password LIKE '{hash.ToLower()}' ";
+                    string query = $"SELECT user_id, name, surname, email, gender_name, contact_no, birth_data, profile_pic, bio FROM Users LEFT JOIN Gender ON gender_id = gender WHERE email LIKE '{email}' AND hash_password LIKE '{hash.ToLower()}'";
                     var reader = _db.ExecuteQuery(query);
                     if (!reader.HasRows)
                     {
+                        _db.Disconnect();
                         return BadRequest("User not found");
                     }
 
@@ -60,17 +58,17 @@ namespace CliqueWebService.Controllers
                     {
                         if (reader.GetValue(0) != DBNull.Value)
                         {
-                            userList.Add(_businessLogic.GetUsers(reader));
+                            user = _businessLogic.GetUsers(reader);
                         }
                     }
                     reader.Close();
-
-                    user = userList[0];
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    return BadRequest("Could not connect to database");
+                    _db.Disconnect();
+                    return BadRequest(ex.Message);
                 }
+
                 if (user != null)
                 {
                     var claims = new[] {
@@ -87,13 +85,13 @@ namespace CliqueWebService.Controllers
                         _configuration["Jwt:Issuer"],
                         _configuration["Jwt:Audience"],
                         claims,
-                        expires: DateTime.Now.AddMinutes(15),
+                        expires: DateTime.Now.AddMinutes(60),
                         signingCredentials: signIn);
 
                     string insert = $"INSERT INTO Tokens (token, user_id, token_expires) VALUES ('{new JwtSecurityTokenHandler().WriteToken(token)}', {user.user_id}, '{token.ValidTo.ToString("yyyy-MM-dd HH:mm:ss")}')";
                     _db.ExecuteNonQuery(insert);
                     _db.Disconnect();
-                    return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token), token.ValidTo });
+                    return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token), validTo = token.ValidTo.ToString("yyyy-MM-dd HH:mm:ss") });
                 }
                 else
                 {
@@ -103,7 +101,7 @@ namespace CliqueWebService.Controllers
             }
             else
             {
-                return BadRequest();
+                return BadRequest("Invalid JSON");
             }
         }
 
@@ -111,8 +109,6 @@ namespace CliqueWebService.Controllers
         [Route("RegisterUser")]
         public ActionResult RegisterUser([FromBody] RegisterRequest userForRegistration)
         {
-            DocumentResponse docResponse = new DocumentResponse();
-
             if (ModelState.IsValid)
             {
                 try
@@ -121,39 +117,38 @@ namespace CliqueWebService.Controllers
                 }
                 catch (Exception ex)
                 {
-                    docResponse.Error = ex.Message;
-                    docResponse.Status = "500 - Internal Server Error";
-                    docResponse.Method = "POST";
-                    return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
+                    return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
                 }
-                string query = $"INSERT INTO Users(name, surname, email, hash_password, contact_no, birth_data, gender) VALUES ('{userForRegistration.Name}', '{userForRegistration.Surname}', " +
-                    $"'{userForRegistration.Email}', '{_businessLogic.ConvertToSHA256(userForRegistration.Password)}', '{userForRegistration.ContactNum}', '{userForRegistration.BirthData.ToString("yyyy-MM-dd")}', {userForRegistration.Gender})";
+
+                string query = $"INSERT INTO Users(name, surname, email, hash_password) VALUES ('{userForRegistration.Name}', '{userForRegistration.Surname}', " +
+                    $"'{userForRegistration.Email}', '{_businessLogic.ConvertToSHA256(userForRegistration.Password)}')";
                 _db.BeginTransaction();
+                string checkUserQuery = $"SELECT COUNT(*) FROM Users WHERE email LIKE '{userForRegistration.Email}'";
                 try
                 {
+                    var reader = _db.ExecuteQuery(checkUserQuery);
+                    while (reader.Read())
+                    {
+                        if (reader.GetInt32(0) > 0)
+                        {
+                            return BadRequest("User with this username or password already exists");
+                        }
+                    }
+                    reader.Close();
                     _db.ExecuteNonQuery(query);
                     _db.CommitTransaction();
-                    docResponse.Message = "User successfully registered";
-                    docResponse.Status = "200 - OK";
-                    docResponse.Method = "POST";
-                    return Ok(docResponse);
+                    return Ok("User successfully registered");
                 }
                 catch
                 {
                     _db.RollbackTransaction();
                     _db.CommitTransaction();
-                    docResponse.Error = "Couldn't register user";
-                    docResponse.Status = "500 - Internal Server Error";
-                    docResponse.Method = "POST";
-                    return StatusCode(StatusCodes.Status500InternalServerError, docResponse);
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Couldn't register user");
                 }
             }
             else
             {
-                docResponse.Error = "Incorrectly formated JSON request";
-                docResponse.Status = "400 - Bad Request";
-                docResponse.Method = "POST";
-                return BadRequest(docResponse);
+                return BadRequest(ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage));
             }
 
         }

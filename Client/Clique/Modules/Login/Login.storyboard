@@ -76,11 +76,9 @@
                             <constraint firstItem="CU1-Bu-ePP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="74M-ez-4w5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CU1-Bu-ePP" secondAttribute="trailing" constant="32" id="AJQ-e5-VFI"/>
                             <constraint firstItem="CU1-Bu-ePP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="E8m-eN-g3U"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="fPN-lV-c9v" secondAttribute="trailing" constant="345" id="MIK-5h-IYs"/>
                             <constraint firstItem="Rql-Vg-o77" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Vvu-FR-01c"/>
                             <constraint firstItem="fPN-lV-c9v" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="Wre-gp-MRL"/>
                             <constraint firstAttribute="bottom" secondItem="Rql-Vg-o77" secondAttribute="bottom" id="YPx-y7-FOL"/>
-                            <constraint firstItem="fPN-lV-c9v" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="d0Y-L1-VSW"/>
                             <constraint firstItem="EPe-wu-iYy" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="250" id="nJn-wV-HID"/>
                             <constraint firstItem="EPe-wu-iYy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="qbH-qg-8fF"/>
                             <constraint firstItem="Rql-Vg-o77" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="vFx-GJ-QMc"/>

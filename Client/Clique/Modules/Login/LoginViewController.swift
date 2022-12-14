@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet private var loginButton: UIButton!
     
     private let loginService = LoginService()
+    let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
     var iconClick = false
     let buttonPasswordShow = UIButton(type: .custom)
     
@@ -26,13 +27,13 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        startAnimation()
+        
+        self.startAnimation(loading: loading, view: view)
         guard let credentails = getLoginCredentials() else {
-            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
-            stopAnimation()
+            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessasge)
+            self.startAnimation(loading: loading, view: view)
             return
         }
-        
         login(with: credentails)
 }
     
@@ -54,8 +55,8 @@ class LoginViewController: UIViewController {
                 let storyboard = UIStoryboard(name: "Profile" , bundle: nil)
                 guard let viewController = storyboard.instantiateInitialViewController()
                 else { return }
-                    viewController.modalPresentationStyle = .fullScreen
-                    self.present(viewController, animated: true)
+                viewController.modalPresentationStyle = .fullScreen
+                self.present(viewController, animated: true)
                 self.stopAnimation()
             case .failure:
                 self.sendOkAlert(message: Constants.Alerts.wrongCredentialsMessage)
@@ -84,27 +85,9 @@ class LoginViewController: UIViewController {
             passwordTextField.isSecureTextEntry = false
             buttonPasswordShow.tintColor = UIColor.orange
             buttonPasswordShow.setImage(UIImage(systemName: "eye.fill"), for: .normal)
-            
         }
         iconClick = !iconClick
     }
-    
-    let loading = NVActivityIndicatorView(frame: .zero, type: .ballBeat, color: .orange, padding: 0)
-        func startAnimation() {
-                loading.translatesAutoresizingMaskIntoConstraints = false
-                view.addSubview(loading)
-                NSLayoutConstraint.activate([
-                    loading.widthAnchor.constraint(equalToConstant: 40),
-                    loading.heightAnchor.constraint(equalToConstant: 40),
-                    loading.centerYAnchor.constraint(equalTo: view.centerYAnchor,
-                                                     constant: 100),
-                    loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-                ])
-                loading.startAnimating()
-            }
-        func stopAnimation() {
-                loading.stopAnimating()
-            }
     
     @IBAction func closeLoginViewController(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)

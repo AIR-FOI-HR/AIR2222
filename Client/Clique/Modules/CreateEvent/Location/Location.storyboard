@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U92-fw-6b0">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Location-->
+        <scene sceneID="Kn8-Vj-mFB">
+            <objects>
+                <viewController id="U92-fw-6b0" customClass="LocationViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VQb-g2-U6x" customClass="lo">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="56j-qH-hgP">
+                                <rect key="frame" x="0.0" y="141" width="393" height="711"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tvk-q3-bvV">
+                                <rect key="frame" x="16" y="59.000000000000007" width="361" height="73.666666666666686"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleAspectFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oPC-wH-AgN">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="34.333333333333336"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gj9-k4-S04">
+                                                <rect key="frame" x="0.0" y="0.0" width="301.33333333333331" height="34.333333333333336"/>
+                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ye-Qd-Exd">
+                                                <rect key="frame" x="311.33333333333331" y="0.0" width="49.666666666666686" height="34.333333333333336"/>
+                                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system"/>
+                                                <connections>
+                                                    <action selector="searchButtonPressed:" destination="U92-fw-6b0" eventType="primaryActionTriggered" id="tmm-Nj-GDI"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="gj9-k4-S04" firstAttribute="top" secondItem="oPC-wH-AgN" secondAttribute="top" id="hQ0-mb-fe0"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oz-nR-9f9">
+                                        <rect key="frame" x="0.0" y="39.333333333333329" width="361" height="34.333333333333329"/>
+                                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="paperplane.fill" catalog="system">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Use your current location"/>
+                                            </attributedString>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="chooseMyLocationButtonPressed:" destination="U92-fw-6b0" eventType="primaryActionTriggered" id="Lo2-89-8z3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="N2F-za-TbV">
+                                <rect key="frame" x="65" y="771" width="263" height="32"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Hybrid"/>
+                                </segments>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <connections>
+                                    <action selector="typeMaps:" destination="U92-fw-6b0" eventType="primaryActionTriggered" id="ufX-Od-Zc2"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Zfz-gq-aFU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Zfz-gq-aFU" firstAttribute="trailing" secondItem="tvk-q3-bvV" secondAttribute="trailing" constant="16" id="1ej-V0-JwV"/>
+                            <constraint firstItem="N2F-za-TbV" firstAttribute="leading" secondItem="Zfz-gq-aFU" secondAttribute="leading" constant="65" id="3vG-Pk-Ux5"/>
+                            <constraint firstItem="tvk-q3-bvV" firstAttribute="top" secondItem="Zfz-gq-aFU" secondAttribute="top" id="6Cu-TH-dmi"/>
+                            <constraint firstItem="56j-qH-hgP" firstAttribute="centerX" secondItem="N2F-za-TbV" secondAttribute="centerX" id="Agx-2n-ClK"/>
+                            <constraint firstItem="56j-qH-hgP" firstAttribute="leading" secondItem="Zfz-gq-aFU" secondAttribute="leading" id="GE1-gx-cUe"/>
+                            <constraint firstItem="56j-qH-hgP" firstAttribute="top" secondItem="tvk-q3-bvV" secondAttribute="bottom" constant="8.3333333333333144" id="HH1-za-Cgk"/>
+                            <constraint firstItem="56j-qH-hgP" firstAttribute="trailing" secondItem="Zfz-gq-aFU" secondAttribute="trailing" id="asr-fe-aeG"/>
+                            <constraint firstAttribute="bottom" secondItem="N2F-za-TbV" secondAttribute="bottom" constant="50" id="hmJ-cm-wkB"/>
+                            <constraint firstItem="tvk-q3-bvV" firstAttribute="leading" secondItem="Zfz-gq-aFU" secondAttribute="leading" constant="16" id="m0s-FI-aTV"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="56j-qH-hgP" secondAttribute="bottom" constant="-83" id="szI-ni-EIZ"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Location" id="mu2-bk-Zb5">
+                        <barButtonItem key="backBarButtonItem" title="Location" id="46g-hW-v5s"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="SUT-q3-A4x">
+                            <connections>
+                                <action selector="nextButtonPressed:" destination="U92-fw-6b0" id="f3F-ht-OJe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="chooseMyLocationButton" destination="9oz-nR-9f9" id="PBv-lg-02o"/>
+                        <outlet property="chosenLocationTextField" destination="gj9-k4-S04" id="Dp5-6s-NLs"/>
+                        <outlet property="mapView" destination="56j-qH-hgP" id="yhp-iG-jte"/>
+                        <outlet property="searchButton" destination="9ye-Qd-Exd" id="oV2-cs-KYV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iT4-fI-QFF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4432.8244274809158" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="paperplane.fill" catalog="system" width="128" height="119"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
