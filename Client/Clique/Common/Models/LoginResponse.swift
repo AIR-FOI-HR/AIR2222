@@ -9,4 +9,10 @@ import Foundation
 
 struct LoginResponse: Codable {
     let token: String
+    let validUntil: String
+    
+    enum CodingKeys: String, CodingKey {
+        case token = "token"
+        case validUntil = "validTo"
+    }
 }

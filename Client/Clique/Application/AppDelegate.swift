@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import GooglePlaces
 import IQKeyboardManagerSwift
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -14,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.resignFirstResponder()
+        GMSPlacesClient.provideAPIKey(Constants.Service.APIkey)
         return true
     }
 
@@ -21,12 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-        
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     }
-
-
 }
-

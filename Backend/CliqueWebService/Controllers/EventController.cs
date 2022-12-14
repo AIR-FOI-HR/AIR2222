@@ -123,8 +123,8 @@ namespace CliqueWebService.Controllers
             }
         }
 
-        [HttpGet("eventscreatedby/{user_id}")]
-        public ActionResult GetEventsCreatedByUserID(int user_id)
+        [HttpGet("LoggedUserCreatedEvents")]
+        public ActionResult GetEventsCreatedByUserID()
         {
             try
             {
@@ -134,10 +134,23 @@ namespace CliqueWebService.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
+            string id = "0";
+            if (Request.Headers.Keys.Contains("Authorization"))
+            {
+                string token = Request.Headers["Authorization"];
+                if (_businessLogic.isJWTValid(token.Replace("Bearer ", "")))
+                {
+                    id = User.Claims.FirstOrDefault(i => i.Type.Contains("UserId")).Value;
+                }
+            }
+            if (id == "0")
+            {
+                return Unauthorized();
+            }
             try
             {
                 List<Event> events = new List<Event>();
-                string query = $"SELECT e.*, cur.currency_abbr, u.name, u.surname, u.email, cat.category_name, g.gender_name, u.user_id FROM Events e LEFT JOIN Categories cat ON e.category = cat.category_id LEFT JOIN Users u ON e.creator = u.user_id LEFT JOIN Currencies cur ON cur.currency_id = e.currency LEFT JOIN Gender g ON u.gender = g.gender_id WHERE e.creator = {user_id} ";
+                string query = $"SELECT e.*, cur.currency_abbr, u.name, u.surname, u.email, cat.category_name, g.gender_name, u.user_id FROM Events e LEFT JOIN Categories cat ON e.category = cat.category_id LEFT JOIN Users u ON e.creator = u.user_id LEFT JOIN Currencies cur ON cur.currency_id = e.currency LEFT JOIN Gender g ON u.gender = g.gender_id WHERE e.creator = {id} ";
                 var reader = _db.ExecuteQuery(query);
                 if (!reader.HasRows)
                 {
@@ -160,8 +173,8 @@ namespace CliqueWebService.Controllers
             }
         }
 
-        [HttpGet("eventssignedup/{user_id}")]
-        public ActionResult GetEventsSignedUpByUserID(int user_id)
+        [HttpGet("LoggedUserRegisteredEvents")]
+        public ActionResult GetEventsSignedUpByUserID()
         {
             try
             {
@@ -171,14 +184,27 @@ namespace CliqueWebService.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
+            string id = "0";
+            if (Request.Headers.Keys.Contains("Authorization"))
+            {
+                string token = Request.Headers["Authorization"];
+                if (_businessLogic.isJWTValid(token.Replace("Bearer ", "")))
+                {
+                    id = User.Claims.FirstOrDefault(i => i.Type.Contains("UserId")).Value;
+                }
+            }
+            if (id == "0")
+            {
+                return Unauthorized();
+            }
             try
             {
                 List<Event> events = new List<Event>();
-                string query = $"SELECT e.*, cur.currency_abbr, u.name, u.surname, u.email, cat.category_name, g.gender_name, u.user_id FROM Events e LEFT JOIN Categories cat ON e.category = cat.category_id LEFT JOIN Users u ON e.creator = u.user_id LEFT JOIN Currencies cur ON cur.currency_id = e.currency LEFT JOIN Gender g ON u.gender = g.gender_id LEFT JOIN signs_up_for sg ON e.event_id = sg.event_id WHERE sg.user_id = {user_id} OR e.creator = {user_id}";
+                string query = $"SELECT e.*, cur.currency_abbr, u.name, u.surname, u.email, cat.category_name, g.gender_name, u.user_id FROM Events e LEFT JOIN Categories cat ON e.category = cat.category_id LEFT JOIN Users u ON e.creator = u.user_id LEFT JOIN Currencies cur ON cur.currency_id = e.currency LEFT JOIN Gender g ON u.gender = g.gender_id LEFT JOIN signs_up_for sg ON e.event_id = sg.event_id WHERE sg.user_id = {id} OR e.creator = {id}";
                 var reader = _db.ExecuteQuery(query);
                 if (!reader.HasRows)
                 {
-                    return BadRequest("User isn't signed in any events.");
+                    return BadRequest("User isn't signed on any events.");
                 }
                 while (reader.Read())
                 {
@@ -330,6 +356,72 @@ namespace CliqueWebService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Server Error");
             }
             return Ok(categories);
+        }
+        [HttpPost]
+        [Route("UpdateEvent/{eventID}")]
+        public ActionResult UpdateEvent([FromBody] CreateEventRequest req, int eventId)
+        {
+            try
+            {
+                _db.Connect();
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Server Error");
+            }
+            string userId = "0";
+            if (Request.Headers.Keys.Contains("Authorization"))
+            {
+                string token = Request.Headers["Authorization"];
+                if (_businessLogic.isJWTValid(token.Replace("Bearer ", "")))
+                {
+                    userId = User.Claims.FirstOrDefault(i => i.Type.Contains("UserId")).Value;
+                }
+            }
+            if (userId == "0")
+            {
+                return Unauthorized();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage));
+            }
+            if (double.Parse(req.Cost) > 0 && (string.IsNullOrEmpty(req.Currency) || req.Currency == "0"))
+            {
+                return BadRequest("Please enter the currency");
+            }
+            _db.BeginTransaction();
+            try
+            {
+                string desc = "";
+                if (!string.IsNullOrEmpty(req.Description))
+                {
+                    desc = req.Description;
+                }
+                string query = "";
+                if (req.Cost == "0")
+                {
+                    query = $"UPDATE Events SET event_name = '{req.EventName}', event_date = '{req.EventTimeStamp.ToString("yyyy-MM-dd")}'," +
+                    $" event_time = '{req.EventTimeStamp.ToString("HH:mm:ss")}', event_location = '{req.EventLocation}', participations_no = {req.ParticipantsNo}," +
+                    $" category = {req.Category}, description = '{desc}' WHERE event_id = {eventId}";
+                }
+                else
+                {
+                    query = $"UPDATE Events SET event_name = '{req.EventName}', event_date = '{req.EventTimeStamp.ToString("yyyy-MM-dd")}'," +
+                    $" event_time = '{req.EventTimeStamp.ToString("HH:mm:ss")}', event_location = '{req.EventLocation}', participations_no = {req.ParticipantsNo}," +
+                    $" category = {req.Category}, description = '{desc}', cost = {req.Cost}, currency = {req.Currency} WHERE event_id = {eventId}";
+                }
+                _db.ExecuteNonQuery(query);
+                _db.CommitTransaction();
+                return Ok("Event Updated.");
+            }
+            catch
+            {
+                _db.RollbackTransaction();
+                _db.CommitTransaction();
+                return StatusCode(StatusCodes.Status500InternalServerError, "Server error");
+            }
         }
     }
 }

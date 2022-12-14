@@ -11,7 +11,7 @@
         <!--view-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController title="view" id="Y6W-OH-hqX" customClass="RegisterViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Register" title="view" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="RegisterViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,6 +19,16 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="denoise_background" translatesAutoresizingMaskIntoConstraints="NO" id="Tx3-XF-Wdl">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBc-iq-1gB">
+                                <rect key="frame" x="15" y="62" width="30" height="34.333333333333343"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark.circle" catalog="system">
+                                    <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="closeRegisterViewController:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="azK-5d-rld"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="exA-DB-e6H">
                                 <rect key="frame" x="15" y="237" width="360" height="335"/>
                                 <subviews>
@@ -105,25 +115,13 @@
                                     <constraint firstAttribute="height" constant="44" id="iJT-Nu-hW5"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Register"/>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="gray" title="Register">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="baseBackgroundColor" red="1" green="0.60002936200000001" blue="0.34990315100000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="registerButtonPressed:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="NOk-ER-G3s"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TBc-iq-1gB">
-                                <rect key="frame" x="15" y="61" width="30" height="34.333333333333343"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system">
-                                    <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="closeRegisterViewController:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="cdl-uF-03q"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -132,7 +130,7 @@
                         <constraints>
                             <constraint firstItem="exA-DB-e6H" firstAttribute="centerX" secondItem="nqM-l5-CuN" secondAttribute="centerX" id="0qI-3c-hVY"/>
                             <constraint firstAttribute="trailing" secondItem="Tx3-XF-Wdl" secondAttribute="trailing" id="2Pt-Qt-Sy2"/>
-                            <constraint firstItem="TBc-iq-1gB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="14" id="DeB-Lt-xws"/>
+                            <constraint firstItem="TBc-iq-1gB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="DeB-Lt-xws"/>
                             <constraint firstItem="qyc-A5-9Pd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="DvW-Dk-XrQ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TBc-iq-1gB" secondAttribute="trailing" constant="345" id="Iso-lo-6II"/>
                             <constraint firstItem="Tx3-XF-Wdl" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Qqm-WV-C1c"/>
@@ -150,7 +148,7 @@
                     </view>
                     <connections>
                         <outlet property="ageSwitcher" destination="MGq-on-YlT" id="hR1-Q1-nf5"/>
-                        <outlet property="backButton" destination="TBc-iq-1gB" id="LQs-ji-Td4"/>
+                        <outlet property="closeButton" destination="TBc-iq-1gB" id="Ovd-QN-qBx"/>
                         <outlet property="matchingPasswordsLabel" destination="rhh-Bf-Qog" id="taA-HA-tde"/>
                         <outlet property="passwordCheckLabel" destination="axk-PR-FZU" id="vuR-7W-x5K"/>
                         <outlet property="registerButton" destination="qyc-A5-9Pd" id="7rB-J1-wSL"/>
@@ -168,8 +166,8 @@
     </scenes>
     <resources>
         <image name="aaaaaaaaaaaa_1" width="884" height="923"/>
-        <image name="arrow.backward" catalog="system" width="128" height="95"/>
         <image name="denoise_background" width="736" height="1353"/>
+        <image name="xmark.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -11,7 +11,7 @@
         <!--Initial View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="InitialViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Initial" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="InitialViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,6 +77,7 @@
                             <constraint firstItem="0E3-eh-YXa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="130" id="k54-Ub-JcJ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="0Uo-j3-5cz"/>
                     <connections>
                         <outlet property="logInButton" destination="P0O-G4-oWW" id="nnw-ee-8Dg"/>
                         <outlet property="registerButton" destination="jgt-Xu-deo" id="38t-iy-y9Z"/>
@@ -84,7 +85,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="57.251908396946561" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="983.96946564885491" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>

@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5LE-OQ-zXh">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile-->
+        <scene sceneID="DRd-HW-YRw">
+            <objects>
+                <viewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="k85-Gf-EOC" customClass="ProfileViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e3G-se-Adz">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MrT-NZ-X8Y">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zR-5Q-mNv">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="605"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="0J0-Xj-Baj">
+                                                <rect key="frame" x="32" y="32" width="329" height="541"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mx-dm-oLM">
+                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="125"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jYQ-dW-0dh">
+                                                                <rect key="frame" x="102" y="0.0" width="125" height="125"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="125" id="RvB-xC-WjW"/>
+                                                                    <constraint firstAttribute="height" constant="125" id="ky4-5N-vHP"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                                                        <real key="value" value="60"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="jYQ-dW-0dh" firstAttribute="centerX" secondItem="3mx-dm-oLM" secondAttribute="centerX" id="WAF-Vu-DyU"/>
+                                                            <constraint firstItem="jYQ-dW-0dh" firstAttribute="centerY" secondItem="3mx-dm-oLM" secondAttribute="centerY" id="Ylf-ni-teg"/>
+                                                            <constraint firstAttribute="height" constant="125" id="suw-0F-KDS"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="wh5-oE-AJj">
+                                                        <rect key="frame" x="0.0" y="142" width="329" height="40"/>
+                                                        <subviews>
+                                                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCc-sq-8yW">
+                                                                <rect key="frame" x="0.0" y="0.0" width="329" height="0.0"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="0Iz-4I-cfc"/>
+                                                            <constraint firstAttribute="trailing" secondItem="sCc-sq-8yW" secondAttribute="trailing" id="4ba-L2-SB1"/>
+                                                            <constraint firstItem="sCc-sq-8yW" firstAttribute="top" secondItem="wh5-oE-AJj" secondAttribute="top" id="I82-pE-8XM"/>
+                                                            <constraint firstItem="sCc-sq-8yW" firstAttribute="leading" secondItem="wh5-oE-AJj" secondAttribute="leading" id="jFc-41-ZBE"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ga9-Ti-15F">
+                                                        <rect key="frame" x="0.0" y="199" width="329" height="115"/>
+                                                        <subviews>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5M-sK-MAc">
+                                                                <rect key="frame" x="0.0" y="0.0" width="329" height="110"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="110" id="xfM-dF-2KQ"/>
+                                                                </constraints>
+                                                                <color key="textColor" systemColor="labelColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="linesCornerRadius">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonLineSpacing">
+                                                                        <real key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="lastLineFillPercent">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                                                        <real key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="7"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </textView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="115" id="H7c-7q-Y0W"/>
+                                                            <constraint firstAttribute="trailing" secondItem="p5M-sK-MAc" secondAttribute="trailing" id="aMB-zm-5yi"/>
+                                                            <constraint firstItem="p5M-sK-MAc" firstAttribute="top" secondItem="Ga9-Ti-15F" secondAttribute="top" id="dWy-Ml-QON"/>
+                                                            <constraint firstItem="p5M-sK-MAc" firstAttribute="leading" secondItem="Ga9-Ti-15F" secondAttribute="leading" id="uTK-kt-yXo"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXu-Mz-vUX">
+                                                        <rect key="frame" x="0.0" y="331" width="329" height="210"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Ox7-XC-h5W">
+                                                                <rect key="frame" x="0.0" y="0.0" width="329" height="34.333333333333336"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIc-jf-CDb">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="34.333333333333336"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" title="My events                                                    ">
+                                                                            <imageReference key="image" image="arrowtriangle.down.fill" catalog="system" symbolScale="small"/>
+                                                                            <backgroundConfiguration key="background">
+                                                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                                            </backgroundConfiguration>
+                                                                            <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </buttonConfiguration>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                <integer key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                                                                <real key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="NO"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="selectMyEvents:" destination="k85-Gf-EOC" eventType="touchUpInside" id="Rha-oV-iHH"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6tX-DH-6oX">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="0.0"/>
+                                                                        <color key="backgroundColor" red="1" green="0.60002936200000001" blue="0.34990315100000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" title="Joined events">
+                                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </buttonConfiguration>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                <integer key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="joinedEventsButtonPressed:" destination="k85-Gf-EOC" eventType="touchUpInside" id="m7u-dF-qbc"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jN4-og-kUG">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="0.0"/>
+                                                                        <color key="backgroundColor" red="1" green="0.60002936200000001" blue="0.34990315100000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" title="Past joined events">
+                                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </buttonConfiguration>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                <integer key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="pastJoinedEventsButtonPressed:" destination="k85-Gf-EOC" eventType="touchUpInside" id="mDP-47-PNa"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaO-tC-ORb">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="0.0"/>
+                                                                        <color key="backgroundColor" red="1" green="0.60002936200000001" blue="0.34990315100000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" title="Created events">
+                                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </buttonConfiguration>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                <integer key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="createdEventsButtonPressed:" destination="k85-Gf-EOC" eventType="touchUpInside" id="2WG-wm-u79"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-93-HjI">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="0.0"/>
+                                                                        <color key="backgroundColor" red="1" green="0.60002936200000001" blue="0.34990315100000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" title="Past created events" titleAlignment="trailing">
+                                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </buttonConfiguration>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                <integer key="value" value="10"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="pastCreatedEventsButtonPressed:" destination="k85-Gf-EOC" eventType="touchUpInside" id="oJE-6x-EHe"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="210" id="Gjj-bJ-ZRb"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Ox7-XC-h5W" secondAttribute="trailing" id="ThI-cW-AoV"/>
+                                                            <constraint firstItem="Ox7-XC-h5W" firstAttribute="top" secondItem="bXu-Mz-vUX" secondAttribute="top" id="tit-2C-gLz"/>
+                                                            <constraint firstItem="Ox7-XC-h5W" firstAttribute="leading" secondItem="bXu-Mz-vUX" secondAttribute="leading" id="wI8-Vu-BeQ"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHiddenWhenSkeletonIsActive" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="wh5-oE-AJj" firstAttribute="leading" secondItem="0J0-Xj-Baj" secondAttribute="leading" id="4rw-uH-rZI"/>
+                                                    <constraint firstAttribute="trailing" secondItem="3mx-dm-oLM" secondAttribute="trailing" id="IJs-D6-d4g"/>
+                                                    <constraint firstItem="Ga9-Ti-15F" firstAttribute="leading" secondItem="0J0-Xj-Baj" secondAttribute="leading" id="SEu-3e-TAt"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Ga9-Ti-15F" secondAttribute="trailing" id="n4n-yp-7Gi"/>
+                                                    <constraint firstItem="3mx-dm-oLM" firstAttribute="leading" secondItem="0J0-Xj-Baj" secondAttribute="leading" id="sqB-tU-QgC"/>
+                                                    <constraint firstItem="3mx-dm-oLM" firstAttribute="top" secondItem="0J0-Xj-Baj" secondAttribute="top" id="vok-gR-Osa"/>
+                                                    <constraint firstAttribute="trailing" secondItem="wh5-oE-AJj" secondAttribute="trailing" id="wIQ-vN-8Ya"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="0J0-Xj-Baj" secondAttribute="bottom" constant="32" id="FYy-9x-33b"/>
+                                            <constraint firstItem="0J0-Xj-Baj" firstAttribute="top" secondItem="3zR-5Q-mNv" secondAttribute="top" constant="32" id="U4f-7E-E0E"/>
+                                            <constraint firstAttribute="trailing" secondItem="0J0-Xj-Baj" secondAttribute="trailing" constant="32" id="ZeA-V9-NPM"/>
+                                            <constraint firstItem="0J0-Xj-Baj" firstAttribute="leading" secondItem="3zR-5Q-mNv" secondAttribute="leading" constant="32" id="lEj-EO-g7N"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="3zR-5Q-mNv" secondAttribute="bottom" id="4Lu-J2-ul3"/>
+                                    <constraint firstItem="3zR-5Q-mNv" firstAttribute="top" secondItem="MrT-NZ-X8Y" secondAttribute="top" id="HHe-A4-0B1"/>
+                                    <constraint firstAttribute="trailing" secondItem="3zR-5Q-mNv" secondAttribute="trailing" id="TAo-iP-3YY"/>
+                                    <constraint firstItem="3zR-5Q-mNv" firstAttribute="leading" secondItem="MrT-NZ-X8Y" secondAttribute="leading" id="okF-uo-HKe"/>
+                                    <constraint firstItem="3zR-5Q-mNv" firstAttribute="width" secondItem="MrT-NZ-X8Y" secondAttribute="width" id="pRF-pr-bA9"/>
+                                    <constraint firstItem="3zR-5Q-mNv" firstAttribute="height" secondItem="MrT-NZ-X8Y" secondAttribute="height" priority="999" id="vHf-M0-c3J"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3GI-j8-m5r"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3GI-j8-m5r" firstAttribute="bottom" secondItem="MrT-NZ-X8Y" secondAttribute="bottom" id="az4-Xt-gmH"/>
+                            <constraint firstItem="3GI-j8-m5r" firstAttribute="trailing" secondItem="MrT-NZ-X8Y" secondAttribute="trailing" id="kr8-0N-UJc"/>
+                            <constraint firstItem="MrT-NZ-X8Y" firstAttribute="top" secondItem="3GI-j8-m5r" secondAttribute="top" id="mL6-PB-x9G"/>
+                            <constraint firstItem="MrT-NZ-X8Y" firstAttribute="leading" secondItem="3GI-j8-m5r" secondAttribute="leading" id="wL3-E1-Xgm"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" style="editor" id="0YK-CV-8VM">
+                        <barButtonItem key="leftBarButtonItem" image="gearshape.fill" catalog="system" id="uB0-A3-Trk">
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <connections>
+                                <action selector="settingsButtonPressed:" destination="k85-Gf-EOC" id="xXN-SU-BeD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="pencil" catalog="system" id="YjN-IQ-6WK">
+                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                            <connections>
+                                <action selector="editButtonPressed:" destination="k85-Gf-EOC" id="wgE-Dr-TfG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="bioTextView" destination="p5M-sK-MAc" id="wL6-4B-xyp"/>
+                        <outlet property="createdEventsButton" destination="jaO-tC-ORb" id="P5I-rN-o7j"/>
+                        <outlet property="joinedEventsButton" destination="6tX-DH-6oX" id="DX2-D7-AFa"/>
+                        <outlet property="labelProfileName" destination="sCc-sq-8yW" id="Xsq-Rj-yff"/>
+                        <outlet property="myEventsButton" destination="vIc-jf-CDb" id="FW2-uQ-L5r"/>
+                        <outlet property="pastCreatedEventsButton" destination="A3r-93-HjI" id="DSA-kh-j3F"/>
+                        <outlet property="pastJoinedEventsButton" destination="jN4-og-kUG" id="Bff-Jf-TbJ"/>
+                        <outlet property="profileImage" destination="jYQ-dW-0dh" id="Igs-nh-PBz"/>
+                        <outletCollection property="eventsButtons" destination="6tX-DH-6oX" collectionClass="NSMutableArray" id="Pup-i1-zO9"/>
+                        <outletCollection property="eventsButtons" destination="jN4-og-kUG" collectionClass="NSMutableArray" id="oyz-Sv-ifu"/>
+                        <outletCollection property="eventsButtons" destination="jaO-tC-ORb" collectionClass="NSMutableArray" id="dNQ-oO-p0B"/>
+                        <outletCollection property="eventsButtons" destination="A3r-93-HjI" collectionClass="NSMutableArray" id="Mfs-Rj-ea8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zk8-b3-M9A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4380.9160305343512" y="-1319.0140845070423"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="VEn-ig-cHb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5LE-OQ-zXh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="jzi-Pb-9KL">
+                        <color key="badgeColor" systemColor="systemOrangeColor"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O7A-42-L7j">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="k85-Gf-EOC" kind="relationship" relationship="rootViewController" id="WWB-qP-Dck"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FuR-AR-UaD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3454.1984732824426" y="-1319.0140845070423"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrowtriangle.down.fill" catalog="system" width="128" height="120"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

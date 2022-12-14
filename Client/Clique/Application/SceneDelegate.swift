@@ -14,13 +14,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options
     connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let storyboard = UIStoryboard(name: "EventList" , bundle:nil)
-        let viewController = storyboard.instantiateInitialViewController()
-        
-        window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = viewController
-        window?.makeKeyAndVisible()
-    }
+        if UserStorage.token != nil {
+            let storyboard = UIStoryboard(name: "TabBar" , bundle:nil)
+            let viewController = storyboard.instantiateInitialViewController()
 
+            window = UIWindow(windowScene: windowScene)
+            window?.rootViewController = viewController
+            window?.makeKeyAndVisible()
+        } else if UserStorage.token == nil {
+            let storyboard = UIStoryboard(name: "Initial" , bundle:nil)
+            let viewController = storyboard.instantiateInitialViewController()
+
+            window = UIWindow(windowScene: windowScene)
+            window?.rootViewController = viewController
+            window?.makeKeyAndVisible()
+        }
+    }
 }
 
