@@ -20,7 +20,6 @@ namespace CliqueWebService.Controllers
             _db = new Database(configuration.GetConnectionString("AzureDatabase"));
             _businessLogic = new BusinessLogic();
         }
-
         [HttpGet]
         [Route("GetAllEvents")]
         public ActionResult GetEvents()
@@ -34,7 +33,7 @@ namespace CliqueWebService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
 
-            string q = $"SELECT e.*, cur.currency_abbr, u.name, u.surname, u.email, cat.category_name, g.gender_name, u.user_id FROM Events e LEFT JOIN Categories cat ON e.category = cat.category_id LEFT JOIN Users u ON e.creator = u.user_id LEFT JOIN Currencies cur ON cur.currency_id = e.currency LEFT JOIN Gender g ON u.gender = g.gender_id";
+            string q = $"SELECT e.*, cur.currency_abbr, u.name, u.surname, u.email, cat.category_name, g.gender_name, u.user_id FROM Events e LEFT JOIN Categories cat ON e.category = cat.category_id LEFT JOIN Users u ON e.creator = u.user_id LEFT JOIN Currencies cur ON cur.currency_id = e.currency LEFT JOIN Gender g ON u.gender = g.gender_id where e.event_date >= GETDATE()";
             try
             {
                 var reader = _db.ExecuteQuery(q);
@@ -47,6 +46,20 @@ namespace CliqueWebService.Controllers
                     }
                 }
                 reader.Close();
+                foreach (Event e in events)
+                {
+                    q = $"SELECT Users.user_id, name, surname, email, gender_name, contact_no, birth_data, profile_pic, bio, sgf.status_id FROM Users LEFT JOIN Gender ON gender_id = gender LEFT JOIN signs_up_for sgf ON Users.user_id = sgf.user_id WHERE sgf.event_id = {e.event_id}";
+                    var reader2 = _db.ExecuteQuery(q);
+                    e.participants = new List<Participants>();
+                    while (reader2.Read())
+                    {
+                        if (reader2.GetValue(0) != DBNull.Value)
+                        {
+                            e.participants.Add(_businessLogic.FillParticipants(reader2));
+                        }
+                    }
+                    reader2.Close();
+                }
                 _db.Disconnect();
                 return Ok(events);
 
@@ -88,8 +101,21 @@ namespace CliqueWebService.Controllers
                     }
                 }
                 reader.Close();
+                foreach (Event e in events)
+                {
+                    query = $"SELECT Users.user_id, name, surname, email, gender_name, contact_no, birth_data, profile_pic, bio, sgf.status_id FROM Users LEFT JOIN Gender ON gender_id = gender LEFT JOIN signs_up_for sgf ON Users.user_id = sgf.user_id WHERE Users.user_id = {id} AND sgf.event_id = {e.event_id}";
+                    var reader2 = _db.ExecuteQuery(query);
+                    while (reader2.Read())
+                    {
+                        if (reader2.GetValue(0) != DBNull.Value)
+                        {
+                            e.participants.Add(_businessLogic.FillParticipants(reader2));
+                        }
+                    }
+                    reader2.Close();
+                }
                 _db.Disconnect();
-                return Ok(events);
+                return Ok();
             }
             catch (Exception ex)
             {

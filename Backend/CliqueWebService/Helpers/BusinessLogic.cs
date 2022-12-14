@@ -49,6 +49,16 @@ namespace CliqueWebService.Helpers
             };
             return ev;
         }
+
+        public Participants FillParticipants(SqlDataReader reader)
+        {
+            Participants participants = new Participants
+            {
+                Participant = GetUsers(reader),
+                Status = reader.GetInt32(9)
+            };
+            return participants;
+        }
         public string ConvertToSHA256(string pass)
         {
             StringBuilder builder = new StringBuilder();

@@ -8,6 +8,8 @@ namespace CliqueWebService.Helpers.Models
         public string event_name { get; set; }
         public string event_location { get; set; }
         public string event_timestamp { get; set; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public List<Participants> participants { get; set; }
         public int participants_no { get; set; }
         public double? cost { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
