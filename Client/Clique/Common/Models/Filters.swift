@@ -8,7 +8,7 @@
 import Foundation
 
 struct Filter {
-    var priceMin: Double
-    var priceMax: Double
+//    var priceMin: Double
+//    var priceMax: Double
     var dateFrom: Date
 }

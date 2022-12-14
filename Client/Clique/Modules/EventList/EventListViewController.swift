@@ -136,9 +136,9 @@ extension EventListViewController: EventFilterDelegate {
     func getFilteredEvents(filter: Filter) {
         self.navigationController?.popViewController(animated: true)
         _events  = _storedEvents.filter {
-            return $0.cost ?? 0 <= filter.priceMax
-            && $0.cost ?? 0 >= filter.priceMin
-            && dateFormatter.date(from: $0.timestamp) ?? Date() >= filter.dateFrom
+//            return $0.cost ?? 0 <= filter.priceMax
+//            && $0.cost ?? 0 >= filter.priceMin
+            dateFormatter.date(from: $0.timestamp) ?? Date() >= filter.dateFrom
         }
     }
 }
