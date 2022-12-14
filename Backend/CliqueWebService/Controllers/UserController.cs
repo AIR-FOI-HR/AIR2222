@@ -143,9 +143,17 @@ namespace CliqueWebService.Controllers
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
                 }
-
-                string query = $"UPDATE Users SET name = '{user.name}', surname = '{user.surname}', email = '{user.email}', contact_no = '{user.contact_no}', " +
-                    $"birth_data = '{user.birth_data}', gender = {user.gender}, bio = '{user.bio}' WHERE user_id = {id}";
+                string query = "";
+                if (!string.IsNullOrEmpty(user.gender))
+                {
+                    query = $"UPDATE Users SET name = '{user.name}', surname = '{user.surname}', email = '{user.email}', contact_no = '{user.contact_no}', " +
+                        $"birth_data = '{user.birth_data}', gender = {user.gender}, bio = '{user.bio}' WHERE user_id = {id}";
+                }
+                else
+                {
+                    query = $"UPDATE Users SET name = '{user.name}', surname = '{user.surname}', email = '{user.email}', contact_no = '{user.contact_no}', " +
+                        $"birth_data = '{user.birth_data}', bio = '{user.bio}' WHERE user_id = {id}";
+                }
                 _db.BeginTransaction();
                 try
                 {

@@ -7,28 +7,54 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 enum Constants {
     enum Service {
-        private static let baseURL = "https://cliquewebservice20221128214150.azurewebsites.net/api/"
+        private static let baseURL = "https://cliquewebservice20221115180920.azurewebsites.net/api/"
         static let registerURL = baseURL.appending("Authentication/RegisterUser")
         static let loginURL = baseURL.appending("Authentication/LoginUser")
+        static let profileGetUserURL = baseURL.appending("User")
+        static let profileUpdateURL = baseURL.appending("User/UpdateUserData")
+        static let passwordUpdateURL = baseURL.appending("User/UpdateUserPassword")
+        static let categoriesURL = baseURL.appending("Event/GetCategories")
+        static let currenciesURL = baseURL.appending("Event/GetCurrencies")
+        static let createEventURL = baseURL.appending("Event/CreateNewEvent")
         static let eventsURL = baseURL.appending("Event/GetAllEvents")
         static let eventRegistrationURL = baseURL.appending("EventRegister/RegisterOnEvent")
-        
+        static let APIkey = "AIzaSyC0NNY4L9uG_Vbn3oEyy-141uhKQzDb_VU"
+       
         static func requestHeaders() -> HTTPHeaders {
             var headers: HTTPHeaders = [
-                "Accept": "application/json",
-                "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKV1RTZXJ2aWNlQWNjZXNzVG9rZW4iLCJqdGkiOiIyZjYwMzk4Zi0wNjk5LTRmN2UtYTY5Zi1jMDgzYWFiN2ZiYmQiLCJpYXQiOiIxMi8xNC8yMDIyIDU6MTA6NDcgUE0iLCJVc2VySWQiOiI0IiwiRW1haWwiOiJtdnVrQGdtYWlsLmNvbSIsImV4cCI6MTY3MTA0MTQ0NywiaXNzIjoiSldUQXV0aGVudGljYXRpb25TZXJ2ZXIiLCJhdWQiOiJKV1RDbGlxdWVVc2VycyJ9.PJanUMEcCHfatcj28EMzbs5yOhzzCP9bPgkECr69zRc"
-
+                "Accept": "application/json"
             ]
-            //if let token = UserStorage.token {
-            //        headers
-            //}
-            
+
+            if let token = UserStorage.token {
+                headers["Authorization"] = "Bearer \(token)"
+            }
+
             return headers
         }
-        
+    }
+    enum Alerts {
+        static let successfullyUpdatedMessage = "Successfully updated."
+        static let pleaseEnterInfoMessage = "Please enter all required information."
+        static let successRegisterMessage = "Successfully registrated."
+        static let passwordsDontMatchMessage = "Passwords don't match."
+        static let wrongInputMessage = "Wrong input."
+        static let defaultOKActionTitle = "OK"
+        static let defaultCancelActionTitle = "Cancel"
+        static let wantToLogOutMessage = "Are you sure you want to log out?"
+        static let wrongCredentialsMessage = "E-mail or password is incorrect."
+        static let pleaseChooseLocationMessasge = "Please choose a location."
+        static let pleaseEnterShortDescriptionMessasge = "Please enter short description."
+        static let successfullyCreatedEventMessasge = "Successfully created event!"
+    }
+   
+    enum DateFormats {
+        static let dateFormatClient = "yyyy-MM-dd HH:mm"
+        static let dateFormatAPI = "yyyy-MM-dd'T'HH:mm:SS'Z'"
+        static let dateFormatDateOfBirth = "yyyy-MM-dd"
     }
     
     enum Labels {
@@ -40,3 +66,4 @@ enum Constants {
         static let eventDetail = "EventDetail"
     }
 }
+

@@ -81,7 +81,7 @@ private extension EventDetailViewController {
     func _checkUserStatusOnEvent(participants: [Participant?]){
         var id = 0
         do{
-            let jwt = try decode (jwt: "")
+            let jwt = try decode (jwt: UserStorage.token!)
             if let userId = jwt["UserId"].string {
                 id = Int(userId) ?? 0
             }
