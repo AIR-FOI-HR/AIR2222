@@ -14,12 +14,9 @@ class EventListViewController: UIViewController {
     @IBOutlet private var _tableView: UITableView!
     @IBOutlet private var _buttonFilter: UIButton!
     
-//    var dateFrom: Date!
-//    var priceMin: String!
-//    var priceMax: String!
+    let dateFormatter = DateFormatter()
     private var _events: [Event] = [] {
         didSet { _tableView.reloadData() }
-        
     }
     private var _storedEvents: [Event] = []
     private var _eventServices = EventServices()
@@ -31,11 +28,14 @@ class EventListViewController: UIViewController {
         
     }
 }
-
 private extension EventListViewController {
     
     func _setupUI() {
-//        _buttonFilter.addTarget(self, action: #selector(openFilterView), for: .touchUpInside)
+        
+        _buttonFilter.addTarget(self, action: #selector(_openFilterView), for: .touchUpInside)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(_clearFilters))
+         tapGesture.numberOfTapsRequired = 2
+        _buttonFilter.addGestureRecognizer(tapGesture)
         _searchEventsTextField.delegate = self
         _tableView.dataSource = self
         _tableView.delegate = self
@@ -44,10 +44,11 @@ private extension EventListViewController {
         _searchEventsTextField.layer.shadowRadius = 2.0
         _searchEventsTextField.layer.shadowOffset = CGSizeMake(3, 3)
         _searchEventsTextField.layer.shadowColor = UIColor.gray.cgColor
-        
+        dateFormatter.dateFormat = "dd/MM/yyy HH:mm:ss"
     }
     
-    func _getEvents(){
+    func _getEvents() {
+        
         _eventServices.getEvent() { [weak self] result in
             guard let _self = self else { return }
             switch result{
@@ -62,6 +63,7 @@ private extension EventListViewController {
     }
     
     func _getSearchResults() {
+        
         guard
             let searchText = _searchEventsTextField.text,
             !searchText.isEmpty
@@ -74,23 +76,19 @@ private extension EventListViewController {
         }
     }
     
-//    @objc func openFilterView(){
-//        let storyboardFilter = UIStoryboard(name: "EventFilter", bundle: nil)
-//        guard let eventFilterViewController = storyboardFilter.instantiateViewController(withIdentifier: "EventFilter") as? EventFilterViewController else { return }
-//        navigationController?.pushViewController(eventFilterViewController, animated: true)
-//        _getFilteredResults()
-//    }
-//
-//    func _getFilteredResults(){
-//        guard let pricemax = Double(priceMax), !priceMax.isEmpty else {
-//            priceMax = "FREE"
-//            return
-//        }
-//        _events = _storedEvents.filter{
-//            $0.eventCost <= pricemax
-//        }
-//    }
+    @objc func _openFilterView() {
+        
+        let storyboardEventFilter = UIStoryboard(name: "EventFilter", bundle: nil)
+        let eventFilterViewController =  storyboardEventFilter.instantiateViewController(withIdentifier: "EventFilter") as? EventFilterViewController
+        eventFilterViewController?.delegate = self
+        navigationController?.pushViewController(eventFilterViewController!, animated: true)
+    }
+    
+    @objc func _clearFilters() {
+        _events = _storedEvents
+    }
 }
+
 extension EventListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,7 +98,6 @@ extension EventListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: Constants.Storyboards.eventDetail, bundle: nil)
         let eventDetailViewController =  storyboard.instantiateViewController(withIdentifier: Constants.Storyboards.eventDetail) as? EventDetailViewController
-        
         eventDetailViewController?.event = _events[indexPath.row]
         navigationController?.pushViewController(eventDetailViewController!, animated: true)
     }
@@ -131,5 +128,17 @@ extension EventListViewController: UITextFieldDelegate {
             _getSearchResults()
         }
         return true
+    }
+}
+
+extension EventListViewController: EventFilterDelegate {
+    
+    func getFilteredEvents(filter: Filter) {
+        self.navigationController?.popViewController(animated: true)
+        _events  = _storedEvents.filter {
+            return $0.cost ?? 0 <= filter.priceMax
+            && $0.cost ?? 0 >= filter.priceMin
+            && dateFormatter.date(from: $0.timestamp) ?? Date() >= filter.dateFrom
+        }
     }
 }
