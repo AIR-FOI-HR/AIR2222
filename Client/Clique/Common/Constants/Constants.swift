@@ -16,6 +16,9 @@ enum Constants {
         static let categoriesURL = baseURL.appending("Event/GetCategories")
         static let currenciesURL = baseURL.appending("Event/GetCurrencies")
         static let createEventURL = baseURL.appending("Event/CreateNewEvent")
+        static let getPlacesURL =
+        "https://maps.googleapis.com/maps/api/place/textsearch/json?query=%22Trakoscanska%22&key=AIzaSyC0NNY4L9uG_Vbn3oEyy-141uhKQzDb_VU"
+        static let APIkey = "AIzaSyC0NNY4L9uG_Vbn3oEyy-141uhKQzDb_VU"
     }
     
     enum Alerts {
@@ -26,6 +29,7 @@ enum Constants {
         static let wrongInputMessasge = "Wrong input."
         static let successfullyCreatedEventMessasge = "Successfully created event!"
         static let pleaseEnterShortDescriptionMessasge = "Please enter short description."
+        static let pleaseChooseLocationMessasge = "Please choose a location."
         static let deafultActionTitle = "OK"
     }
     

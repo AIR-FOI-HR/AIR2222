@@ -33,7 +33,7 @@ class CreateEventOverviewViewController: UIViewController {
         participantNumberLabel.text = createEventObject.participantsCount
         eventCostLabel.text = createEventObject.cost
         chosenDateTimeLabel.text = createEventObject.eventTimeStampPrint
-        locationLabel.text = "Proba"
+        locationLabel.text = createEventObject.eventLocation
         shortDescriptionTextView.text = createEventObject.description
         currencyLabel.text = createEventObject.currency?.abbreviation
     }
@@ -62,7 +62,7 @@ class CreateEventOverviewViewController: UIViewController {
         guard
             let category = createEventObject.category?.id.description,
             let name = createEventObject.eventName,
-//            let location = "lokacija",
+            let location = createEventObject.eventLocation,
             let timeStamp = createEventObject.eventTimeStampAPI,
             let participantsCount = createEventObject.participantsCount,
             let cost = createEventObject.cost,
@@ -71,7 +71,7 @@ class CreateEventOverviewViewController: UIViewController {
         
         let entries = CreateEventEntries(
             name: name,
-            location: "lokacija",
+            location: location,
             timeStamp: timeStamp,
             participantsCount: participantsCount,
             cost: cost,

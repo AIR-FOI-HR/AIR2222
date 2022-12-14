@@ -10,12 +10,12 @@
       }
     },
     {
-      "identity" : "floatingpanel",
+      "identity" : "googlemaps-sp",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SCENEE/FloatingPanel.git",
+      "location" : "https://github.com/YAtechnologies/GoogleMaps-SP.git",
       "state" : {
-        "revision" : "4ab7d260301ddf1cab5376ea14e285a128f5ba39",
-        "version" : "2.5.5"
+        "revision" : "684ea6db362feaefdfcff89356e446bec8bcde3d",
+        "version" : "7.2.0"
       }
     },
     {

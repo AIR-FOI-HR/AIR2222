@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GooglePlaces
 import IQKeyboardManagerSwift
 
 @main
@@ -15,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.resignFirstResponder()
-
+        GMSPlacesClient.provideAPIKey(Constants.Service.APIkey)
         return true
     }
 
