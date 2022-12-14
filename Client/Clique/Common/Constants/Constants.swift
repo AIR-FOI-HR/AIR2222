@@ -8,7 +8,6 @@
 import Foundation
 
 enum Constants {
-    
     enum Service {
         private static let baseURL = "https://cliquewebservice20221115180920.azurewebsites.net/api/"
         static let registerURL = baseURL.appending("Authentication/RegisterUser")
@@ -16,6 +15,7 @@ enum Constants {
         static let categoriesURL = baseURL.appending("Event/GetCategories")
         static let currenciesURL = baseURL.appending("Event/GetCurrencies")
         static let createEventURL = baseURL.appending("Event/CreateNewEvent")
+        static let eventsURL = baseURL.appending("Event/GetAllEvents")
         static let APIkey = "AIzaSyC0NNY4L9uG_Vbn3oEyy-141uhKQzDb_VU"
     }
     
@@ -36,4 +36,12 @@ enum Constants {
         static let dateFormatAPI = "yyyy-MM-dd'T'HH:mm:SS'Z'"
     }
     
+    enum Labels {
+        static let labelFree = "FREE"
+    }
+    
+    enum Storyboards {
+        static let eventListTableViewCell = "EventListTableViewCell"
+        static let eventDetail = "EventDetail"
+    }
 }

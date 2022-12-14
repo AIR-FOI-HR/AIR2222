@@ -16,6 +16,12 @@
       "state" : {
         "revision" : "684ea6db362feaefdfcff89356e446bec8bcde3d",
         "version" : "7.2.0"
+      "identity" : "alamofireimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/AlamofireImage",
+      "state" : {
+        "revision" : "98cbb00ce0ec5fc8e52a5b50a6bfc08d3e5aee10",
+        "version" : "4.2.0"
       }
     },
     {
