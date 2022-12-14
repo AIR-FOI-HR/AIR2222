@@ -31,8 +31,6 @@ private extension EventDetailViewController {
     
     func _setupUI() {
         guard let _event = self.event else { return }
-        
-        
         _eventName.text = _event.name
         _eventDescription.text = _event.description
         _eventCreator.text = _event.creator.name + " " + _event.creator.surname
