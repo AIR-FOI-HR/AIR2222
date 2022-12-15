@@ -22,22 +22,6 @@ final class EventServices {
                 }
             }
     }
-    /*func checkUserStatusOnEvent(event_id: String,
-                                completion: @escaping(Result<Int, Error>) -> Void) {
-        AF.request(Constants.Service.userRegisteredOnEventURL + event_id,
-                   method: .get,
-                   headers: Constants.Service.requestHeaders()
-                   )
-            .validate(statusCode: 200..<300)
-            .responseDecodable(of: Int.self) { response in
-                switch response.result {
-                case .success(let status):
-                    completion(.success(status))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-    }*/
     
     func registerToEvent(event_id: Int, status: Int,
         completion: @escaping(Result<Int, Error>) -> Void) {
@@ -58,6 +42,4 @@ final class EventServices {
                 }
             }
     }
-    
-    
 }

@@ -33,12 +33,23 @@ struct Event: Codable {
             case description = "description"
             case participants = "participants"
     }
+    
+    enum status: String {
+            case pending
+            case inProgress
+            case done
+    }
 }
 
-//extension Event {
-//    enum didItEnd: String {
-//        case pending
-//        case inProgress
-//        case done
+extension Event {
+//    var didItEnd(timestamp: TimeInterval): status {
+//        let currentTimestamp = Date().timeIntervalSince1970
+//        if(currentTimestamp < currentTimestamp) {
+//            return .pending
+//        } else if(currentTimestamp > currentTimestamp) {
+//            return .done
+//        } else {
+//            return .inProgress
+//        }
 //    }
-//}
+}

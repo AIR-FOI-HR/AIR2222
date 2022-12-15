@@ -21,13 +21,13 @@ class EventDetailViewController: UIViewController {
     @IBOutlet private var _eventParticipantsNum: UILabel!
     @IBOutlet private var _eventCost: UILabel!
     @IBOutlet private var _eventCategory: UILabel!
-    @IBOutlet private var _buttonJoinEvent: UIButton!
+    @IBOutlet private var buttonJoinEvent: UIButton!
     
     
     private var eventServices = EventServices()
     private var status = 0
-    private var _alertMessage = ""
-    private var _didItEnd = false
+    private var alertMessage = ""
+    private var eventStatus = Event.status.done
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,79 +42,85 @@ class EventDetailViewController: UIViewController {
     }
 }
 
-
-
 private extension EventDetailViewController {
     
     func _setupUI() {
-        guard let _event = self.event else { return }
-        _eventName.text = _event.name
-        _eventDescription.text = _event.description
-        _eventCreator.text = _event.creator.name + " " + _event.creator.surname
-        _eventLocation.text = _event.location
-        _eventTimestamp.text = _event.timestamp
-        _eventParticipantsNum.text = String(_event.participantNumber)
-        let currency = _event.currency
-        if let price = _event.cost {
+        _eventName.text = event.name
+        _eventDescription.text = event.description
+        _eventCreator.text = event.creator.name + " " + event.creator.surname
+        _eventLocation.text = event.location
+        _eventTimestamp.text = event.timestamp
+        _eventParticipantsNum.text = String(event.participantNumber)
+        let currency = event.currency
+        if let price = event.cost {
             _eventCost.text = price == 0 ? Constants.Labels.labelFree : String(price) + " " + (currency ?? "")
         } else {
             _eventCost.text = Constants.Labels.labelFree
         }
-        _eventCategory.text = _event.category
-        _buttonJoinEvent.addTarget(self, action: #selector(_registerToEvent), for: .touchUpInside)
-        if(_stringToTimeStamp(timeString: _event.timestamp) < NSDate().timeIntervalSince1970){
-            _didItEnd = true
-        }
-        _checkUserStatusOnEvent(participants: _event.participants)
+        _eventCategory.text = event.category
+        buttonJoinEvent.addTarget(self, action: #selector(registerToEventAlert), for: .touchUpInside)
+        
+        checkUserStatusOnEvent(participants: event.participants)
     }
     
-    func _stringToTimeStamp(timeString: String) -> TimeInterval {
+    func didItEnd(timestamp: TimeInterval) -> Event.status {
+        let currentTimestamp = Date().timeIntervalSince1970
+        if(currentTimestamp < timestamp) {
+            return .pending
+        } else if(currentTimestamp > timestamp) {
+            return .done
+        } else {
+            return .inProgress
+        }
+    }
+    
+    func stringToTimeStamp(timeString: String) -> TimeInterval {
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "dd/MM/yyyy HH:mm:ss"
         let date = dateFormatterGet.date(from: timeString)
-        print(date!.timeIntervalSince1970)
         return date!.timeIntervalSince1970
     }
     
-    func _checkUserStatusOnEvent(participants: [Participant?]){
+    func checkUserStatusOnEvent(participants: [Participant?]){
         var id = 0
-        do{
+        do {
             let jwt = try decode (jwt: UserStorage.token!)
             if let userId = jwt["UserId"].string {
                 id = Int(userId) ?? 0
             }
-        }catch{
+        } catch {
             return
         }
         participants.forEach{participant in
             if(participant?.user.id  == id) {
                 status = participant?.status ?? 0
-                _activateButton()
+                activateButton()
                 return
             }
         }
     }
     
-    func _activateButton(){
-        if(!_didItEnd){
+    func activateButton(){
+        eventStatus = didItEnd(timestamp: stringToTimeStamp(timeString: event.timestamp))
+        if(eventStatus == Event.status.pending){
             if(status == 1 || status == 3){
-                        _buttonJoinEvent.setTitle("Join", for: .normal)
-                        _buttonJoinEvent.isHidden = false
-                _alertMessage = Constants.Alerts.joinEventMessage
+                        buttonJoinEvent.setTitle("Join", for: .normal)
+                        buttonJoinEvent.isHidden = false
+                alertMessage = Constants.Alerts.joinEventMessage
                     } else if(status == 2) {
-                        _buttonJoinEvent.setTitle("Cancel", for: .normal)
-                        _buttonJoinEvent.isHidden = false
-                        _alertMessage = Constants.Alerts.cancelEventMessage
+                        buttonJoinEvent.setTitle("Cancel", for: .normal)
+                        buttonJoinEvent.isHidden = false
+                        alertMessage = Constants.Alerts.cancelEventMessage
                     }
-        } else if(_didItEnd && status == 2) {
+        } else if(eventStatus == Event.status.done && status == 2) {
             //TODO: Rating
         } else {
-            _buttonJoinEvent.isHidden = true
+            buttonJoinEvent.isHidden = true
         }
     }
     
-    @objc func _registerToEvent(){
-        let refreshAlert = UIAlertController(title: Constants.Alerts.confirmationTitleMessage, message: _alertMessage, preferredStyle: UIAlertController.Style.alert)
+    @objc func registerToEventAlert(){
+        let refreshAlert = UIAlertController(title: Constants.Alerts.confirmationTitleMessage, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
 
         refreshAlert.addAction(UIAlertAction(title: Constants.Alerts.defaultOKActionTitle, style: .default, handler: { (action: UIAlertAction!) in self.callRegisterToEventService()
         }))
@@ -130,9 +136,8 @@ private extension EventDetailViewController {
             guard let _self = self else { return }
             switch result{
             case .success(let success):
-                print(success)
                 _self.status = success
-                _self._activateButton()
+                _self.activateButton()
             case .failure(let error):
                 print(error)
             }

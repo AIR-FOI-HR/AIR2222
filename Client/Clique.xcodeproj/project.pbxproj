@@ -146,7 +146,6 @@
 		429861B829392D45001CF447 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		429861C2294379BA001CF447 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		429AC2692926ADF60029498B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		429DB4E72948FDBD005FB136 /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		429FCA282933F2F200269AC5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		42BA9E972940B738008CAA90 /* CreateEventOverview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateEventOverview.storyboard; sourceTree = "<group>"; };
 		42BA9E992940B777008CAA90 /* Location.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Location.storyboard; sourceTree = "<group>"; };
@@ -189,7 +188,6 @@
 			children = (
 				420CDA96290E54380074ACFA /* Clique */,
 				420CDA95290E54380074ACFA /* Products */,
-				425BF019294A6B4500FBD220 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -366,14 +364,6 @@
 				4254AD3E29297E2A004D649D /* Constants.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		425BF019294A6B4500FBD220 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				429DB4E72948FDBD005FB136 /* Participant.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		4272BF1229340F9400797045 /* JoinedEvents */ = {
