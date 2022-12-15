@@ -8,7 +8,19 @@
 import Foundation
 
 struct Filter {
-//    var priceMin: Double
-//    var priceMax: Double
+//    var distance: Int
     var dateFrom: Date
+    var dateTo: Date
+    var numOfPart: Int
+    var state: Cost
+    var category: String
+}
+
+extension Filter {
+    
+    enum Cost {
+        case trueTrue
+        case trueFalse
+        case falseTrue
+    }
 }
