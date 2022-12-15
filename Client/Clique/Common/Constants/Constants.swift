@@ -49,6 +49,9 @@ enum Constants {
         static let pleaseChooseLocationMessasge = "Please choose a location."
         static let pleaseEnterShortDescriptionMessasge = "Please enter short description."
         static let successfullyCreatedEventMessasge = "Successfully created event!"
+        static let confirmationTitleMessage = "Confirmation"
+        static let joinEventMessage = "Are you sure you want to join this event?"
+        static let cancelEventMessage = "Are you sure you want to cancel this event?"
     }
    
     enum DateFormats {
