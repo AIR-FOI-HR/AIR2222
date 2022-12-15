@@ -18,14 +18,15 @@ class EventListViewController: UIViewController {
     private var _events: [Event] = [] {
         didSet { _tableView.reloadData() }
     }
+    
     private var _storedEvents: [Event] = []
     private var _eventServices = EventServices()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         _setupUI()
         _getEvents()
-        
     }
 }
 private extension EventListViewController {
@@ -135,10 +136,19 @@ extension EventListViewController: EventFilterDelegate {
     
     func getFilteredEvents(filter: Filter) {
         self.navigationController?.popViewController(animated: true)
-        _events  = _storedEvents.filter {
-//            return $0.cost ?? 0 <= filter.priceMax
-//            && $0.cost ?? 0 >= filter.priceMin
-            dateFormatter.date(from: $0.timestamp) ?? Date() >= filter.dateFrom
+        _events  = _storedEvents.filter { 
+            if filter.state == Filter.Cost.trueTrue {
+                return $0.cost ?? 0 >= 0 && $0.participantNumber <= filter.numOfPart && dateFormatter.date(from:$0.timestamp)! >= filter.dateFrom && dateFormatter.date(from:$0.timestamp)! <= filter.dateTo && $0.category.contains(filter.category)
+            }
+            
+            if filter.state == Filter.Cost.trueFalse {
+                return $0.cost ?? 0 == 0 && $0.participantNumber <= filter.numOfPart && dateFormatter.date(from:$0.timestamp)! >= filter.dateFrom && dateFormatter.date(from:$0.timestamp)! <= filter.dateTo && $0.category.contains(filter.category)
+            }
+            
+            if filter.state == Filter.Cost.falseTrue {
+                return $0.cost ?? 0 > 0 && $0.participantNumber <= filter.numOfPart && dateFormatter.date(from:$0.timestamp)! >= filter.dateFrom && dateFormatter.date(from:$0.timestamp)! <= filter.dateTo && $0.category.contains(filter.category)
+            }
+            return true
         }
     }
 }
