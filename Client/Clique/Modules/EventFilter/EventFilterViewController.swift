@@ -27,15 +27,16 @@ class EventFilterViewController: UIViewController {
     @IBOutlet private var _participantsTextField: UITextField!
     @IBOutlet private var _applyButton: UIBarButtonItem!
     
-    var filter = Filter(dateFrom: Date())
-//    var filter = Filter(priceMin: 0, priceMax: 9999, dateFrom: Date())
+    private var _pickerViewCategory = UIPickerView()
+    var categoryList: [Category] = []
+    private var _categoryService = CategoryServices()
+    var filter = Filter(dateFrom: Date(), dateTo: Date(), numOfPart: 0, state: Filter.Cost.trueTrue, category: " ")
     var delegate: EventFilterDelegate?
         
     override func viewDidLoad() {
         
         super.viewDidLoad()
-//        setupUI()
-//        _buttonFilter.addTarget(self, action: #selector(closeAndGet), for: .touchUpInside)
+        setupUI()
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
@@ -45,30 +46,73 @@ class EventFilterViewController: UIViewController {
     
     @IBAction func applyFilter(_ sender: UIBarButtonItem) {
         filter.dateFrom = _fromDatePicker.date
+        filter.dateTo = _toDatePicker.date
+        if _freeSwitch.isOn == true && _paymentSwitch.isOn == true {
+            filter.state = Filter.Cost.trueTrue
+        } else if _freeSwitch.isOn == true && _paymentSwitch.isOn == false {
+            filter.state = Filter.Cost.trueFalse
+        } else if _freeSwitch.isOn == false && _paymentSwitch.isOn == true {
+            filter.state = Filter.Cost.falseTrue
+        }
+        filter.numOfPart = Int( _participantsTextField.text ?? "50") ?? 50
+        if _categoryTextField.state.isEmpty {
+            filter.category = " "
+        } else {
+            guard let categoryText = _categoryTextField.text else { return }
+            filter.category = categoryText
+        }
         delegate?.getFilteredEvents(filter: filter)
+    }
+    
+    @IBAction func _categoryDropDownPressed(_ sender: UIButton) {
+        _categoryTextField.becomeFirstResponder()
     }
 }
 
 extension EventFilterViewController {
     
-//    func setupUI() {
-//        _labelDate.text = "Date from:"
-//        _labelPriceMin.text = "Price min:"
-//        _labelPriceMax.text = "Price max:"
-//    }
+    func setupUI() {
+        _freeSwitch.isOn = true
+        _paymentSwitch.isOn = true
+        _participantsTextField.placeholder = "50"
+        _getCategories()
+        _pickerViewCategory.delegate = self
+        _pickerViewCategory.dataSource = self
+        _categoryTextField.text = " "
+        _categoryTextField.inputView = _pickerViewCategory
+    }
     
-//    @objc func closeAndGet() {
-//        if let doubleValue = Double(_textFieldPriceMax.text!) {
-//            filter.priceMax = doubleValue
-//        }
-//        if let doubleValue = Double(_textFieldPriceMin.text!) {
-//            filter.priceMin = doubleValue
-//        }
-//        filter.dateFrom = _datePicker.date
-//        delegate?.getFilteredEvents(filter: filter)
-//    }
+    func _getCategories() {
+        
+        _categoryService.getCategory() { [weak self] result in
+            guard let _self = self else { return }
+            switch result{
+            case .success(let categories):
+                _self.categoryList = categories
+            case .failure(let error):
+                print(error)
+                
+            }
+        }
+    }
 }
 
 
-
-
+extension EventFilterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ _pickerViewCategory: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categoryList.count
+    }
+    
+    func pickerView(_ _pickerViewCategory: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categoryList[row].name
+    }
+    
+    func pickerView(_ _pickerViewCategory: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        _categoryTextField.text = categoryList[row].name
+    }
+}
