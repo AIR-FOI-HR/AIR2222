@@ -22,4 +22,19 @@ final class EventServices {
                 }
             }
     }
+    
+    func getLogUserEvents(completion: @escaping(Result<[Event], Error>) -> Void) {
+        AF.request(Constants.Service.createdUserEventsURL,
+                   method: .get,
+                   headers: Constants.Service.requestHeaders())
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: [Event].self) { response in
+                switch response.result {
+                    case .success(let eventResponse):
+                        completion(.success(eventResponse))
+                    case .failure(let error):
+                        completion(.failure(error))
+                }
+            }
+    }
 }

@@ -21,6 +21,7 @@ enum Constants {
         static let currenciesURL = baseURL.appending("Event/GetCurrencies")
         static let createEventURL = baseURL.appending("Event/CreateNewEvent")
         static let eventsURL = baseURL.appending("Event/GetAllEvents")
+        static let createdUserEventsURL = baseURL.appending("Event/LoggedUserCreatedEvents")
         static let APIkey = "AIzaSyC0NNY4L9uG_Vbn3oEyy-141uhKQzDb_VU"
        
         static func requestHeaders() -> HTTPHeaders {

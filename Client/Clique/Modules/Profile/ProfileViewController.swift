@@ -41,6 +41,7 @@ class ProfileViewController: UIViewController {
         
         bioTextView.layer.borderColor = UIColor.systemGray6.cgColor
         bioTextView.layer.borderWidth = 1
+//        createdEventsButton.addTarget(self, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
     }
     
     private func getUser() {

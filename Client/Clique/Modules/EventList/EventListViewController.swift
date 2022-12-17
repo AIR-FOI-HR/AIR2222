@@ -91,6 +91,7 @@ private extension EventListViewController {
 //        }
 //    }
 }
+
 extension EventListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
