@@ -11,7 +11,7 @@ import UIKit
 
 enum Constants {
     enum Service {
-        private static let baseURL = "https://cliquewebservice20221115180920.azurewebsites.net/api/"
+        private static let baseURL = "https://cliquewebservice20221128214150.azurewebsites.net/api/"
         static let registerURL = baseURL.appending("Authentication/RegisterUser")
         static let loginURL = baseURL.appending("Authentication/LoginUser")
         static let profileGetUserURL = baseURL.appending("User")
@@ -22,6 +22,7 @@ enum Constants {
         static let createEventURL = baseURL.appending("Event/CreateNewEvent")
         static let eventsURL = baseURL.appending("Event/GetAllEvents")
         static let eventRegistrationURL = baseURL.appending("EventRegister/RegisterOnEvent")
+        static let rateEventURL = baseURL.appending("Ratings/RateEvent")
         static let APIkey = "AIzaSyC0NNY4L9uG_Vbn3oEyy-141uhKQzDb_VU"
        
         static func requestHeaders() -> HTTPHeaders {

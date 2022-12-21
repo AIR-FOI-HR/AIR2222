@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import JWTDecode
+import Cosmos
 
 class EventDetailViewController: UIViewController {
     public var event : Event!
@@ -22,6 +23,7 @@ class EventDetailViewController: UIViewController {
     @IBOutlet private var _eventCost: UILabel!
     @IBOutlet private var _eventCategory: UILabel!
     @IBOutlet private var buttonJoinEvent: UIButton!
+    @IBOutlet private var cosmosView: CosmosView!
     
     
     private var eventServices = EventServices()
@@ -61,6 +63,9 @@ private extension EventDetailViewController {
         buttonJoinEvent.addTarget(self, action: #selector(registerToEventAlert), for: .touchUpInside)
         
         checkUserStatusOnEvent(participants: event.participants)
+        
+        cosmosView.settings.fillMode = .half
+        cosmosView.settings.minTouchRating = 0.5
     }
     
     func didItEnd(timestamp: TimeInterval) -> Event.status {
@@ -103,17 +108,21 @@ private extension EventDetailViewController {
     func activateButton(){
         eventStatus = didItEnd(timestamp: stringToTimeStamp(timeString: event.timestamp))
         if(eventStatus == Event.status.pending){
+            cosmosView.isHidden = true
             if(status == 1 || status == 3){
-                        buttonJoinEvent.setTitle("Join", for: .normal)
-                        buttonJoinEvent.isHidden = false
+                buttonJoinEvent.setTitle("Join", for: .normal)
+                buttonJoinEvent.isHidden = false
                 alertMessage = Constants.Alerts.joinEventMessage
-                    } else if(status == 2) {
-                        buttonJoinEvent.setTitle("Cancel", for: .normal)
-                        buttonJoinEvent.isHidden = false
-                        alertMessage = Constants.Alerts.cancelEventMessage
-                    }
+            } else if(status == 2) {
+                buttonJoinEvent.setTitle("Cancel", for: .normal)
+                buttonJoinEvent.isHidden = false
+                alertMessage = Constants.Alerts.cancelEventMessage
+            }
         } else if(eventStatus == Event.status.done && status == 2) {
-            //TODO: Rating
+            cosmosView.isHidden = false
+            cosmosView.didTouchCosmos = {rating in
+                self.callRateEvent()
+            }
         } else {
             buttonJoinEvent.isHidden = true
         }
@@ -138,6 +147,17 @@ private extension EventDetailViewController {
             case .success(let success):
                 _self.status = success
                 _self.activateButton()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func callRateEvent(){
+        eventServices.rateEvent(event_id: event.id, rating: cosmosView.rating){result in
+        switch result{
+            case .success(let success):
+                print(success)
             case .failure(let error):
                 print(error)
             }

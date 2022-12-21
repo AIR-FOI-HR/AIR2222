@@ -49,6 +49,7 @@
 		425BF01D294B344F00FBD220 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429FCA282933F2F200269AC5 /* UIImageView+Extension.swift */; };
 		425BF01E294B34A100FBD220 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429AC2692926ADF60029498B /* RegisterViewController.swift */; };
 		425BF01F294B34D000FBD220 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429861C2294379BA001CF447 /* UIViewController+Extension.swift */; };
+		425BF025294B6A1400FBD220 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 425BF024294B6A1400FBD220 /* Cosmos */; };
 		425FAC182938131200486755 /* CreateEventEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FAC172938131200486755 /* CreateEventEntries.swift */; };
 		426CB814294A2C0C0011FC42 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426CB813294A2C0C0011FC42 /* User.swift */; };
 		426CB816294A2DBE0011FC42 /* UserCreatorEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426CB815294A2DBE0011FC42 /* UserCreatorEvent.swift */; };
@@ -172,6 +173,7 @@
 				42496D10293033AA00D972C9 /* IQKeyboardManagerSwift in Frameworks */,
 				42D904382938263200831199 /* SkeletonView in Frameworks */,
 				42496D0C29301C9A00D972C9 /* KeychainAccess in Frameworks */,
+				425BF025294B6A1400FBD220 /* Cosmos in Frameworks */,
 				4207BBDF2948B50C00169EB9 /* GooglePlaces in Frameworks */,
 				420C5D92292C586C001E650D /* NVActivityIndicatorViewExtended in Frameworks */,
 				420C5D90292C586C001E650D /* NVActivityIndicatorView in Frameworks */,
@@ -528,6 +530,7 @@
 				4254180F293785D500782493 /* Hero */,
 				42D904372938263200831199 /* SkeletonView */,
 				4207BBDE2948B50C00169EB9 /* GooglePlaces */,
+				425BF024294B6A1400FBD220 /* Cosmos */,
 			);
 			productName = Clique;
 			productReference = 420CDA94290E54380074ACFA /* Clique.app */;
@@ -568,6 +571,7 @@
 				4254180E293785D500782493 /* XCRemoteSwiftPackageReference "Hero" */,
 				42D904362938263200831199 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 				4207BBDD2948B50C00169EB9 /* XCRemoteSwiftPackageReference "GoogleMaps-SP" */,
+				425BF023294B6A1400FBD220 /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = 420CDA95290E54380074ACFA /* Products */;
 			projectDirPath = "";
@@ -921,6 +925,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		425BF023294B6A1400FBD220 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		427F188129263D9A009284DA /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -990,6 +1002,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 425BF015294A639500FBD220 /* XCRemoteSwiftPackageReference "JWTDecode" */;
 			productName = JWTDecode;
+		};
+		425BF024294B6A1400FBD220 /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 425BF023294B6A1400FBD220 /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
 		};
 		427F188229263D9A009284DA /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

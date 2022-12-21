@@ -42,4 +42,24 @@ final class EventServices {
                 }
             }
     }
+    
+    func rateEvent(event_id: Int, rating: Double,
+        completion: @escaping(Result<String, Error>) -> Void) {
+        AF.request(Constants.Service.rateEventURL,
+                   method: .post,
+                   parameters: ["event_id": event_id,
+                                "rating": rating],
+                   encoding: JSONEncoding.default,
+                   headers: Constants.Service.requestHeaders()
+                   )
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: String.self) { response in
+                switch response.result {
+                case .success(let status):
+                    completion(.success(status))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
 }
