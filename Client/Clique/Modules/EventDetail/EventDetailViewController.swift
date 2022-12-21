@@ -60,10 +60,12 @@ private extension EventDetailViewController {
             _eventCost.text = Constants.Labels.labelFree
         }
         _eventCategory.text = event.category
-        buttonJoinEvent.addTarget(self, action: #selector(registerToEventAlert), for: .touchUpInside)
         
-        checkUserStatusOnEvent(participants: event.participants)
-        
+        if(event.participants.count <= event.participantNumber)
+        {
+            checkUserStatusOnEvent(participants: event.participants)
+        }
+
         cosmosView.settings.fillMode = .half
         cosmosView.settings.minTouchRating = 0.5
     }
@@ -107,8 +109,10 @@ private extension EventDetailViewController {
     
     func activateButton(){
         eventStatus = didItEnd(timestamp: stringToTimeStamp(timeString: event.timestamp))
+        print(eventStatus)
         if(eventStatus == Event.status.pending){
             cosmosView.isHidden = true
+            buttonJoinEvent.addTarget(self, action: #selector(registerToEventAlert), for: .touchUpInside)
             if(status == 1 || status == 3){
                 buttonJoinEvent.setTitle("Join", for: .normal)
                 buttonJoinEvent.isHidden = false
@@ -119,10 +123,13 @@ private extension EventDetailViewController {
                 alertMessage = Constants.Alerts.cancelEventMessage
             }
         } else if(eventStatus == Event.status.done && status == 2) {
+            buttonJoinEvent.addTarget(self, action: #selector(rateEventAlert), for: .touchUpInside)
+            buttonJoinEvent.isHidden = false
             cosmosView.isHidden = false
-            cosmosView.didTouchCosmos = {rating in
-                self.callRateEvent()
-            }
+            buttonJoinEvent.setTitle("Rate", for: .normal)
+//            cosmosView.didTouchCosmos = {rating in
+//                self.callRateEvent()
+//            }
         } else {
             buttonJoinEvent.isHidden = true
         }
@@ -140,6 +147,17 @@ private extension EventDetailViewController {
         present(refreshAlert, animated: true, completion: nil)
     }
     
+    @objc func rateEventAlert(){
+        eventServices.rateEvent(event_id: event.id, rating: cosmosView.rating){result in
+        switch result{
+            case .success(let success):
+                self.sendOkAlert(message: success)
+            case .failure(_):
+                self.sendOkAlert(message: Constants.Alerts.rateEventError)
+            }
+        }
+    }
+    
     func callRegisterToEventService(){
         eventServices.registerToEvent(event_id: event.id, status: status){ [weak self] result in
             guard let _self = self else { return }
@@ -152,15 +170,16 @@ private extension EventDetailViewController {
             }
         }
     }
+
     
-    func callRateEvent(){
-        eventServices.rateEvent(event_id: event.id, rating: cosmosView.rating){result in
-        switch result{
-            case .success(let success):
-                print(success)
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
+//    func callRateEvent(){
+//        eventServices.rateEvent(event_id: event.id, rating: cosmosView.rating){result in
+//        switch result{
+//            case .success(let success):
+//                print(success)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
 }
