@@ -33,7 +33,7 @@ namespace CliqueWebService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
 
-            string q = $"SELECT e.*, cur.currency_abbr, u.name, u.surname, u.email, cat.category_name, g.gender_name, u.user_id FROM Events e LEFT JOIN Categories cat ON e.category = cat.category_id LEFT JOIN Users u ON e.creator = u.user_id LEFT JOIN Currencies cur ON cur.currency_id = e.currency LEFT JOIN Gender g ON u.gender = g.gender_id where e.event_date >= GETDATE()";
+            string q = $"SELECT e.*, cur.currency_abbr, u.name, u.surname, u.email, cat.category_name, g.gender_name, u.user_id FROM Events e LEFT JOIN Categories cat ON e.category = cat.category_id LEFT JOIN Users u ON e.creator = u.user_id LEFT JOIN Currencies cur ON cur.currency_id = e.currency LEFT JOIN Gender g ON u.gender = g.gender_id";
             try
             {
                 var reader = _db.ExecuteQuery(q);
@@ -86,7 +86,7 @@ namespace CliqueWebService.Controllers
 
             try
             {
-                List<Event> events = new List<Event>();
+                Event returnEvent = new Event();
                 string query = $"SELECT e.*, cur.currency_abbr, u.name, u.surname, u.email, cat.category_name, g.gender_name, u.user_id FROM Events e LEFT JOIN Categories cat ON e.category = cat.category_id LEFT JOIN Users u ON e.creator = u.user_id LEFT JOIN Currencies cur ON cur.currency_id = e.currency LEFT JOIN Gender g ON u.gender = g.gender_id WHERE e.event_id = {id} ";
                 var reader = _db.ExecuteQuery(query);
                 if (!reader.HasRows)
@@ -97,25 +97,24 @@ namespace CliqueWebService.Controllers
                 {
                     if (reader.GetValue(0) != DBNull.Value)
                     {
-                        events.Add(_businessLogic.FillEvents(reader));
+                        returnEvent = _businessLogic.FillEvents(reader);
                     }
                 }
                 reader.Close();
-                foreach (Event e in events)
+                
+                query = $"SELECT Users.user_id, name, surname, email, gender_name, contact_no, birth_data, profile_pic, bio, sgf.status_id FROM Users LEFT JOIN Gender ON gender_id = gender LEFT JOIN signs_up_for sgf ON Users.user_id = sgf.user_id WHERE Users.user_id = {id} AND sgf.event_id = {returnEvent.event_id}";
+                var reader2 = _db.ExecuteQuery(query);
+                while (reader2.Read())
                 {
-                    query = $"SELECT Users.user_id, name, surname, email, gender_name, contact_no, birth_data, profile_pic, bio, sgf.status_id FROM Users LEFT JOIN Gender ON gender_id = gender LEFT JOIN signs_up_for sgf ON Users.user_id = sgf.user_id WHERE Users.user_id = {id} AND sgf.event_id = {e.event_id}";
-                    var reader2 = _db.ExecuteQuery(query);
-                    while (reader2.Read())
+                    if (reader2.GetValue(0) != DBNull.Value)
                     {
-                        if (reader2.GetValue(0) != DBNull.Value)
-                        {
-                            e.participants.Add(_businessLogic.FillParticipants(reader2));
-                        }
+                        returnEvent.participants.Add(_businessLogic.FillParticipants(reader2));
                     }
-                    reader2.Close();
                 }
+                reader2.Close();
+                
                 _db.Disconnect();
-                return Ok();
+                return Ok(returnEvent);
             }
             catch (Exception ex)
             {
@@ -270,13 +269,13 @@ namespace CliqueWebService.Controllers
 
                 if (request.Cost == "0")
                 {
-                    query = $"INSERT INTO Events(event_name, event_location, event_date, event_time, participations_no, creator, category, description)" +
-                    $" VALUES ('{request.EventName}', '{request.EventLocation}', '{request.EventTimeStamp.ToString("yyyy-MM-dd")}', '{request.EventTimeStamp.ToString("HH:mm:ss")}', '{request.ParticipantsNo}', '{id}', '{request.Category}', '{desc}')";
+                    query = $"INSERT INTO Events(event_name, event_location, event_timestamp, participations_no, creator, category, description, location_latitude, location_longitude)" +
+                    $" VALUES ('{request.EventName}', '{request.EventLocation}', {request.EventTimeStamp}, '{request.ParticipantsNo}', '{id}', '{request.Category}', '{desc}', {request.LocationLatitude}, {request.LocationLongitude})";
                 }
                 else
                 {
-                    query = $"INSERT INTO Events(event_name, event_location, event_date, event_time, participations_no, cost, currency,creator, category, description)" +
-                        $" VALUES ('{request.EventName}', '{request.EventLocation}', '{request.EventTimeStamp.ToString("yyyy-MM-dd")}', '{request.EventTimeStamp.ToString("HH:mm:ss")}', '{request.ParticipantsNo}', '{request.Cost}', '{request.Currency}','{id}', '{request.Category}', '{desc}')";
+                    query = $"INSERT INTO Events(event_name, event_location, event_timestamp, participations_no, cost, currency,creator, category, description, location_latitude, location_longitude)" +
+                        $" VALUES ('{request.EventName}', '{request.EventLocation}', {request.EventTimeStamp}, '{request.ParticipantsNo}', '{request.Cost}', '{request.Currency}','{id}', '{request.Category}', '{desc}', {request.LocationLatitude}, {request.LocationLongitude})";
                 }
                 _db.ExecuteNonQuery(query);
                 _db.CommitTransaction();
@@ -402,15 +401,15 @@ namespace CliqueWebService.Controllers
                 string query = "";
                 if (req.Cost == "0")
                 {
-                    query = $"UPDATE Events SET event_name = '{req.EventName}', event_date = '{req.EventTimeStamp.ToString("yyyy-MM-dd")}'," +
-                    $" event_time = '{req.EventTimeStamp.ToString("HH:mm:ss")}', event_location = '{req.EventLocation}', participations_no = {req.ParticipantsNo}," +
-                    $" category = {req.Category}, description = '{desc}' WHERE event_id = {eventId}";
+                    query = $"UPDATE Events SET event_name = '{req.EventName}', event_timestamp = {req.EventTimeStamp}," +
+                    $" event_location = '{req.EventLocation}', participations_no = {req.ParticipantsNo}," +
+                    $" category = {req.Category}, description = '{desc}', location_latitude = {req.LocationLatitude}, location_longitude = {req.LocationLongitude} WHERE event_id = {eventId}";
                 }
                 else
                 {
-                    query = $"UPDATE Events SET event_name = '{req.EventName}', event_date = '{req.EventTimeStamp.ToString("yyyy-MM-dd")}'," +
-                    $" event_time = '{req.EventTimeStamp.ToString("HH:mm:ss")}', event_location = '{req.EventLocation}', participations_no = {req.ParticipantsNo}," +
-                    $" category = {req.Category}, description = '{desc}', cost = {req.Cost}, currency = {req.Currency} WHERE event_id = {eventId}";
+                    query = $"UPDATE Events SET event_name = '{req.EventName}'," +
+                    $" event_timestamp = '{req.EventTimeStamp}', event_location = '{req.EventLocation}', participations_no = {req.ParticipantsNo}," +
+                    $" category = {req.Category}, description = '{desc}', cost = {req.Cost}, currency = {req.Currency}, location_latitude = {req.LocationLatitude}, location_longitude = {req.LocationLongitude} WHERE event_id = {eventId}";
                 }
                 _db.ExecuteNonQuery(query);
                 _db.CommitTransaction();

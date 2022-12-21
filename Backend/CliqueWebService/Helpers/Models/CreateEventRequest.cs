@@ -10,7 +10,8 @@ namespace CliqueWebService.Helpers.Models
         [Required]
         public string EventLocation{ get; set; }
         [Required]
-        public DateTime EventTimeStamp { get; set; }
+        [RegularExpression("[0-9]*", ErrorMessage = "Invalid format for timestamp")]
+        public string EventTimeStamp { get; set; }
         [Required]
         [RegularExpression("[0-9]*", ErrorMessage = "Invalid number of participants")]
         public string ParticipantsNo { get; set; }
@@ -24,5 +25,9 @@ namespace CliqueWebService.Helpers.Models
         public string Category { get; set; }
 
         public string Description { get; set; }
+
+        public string LocationLatitude { get; set; }
+        public string LocationLongitude { get; set; }
+
     }
 }
