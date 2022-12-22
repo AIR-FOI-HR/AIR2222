@@ -62,4 +62,21 @@ final class EventServices {
                 }
             }
     }
+    
+    func getRatedEvent(event_id: Int,
+        completion: @escaping(Result<Double, Error>) -> Void) {
+        AF.request(Constants.Service.getRatedEventURL + String(event_id),
+                   method: .get,
+                   headers: Constants.Service.requestHeaders()
+                   )
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: Double.self) { response in
+                switch response.result {
+                case .success(let status):
+                    completion(.success(status))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
 }

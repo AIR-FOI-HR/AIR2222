@@ -23,6 +23,7 @@ enum Constants {
         static let eventsURL = baseURL.appending("Event/GetAllEvents")
         static let eventRegistrationURL = baseURL.appending("EventRegister/RegisterOnEvent")
         static let rateEventURL = baseURL.appending("Ratings/RateEvent")
+        static let getRatedEventURL = baseURL.appending("Ratings/GetRatedEvent/")
         static let APIkey = "AIzaSyC0NNY4L9uG_Vbn3oEyy-141uhKQzDb_VU"
        
         static func requestHeaders() -> HTTPHeaders {
