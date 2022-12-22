@@ -11,27 +11,37 @@
         <!--Created events-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="CreatedEventsViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreatedEventsView" id="Y6W-OH-hqX" customClass="CreatedEventsViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Created events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrh-Wq-BiX">
-                                <rect key="frame" x="137" y="395" width="116" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cI8-4M-Lx9">
+                                <rect key="frame" x="10" y="57" width="370" height="743"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5EZ-qb-Rvc" id="pkG-bo-AgU"/>
+                                    <outlet property="delegate" destination="5EZ-qb-Rvc" id="Azw-pg-LAp"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cI8-4M-Lx9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="2xg-8A-j5Y"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cI8-4M-Lx9" secondAttribute="trailing" constant="10" id="D18-AE-tJF"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="cI8-4M-Lx9" secondAttribute="bottom" constant="10" id="Ft5-u9-jba"/>
+                            <constraint firstItem="cI8-4M-Lx9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="PdS-90-EIn"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Created events" id="hOj-0F-VVZ"/>
+                    <connections>
+                        <outlet property="_tableView" destination="cI8-4M-Lx9" id="PYz-8X-Qbc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="-34"/>
+            <point key="canvasLocation" x="64.615384615384613" y="-34.123222748815166"/>
         </scene>
     </scenes>
     <resources>
