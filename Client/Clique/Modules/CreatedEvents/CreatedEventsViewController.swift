@@ -26,7 +26,7 @@ class CreatedEventsViewController: UIViewController {
 }
 
 private extension CreatedEventsViewController {
-    func setupUI(){
+    func setupUI() {
         _tableView?.delegate = self
         _tableView?.dataSource = self
         _tableView!.register(UINib(nibName: Constants.Storyboards.eventListTableViewCell, bundle: nil), forCellReuseIdentifier: Constants.Storyboards.eventListTableViewCell)
