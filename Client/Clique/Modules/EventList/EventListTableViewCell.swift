@@ -20,7 +20,7 @@ class EventListTableViewCell: UITableViewCell {
     func configure(with event: Event) {
         _eventName.text = event.name
         _eventLocation.text = event.location
-        _eventTimestamp.text = event.timestamp
+        _eventTimestamp.text = event.timeStampToString(timestamp: event.timestamp)
         layoutSubviews()
     }
     

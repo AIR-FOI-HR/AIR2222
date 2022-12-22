@@ -51,7 +51,8 @@ private extension EventDetailViewController {
         _eventDescription.text = event.description
         _eventCreator.text = event.creator.name + " " + event.creator.surname
         _eventLocation.text = event.location
-        _eventTimestamp.text = event.timestamp
+        _eventTimestamp.text = event.timeStampToString(timestamp: event.timestamp)
+        
         _eventParticipantsNum.text = String(event.participantNumber)
         let currency = event.currency
         if let price = event.cost {
@@ -81,12 +82,12 @@ private extension EventDetailViewController {
         }
     }
     
-    func stringToTimeStamp(timeString: String) -> TimeInterval {
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "dd/MM/yyyy HH:mm:ss"
-        let date = dateFormatterGet.date(from: timeString)
-        return date!.timeIntervalSince1970
-    }
+//    func stringToTimeStamp(timeString: String) -> TimeInterval {
+//        let dateFormatterGet = DateFormatter()
+//        dateFormatterGet.dateFormat = "dd/MM/yyyy HH:mm:ss"
+//        let date = dateFormatterGet.date(from: timeString)
+//        return date!.timeIntervalSince1970
+//    }
     
     func checkUserStatusOnEvent(participants: [Participant?]){
         var id = 0
@@ -108,7 +109,7 @@ private extension EventDetailViewController {
     }
     
     func activateButton(){
-        eventStatus = didItEnd(timestamp: stringToTimeStamp(timeString: event.timestamp))
+        eventStatus = didItEnd(timestamp: event.timestamp)
         print(eventStatus)
         if(eventStatus == Event.status.pending){
             cosmosView.isHidden = true
