@@ -32,8 +32,8 @@ extension UIViewController {
             actionTitle: String? = Constants.Alerts.defaultOKActionTitle,
             animated: Bool = true
     ) {
-            let action = UIAlertAction(title: Constants.Alerts.defaultOKActionTitle, style: .cancel)
-        showAlert(title: title, message: message, actions: [action], animated: animated)
+            let action = UIAlertAction(title: actionTitle, style: .cancel)
+            showAlert(title: title, message: message, actions: [action], animated: animated)
     }
     
     func startAnimation(

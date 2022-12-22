@@ -32,12 +32,12 @@ class RegisterViewController: UIViewController {
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         
         guard let registerEntries = getRegisterEntries() else {
-            self.showOKAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
+            showOKAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             return
         }
         
         guard checkPasswords() else{
-            self.showOKAlert(message: Constants.Alerts.passwordsDontMatchMessage)
+            showOKAlert(message: Constants.Alerts.passwordsDontMatchMessage)
             return
         }
         self.startAnimation(loading: loading, view: view)

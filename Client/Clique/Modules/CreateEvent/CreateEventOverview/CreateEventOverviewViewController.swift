@@ -46,21 +46,22 @@ class CreateEventOverviewViewController: UIViewController {
     }
     
     func createEvent(with createEventEntries: CreateEventEntries) {
-        createEventService.createEvent(with: createEventEntries) { result in
+        createEventService.createEvent(with: createEventEntries) { [weak self] result in
+            guard let _self = self else { return }
             switch result {
             case .success() :
                 let defaultAction = UIAlertAction(title: "OK", style: .default, handler: {_ -> Void in
                     let storyboard = UIStoryboard(name: "TabBar" , bundle: nil)
                     if let viewController = storyboard.instantiateInitialViewController() {
                         viewController.modalPresentationStyle = .fullScreen
-                        self.present(viewController, animated: true)
+                        _self.present(viewController, animated: true)
                     }
                 })
-                self.stopAnimation(loading: self.loading)
-                self.showAlert(message: Constants.Alerts.successfullyCreatedEventMessasge, actions: [defaultAction])
+                _self.stopAnimation(loading: _self.loading)
+                _self.showAlert(message: Constants.Alerts.successfullyCreatedEventMessasge, actions: [defaultAction])
             case .failure :
-                self.showOKAlert(message: Constants.Alerts.wrongInputMessage, actionTitle: Constants.Alerts.defaultOKActionTitle)
-                self.stopAnimation(loading: self.loading)
+                _self.showOKAlert(message: Constants.Alerts.wrongInputMessage, actionTitle: Constants.Alerts.defaultOKActionTitle)
+                _self.stopAnimation(loading: _self.loading)
             }
         }
     }

@@ -144,9 +144,11 @@ private extension EventDetailViewController {
     
     @objc func registerToEventAlert() {
         let okAction = UIAlertAction(title: Constants.Alerts.defaultOKActionTitle,
-                                     style: .default, handler: {(action: UIAlertAction!) in self.callRegisterToEventService()})
+                                     style: .default,
+                                     handler: {(action: UIAlertAction!) in self.callRegisterToEventService()})
         let cancelAction = UIAlertAction(title: Constants.Alerts.defaultCancelActionTitle,
-                                         style: .default, handler: .none)
+                                         style: .default,
+                                         handler: .none)
         showAlert(message: alertMessage, actions: [okAction, cancelAction])
     }
     
@@ -177,9 +179,9 @@ private extension EventDetailViewController {
     }
     
     func getRatedEvent() {
-        eventServices.getRatedEvent(event_id: event.id){ [weak self] result in
+        eventServices.getRatedEvent(event_id: event.id) { [weak self] result in
             guard let _self = self else { return }
-            switch result{
+            switch result {
             case .success(let success):
                 _self.cosmosView.rating = success
                 _self.setCosmosRating()
