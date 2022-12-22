@@ -73,7 +73,7 @@ class LocationViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
             let location = chosenLocationTextField.text,
             !location.isEmpty
         else {
-            showOKAlert(message: Constants.Alerts.pleaseChooseLocationMessasge)
+            showAlert(message: Constants.Alerts.pleaseChooseLocationMessasge)
             return
         }
         createEventObject.eventLocation = location

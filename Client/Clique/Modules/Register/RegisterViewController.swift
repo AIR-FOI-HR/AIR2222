@@ -32,12 +32,12 @@ class RegisterViewController: UIViewController {
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         
         guard let registerEntries = getRegisterEntries() else {
-            showOKAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
+            showAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             return
         }
         
         guard checkPasswords() else{
-            showOKAlert(message: Constants.Alerts.passwordsDontMatchMessage)
+            showAlert(message: Constants.Alerts.passwordsDontMatchMessage)
             return
         }
         self.startAnimation(loading: loading, view: view)
@@ -58,7 +58,7 @@ class RegisterViewController: UIViewController {
                 self.showAlert(message: Constants.Alerts.successRegisterMessage, actions: [defaultAction])
                 self.stopAnimation(loading: self.loading)
             case .failure :
-                self.showOKAlert(message: Constants.Alerts.wrongInputMessage)
+                self.showAlert(message: Constants.Alerts.wrongInputMessage)
                 self.stopAnimation(loading: self.loading)
             }
         }

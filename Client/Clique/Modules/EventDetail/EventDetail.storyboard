@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,7 +12,7 @@
             <objects>
                 <viewController storyboardIdentifier="EventDetail" hidesBottomBarWhenPushed="YES" id="3W8-lm-JR7" customClass="EventDetailViewController" customModule="Clique" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jxd-ax-xtK">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfD-ly-4vk">
@@ -235,6 +234,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="_buttonJoinEvent" destination="DSh-sD-bBw" id="XMc-nw-fuW"/>
                         <outlet property="_eventCategory" destination="d16-NA-xYv" id="2ZX-Qf-m77"/>
                         <outlet property="_eventCost" destination="KSC-Kx-yHt" id="9Ga-XX-pyW"/>
                         <outlet property="_eventCreator" destination="Ugm-yv-jJ6" id="4ZN-1B-wTu"/>
@@ -244,8 +244,7 @@
                         <outlet property="_eventName" destination="mJc-49-y62" id="snJ-yb-AQ9"/>
                         <outlet property="_eventParticipantsNum" destination="c1h-IU-n1C" id="Xep-Sd-z8k"/>
                         <outlet property="_eventTimestamp" destination="piS-pd-3Uk" id="PCL-9B-S1o"/>
-                        <outlet property="buttonJoinEvent" destination="DSh-sD-bBw" id="XMc-nw-fuW"/>
-                        <outlet property="cosmosView" destination="vdY-Wd-Oam" id="vWl-AX-pni"/>
+                        <outlet property="_ratingView" destination="vdY-Wd-Oam" id="vWl-AX-pni"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLZ-aJ-uBV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

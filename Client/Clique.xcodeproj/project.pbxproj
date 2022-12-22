@@ -21,6 +21,7 @@
 		4214871E293427BC0053B344 /* CreateEventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4214871D293427BC0053B344 /* CreateEventService.swift */; };
 		4214872029342C7A0053B344 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4214871F29342C7A0053B344 /* Category.swift */; };
 		421487222934413D0053B344 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421487212934413D0053B344 /* Currency.swift */; };
+		422303162954BA94008A9EF0 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422303152954BA94008A9EF0 /* Session.swift */; };
 		4229A3A62947D3710083494E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4229A3A52947D3710083494E /* UIView+Extension.swift */; };
 		422A63952935A56400ABB4C4 /* ShortDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A63942935A56400ABB4C4 /* ShortDescriptionViewController.swift */; };
 		422A9158294032730079554F /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A9157294032730079554F /* LocationViewController.swift */; };
@@ -103,6 +104,7 @@
 		4214871D293427BC0053B344 /* CreateEventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventService.swift; sourceTree = "<group>"; };
 		4214871F29342C7A0053B344 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		421487212934413D0053B344 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		422303152954BA94008A9EF0 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		4229A3A52947D3710083494E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		422A63942935A56400ABB4C4 /* ShortDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortDescriptionViewController.swift; sourceTree = "<group>"; };
 		422A9157294032730079554F /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 				425B8D11293585F500907BD9 /* ProfileService.swift */,
 				429861B829392D45001CF447 /* SettingsService.swift */,
 				4214871D293427BC0053B344 /* CreateEventService.swift */,
+				422303152954BA94008A9EF0 /* Session.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				4253AE892933AD2B0054DC2B /* ProfileViewController.swift in Sources */,
 				425B8D1A29359BB900907BD9 /* ProfileEditViewController.swift in Sources */,
 				4214872029342C7A0053B344 /* Category.swift in Sources */,
+				422303162954BA94008A9EF0 /* Session.swift in Sources */,
 				4254AD3F29297E2A004D649D /* Constants.swift in Sources */,
 				4214871E293427BC0053B344 /* CreateEventService.swift in Sources */,
 				42DB272C292656ED0027A00C /* LoginServices.swift in Sources */,

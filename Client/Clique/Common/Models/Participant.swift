@@ -9,10 +9,10 @@ import Foundation
 
 struct Participant: Codable {
     let user: User
-    let status: Int
+    let userStatusOnEvent: Int
     
     enum CodingKeys: String, CodingKey{
         case user = "participant"
-        case status = "status"
+        case userStatusOnEvent = "status"
     }
 }

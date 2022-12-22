@@ -46,10 +46,22 @@ struct Event: Codable {
 }
 
 extension Event {
+//TODO: complete timestamp conversion
     func timeStampToString(timestamp: TimeInterval) -> String {
         let date = Date(timeIntervalSince1970: timestamp)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = Constants.DateFormats.dateFormatClient
         return dateFormatter.string(from: date)
+    }
+    
+    func didItEnd(timestamp: TimeInterval) -> Event.status {
+        let currentTimestamp = Date().timeIntervalSince1970
+        if currentTimestamp < timestamp {
+            return .pending
+        } else if currentTimestamp > timestamp {
+            return .done
+        } else {
+            return .inProgress
+        }
     }
 }

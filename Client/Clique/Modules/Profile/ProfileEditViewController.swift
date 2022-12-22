@@ -63,7 +63,7 @@ class ProfileEditViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         guard let userProfileData = getProfileData() else {
-            self.showOKAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
+            self.showAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             return
         }
             
@@ -80,7 +80,7 @@ class ProfileEditViewController: UIViewController {
                 self.showAlert(message: Constants.Alerts.successfullyUpdatedMessage,
                                         actions: [defaultAction])
             case .failure:
-                self.showOKAlert(message: Constants.Alerts.wrongInputMessage)
+                self.showAlert(message: Constants.Alerts.wrongInputMessage)
             }
         }
     }

@@ -11,7 +11,7 @@ import NVActivityIndicatorView
 extension UIViewController {
     
     func showAlert(
-            title: String = "",
+            title: String? = nil,
             message: String,
             actions: [UIAlertAction],
             animated: Bool = true
@@ -26,8 +26,8 @@ extension UIViewController {
             present(alertController, animated: animated)
     }
 
-    func showOKAlert(
-            title: String = "",
+    func showAlert(
+            title: String? = nil,
             message: String,
             actionTitle: String? = Constants.Alerts.defaultOKActionTitle,
             animated: Bool = true

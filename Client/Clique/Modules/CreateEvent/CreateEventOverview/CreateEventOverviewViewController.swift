@@ -60,7 +60,7 @@ class CreateEventOverviewViewController: UIViewController {
                 _self.stopAnimation(loading: _self.loading)
                 _self.showAlert(message: Constants.Alerts.successfullyCreatedEventMessasge, actions: [defaultAction])
             case .failure :
-                _self.showOKAlert(message: Constants.Alerts.wrongInputMessage, actionTitle: Constants.Alerts.defaultOKActionTitle)
+                _self.showAlert(message: Constants.Alerts.wrongInputMessage, actionTitle: Constants.Alerts.defaultOKActionTitle)
                 _self.stopAnimation(loading: _self.loading)
             }
         }

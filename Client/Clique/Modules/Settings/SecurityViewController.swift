@@ -54,14 +54,14 @@ class SecurityViewController: UIViewController {
             case .success():
                 self?.showAlert(message: Constants.Alerts.successfullyUpdatedMessage, actions: [defaultAction])
             case .failure:
-                self?.showOKAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
+                self?.showAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             }
         }
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         guard let getPasswordData = getPasswordData() else {
-            self.showOKAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
+            self.showAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             return
         }
         
