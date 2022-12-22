@@ -46,7 +46,7 @@ struct Event: Codable {
 }
 
 extension Event {
-    func timeStampToString(timestamp: TimeInterval) -> String{
+    func timeStampToString(timestamp: TimeInterval) -> String {
         let date = Date(timeIntervalSince1970: timestamp)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = Constants.DateFormats.dateFormatClient
