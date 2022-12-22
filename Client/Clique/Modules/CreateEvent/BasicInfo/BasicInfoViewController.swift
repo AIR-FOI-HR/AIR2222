@@ -53,7 +53,7 @@ class BasicInfoViewController: UIViewController {
             let cost = costTextField.text,
             !categoryName.isEmpty && !eventName.isEmpty && !participantsCount.isEmpty
         else {
-            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
+            self.showOKAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             return
         }
         viewContoller.createEventObject.category = selectedCategory

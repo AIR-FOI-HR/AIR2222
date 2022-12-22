@@ -147,7 +147,7 @@ private extension EventDetailViewController {
                                      style: .default, handler: {(action: UIAlertAction!) in self.callRegisterToEventService()})
         let cancelAction = UIAlertAction(title: Constants.Alerts.defaultCancelActionTitle,
                                          style: .default, handler: .none)
-        sendOKCancelAlert(message: alertMessage, actions: [okAction, cancelAction])
+        showAlert(message: alertMessage, actions: [okAction, cancelAction])
     }
     
     @objc func rateEventAlert() {
@@ -155,10 +155,10 @@ private extension EventDetailViewController {
             guard let _self = self else { return }
             switch result{
             case .success(let success):
-                _self.sendOkAlert(message: success)
+                _self.showOKAlert(message: success, actionTitle: Constants.Alerts.defaultOKActionTitle)
                 _self.setCosmosRating()
             case .failure(_):
-                _self.sendOkAlert(message: Constants.Alerts.rateEventError)
+                _self.showOKAlert(message: Constants.Alerts.rateEventError, actionTitle: Constants.Alerts.defaultOKActionTitle)
             }
         }
     }

@@ -52,16 +52,16 @@ class SecurityViewController: UIViewController {
         settingsService.changePassword(with: userPasswords) { [weak self] result in
             switch result {
             case .success():
-                self?.sendOKCancelAlert(message: Constants.Alerts.successfullyUpdatedMessage, actions: [defaultAction])
+                self?.showAlert(message: Constants.Alerts.successfullyUpdatedMessage, actions: [defaultAction])
             case .failure:
-                self?.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
+                self?.showOKAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             }
         }
     }
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         guard let getPasswordData = getPasswordData() else {
-            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
+            self.showOKAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             return
         }
         
