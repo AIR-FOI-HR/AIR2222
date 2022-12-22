@@ -11,7 +11,7 @@ class CreatedEventsViewController: UIViewController {
     
     @IBOutlet private var _tableView : UITableView?
     
-    private var _events : [Event] = [] {
+    private var _events: [Event] = [] {
         didSet {
             _tableView?.reloadData()
         }
