@@ -71,7 +71,7 @@ private extension EventDetailViewController {
     }
     
     func checkUserStatusOnEvent(participants: [Participant?]) {
-        var id = session.getUserId()
+        let id = session.getUserId()
         if let participant = participants.first(where: {$0?.user.id == id}) {
             status = participant?.userStatusOnEvent ?? 0
             activateButton()
