@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
         
         self.startAnimation(loading: loading, view: view)
         guard let credentails = getLoginCredentials() else {
-            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
+            self.showAlert(message: Constants.Alerts.pleaseEnterInfoMessage, actionTitle: Constants.Alerts.defaultOKActionTitle)
             self.startAnimation(loading: loading, view: view)
             return
         }
@@ -59,7 +59,7 @@ class LoginViewController: UIViewController {
                 self.present(viewController, animated: true)
                 self.stopAnimation(loading: self.loading)
             case .failure:
-                self.sendOkAlert(message: Constants.Alerts.wrongCredentialsMessage)
+                self.showAlert(message: Constants.Alerts.wrongCredentialsMessage)
                 self.stopAnimation(loading: self.loading)
             }
         }

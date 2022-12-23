@@ -24,7 +24,7 @@ class SettingsViewController: UIViewController {
         let cancelAction = UIAlertAction(title: Constants.Alerts.defaultCancelActionTitle,
                                          style: .destructive)
 
-        sendOKCancelAlert(message: Constants.Alerts.wantToLogOutMessage, actions: [okAction,cancelAction])
+        showAlert(message: Constants.Alerts.wantToLogOutMessage, actions: [okAction, cancelAction])
     }
     
     @IBAction func securityButtonPressed(_ sender: UIBarButtonItem) {

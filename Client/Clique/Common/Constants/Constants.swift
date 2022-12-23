@@ -21,6 +21,9 @@ enum Constants {
         static let currenciesURL = baseURL.appending("Event/GetCurrencies")
         static let createEventURL = baseURL.appending("Event/CreateNewEvent")
         static let eventsURL = baseURL.appending("Event/GetAllEvents")
+        static let eventRegistrationURL = baseURL.appending("EventRegister/RegisterOnEvent")
+        static let rateEventURL = baseURL.appending("Ratings/RateEvent")
+        static let getRatedEventURL = baseURL.appending("Ratings/GetRatedEvent/")
         static let APIkey = "AIzaSyC0NNY4L9uG_Vbn3oEyy-141uhKQzDb_VU"
        
         static func requestHeaders() -> HTTPHeaders {
@@ -48,6 +51,10 @@ enum Constants {
         static let pleaseChooseLocationMessasge = "Please choose a location."
         static let pleaseEnterShortDescriptionMessasge = "Please enter short description."
         static let successfullyCreatedEventMessasge = "Successfully created event!"
+        static let confirmationTitleMessage = "Confirmation"
+        static let joinEventMessage = "Are you sure you want to join this event?"
+        static let cancelEventMessage = "Are you sure you want to cancel this event?"
+        static let rateEventError = "Rating event unsuccessful, server error"
     }
    
     enum DateFormats {

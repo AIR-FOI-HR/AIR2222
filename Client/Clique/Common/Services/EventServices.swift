@@ -22,4 +22,61 @@ final class EventServices {
                 }
             }
     }
+    
+    func registerToEvent(event_id: Int, status: Int,
+        completion: @escaping(Result<Int, Error>) -> Void) {
+        AF.request(Constants.Service.eventRegistrationURL,
+                   method: .post,
+                   parameters: ["event_id": event_id,
+                                "status": status],
+                   encoding: JSONEncoding.default,
+                   headers: Constants.Service.requestHeaders()
+                   )
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: Int.self) { response in
+                switch response.result {
+                case .success(let status):
+                    completion(.success(status))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+    
+    func rateEvent(event_id: Int, rating: Double,
+        completion: @escaping(Result<String, Error>) -> Void) {
+        AF.request(Constants.Service.rateEventURL,
+                   method: .post,
+                   parameters: ["event_id": event_id,
+                                "rating": rating],
+                   encoding: JSONEncoding.default,
+                   headers: Constants.Service.requestHeaders()
+                   )
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: String.self) { response in
+                switch response.result {
+                case .success(let status):
+                    completion(.success(status))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+    
+    func getRatedEvent(event_id: Int,
+        completion: @escaping(Result<Double, Error>) -> Void) {
+        AF.request(Constants.Service.getRatedEventURL + String(event_id),
+                   method: .get,
+                   headers: Constants.Service.requestHeaders()
+                   )
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: Double.self) { response in
+                switch response.result {
+                case .success(let status):
+                    completion(.success(status))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
 }

@@ -30,7 +30,7 @@ class ShortDescriptionViewController: UIViewController {
             let shortDescription = shortDescriptionTextView.text,
             !shortDescription.isEmpty
         else {
-            self.sendOkAlert(message: Constants.Alerts.pleaseEnterShortDescriptionMessasge)
+            self.showAlert(message: Constants.Alerts.pleaseEnterShortDescriptionMessasge)
             return
         }
         createEventObject.description = shortDescription

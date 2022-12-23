@@ -32,12 +32,12 @@ class RegisterViewController: UIViewController {
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         
         guard let registerEntries = getRegisterEntries() else {
-            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
+            showAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             return
         }
         
         guard checkPasswords() else{
-            self.sendOkAlert(message: Constants.Alerts.passwordsDontMatchMessage)
+            showAlert(message: Constants.Alerts.passwordsDontMatchMessage)
             return
         }
         self.startAnimation(loading: loading, view: view)
@@ -55,10 +55,10 @@ class RegisterViewController: UIViewController {
         registerService.register(with: registerEntries) { result in
             switch result {
             case .success() :
-                self.sendAlert(message: Constants.Alerts.successRegisterMessage, action: defaultAction)
+                self.showAlert(message: Constants.Alerts.successRegisterMessage, actions: [defaultAction])
                 self.stopAnimation(loading: self.loading)
             case .failure :
-                self.sendOkAlert(message: Constants.Alerts.wrongInputMessage)
+                self.showAlert(message: Constants.Alerts.wrongInputMessage)
                 self.stopAnimation(loading: self.loading)
             }
         }

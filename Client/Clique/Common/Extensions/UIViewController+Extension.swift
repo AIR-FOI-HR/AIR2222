@@ -10,38 +10,30 @@ import NVActivityIndicatorView
 
 extension UIViewController {
     
-    func sendOkAlert(
-        with title: String = "",
-        message: String
+    func showAlert(
+            title: String? = nil,
+            message: String,
+            actions: [UIAlertAction],
+            animated: Bool = true
     ) {
-        let alertController = UIAlertController(title: title,
-                                                message: message ,
-                                                preferredStyle: .alert)
-        let okAction = UIAlertAction(title: Constants.Alerts.defaultOKActionTitle,
-                                     style: .cancel)
-        alertController.addAction(okAction)
-        present(alertController, animated: true)
+            let alertController = UIAlertController(
+                title: title,
+                message: message,
+                preferredStyle: .alert
+            )
+
+            actions.forEach { alertController.addAction($0) }
+            present(alertController, animated: animated)
     }
-    
-    func sendOKCancelAlert(
-        with title: String = "",
-        message: String,
-        actions: [UIAlertAction]
+
+    func showAlert(
+            title: String? = nil,
+            message: String,
+            actionTitle: String? = Constants.Alerts.defaultOKActionTitle,
+            animated: Bool = true
     ) {
-        let alertController = UIAlertController(title: title,
-                                                message: message,
-                                                preferredStyle: .alert)
-        actions.forEach { alertController.addAction($0) }
-        present(alertController, animated: true)
-    }
-    func sendAlert(
-        with title: String = "",
-        message: String,
-        action: UIAlertAction
-    ) {
-        let alertController = UIAlertController(title: title, message: message , preferredStyle: .alert)
-        alertController.addAction(action)
-        present(alertController, animated: true)
+            let action = UIAlertAction(title: actionTitle, style: .cancel)
+            showAlert(title: title, message: message, actions: [action], animated: animated)
     }
     
     func startAnimation(

@@ -11,13 +11,16 @@ struct Event: Codable {
     let id: Int
     let name: String
     let location: String
-    let timestamp: String
+    let timestamp: TimeInterval
     let participantNumber: Int
     let cost: Double?
     let currency: String?
     let creator: UserCreatorEvent
     let category: String
     let description: String?
+    let participants: [Participant?]
+    let latitude: Decimal
+    let longitude: Decimal
     
     enum CodingKeys: String, CodingKey {
             case id = "event_id"
@@ -30,5 +33,35 @@ struct Event: Codable {
             case creator = "creator"
             case category = "category"
             case description = "description"
-    }  
+            case participants = "participants"
+            case latitude = "location_latitude"
+            case longitude = "location_longitude"
+    }
+    
+    enum status: String {
+            case pending
+            case inProgress
+            case done
+    }
+}
+
+extension Event {
+//TODO: complete timestamp conversion
+    func timeStampToString(timestamp: TimeInterval) -> String {
+        let date = Date(timeIntervalSince1970: timestamp)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Constants.DateFormats.dateFormatClient
+        return dateFormatter.string(from: date)
+    }
+    
+    func didItEnd(timestamp: TimeInterval) -> Event.status {
+        let currentTimestamp = Date().timeIntervalSince1970
+        if currentTimestamp < timestamp {
+            return .pending
+        } else if currentTimestamp > timestamp {
+            return .done
+        } else {
+            return .inProgress
+        }
+    }
 }

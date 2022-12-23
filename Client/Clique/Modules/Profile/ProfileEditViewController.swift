@@ -63,7 +63,7 @@ class ProfileEditViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         guard let userProfileData = getProfileData() else {
-            self.sendOkAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
+            self.showAlert(message: Constants.Alerts.pleaseEnterInfoMessage)
             return
         }
             
@@ -77,10 +77,10 @@ class ProfileEditViewController: UIViewController {
         profileService.updateUser(with: userUpdateData) { result in
             switch result {
             case .success():
-                self.sendOKCancelAlert(message: Constants.Alerts.successfullyUpdatedMessage,
+                self.showAlert(message: Constants.Alerts.successfullyUpdatedMessage,
                                         actions: [defaultAction])
             case .failure:
-                self.sendOkAlert(message: Constants.Alerts.wrongInputMessage)
+                self.showAlert(message: Constants.Alerts.wrongInputMessage)
             }
         }
     }
